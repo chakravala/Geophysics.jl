@@ -1,0 +1,17 @@
+name = "Geophysics"
+uuid = "74efdf00-b554-44e1-bd21-abb9281d951c"
+authors = ["Michael Reed"]
+version = "0.1.1"
+
+[deps]
+AbstractTensors = "a8e43f4a-99b7-5565-8bf1-0165161caaea"
+
+[compat]
+julia = "1"
+AbstractTensors = "0.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
