@@ -41,6 +41,7 @@ Additionally this package is not limited to atmospheric data: other geophysical 
 In this package, any simple Geophysical properties of planets may be added.
 Other simple geophysical data about planets, can be added in a collaborative effort.
 Complicated models will be excluded from this package, as it is only intended to provide a minimal foundation for geophysical data and constants of various planets, more complicated models should be built separately in packages to build on `Geophysics`.
+For example, some geographic conditions can be calculated externally, and then Geophysics is used to load that data.
 
 ## References
 * R. A. Minzer, K. S. W. Champion, and H. L. Pond, [The ARDC Model Atmosphere](https://apps.dtic.mil/dtic/tr/fulltext/u2/229482.pdf), ARDC (1959)

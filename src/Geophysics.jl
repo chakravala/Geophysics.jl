@@ -7,14 +7,23 @@ using AbstractTensors
 import Base: @pure
 
 export Fluid, Atmosphere, Weather, layer, heatratio, gasconstant
-export gravity, temperature, pressure, density, sonicspeed
+export gravity, temperature, pressure, density, energy, enthalpy, sonicspeed
 
 # fluid models
 
-struct Fluid{R,γ} end
+struct Fluid{M,cᵥ,cₚ} end
 
-@pure heatratio(::Fluid{R,γ}) where {R,γ} = γ
-@pure gasconstant(::Fluid{R}) where R = R
+const Boltzmann, Avogadro = 1.380649e-23,6.02214076e23
+const idealgasconstant = Boltzmann*Avogadro
+const molarmassenglish = idealgasconstant/49.72
+#const AvogadroEnglish,idealgasenglish = 453.59237Avogadro,49.72
+#const BoltzmannEnglish = 49.72/AvogadroEnglish
+
+@pure heatvolume(::Fluid{M,cᵥ}) where {M,cᵥ} = cᵥ
+@pure heatpressure(::Fluid{M,cᵥ,cₚ}) where {M,cᵥ,cₚ} = cₚ
+@pure heatratio(F::Fluid) = heatpressure(F)/heatvolume(F)
+@pure molarmass(::Fluid{M}) where M = M
+@pure gasconstant(F::Fluid) = idealgasconstant/molarmass(F)
 
 struct Atmosphere{f,n}
     a::Values{n,Float64} # lapse rate
@@ -57,10 +66,12 @@ end
 
 @pure @inline Base.getindex(W::Weather,i::Int) = W.T[i],W.A.a[i],W.A.h[i],W.p[i],W.ρ[i]
 @pure @inline Base.getindex(W::Weather,::Val{i}) where i = getindex(W,i)
-@pure @inline lapserate(h::Real=0,W::Weather=Standard) = W[layer(h,W)]
-@pure layer(h::Real=0,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
+@pure @inline lapserate(h::Real,W::Weather=Standard) = W[layer(h,W)]
+@pure layer(h::Real,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
 
 @pure fluid(::Weather{r,g,f}=Standard) where {r,g,f} = f
+@pure heatvolume(W::Weather=Standard) = heatvolume(fluid(W))
+@pure heatpressure(W::Weather=Standard) = heatpressure(fluid(W))
 @pure heatratio(W::Weather=Standard) = heatratio(fluid(W))
 @pure gasconstant(W::Weather=Standard) = gasconstant(fluid(W))
 @pure radius(::Weather{r}=Standard) where r = r
@@ -68,15 +79,17 @@ end
 
 # h = geopotential altitude, hG = geometric altitude
 
-@pure @inline altabs(hG::Real=0,W::Weather=Standard) = radius(W)+hG
-@pure @inline altratio(hG::Real=0,W::Weather=Standard) = radius(W)/altabs(hG,W)
-@pure altgeopotent(hG::Real=0,W::Weather=Standard) = hG*altratio(hG,W)
-@pure altgeometric(h::Real=0,W::Weather=Standard) = (r=radius(W); r/(r/h-1))
+@pure @inline altabs(W::Weather=Standard) = altabs(0,W)
+@pure @inline altabs(hG::Real,W::Weather=Standard) = radius(W)+hG
+@pure @inline altratio(hG::Real,W::Weather=Standard) = radius(W)/altabs(hG,W)
+@pure altgeopotent(hG::Real,W::Weather=Standard) = hG*altratio(hG,W)
+@pure altgeometric(h::Real,W::Weather=Standard) = (r=radius(W); r/(r/h-1))
 @pure gravity(hG::Real,W::Weather=Standard) = (gravity(W)*radius(W)^2)/altabs(hG,W)^2
 
 # T = temperature
 
-@pure temperature(h::Real=0,W::Weather=Standard) = temperature(h,layer(h,W),W)
+@pure temperature(W::Weather=Standard) = temperature(0,W)
+@pure temperature(h::Real,W::Weather=Standard) = temperature(h,layer(h,W),W)
 @pure temperature(h::Real,i,W::Weather=Standard) = _temperature(altgeopotent(h,W),i,W)
 @pure function _temperature(h::Real,i,W::Weather=Standard)
     T0,a0,h0 = W[i]
@@ -85,8 +98,9 @@ end
 
 # p = pressure
 
-pressure(hG::Real=0,W::Weather=Standard) = pressure(hG,layer(hG,W),W)
-function pressure(hG::Real,i,W::Weather=Standard)
+@pure pressure(W::Weather=Standard) = pressure(0,W)
+@pure pressure(hG::Real,W::Weather=Standard) = pressure(hG,layer(hG,W),W)
+@pure function pressure(hG::Real,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
     T0,a,h0,p = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
     if iszero(a)
@@ -96,13 +110,14 @@ function pressure(hG::Real,i,W::Weather=Standard)
     end
 end
 
-pressureratio(hG::Real=0,W::Weather=Standard) = pressureratio(hG,layer(hG,W),W)
-pressureratio(hG::Real,i,W::Weather=Standard) = pressure(hG,i,W)/pressure(W)
+@pure pressureratio(hG::Real,W::Weather=Standard) = pressureratio(hG,layer(hG,W),W)
+@pure pressureratio(hG::Real,i,W::Weather=Standard) = pressure(hG,i,W)/pressure(W)
 
 # ρ = density
 
-density(hG::Real=0,W::Weather=Standard) = density(hG,layer(hG,W),W)
-function density(hG::Real,i,W::Weather=Standard)
+@pure density(W::Weather=Standard) = density(0,W)
+@pure density(hG::Real,W::Weather=Standard) = density(hG,layer(hG,W),W)
+@pure function density(hG::Real,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
     T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
     if iszero(a)
@@ -112,12 +127,25 @@ function density(hG::Real,i,W::Weather=Standard)
     end
 end
 
-densityratio(hG::Real=0,W::Weather=Standard) = densityratio(hG,layer(hG,W),W)
-densityratio(hG::Real,i,W::Weather=Standard) = density(hG,i,W)/density(W)
+@pure densityratio(hG::Real,W::Weather=Standard) = densityratio(hG,layer(hG,W),W)
+@pure densityratio(hG::Real,i,W::Weather=Standard) = density(hG,i,W)/density(W)
+
+# e = energy
+
+@pure energy(W::Weather=Standard) = energy(0,W)
+@pure energy(hG::Real,W::Weather=Standard) = energy(hG,layer(hG,W),W)
+@pure energy(hG::Real,i,W::Weather=Standard) = heatvolume(W)*temperature(hG,i,W)
+
+# h = enthalpy
+
+@pure enthalpy(W::Weather=Standard) = enthalpy(0,W)
+@pure enthalpy(hG::Real,W::Weather=Standard) = enthalpy(hG,layer(hG,W),W)
+@pure enthalpy(hG::Real,i,W::Weather=Standard) = heatpressure(W)*temperature(hG,i,W)
 
 # speed of sound
 
-@pure sonicspeed(hG::Real=0,W::Weather=Standard) = sonicspeed(hG,layer(hG,W),W)
+@pure sonicspeed(W::Weather=Standard) = sonicspeed(0,W)
+@pure sonicspeed(hG::Real,W::Weather=Standard) = sonicspeed(hG,layer(hG,W),W)
 @pure sonicspeed(hG::Real,i,W::Weather=Standard) = sqrt(heatratio(W)*gasconstant(W))*sqrt(temperature(hG,i,W))
 
 include("planets.jl")

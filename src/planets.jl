@@ -5,8 +5,8 @@ export Standard, Earth1959, Earth1976, Earth1959English, Earth1976English
 #   This file is part of Geophysics.jl. It is licensed under the MIT license
 #   Geophysics Copyright (C) 2020 Michael Reed
 
-const Air = Fluid{287.0429,1.4}()
-const AirEnglish = Fluid{1716.5,1.4}()
+const Air = Fluid{0.028965923,720,1008}() #287.0429-287.058, 0.0289654
+const AirEnglish = Fluid{0.028965923molarmassenglish,4290,6006}() #1716.49-1716.5
 const MarsAir = Air # to-do
 
 # Atmospheric temperature models
