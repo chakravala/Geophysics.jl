@@ -2,6 +2,9 @@
 
 *Planetary science data for atmospheric geophysical models*
 
+
+
+[![DOI](https://zenodo.org/badge/306497671.svg)](https://zenodo.org/badge/latestdoi/306497671)
 [![Build Status](https://travis-ci.org/chakravala/Geophysics.jl.svg?branch=master)](https://travis-ci.org/chakravala/Geophysics.jl)
 [![Build status](https://ci.appveyor.com/api/projects/status/dkbkhd26j463hnx7?svg=true)](https://ci.appveyor.com/project/chakravala/geophysics-jl)
 [![Coverage Status](https://coveralls.io/repos/chakravala/Geophysics.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/chakravala/Geophysics.jl?branch=master)
@@ -34,6 +37,10 @@ julia> sonicspeed(h)
 Values which can be obtained at geometric altitude include `gravity`, `temperature`, `pressure`, `density`, and `sonicspeed`.
 In the future, more varieties of atmospheric models will be added for various planets along with winds aloft and turbulent gust distribution data.
 Weather data from internet sources may be imported in the future.
+Additionally this package is not limited to atmospheric data: other geophysical data features can be added for oceans, temperature and pressure inside the planets, as well as electrical and magnetic properties of planets.
+In this package, any simple Geophysical properties of planets may be added.
+Other simple geophysical data about planets, can be added in a collaborative effort.
+Complicated models will be excluded from this package, as it is only intended to provide a minimal foundation for geophysical data and constants of various planets, more complicated models should be built separately in packages to build on `Geophysics`.
 
 ## References
 * R. A. Minzer, K. S. W. Champion, and H. L. Pond, [The ARDC Model Atmosphere](https://apps.dtic.mil/dtic/tr/fulltext/u2/229482.pdf), ARDC (1959)

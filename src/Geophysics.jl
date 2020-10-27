@@ -32,8 +32,7 @@ struct Weather{r,g,f,n} # radius, acceleration
     Weather{r,g}(A::Atmosphere{f},T::Values{n},p::Values{n},ρ::Values{n}) where {r,g,f,n} = new{r,g,f,n}(A,T,p,ρ)
 end
 
-function Weather{r,g}(T0::Float64,p0,A::Atmosphere{f,n}) where {r,g,f,n}
-    T = zeros(Variables{n,Float64})
+function Weather{r,g}(T0,p0,A::Atmosphere{f,n}) where {r,g,f,n} T = zeros(Variables{n,Float64})
     p = zeros(Variables{n,Float64})
     ρ = zeros(Variables{n,Float64})
     R,γ = gasconstant(f),heatratio(f)
@@ -58,10 +57,10 @@ end
 
 @pure @inline Base.getindex(W::Weather,i::Int) = W.T[i],W.A.a[i],W.A.h[i],W.p[i],W.ρ[i]
 @pure @inline Base.getindex(W::Weather,::Val{i}) where i = getindex(W,i)
-@pure @inline lapserate(h,W::Weather=Standard) = W[layer(h,W)]
-@pure layer(h,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
+@pure @inline lapserate(h::Real=0,W::Weather=Standard) = W[layer(h,W)]
+@pure layer(h::Real=0,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
 
-@pure fluid(::Weather{r,g,f}) where {r,g,f} = f
+@pure fluid(::Weather{r,g,f}=Standard) where {r,g,f} = f
 @pure heatratio(W::Weather=Standard) = heatratio(fluid(W))
 @pure gasconstant(W::Weather=Standard) = gasconstant(fluid(W))
 @pure radius(::Weather{r}=Standard) where r = r
@@ -69,16 +68,15 @@ end
 
 # h = geopotential altitude, hG = geometric altitude
 
-@pure @inline altabs(hG::Real,W::Weather=Standard) = radius(W)+hG
-@pure @inline altratio(hG::Real,W::Weather=Standard) = radius(W)/altabs(hG,W)
-@pure altgeopotent(hG::Real,W::Weather=Standard) = hG*altratio(hG,W)
-@pure altgeometric(h::Real,W::Weather=Standard) = (r=radius(W); r/(r/h-1))
+@pure @inline altabs(hG::Real=0,W::Weather=Standard) = radius(W)+hG
+@pure @inline altratio(hG::Real=0,W::Weather=Standard) = radius(W)/altabs(hG,W)
+@pure altgeopotent(hG::Real=0,W::Weather=Standard) = hG*altratio(hG,W)
+@pure altgeometric(h::Real=0,W::Weather=Standard) = (r=radius(W); r/(r/h-1))
 @pure gravity(hG::Real,W::Weather=Standard) = (gravity(W)*radius(W)^2)/altabs(hG,W)^2
 
 # T = temperature
 
-@pure temperature(W::Weather=Standard) = temperature(0,W)
-@pure temperature(h::Real,W::Weather=Standard) = temperature(h,layer(h,W),W)
+@pure temperature(h::Real=0,W::Weather=Standard) = temperature(h,layer(h,W),W)
 @pure temperature(h::Real,i,W::Weather=Standard) = _temperature(altgeopotent(h,W),i,W)
 @pure function _temperature(h::Real,i,W::Weather=Standard)
     T0,a0,h0 = W[i]
@@ -87,8 +85,7 @@ end
 
 # p = pressure
 
-@pure pressure(W::Weather=Standard) = pressure(0,W)
-@pure pressure(hG::Real,W::Weather=Standard) = pressure(hG,layer(hG,W),W)
+pressure(hG::Real=0,W::Weather=Standard) = pressure(hG,layer(hG,W),W)
 function pressure(hG::Real,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
     T0,a,h0,p = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
@@ -99,13 +96,12 @@ function pressure(hG::Real,i,W::Weather=Standard)
     end
 end
 
-@pure pressureratio(hG::Real,W::Weather=Standard) = pressureratio(hG,layer(hG,W),W)
-@pure pressureratio(hG::Real,i,W::Weather=Standard) = pressure(hG,i,W)/pressure(W)
+pressureratio(hG::Real=0,W::Weather=Standard) = pressureratio(hG,layer(hG,W),W)
+pressureratio(hG::Real,i,W::Weather=Standard) = pressure(hG,i,W)/pressure(W)
 
 # ρ = density
 
-@pure density(W::Weather=Standard) = (pressure(W)/gasconstant(W))/temperature(W)
-@pure density(hG::Real,W::Weather=Standard) = density(hG,layer(hG,W),W)
+density(hG::Real=0,W::Weather=Standard) = density(hG,layer(hG,W),W)
 function density(hG::Real,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
     T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
@@ -116,14 +112,13 @@ function density(hG::Real,i,W::Weather=Standard)
     end
 end
 
-@pure densityratio(hG::Real,W::Weather=Standard) = densityratio(hG,layer(hG,W),W)
-@pure densityratio(hG::Real,i,W::Weather=Standard) = density(hG,i,W)/density(W)
+densityratio(hG::Real=0,W::Weather=Standard) = densityratio(hG,layer(hG,W),W)
+densityratio(hG::Real,i,W::Weather=Standard) = density(hG,i,W)/density(W)
 
 # speed of sound
 
-sonicspeed(W::Weather=Standard) = sonicspeed(0,W)
-sonicspeed(hG::Real,W::Weather=Standard) = sonicspeed(hG,layer(hG,W),W)
-sonicspeed(hG::Real,i,W::Weather=Standard) = sqrt(heatratio(W)*gasconstant(W))*sqrt(temperature(hG,i,W))
+@pure sonicspeed(hG::Real=0,W::Weather=Standard) = sonicspeed(hG,layer(hG,W),W)
+@pure sonicspeed(hG::Real,i,W::Weather=Standard) = sqrt(heatratio(W)*gasconstant(W))*sqrt(temperature(hG,i,W))
 
 include("planets.jl")
 
