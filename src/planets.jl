@@ -5,12 +5,13 @@ export Standard, Earth1959, Earth1976, Earth1959English, Earth1976English
 #   This file is part of Geophysics.jl. It is licensed under the MIT license
 #   Geophysics Copyright (C) 2020 Michael Reed
 
-const Air = Fluid{0.028965923,720,1008}() #287.0429-287.058, 0.0289654
-const AirEnglish = Fluid{0.028965923molarmassenglish,4290,6006}() #1716.49-1716.5
+const Air = Gas{0.028965923,720,1008,110.4,194}() #287.0429-287.058, 0.0289654
+const AirEnglish = Gas{0.028965923MEnglish,4290,6006,198.72,349.2}() #1716.49-.5
 const MarsAir = Air # to-do
 
 # Atmospheric temperature models
 
+const Thermometer = Atmosphere{Air}(Values(1),Values(0))
 const ARDC = Atmosphere{Air}(
     Values(-6.5e-3,0e-3,3e-3,0e-3,-4.5e-3,0e-3,4e-3),
     Values(-00e3,11e3,25e3,47e3,53e3,79e3,90e3))
@@ -31,11 +32,11 @@ const layers = Values("Troposphere","Tropopause","Stratosphere","Stratosphere","
 
 # Standard atmosphere weather conditions (sea level 45° lat)
 
-const Earth1959 = ARDC(6.356766e6,9.80665,288.16,101325.0)
-const Earth1976 = US76(6.356766e6,9.80665,288.15,101325.0)
-const Earth1959English = ARDCE(2.085553e7,32.174,518.69,2116.2)
-const Earth1976English = US76E(2.085553e7,32.174,518.67,2116.2)
-const MarsWeather = MarsAtmosphere(6.356766e6,9.80665,242.15,699.) # to-do
+const Earth1959 = ARDC(6.356766e6,9.80665,1.7894e-5,0.02531,288.16,101325.0)
+const Earth1976 = US76(6.356766e6,9.80665,1.7894e-5,0.02531,288.15,101325.0)
+const Earth1959English = ARDCE(2.085553e7,32.174,3.7373e-7,0.02531kEnglish,518.69,2116.2)
+const Earth1976English = US76E(2.085553e7,32.174,3.7373e-7,0.02531kEnglish,518.67,2116.2)
+const MarsWeather = MarsAtmosphere(6.356766e6,9.80665,1.7894e-5,0.02531,242.15,699.) # to-do
 const english = haskey(ENV,"GEOUNITS") && ENV["GEOUNITS"] == "english"
 const Standard = if haskey(ENV,"STDATM") && ENV["STDATM"] == "1976"
     english ? Earth1976English : Earth1976

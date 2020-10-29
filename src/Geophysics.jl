@@ -6,24 +6,29 @@ module Geophysics
 using AbstractTensors
 import Base: @pure
 
-export Fluid, Atmosphere, Weather, layer, heatratio, gasconstant
-export gravity, temperature, pressure, density, energy, enthalpy, sonicspeed
+export Fluid, Gas, Atmosphere, Weather
+export heatvolume, heatpressure, heatratio, molarmass, gasconstant
+export fluid, radius, gravity, layer, sutherlandviscosity, sutherlandconductivity
 
 # fluid models
 
-struct Fluid{M,cᵥ,cₚ} end
+abstract type Fluid{M,cᵥ,cₚ} end
+struct Gas{M,cᵥ,cₚ,Tμ,Tk} <: Fluid{M,cᵥ,cₚ} end
+struct Liquid{M,cᵥ,cₚ} <: Fluid{M,cᵥ,cₚ} end
 
-const Boltzmann, Avogadro = 1.380649e-23,6.02214076e23
-const idealgasconstant = Boltzmann*Avogadro
-const molarmassenglish = idealgasconstant/49.72
-#const AvogadroEnglish,idealgasenglish = 453.59237Avogadro,49.72
-#const BoltzmannEnglish = 49.72/AvogadroEnglish
+const Boltzmann,Avogadro = 1.380649e-23,6.02214076e23
+const Rᵤ,RᵤEnglish = Boltzmann*Avogadro,49.72
+const AvogadroEnglish = 453.59237Avogadro
+const BoltzmannEnglish = RᵤEnglish/AvogadroEnglish
+const MEnglish,kEnglish = Rᵤ/RᵤEnglish,0.5778
 
 @pure heatvolume(::Fluid{M,cᵥ}) where {M,cᵥ} = cᵥ
 @pure heatpressure(::Fluid{M,cᵥ,cₚ}) where {M,cᵥ,cₚ} = cₚ
 @pure heatratio(F::Fluid) = heatpressure(F)/heatvolume(F)
 @pure molarmass(::Fluid{M}) where M = M
-@pure gasconstant(F::Fluid) = idealgasconstant/molarmass(F)
+@pure gasconstant(F::Fluid) = Rᵤ/molarmass(F)
+@pure sutherlandviscosity(::Gas{M,cᵥ,cₚ,Tμ}) where {M,cᵥ,cₚ,Tμ} = Tμ
+@pure sutherlandconductivity(::Gas{M,cᵥ,cₚ,Tμ,Tk}) where {M,cᵥ,cₚ,Tμ,Tk} = Tk
 
 struct Atmosphere{f,n}
     a::Values{n,Float64} # lapse rate
@@ -33,15 +38,15 @@ end
 
 # local weather models
 
-struct Weather{r,g,f,n} # radius, acceleration
+struct Weather{r,g,f,n,μ,k} # radius, acceleration
     A::Atmosphere{f,n} # altitude lapse rate
     T::Values{n,Float64} # temperature
     p::Values{n,Float64} # pressure
     ρ::Values{n,Float64} # density
-    Weather{r,g}(A::Atmosphere{f},T::Values{n},p::Values{n},ρ::Values{n}) where {r,g,f,n} = new{r,g,f,n}(A,T,p,ρ)
+    Weather{r,g,μ,k}(A::Atmosphere{f},T::Values{n},p::Values{n},ρ::Values{n}) where {r,g,μ,k,f,n} = new{r,g,f,n,μ,k}(A,T,p,ρ)
 end
 
-function Weather{r,g}(T0,p0,A::Atmosphere{f,n}) where {r,g,f,n} T = zeros(Variables{n,Float64})
+function Weather{r,g,μ,k}(T0,p0,A::Atmosphere{f,n}) where {r,g,μ,k,f,n} T = zeros(Variables{n,Float64})
     p = zeros(Variables{n,Float64})
     ρ = zeros(Variables{n,Float64})
     R,γ = gasconstant(f),heatratio(f)
@@ -59,10 +64,10 @@ function Weather{r,g}(T0,p0,A::Atmosphere{f,n}) where {r,g,f,n} T = zeros(Variab
         p[i] = p[i-1]*vp
         ρ[i] = ρ[i-1]*vρ
     end
-    Weather{r,g}(A,Values(T),Values(p),Values(ρ))
+    Weather{r,g,μ,k}(A,Values(T),Values(p),Values(ρ))
 end
 
-(A::Atmosphere)(r,g,T,p) = Weather{r,g}(T,p,A)
+(A::Atmosphere)(r,g,μ,k,T,p) = Weather{r,g,μ,k}(T,p,A)
 
 @pure @inline Base.getindex(W::Weather,i::Int) = W.T[i],W.A.a[i],W.A.h[i],W.p[i],W.ρ[i]
 @pure @inline Base.getindex(W::Weather,::Val{i}) where i = getindex(W,i)
@@ -74,13 +79,14 @@ end
 @pure heatpressure(W::Weather=Standard) = heatpressure(fluid(W))
 @pure heatratio(W::Weather=Standard) = heatratio(fluid(W))
 @pure gasconstant(W::Weather=Standard) = gasconstant(fluid(W))
+@pure viscosity(::Weather{r,g,f,n,μ}=Standard) where {r,g,f,n,μ} = μ
+@pure conductivity(::Weather{r,g,f,n,μ,k}=Standard) where {r,g,f,n,μ,k} = k
 @pure radius(::Weather{r}=Standard) where r = r
 @pure gravity(::Weather{r,g}=Standard) where {r,g} = g
 
 # h = geopotential altitude, hG = geometric altitude
 
-@pure @inline altabs(W::Weather=Standard) = altabs(0,W)
-@pure @inline altabs(hG::Real,W::Weather=Standard) = radius(W)+hG
+@pure @inline altabs(hG::Real=0,W::Weather=Standard) = radius(W)+hG
 @pure @inline altratio(hG::Real,W::Weather=Standard) = radius(W)/altabs(hG,W)
 @pure altgeopotent(hG::Real,W::Weather=Standard) = hG*altratio(hG,W)
 @pure altgeometric(h::Real,W::Weather=Standard) = (r=radius(W); r/(r/h-1))
@@ -88,8 +94,6 @@ end
 
 # T = temperature
 
-@pure temperature(W::Weather=Standard) = temperature(0,W)
-@pure temperature(h::Real,W::Weather=Standard) = temperature(h,layer(h,W),W)
 @pure temperature(h::Real,i,W::Weather=Standard) = _temperature(altgeopotent(h,W),i,W)
 @pure function _temperature(h::Real,i,W::Weather=Standard)
     T0,a0,h0 = W[i]
@@ -98,8 +102,6 @@ end
 
 # p = pressure
 
-@pure pressure(W::Weather=Standard) = pressure(0,W)
-@pure pressure(hG::Real,W::Weather=Standard) = pressure(hG,layer(hG,W),W)
 @pure function pressure(hG::Real,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
     T0,a,h0,p = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
@@ -110,13 +112,8 @@ end
     end
 end
 
-@pure pressureratio(hG::Real,W::Weather=Standard) = pressureratio(hG,layer(hG,W),W)
-@pure pressureratio(hG::Real,i,W::Weather=Standard) = pressure(hG,i,W)/pressure(W)
-
 # ρ = density
 
-@pure density(W::Weather=Standard) = density(0,W)
-@pure density(hG::Real,W::Weather=Standard) = density(hG,layer(hG,W),W)
 @pure function density(hG::Real,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
     T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
@@ -127,26 +124,90 @@ end
     end
 end
 
-@pure densityratio(hG::Real,W::Weather=Standard) = densityratio(hG,layer(hG,W),W)
-@pure densityratio(hG::Real,i,W::Weather=Standard) = density(hG,i,W)/density(W)
+# k = thermal conductivity
+
+@pure conductivity(hG::Real,W::Weather=Standard) = conductivity(hG,layer(hG,W),W)
+@pure function conductivity(hG::Real,i,W::Weather=Standard,G::Gas=fluid(W))
+    T,T0,S = temperature(hG,i,W),temperature(W),sutherlandconductivity(G)
+    return (conductivity(W)*(T0+S)/T0^1.5)*(sqrt(T)/(1+S/T))
+end
+
+# μ = viscosity
+
+@pure viscosity(hG::Real,W::Weather=Standard) = viscosity(hG,layer(hG,W),W,fluid(W))
+@pure function viscosity(hG::Real,i,W::Weather=Standard,G::Gas=fluid(W))
+    T,T0,S = temperature(hG,i,W),temperature(W),sutherlandviscosity(G)
+    return (viscosity(W)*(T0+S)/T0^1.5)*(sqrt(T)/(1+S/T))
+end
+
+# ν = kinematic viscosity
+
+@pure kinematic(hG::Real,i,W::Weather=Standard) = viscosity(hG,i,W)/density(hG,i,W)
+
+# specific weight
+
+@pure weight(hG::Real,i,W::Weather=Standard) = density(hG,i,W)*gravity(hG,W)
+
+# specific volume
+
+@pure volume(hG::Real,i,W::Weather=Standard) = inv(density(hG,i,W))
+
+# specific potential energy
+
+@pure potential(hG::Real,i,W::Weather=Standard) = gravity(hG,W)*hG
 
 # e = energy
 
-@pure energy(W::Weather=Standard) = energy(0,W)
-@pure energy(hG::Real,W::Weather=Standard) = energy(hG,layer(hG,W),W)
 @pure energy(hG::Real,i,W::Weather=Standard) = heatvolume(W)*temperature(hG,i,W)
 
 # h = enthalpy
 
-@pure enthalpy(W::Weather=Standard) = enthalpy(0,W)
-@pure enthalpy(hG::Real,W::Weather=Standard) = enthalpy(hG,layer(hG,W),W)
 @pure enthalpy(hG::Real,i,W::Weather=Standard) = heatpressure(W)*temperature(hG,i,W)
+
+# heat capacity
+
+@pure heatcapacity(hG::Real,i,W::Weather=Standard) = heatpressure(W)*density(hG,i,W)
+
+# thermal diffusivity
+
+@pure diffusivity(hG::Real,i,W::Weather=Standard) = conductivity(hG,i,W)/heatcapacity(hG,i,W)
+
+# Prandtl number
+
+@pure prandtl(hG::Real,i,W::Weather=Standard) = viscosity(hG,i,W)*heatpressure(W)/conductivity(hG,i,W)
+
+# Grashof number
+
+@pure function grashof(hG::Real,i,W::Weather=Standard)
+    T = temperature(hG,i,W)
+    gravity(hG,W)*(temperature(W)-T)*(hG^3)/(T*kinematic(hG,i,W)^2)
+end
 
 # speed of sound
 
-@pure sonicspeed(W::Weather=Standard) = sonicspeed(0,W)
-@pure sonicspeed(hG::Real,W::Weather=Standard) = sonicspeed(hG,layer(hG,W),W)
 @pure sonicspeed(hG::Real,i,W::Weather=Standard) = sqrt(heatratio(W)*gasconstant(W))*sqrt(temperature(hG,i,W))
+
+# characteristic specific acoustic impedance
+
+@pure impedance(hG::Real,i,W::Weather=Standard) = density(hG,i,W)*sonicspeed(hG,i,W)
+
+# common interface
+
+for op ∈ (:temperature,:pressure,:density,:sonicspeed,:weight,:volume,:potential,:impedance,:grashof,:prandtl,:diffusivity,:heatcapacity,:enthalpy,:energy,:kinematic,:viscosity,:conductivity)
+    opratio = Symbol(op,:ratio)
+    @eval export $op
+    op ∉ (:viscosity,:conductivity) && @eval begin
+        @pure $op(W::Weather=Standard) = $op(0,W)
+        @pure $op(hG::Real,W::Weather=Standard) = $op(hG,layer(hG,W),W)
+    end
+    op ∉ (:heatcapacity,:grashof,:potential) && @eval begin
+        export $opratio
+        @pure $opratio(hG::Real,W::Weather=Standard) = $opratio(hG,layer(hG,W),W)
+        @pure $opratio(hG::Real,i,W::Weather=Standard) = $op(hG,i,W)/$op(W)
+    end
+end
+
+# data
 
 include("planets.jl")
 
