@@ -34,10 +34,11 @@ julia> sonicspeed(h)
 336.4347118683662
 ```
 
-Values which can be obtained at geometric altitude include `gravity`, `temperature`, `pressure`, `density`, `sonicspeed`, `conductivity`, `viscosity`, `kinematic`, `weight`, `volume`, `energy`, `enthalpy`, `heatcapacity`, `diffusivity`, `prandtl`, and `impedance`.
+Values which can be obtained at geometric altitude include `gravity`, `temperature`, `pressure`, `density`, `sonicspeed`, `conductivity`, `viscosity`, `kinematic`, `volume`, `energy`, `enthalpy`, `heatcapacity`, `diffusivity`, `prandtl`, and `impedance`.
 In the future, more varieties of atmospheric models will be added for various planets along with winds aloft and turbulent gust distribution data.
 Weather data from internet sources may be imported in the future.
-Additionally this package is not limited to atmospheric data: other geophysical data features can be added for oceans, temperature and pressure inside the planets, as well as electrical and magnetic properties of planets.
+
+This package is not limited to atmospheric data: other geophysical data features are intended to be added for oceans, temperature and pressure inside the planets, as well as electrical and magnetic properties of planets.
 In this package, any simple Geophysical properties of planets may be added.
 Other simple geophysical data about planets, can be added in a collaborative effort.
 Complicated models will be excluded from this package, as it is only intended to provide a minimal foundation for geophysical data and constants of various planets, more complicated models should be built separately in packages to build on `Geophysics`.

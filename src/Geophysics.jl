@@ -4,17 +4,13 @@ module Geophysics
 #   Geophysics Copyright (C) 2020 Michael Reed
 
 using AbstractTensors
-import Base: @pure
+import Base: @pure, show, display
 
-export Fluid, Gas, Atmosphere, Weather
+export Fluid, Gas, FluidState, Atmosphere, Weather
 export heatvolume, heatpressure, heatratio, molarmass, gasconstant
 export fluid, radius, gravity, layer, sutherlandviscosity, sutherlandconductivity
 
-# fluid models
-
-abstract type Fluid{M,cᵥ,cₚ} end
-struct Gas{M,cᵥ,cₚ,Tμ,Tk} <: Fluid{M,cᵥ,cₚ} end
-struct Liquid{M,cᵥ,cₚ} <: Fluid{M,cᵥ,cₚ} end
+# chemistry
 
 const Boltzmann,Avogadro = 1.380649e-23,6.02214076e23
 const Rᵤ,RᵤEnglish = Boltzmann*Avogadro,49.72
@@ -22,13 +18,74 @@ const AvogadroEnglish = 453.59237Avogadro
 const BoltzmannEnglish = RᵤEnglish/AvogadroEnglish
 const MEnglish,kEnglish = Rᵤ/RᵤEnglish,0.5778
 
+# fluid models
+
+abstract type Fluid{M,cᵥ,cₚ} end
+
 @pure heatvolume(::Fluid{M,cᵥ}) where {M,cᵥ} = cᵥ
 @pure heatpressure(::Fluid{M,cᵥ,cₚ}) where {M,cᵥ,cₚ} = cₚ
 @pure heatratio(F::Fluid) = heatpressure(F)/heatvolume(F)
 @pure molarmass(::Fluid{M}) where M = M
 @pure gasconstant(F::Fluid) = Rᵤ/molarmass(F)
-@pure sutherlandviscosity(::Gas{M,cᵥ,cₚ,Tμ}) where {M,cᵥ,cₚ,Tμ} = Tμ
-@pure sutherlandconductivity(::Gas{M,cᵥ,cₚ,Tμ,Tk}) where {M,cᵥ,cₚ,Tμ,Tk} = Tk
+
+struct Gas{M,cᵥ,cₚ,μ,Tμ,k,Tk} <: Fluid{M,cᵥ,cₚ} end
+struct Liquid{M,cᵥ,cₚ} <: Fluid{M,cᵥ,cₚ} end
+
+show(io::IO,F::Fluid) = print(io,"Fluid{M=$(molarmass(F)),cᵥ=$(heatvolume(F)),cₚ=$(heatpressure(F))}")
+show(io::IO,F::Gas) = print(io,"Gas{M=$(molarmass(F)),cᵥ=$(heatvolume(F)),cₚ=$(heatpressure(F)),μ=$(viscosity(F)),Tμ=$(sutherlandviscosity(F)),k=$(conductivity(F)),Tk=$(sutherlandconductivity(F))}")
+
+function Gas(M,cᵥ,cₚ,μ0,Tμ,k0,Tk,T0)
+    T = 2(T0^1.5)
+    μ = μ0*sqrt(Tμ)*(T0+Tμ)/T
+    k = k0*sqrt(Tk)*(T0+Tk)/T
+    Gas{M,cᵥ,cₚ,μ,Tμ,k,Tk}()
+end
+
+@pure function conductivity(T::Real,G::Gas)
+    Tk = sutherlandconductivity(G)
+    (2conductivity(G)/sqrt(Tk))*(sqrt(T)/(1+Tk/T))
+end
+@pure function viscosity(T::Real,G::Gas)
+    Tμ = sutherlandviscosity(G)
+    (2viscosity(G)/sqrt(Tμ))*(sqrt(T)/(1+Tμ/T))
+end
+
+@pure viscosity(F::Gas{M,cᵥ,cₚ,μ}) where {M,cᵥ,cₚ,μ} = μ
+@pure conductivity(F::Gas{M,cᵥ,cₚ,μ,Tμ,k}) where {M,cᵥ,cₚ,μ,Tμ,k} = k
+@pure sutherlandviscosity(::Gas{M,cᵥ,cₚ,μ,Tμ}) where {M,cᵥ,cₚ,μ,Tμ} = Tμ
+@pure sutherlandconductivity(::Gas{M,cᵥ,cₚ,μ,Tμ,k,Tk}) where {M,cᵥ,cₚ,μ,Tμ,k,Tk} = Tk
+
+struct FluidState{f}
+    T::Float64
+    P::Float64
+end
+
+(G::Gas)(T=288.15,P=101325.0) = FluidState{G}(T,P)
+(L::Liquid)(T,P) = FluidState{L}(T,P)
+
+@pure fluid(::FluidState{f}) where f = f
+@pure heatpressure(F::FluidState) = heatpressure(fluid(F))
+@pure heatvolume(F::FluidState) = heatvolume(fluid(F))
+@pure heatratio(F::FluidState) = heatratio(fluid(F))
+@pure molarmass(F::FluidState) = molarmass(fluid(F))
+@pure gasconstant(F::FluidState) = gasconstant(fluid(F))
+
+@pure temperature(F::FluidState) = F.T
+@pure pressure(F::FluidState) = F.P
+@pure density(F::FluidState) = (pressure(F)/temperature(F))/gasconstant(F)
+@pure conductivity(F::FluidState) = conductivity(temperature(F),fluid(F))
+@pure viscosity(F::FluidState) = viscosity(temperature(F),fluid(F))
+@pure kinematic(F::FluidState) = viscosity(F)/density(F)
+@pure volume(F::FluidState) = inv(density(F))
+@pure energy(F::FluidState) = heatvolume(F)*temperature(F)
+@pure enthalpy(F::FluidState) = heatpressure(F)*temperature(F)
+@pure heatcapacity(F::FluidState) = heatpressure(F)*density(F)
+@pure diffusivity(F::FluidState) = conductivity(F)/heatcapacity(F)
+@pure prandtl(F::FluidState) = heatpressure(F)*(viscosity(F)/conductivity(F))
+@pure sonicspeed(F::FluidState) = sqrt(heatratio(F)*gasconstant(F))*sqrt(temperature(F))
+@pure impedance(F::FluidState) = density(F)*sonicspeed(F)
+
+# global geophysics
 
 struct Atmosphere{f,n}
     a::Values{n,Float64} # lapse rate
@@ -36,20 +93,28 @@ struct Atmosphere{f,n}
     Atmosphere{f}(a::Values{n},h::Values{n}) where {f,n} = new{f,n}(a,h)
 end
 
+function display(A::Atmosphere)
+    println(typeof(A))
+    println(" a = ",A.a)
+    println(" h = ",A.h)
+end
+
 # local weather models
 
-struct Weather{r,g,f,n,μ,k} # radius, acceleration
+struct Weather{r,g,f,n} # radius, acceleration
     A::Atmosphere{f,n} # altitude lapse rate
     T::Values{n,Float64} # temperature
     p::Values{n,Float64} # pressure
     ρ::Values{n,Float64} # density
-    Weather{r,g,μ,k}(A::Atmosphere{f},T::Values{n},p::Values{n},ρ::Values{n}) where {r,g,μ,k,f,n} = new{r,g,f,n,μ,k}(A,T,p,ρ)
+    Weather{r,g}(A::Atmosphere{f},T::Values{n},p::Values{n},ρ::Values{n}) where {r,g,f,n} = new{r,g,f,n}(A,T,p,ρ)
 end
 
-function Weather{r,g,μ,k}(T0,p0,A::Atmosphere{f,n}) where {r,g,μ,k,f,n} T = zeros(Variables{n,Float64})
+function Weather{r,g}(A::Atmosphere{f,n},F::FluidState) where {r,g,f,n}
+    T = zeros(Variables{n,Float64})
     p = zeros(Variables{n,Float64})
     ρ = zeros(Variables{n,Float64})
-    R,γ = gasconstant(f),heatratio(f)
+    T0,p0 = temperature(F),pressure(F)
+    R,γ = gasconstant(F),heatratio(F)
     T[1] = T0; p[1] = p0; ρ[1] = p0/(R*T0)
     for i ∈ 2:n
         Δh = A.h[i]-A.h[i-1]
@@ -64,23 +129,43 @@ function Weather{r,g,μ,k}(T0,p0,A::Atmosphere{f,n}) where {r,g,μ,k,f,n} T = ze
         p[i] = p[i-1]*vp
         ρ[i] = ρ[i-1]*vρ
     end
-    Weather{r,g,μ,k}(A,Values(T),Values(p),Values(ρ))
+    Weather{r,g}(A,Values(T),Values(p),Values(ρ))
 end
 
-(A::Atmosphere)(r,g,μ,k,T,p) = Weather{r,g,μ,k}(T,p,A)
+(A::Atmosphere)(F::FluidState=Air(288.16),r=6.356766e6,g=9.80665) = Weather{r,g}(A,F)
+(A::Atmosphere)(T,p=101325.0,r=6.356766e6,g=9.80665) = Weather{r,g}(A,fluid(A)(T,p))
+(W::Weather)(hG::Real=0) = W(hG,layer(hG,W))
+function (W::Weather)(hG::Real,i)
+    g,R = gravity(W),gasconstant(W)
+    T0,a,h0,p = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
+    FluidState{fluid(W)}(T,if iszero(a)
+        p*exp((-g/R)*(h-h0)/T)
+    else
+        p*(T/T0)^((-g/R)/a)
+    end)
+end
+
+function display(W::Weather)
+    println(typeof(W))
+    println(" a = ",W.A.a)
+    println(" h = ",W.A.h)
+    println(" T = ",W.T)
+    println(" P = ",W.p)
+    println(" ρ = ",W.ρ)
+end
 
 @pure @inline Base.getindex(W::Weather,i::Int) = W.T[i],W.A.a[i],W.A.h[i],W.p[i],W.ρ[i]
 @pure @inline Base.getindex(W::Weather,::Val{i}) where i = getindex(W,i)
 @pure @inline lapserate(h::Real,W::Weather=Standard) = W[layer(h,W)]
 @pure layer(h::Real,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
 
+@pure fluid(::Atmosphere{f}) where f = f
 @pure fluid(::Weather{r,g,f}=Standard) where {r,g,f} = f
 @pure heatvolume(W::Weather=Standard) = heatvolume(fluid(W))
 @pure heatpressure(W::Weather=Standard) = heatpressure(fluid(W))
 @pure heatratio(W::Weather=Standard) = heatratio(fluid(W))
+@pure molarmass(W::Weather=Standard) = molarmass(fluid(W))
 @pure gasconstant(W::Weather=Standard) = gasconstant(fluid(W))
-@pure viscosity(::Weather{r,g,f,n,μ}=Standard) where {r,g,f,n,μ} = μ
-@pure conductivity(::Weather{r,g,f,n,μ,k}=Standard) where {r,g,f,n,μ,k} = k
 @pure radius(::Weather{r}=Standard) where r = r
 @pure gravity(::Weather{r,g}=Standard) where {r,g} = g
 
@@ -126,23 +211,23 @@ end
 
 # k = thermal conductivity
 
-@pure conductivity(hG::Real,W::Weather=Standard) = conductivity(hG,layer(hG,W),W)
-@pure function conductivity(hG::Real,i,W::Weather=Standard,G::Gas=fluid(W))
-    T,T0,S = temperature(hG,i,W),temperature(W),sutherlandconductivity(G)
-    return (conductivity(W)*(T0+S)/T0^1.5)*(sqrt(T)/(1+S/T))
-end
+@pure conductivity(hG::Real,i,W::Weather=Standard) = conductivity(temperature(hG,i,W),fluid(W))
 
 # μ = viscosity
 
-@pure viscosity(hG::Real,W::Weather=Standard) = viscosity(hG,layer(hG,W),W,fluid(W))
-@pure function viscosity(hG::Real,i,W::Weather=Standard,G::Gas=fluid(W))
-    T,T0,S = temperature(hG,i,W),temperature(W),sutherlandviscosity(G)
-    return (viscosity(W)*(T0+S)/T0^1.5)*(sqrt(T)/(1+S/T))
-end
+@pure viscosity(hG::Real,i,W::Weather=Standard) = viscosity(temperature(hG,i,W),fluid(W))
 
 # ν = kinematic viscosity
 
-@pure kinematic(hG::Real,i,W::Weather=Standard) = viscosity(hG,i,W)/density(hG,i,W)
+@pure function kinematic(hG::Real,i,W::Weather=Standard)
+    g,R = gravity(W),gasconstant(W)
+    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
+    viscosity(T,fluid(W))/(if iszero(a)
+        ρ*exp((-g/R)*(h-h0)/T)
+    else
+        ρ*(T/T0)^((-g/R)/a-1)
+    end)
+end
 
 # specific weight
 
@@ -170,7 +255,15 @@ end
 
 # thermal diffusivity
 
-@pure diffusivity(hG::Real,i,W::Weather=Standard) = conductivity(hG,i,W)/heatcapacity(hG,i,W)
+@pure function diffusivity(hG::Real,i,W::Weather=Standard)
+    g,R = gravity(W),gasconstant(W)
+    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
+    conductivity(T,fluid(W))/(if iszero(a)
+        ρ*exp((-g/R)*(h-h0)/T)
+    else
+        ρ*(T/T0)^((-g/R)/a-1)
+    end)/heatpressure(W)
+end
 
 # Prandtl number
 
@@ -189,14 +282,22 @@ end
 
 # characteristic specific acoustic impedance
 
-@pure impedance(hG::Real,i,W::Weather=Standard) = density(hG,i,W)*sonicspeed(hG,i,W)
+@pure function impedance(hG::Real,i,W::Weather=Standard)
+    g,R = gravity(W),gasconstant(W)
+    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
+    ρ*(if iszero(a)
+        exp((-g/R)*(h-h0)/T)
+    else
+        (T/T0)^((-g/R)/a-1)
+    end)*sqrt(heatratio(W)*R)*sqrt(T)
+end
 
 # common interface
 
 for op ∈ (:temperature,:pressure,:density,:sonicspeed,:weight,:volume,:potential,:impedance,:grashof,:prandtl,:diffusivity,:heatcapacity,:enthalpy,:energy,:kinematic,:viscosity,:conductivity)
     opratio = Symbol(op,:ratio)
-    @eval export $op
-    op ∉ (:viscosity,:conductivity) && @eval begin
+    @eval begin
+        export $op
         @pure $op(W::Weather=Standard) = $op(0,W)
         @pure $op(hG::Real,W::Weather=Standard) = $op(hG,layer(hG,W),W)
     end
