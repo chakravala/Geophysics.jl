@@ -81,6 +81,7 @@ end
 @pure enthalpy(F::FluidState) = heatpressure(F)*temperature(F)
 @pure heatcapacity(F::FluidState) = heatpressure(F)*density(F)
 @pure diffusivity(F::FluidState) = conductivity(F)/heatcapacity(F)
+@pure elasticity(F::FluidState) = heatratio(F)*pressure(F)
 @pure prandtl(F::FluidState) = heatpressure(F)*(viscosity(F)/conductivity(F))
 @pure sonicspeed(F::FluidState) = sqrt(heatratio(F)*gasconstant(F))*sqrt(temperature(F))
 @pure impedance(F::FluidState) = density(F)*sonicspeed(F)
@@ -265,6 +266,10 @@ end
     end)/heatpressure(W)
 end
 
+# bulk elasticity
+
+@pure elasticity(hG,i,W::Weather=Standard) = heatratio(W)*pressure(hG,i,W)
+
 # Prandtl number
 
 @pure prandtl(hG::Real,i,W::Weather=Standard) = viscosity(hG,i,W)*heatpressure(W)/conductivity(hG,i,W)
@@ -294,7 +299,7 @@ end
 
 # common interface
 
-for op ∈ (:temperature,:pressure,:density,:sonicspeed,:weight,:volume,:potential,:impedance,:grashof,:prandtl,:diffusivity,:heatcapacity,:enthalpy,:energy,:kinematic,:viscosity,:conductivity)
+for op ∈ (:temperature,:pressure,:density,:sonicspeed,:weight,:volume,:potential,:impedance,:grashof,:prandtl,:diffusivity,:heatcapacity,:enthalpy,:energy,:kinematic,:viscosity,:conductivity,:elasticity)
     opratio = Symbol(op,:ratio)
     @eval begin
         export $op
