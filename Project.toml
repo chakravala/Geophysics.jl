@@ -4,6 +4,7 @@ authors = ["Michael Reed"]
 version = "0.2.1"
 
 [deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 AbstractTensors = "a8e43f4a-99b7-5565-8bf1-0165161caaea"
 
 [compat]

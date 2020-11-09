@@ -10,9 +10,9 @@
 [![Coverage Status](https://coveralls.io/repos/chakravala/Geophysics.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/chakravala/Geophysics.jl?branch=master)
 [![codecov.io](https://codecov.io/github/chakravala/Geophysics.jl/coverage.svg?branch=master)](https://codecov.io/github/chakravala/Geophysics.jl?branch=master)
 
-Provides `Atmosphere` models based on Air Research and Development Command `ARDC` and the United States (1962, 1966, 1976) Standard Atmosphere `US62,US66,US76` available also in English units `ARDCE` and `US62E,US66E,US76E`.
+Provides `Atmosphere` models based on Air Research and Development Command `ARDC` and the United States (1922, 1925, 1956, 1959, 1962, 1966, 1976) Standard Atmosphere `US22,US25,US56,US59,US62,US66,US76` available also in English units `US22E,US25E,US56E,US59E,US62E,US66E,US76E`.
 Provided the local absolute sea level and gravitational acceleration, the `Weather` can be initialized based on temperature and pressure.
-Presets for the `Standard` atmosphere are provided: `Earth1959`, `Earth1962`, `Earth1966`, `Earth1976`, `Earth1959English`, `Earth1962English`, `Earth1966English`, `Earth1976English`.
+Presets for the `Standard` atmosphere are provided: `Earth1922`, `Earth1925`, `Earth1956`, `Earth1959`, `Earth1962`, `Earth1966`, `Earth1976`, `Earth1922English`, `Earth1925English`, `Earth1956English`, `Earth1959English`, `Earth1962English`, `Earth1966English`, `Earth1976English`.
 By default the 1959 model with metric units is used for `Standard` atmosphere, although a different year can be specified with environment variable `STDATM` and the default unit system can be specified with the `GEOUNITS` environment variable.
 
 ```julia
@@ -45,6 +45,7 @@ Complicated models will be excluded from this package, as it is only intended to
 For example, some geographic conditions can be calculated externally, and then Geophysics is used to load that data.
 
 ## References
-* R. A. Minzer, K. S. W. Champion, and H. L. Pond, [The ARDC Model Atmosphere](https://apps.dtic.mil/dtic/tr/fulltext/u2/229482.pdf), ARDC (1959)
-* NASA, USAF, and USWB, [U.S. Standard Atmosphere 1962](https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19630003300.pdf), ICAO (1962)
-* NOAA, NASA, and USAF, [U.S. Standard Atmosphere 1976](https://apps.dtic.mil/dtic/tr/fulltext/u2/a035728.pdf), NOAA (1976)
+* R. A. Minzer and W. S. Ripley, [The ARDC Model Atmosphere, 1956](https://www.cia.gov/library/readingroom/docs/CIA-RDP81-01043R002600070006-6.pdf), ARDC (1956)
+* R. A. Minzer, K. S. W. Champion, and H. L. Pond, [The ARDC Model Atmosphere, 1959](https://apps.dtic.mil/dtic/tr/fulltext/u2/229482.pdf), ARDC (1959)
+* NASA, USAF, and USWB, [U.S. Standard Atmosphere, 1962](https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19630003300.pdf), ICAO (1962)
+* NOAA, NASA, and USAF, [U.S. Standard Atmosphere, 1976](https://apps.dtic.mil/dtic/tr/fulltext/u2/a035728.pdf), NOAA (1976)

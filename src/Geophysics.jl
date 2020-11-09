@@ -1,89 +1,46 @@
 module Geophysics
 
-#   This file is part of Geophysics.jl. It is licensed under the MIT license
+#   This file is part of Geophysics.jl. It is licensed under the AGPL license
 #   Geophysics Copyright (C) 2020 Michael Reed
 
-using AbstractTensors
+
+using AbstractTensors, LinearAlgebra
 import Base: @pure, show, display
 
-export Fluid, Gas, FluidState, Atmosphere, Weather
-export heatvolume, heatpressure, heatratio, molarmass, gasconstant
-export fluid, radius, gravity, layer, sutherlandviscosity, sutherlandconductivity
+export FluidState, Atmosphere, Weather
 
-# chemistry
+export fluid, radius, gravity, layer
 
-const Boltzmann,Avogadro = 1.380649e-23,6.02214076e23
-const Rᵤ,RᵤEnglish = Boltzmann*Avogadro,49.72
-const AvogadroEnglish = 453.59237Avogadro
-const BoltzmannEnglish = RᵤEnglish/AvogadroEnglish
-const MEnglish,kEnglish = Rᵤ/RᵤEnglish,0.5778
+# thermodynamics
 
-# fluid models
-
-abstract type Fluid{M,cᵥ,cₚ} end
-
-@pure heatvolume(::Fluid{M,cᵥ}) where {M,cᵥ} = cᵥ
-@pure heatpressure(::Fluid{M,cᵥ,cₚ}) where {M,cᵥ,cₚ} = cₚ
-@pure heatratio(F::Fluid) = heatpressure(F)/heatvolume(F)
-@pure molarmass(::Fluid{M}) where M = M
-@pure gasconstant(F::Fluid) = Rᵤ/molarmass(F)
-
-struct Gas{M,cᵥ,cₚ,μ,Tμ,k,Tk} <: Fluid{M,cᵥ,cₚ} end
-struct Liquid{M,cᵥ,cₚ} <: Fluid{M,cᵥ,cₚ} end
-
-show(io::IO,F::Fluid) = print(io,"Fluid{M=$(molarmass(F)),cᵥ=$(heatvolume(F)),cₚ=$(heatpressure(F))}")
-show(io::IO,F::Gas) = print(io,"Gas{M=$(molarmass(F)),cᵥ=$(heatvolume(F)),cₚ=$(heatpressure(F)),μ=$(viscosity(F)),Tμ=$(sutherlandviscosity(F)),k=$(conductivity(F)),Tk=$(sutherlandconductivity(F))}")
-
-function Gas(M,cᵥ,cₚ,μ0,Tμ,k0,Tk,T0)
-    T = 2(T0^1.5)
-    μ = μ0*sqrt(Tμ)*(T0+Tμ)/T
-    k = k0*sqrt(Tk)*(T0+Tk)/T
-    Gas{M,cᵥ,cₚ,μ,Tμ,k,Tk}()
-end
-
-@pure function conductivity(T::Real,G::Gas)
-    Tk = sutherlandconductivity(G)
-    (2conductivity(G)/sqrt(Tk))*(sqrt(T)/(1+Tk/T))
-end
-@pure function viscosity(T::Real,G::Gas)
-    Tμ = sutherlandviscosity(G)
-    (2viscosity(G)/sqrt(Tμ))*(sqrt(T)/(1+Tμ/T))
-end
-
-@pure viscosity(F::Gas{M,cᵥ,cₚ,μ}) where {M,cᵥ,cₚ,μ} = μ
-@pure conductivity(F::Gas{M,cᵥ,cₚ,μ,Tμ,k}) where {M,cᵥ,cₚ,μ,Tμ,k} = k
-@pure sutherlandviscosity(::Gas{M,cᵥ,cₚ,μ,Tμ}) where {M,cᵥ,cₚ,μ,Tμ} = Tμ
-@pure sutherlandconductivity(::Gas{M,cᵥ,cₚ,μ,Tμ,k,Tk}) where {M,cᵥ,cₚ,μ,Tμ,k,Tk} = Tk
+include("chemistry.jl")
 
 struct FluidState{f}
     T::Float64
     P::Float64
 end
 
-(G::Gas)(T=288.15,P=101325.0) = FluidState{G}(T,P)
-(L::Liquid)(T,P) = FluidState{L}(T,P)
+for Gas ∈ (:SutherlandGas,:Mixture,:AtomicGas,:DiatomicGas,:TriatomicGas)
+    @eval (G::$Gas)(T=288.15,P=101325.0) = FluidState{G}(T,P)
+end
 
 @pure fluid(::FluidState{f}) where f = f
-@pure heatpressure(F::FluidState) = heatpressure(fluid(F))
-@pure heatvolume(F::FluidState) = heatvolume(fluid(F))
-@pure heatratio(F::FluidState) = heatratio(fluid(F))
-@pure molarmass(F::FluidState) = molarmass(fluid(F))
-@pure gasconstant(F::FluidState) = gasconstant(fluid(F))
-
 @pure temperature(F::FluidState) = F.T
 @pure pressure(F::FluidState) = F.P
+
+for op ∈ Properties
+    @eval @pure $op(F::FluidState) = $op(fluid(F))
+end
+for op ∈ Intrinsic
+    @eval @pure $op(F::FluidState) = $op(temperature(F),fluid(F))
+end
+
 @pure density(F::FluidState) = (pressure(F)/temperature(F))/gasconstant(F)
-@pure conductivity(F::FluidState) = conductivity(temperature(F),fluid(F))
-@pure viscosity(F::FluidState) = viscosity(temperature(F),fluid(F))
 @pure kinematic(F::FluidState) = viscosity(F)/density(F)
 @pure volume(F::FluidState) = inv(density(F))
-@pure energy(F::FluidState) = heatvolume(F)*temperature(F)
-@pure enthalpy(F::FluidState) = heatpressure(F)*temperature(F)
 @pure heatcapacity(F::FluidState) = heatpressure(F)*density(F)
 @pure diffusivity(F::FluidState) = conductivity(F)/heatcapacity(F)
 @pure elasticity(F::FluidState) = heatratio(F)*pressure(F)
-@pure prandtl(F::FluidState) = heatpressure(F)*(viscosity(F)/conductivity(F))
-@pure sonicspeed(F::FluidState) = sqrt(heatratio(F)*gasconstant(F))*sqrt(temperature(F))
 @pure impedance(F::FluidState) = density(F)*sonicspeed(F)
 
 # global geophysics
@@ -91,13 +48,17 @@ end
 struct Atmosphere{f,n}
     a::Values{n,Float64} # lapse rate
     h::Values{n,Float64} # altitude
-    Atmosphere{f}(a::Values{n},h::Values{n}) where {f,n} = new{f,n}(a,h)
+    m::Values{n,Float64} # molar rate
+    Atmosphere{f}(a::Values{n},h::Values{n},m::Values{n}) where {f,n} = new{f,n}(a,h,m)
 end
+
+Atmosphere{f}(a::Values{n},h::Values{n}) where {f,n} = Atmosphere{f}(a,h,zeros(Values{n}))
 
 function display(A::Atmosphere)
     println(typeof(A))
     println(" a = ",A.a)
     println(" h = ",A.h)
+    println(" m = ",A.m)
 end
 
 # local weather models
@@ -162,13 +123,12 @@ end
 
 @pure fluid(::Atmosphere{f}) where f = f
 @pure fluid(::Weather{r,g,f}=Standard) where {r,g,f} = f
-@pure heatvolume(W::Weather=Standard) = heatvolume(fluid(W))
-@pure heatpressure(W::Weather=Standard) = heatpressure(fluid(W))
-@pure heatratio(W::Weather=Standard) = heatratio(fluid(W))
-@pure molarmass(W::Weather=Standard) = molarmass(fluid(W))
-@pure gasconstant(W::Weather=Standard) = gasconstant(fluid(W))
 @pure radius(::Weather{r}=Standard) where r = r
 @pure gravity(::Weather{r,g}=Standard) where {r,g} = g
+
+for op ∈ Properties
+    @eval @pure $op(W::Weather=Standard) = $op(fluid(W))
+end
 
 # h = geopotential altitude, hG = geometric altitude
 
@@ -186,48 +146,99 @@ end
     return T0+a0*(h-h0)
 end
 
+# k = thermal conductivity
+# μ = viscosity
+# cᵥ = specific heat (constant volume)
+# cₚ = specific heat (constant pressure)
+# γ = specific heat ratio
+# Pr = Prandtl number
+# a = speed of sound
+# e = energy
+# h = enthalpy
+
+for op ∈ Intrinsic
+    @eval @pure $op(hG::Real,i,W::Weather=Standard) = $op(temperature(hG,i,W),fluid(W))
+end
+
 # p = pressure
 
-@pure function pressure(hG::Real,i,W::Weather=Standard)
+@pure function pressure(h::Real,T,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
-    T0,a,h0,p = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
-    if iszero(a)
-        p*exp((-g/R)*(h-h0)/T)
+    T0,a,h0,p = W[i]
+    p*(if iszero(a)
+        exp((-g/R)*(h-h0)/T)
     else
-        p*(T/T0)^((-g/R)/a)
-    end
+        (T/T0)^((-g/R)/a)
+    end)
+end
+@pure function pressure(hG::Real,i,W::Weather=Standard)
+    h = altgeopotent(hG,W)
+    pressure(h,_temperature(h,i,W),i,W)
 end
 
 # ρ = density
 
-@pure function density(hG::Real,i,W::Weather=Standard)
+@pure function density(h::Real,T,i,W::Weather=Standard)
     g,R = gravity(W),gasconstant(W)
-    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
-    if iszero(a)
-        ρ*exp((-g/R)*(h-h0)/T)
+    T0,a,h0,_,ρ = W[i]
+    ρ*(if iszero(a)
+        exp((-g/R)*(h-h0)/T)
     else
-        ρ*(T/T0)^((-g/R)/a-1)
-    end
+        (T/T0)^((-g/R)/a-1)
+    end)
 end
-
-# k = thermal conductivity
-
-@pure conductivity(hG::Real,i,W::Weather=Standard) = conductivity(temperature(hG,i,W),fluid(W))
-
-# μ = viscosity
-
-@pure viscosity(hG::Real,i,W::Weather=Standard) = viscosity(temperature(hG,i,W),fluid(W))
+@pure function density(hG::Real,i,W::Weather=Standard)
+    h = altgeopotent(hG,W)
+    density(h,_temperature(h,i,W),i,W)
+end
 
 # ν = kinematic viscosity
 
+@pure kinematic(h::Real,T,i,W::Weather=Standard) = viscosity(T,fluid(W))/density(h,T,i,W)
 @pure function kinematic(hG::Real,i,W::Weather=Standard)
-    g,R = gravity(W),gasconstant(W)
-    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
-    viscosity(T,fluid(W))/(if iszero(a)
-        ρ*exp((-g/R)*(h-h0)/T)
-    else
-        ρ*(T/T0)^((-g/R)/a-1)
-    end)
+    h = altgeopotent(hG,W)
+    kinematic(h,_temperature(h,i,W),i,W)
+end
+
+# heat capacity
+
+@pure function heatcapacity(hG::Real,i,W::Weather=Standard)
+    h = altgeopotent(hG,W)
+    T = _temperature(h,i,W)
+    heatpressure(T,fluid(W))*density(h,T,i,W)
+end
+
+# thermal diffusivity
+
+@pure function diffusivity(hG::Real,i,W::Weather=Standard)
+    F = fluid(W)
+    h = altgeopotent(hG,W)
+    T = _temperature(h,i,W)
+    conductivity(T,F)/heatpressure(T,F)/density(h,T,i,W)
+end
+
+# bulk elasticity
+
+@pure function elasticity(hG,i,W::Weather=Standard)
+    h = altgeopotent(hG,W)
+    T = _temperature(h,i,W)
+    heatratio(T,fluid(W))*pressure(h,T,i,W)
+end
+
+# characteristic specific acoustic impedance
+
+@pure function impedance(hG::Real,i,W::Weather=Standard)
+    h = altgeopotent(hG,W)
+    T = _temperature(h,i,W)
+    density(h,T,i,W)*sonicspeed(T,fluid(W))
+end
+
+# Grashof number
+
+@pure function grashof(hG::Real,i,W::Weather=Standard)
+    h = altgeopotent(hG,W)
+    T = _temperature(h,i,W)
+    gravity(hG,W)*(temperature(W)-T)*(hG^3)/(T*kinematic(h,T,i,W)^2)
 end
 
 # specific weight
@@ -242,64 +253,9 @@ end
 
 @pure potential(hG::Real,i,W::Weather=Standard) = gravity(hG,W)*hG
 
-# e = energy
-
-@pure energy(hG::Real,i,W::Weather=Standard) = heatvolume(W)*temperature(hG,i,W)
-
-# h = enthalpy
-
-@pure enthalpy(hG::Real,i,W::Weather=Standard) = heatpressure(W)*temperature(hG,i,W)
-
-# heat capacity
-
-@pure heatcapacity(hG::Real,i,W::Weather=Standard) = heatpressure(W)*density(hG,i,W)
-
-# thermal diffusivity
-
-@pure function diffusivity(hG::Real,i,W::Weather=Standard)
-    g,R = gravity(W),gasconstant(W)
-    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
-    conductivity(T,fluid(W))/(if iszero(a)
-        ρ*exp((-g/R)*(h-h0)/T)
-    else
-        ρ*(T/T0)^((-g/R)/a-1)
-    end)/heatpressure(W)
-end
-
-# bulk elasticity
-
-@pure elasticity(hG,i,W::Weather=Standard) = heatratio(W)*pressure(hG,i,W)
-
-# Prandtl number
-
-@pure prandtl(hG::Real,i,W::Weather=Standard) = viscosity(hG,i,W)*heatpressure(W)/conductivity(hG,i,W)
-
-# Grashof number
-
-@pure function grashof(hG::Real,i,W::Weather=Standard)
-    T = temperature(hG,i,W)
-    gravity(hG,W)*(temperature(W)-T)*(hG^3)/(T*kinematic(hG,i,W)^2)
-end
-
-# speed of sound
-
-@pure sonicspeed(hG::Real,i,W::Weather=Standard) = sqrt(heatratio(W)*gasconstant(W))*sqrt(temperature(hG,i,W))
-
-# characteristic specific acoustic impedance
-
-@pure function impedance(hG::Real,i,W::Weather=Standard)
-    g,R = gravity(W),gasconstant(W)
-    T0,a,h0,_,ρ = W[i]; h = altgeopotent(hG,W); T = _temperature(h,i,W)
-    ρ*(if iszero(a)
-        exp((-g/R)*(h-h0)/T)
-    else
-        (T/T0)^((-g/R)/a-1)
-    end)*sqrt(heatratio(W)*R)*sqrt(T)
-end
-
 # common interface
 
-for op ∈ (:temperature,:pressure,:density,:sonicspeed,:weight,:volume,:potential,:impedance,:grashof,:prandtl,:diffusivity,:heatcapacity,:enthalpy,:energy,:kinematic,:viscosity,:conductivity,:elasticity)
+for op ∈ (:temperature,:pressure,:density,:weight,:volume,:potential,:impedance,:grashof,:diffusivity,:heatcapacity,:kinematic,:elasticity,Intrinsic...)
     opratio = Symbol(op,:ratio)
     @eval begin
         export $op
