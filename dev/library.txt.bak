@@ -1,0 +1,10 @@
+# Geophysics.jl Library
+
+```@index
+Pages = ["library.md"]
+```
+
+```@autodocs
+Modules = [Geophysics]
+Filter = t -> typeof(t) != Float64
+```
