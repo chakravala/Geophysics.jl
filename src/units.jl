@@ -13,7 +13,7 @@ export Planck, PlanckGauss, Stoney, Hartree, Rydberg, Schrodinger, Electronic, N
 Standardized for engineering based on fundamental constants: `kB` Boltzmann's constant, `ħ` reduced Planck's constant, `𝘤` speed of light, `μ₀` vacuum permeability, and `mₑ` electron rest mass.
 Primarily the `Metric` SI unit system is used in addition to the historic `English` engineering unit system.
 These constants induce derived values for `avogadro`, `boltzmann`, `universal`, `planck`, `planckreduced`, `lightspeed`, `planckmass`, `atomicmass`, `protonmass`, `electronmass`, `newton`, `einstein`, `permeability`, `permittivity`, `coulomb`, and
-additional constants `stefan`, `radiationintensity`, `impedance`, `charge`, `magneton`, `conductance`, `faraday`, `josephson`, `magneticflux`, `klitzing`, `hardtree`, `rydberg`, `bohr`, and `bohrreduced`.
+additional constants `stefan`, `radiationintensity`, `impedance`, `charge`, `magneton`, `conductance`, `faraday`, `magneticflux`, `josephson`, `klitzing`, `hardtree`, `rydberg`, `bohr`, and `bohrreduced`.
 
 Additional reference `UnitSystem` variants `CGS`, `CGS2019`, `SI2019`, `CODATA`, `Conventional`; along with several natural atomic units based on the fine structure constant `1/αinv` and the gravitational coupling constant `αG` (`Planck`, `PlanckGauss`, `Stoney`, `Hartree`, `Rydberg`, `Schrodinger`, `Electronic`, `Natural`, `NaturalGauss`, `QCD`, `QCDGauss`, and `QCDoriginal`).
 """ #`Rᵤ,mᵤ,σ,ħ,μ₀,ε₀,kₑ,𝘦,𝔉,RK,Z₀,G₀`
@@ -28,6 +28,8 @@ struct UnitSystem{kB,ħ,𝘤,μ,mₑ} end
 @pure mass(m::Real,U::UnitSystem=English,S::UnitSystem=Metric) = m*mass(U,S)
 @pure planckmass(U::UnitSystem) = mass(mP,U)
 @pure newton(U::UnitSystem) = lightspeed(U)*planckreduced(U)/planckmass(U)^2
+
+Base.display(U::UnitSystem) = println("UnitSystem{kB=$(boltzmann(U)),ħ=$(planckreduced(U)),𝘤=$(lightspeed(U)),μ₀=$(permeability(U)),mᵤ=$(electronmass(U))}")
 
 # fundamental constants
 
@@ -71,11 +73,11 @@ const QCDoriginal = UnitSystem{1,1,1,4π/αinv,1/μₚₑ}()
 
 Planck mass factor `mP` from the gravitational coupling constant `αG` (kg or slugs).
 ```Julia
-juila> newton(Metric) # m³⋅kg⁻¹⋅s⁻²
-$(newton(Metric))
+juila> planckmass(Metric) # m³⋅kg⁻¹⋅s⁻²
+$(planckmass(Metric))
 
-julia> newton(English) # ft³⋅slug⁻¹⋅s⁻²
-$(newton(English))
+julia> planckmass(English) # ft³⋅slug⁻¹⋅s⁻²
+$(planckmass(English))
 ```
 """ planckmass, mP
 
@@ -553,10 +555,10 @@ $(protonmass(English))
 Einstein's gravitational constant from the Einstein field equations (? or ?).
 ```Julia
 julia> einstein(Metric) # ?
-$(atomicmass(Metric))
+$(einstein(Metric))
 
 julia> einstein(English) # ?
-$(atomicmass(English))
+$(einstein(English))
 ```
 """ einstein, κ
 
@@ -627,7 +629,7 @@ $(faraday(Metric))
 @doc """
     josephson(U::UnitSystem) = 2charge(U)/planck(U)
 
-Josephson constant `KJ` relating potential difference to irradiation frequency across junction (Hz⋅V⁻¹).
+Josephson constant `KJ` relating potential difference to irradiation frequency (Hz⋅V⁻¹).
 ```Julia
 julia> josephson(Metric) # Hz⋅V⁻¹
 $(josephson(Metric))
