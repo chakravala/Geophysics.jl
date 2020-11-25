@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Unit systems · Geophysics.jl</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">Geophysics.jl</span></div><form class="docs-search" action="search.html"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="index.html">Home</a></li><li class="is-active"><a class="tocitem" href="units.html">Unit systems</a><ul class="internal"><li><a class="tocitem" href="#Metric-SI-Units-1"><span>Metric SI Units</span></a></li><li><a class="tocitem" href="#Other-historic-systems-1"><span>Other historic systems</span></a></li><li><a class="tocitem" href="#Natural-units-1"><span>Natural units</span></a></li><li><a class="tocitem" href="#Fundamental-constants-of-physics-1"><span>Fundamental constants of physics</span></a></li><li><a class="tocitem" href="#Common-conversion-factors-1"><span>Common conversion factors</span></a></li><li><a class="tocitem" href="#Index-1"><span>Index</span></a></li></ul></li><li><a class="tocitem" href="references.html">References</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href="units.html">Unit systems</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="units.html">Unit systems</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com//blob/master/docs/src/units.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Dimensional-unit-systems-1"><a class="docs-heading-anchor" href="#Dimensional-unit-systems-1">Dimensional unit systems</a><a class="docs-heading-anchor-permalink" href="#Dimensional-unit-systems-1" title="Permalink"></a></h1><ul><li><a href="units.html#Dimensional-unit-systems-1">Dimensional unit systems</a></li><ul><li><a href="units.html#Metric-SI-Units-1">Metric SI Units</a></li><li><a href="units.html#Other-historic-systems-1">Other historic systems</a></li><li><a href="units.html#Natural-units-1">Natural units</a></li><li><a href="units.html#Fundamental-constants-of-physics-1">Fundamental constants of physics</a></li><li><a href="units.html#Common-conversion-factors-1">Common conversion factors</a></li><li><a href="units.html#Index-1">Index</a></li></ul><li><a href="references.html#References-1">References</a></li></ul><p>A <code>UnitSystem</code> is a consistent set of dimensional values selected to accomodate a particular use case or standardization. In total, five fundamental constants <code>kB,ħ,𝘤,μ,mₑ</code> are used to specify a specific unit system. These are the constants of <code>boltzmann</code>, <code>planckreduced</code>, <code>lightspeed</code>, <code>permeability</code>, and <code>electronmass</code>. Different choices of natural units or physical measurements result in a variety of unit systems optimized for many purposes.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.UnitSystem" href="#Geophysics.UnitSystem"><code>Geophysics.UnitSystem</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia">UnitSystem{kB,ħ,𝘤,μ₀,mₑ}</code></pre><p>Standardized for engineering based on fundamental constants: <code>kB</code> Boltzmann&#39;s constant, <code>ħ</code> reduced Planck&#39;s constant, <code>𝘤</code> speed of light, <code>μ₀</code> vacuum permeability, and <code>mₑ</code> electron rest mass. Primarily the <code>Metric</code> SI unit system is used in addition to the historic <code>English</code> engineering unit system. These constants induce derived values for <code>avogadro</code>, <code>boltzmann</code>, <code>universal</code>, <code>planck</code>, <code>planckreduced</code>, <code>lightspeed</code>, <code>planckmass</code>, <code>atomicmass</code>, <code>protonmass</code>, <code>electronmass</code>, <code>newton</code>, <code>einstein</code>, <code>permeability</code>, <code>permittivity</code>, <code>coulomb</code>, and additional constants <code>stefan</code>, <code>radiationintensity</code>, <code>impedance</code>, <code>charge</code>, <code>magneton</code>, <code>conductance</code>, <code>faraday</code>, <code>magneticflux</code>, <code>josephson</code>, <code>klitzing</code>, <code>hardtree</code>, <code>rydberg</code>, <code>bohr</code>, and <code>bohrreduced</code>.</p><p>Additional reference <code>UnitSystem</code> variants <code>CGS</code>, <code>CGS2019</code>, <code>SI2019</code>, <code>CODATA</code>, <code>Conventional</code>; along with several natural atomic units based on the fine structure constant <code>1/αinv</code> and the gravitational coupling constant <code>αG</code> (<code>Planck</code>, <code>PlanckGauss</code>, <code>Stoney</code>, <code>Hartree</code>, <code>Rydberg</code>, <code>Schrodinger</code>, <code>Electronic</code>, <code>Natural</code>, <code>NaturalGauss</code>, <code>QCD</code>, <code>QCDGauss</code>, and <code>QCDoriginal</code>).</p></div></section></article><h2 id="Metric-SI-Units-1"><a class="docs-heading-anchor" href="#Metric-SI-Units-1">Metric SI Units</a><a class="docs-heading-anchor-permalink" href="#Metric-SI-Units-1" title="Permalink"></a></h2><p>In the Systeme International d&#39;Unites (the SI units) the <code>UnitSystem</code> constants are derived from the most accurate possible physical measurements and a few exactly defined constants. Exact values are the <code>avogadro</code> number, <code>boltzmann</code> constant, <code>planck</code> constant, <code>lightspeed</code> definition, and elementary <code>charge</code> definition.</p><pre><code class="language-Julia">julia&gt; NA # avogadro
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Unit systems · Geophysics.jl</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">Geophysics.jl</span></div><form class="docs-search" action="search.html"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="index.html">Home</a></li><li class="is-active"><a class="tocitem" href="units.html">Unit systems</a><ul class="internal"><li><a class="tocitem" href="#Metric-SI-Units-1"><span>Metric SI Units</span></a></li><li><a class="tocitem" href="#Other-historic-systems-1"><span>Other historic systems</span></a></li><li><a class="tocitem" href="#Natural-units-1"><span>Natural units</span></a></li><li><a class="tocitem" href="#Fundamental-constants-of-physics-1"><span>Fundamental constants of physics</span></a></li><li><a class="tocitem" href="#Common-conversion-factors-1"><span>Common conversion factors</span></a></li><li><a class="tocitem" href="#Index-1"><span>Index</span></a></li></ul></li><li><a class="tocitem" href="references.html">References</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href="units.html">Unit systems</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href="units.html">Unit systems</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com//blob/master/docs/src/units.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Dimensional-unit-systems-1"><a class="docs-heading-anchor" href="#Dimensional-unit-systems-1">Dimensional unit systems</a><a class="docs-heading-anchor-permalink" href="#Dimensional-unit-systems-1" title="Permalink"></a></h1><ul><li><a href="units.html#Dimensional-unit-systems-1">Dimensional unit systems</a></li><ul><li><a href="units.html#Metric-SI-Units-1">Metric SI Units</a></li><li><a href="units.html#Other-historic-systems-1">Other historic systems</a></li><li><a href="units.html#Natural-units-1">Natural units</a></li><li><a href="units.html#Fundamental-constants-of-physics-1">Fundamental constants of physics</a></li><li><a href="units.html#Common-conversion-factors-1">Common conversion factors</a></li><li><a href="units.html#Index-1">Index</a></li></ul><li><a href="references.html#References-1">References</a></li></ul><p>A <code>UnitSystem</code> is a consistent set of dimensional values selected to accomodate a particular use case or standardization. In total, five fundamental constants <code>kB,ħ,𝘤,μ,mₑ</code> are used to specify a specific unit system. These are the constants of <code>boltzmann</code>, <code>planckreduced</code>, <code>lightspeed</code>, <code>permeability</code>, and <code>electronmass</code>. Different choices of natural units or physical measurements result in a variety of unit systems optimized for many purposes.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.UnitSystem" href="#Geophysics.UnitSystem"><code>Geophysics.UnitSystem</code></a> — <span class="docstring-category">Type</span></header><section><div><pre><code class="language-julia">UnitSystem{kB,ħ,𝘤,μ₀,mₑ}</code></pre><p>Standardized for engineering based on fundamental constants: <code>kB</code> Boltzmann&#39;s constant, <code>ħ</code> reduced Planck&#39;s constant, <code>𝘤</code> speed of light, <code>μ₀</code> vacuum permeability, and <code>mₑ</code> electron rest mass. Primarily the <code>Metric</code> SI unit system is used in addition to the historic <code>English</code> engineering unit system. These constants induce derived values for <code>avogadro</code>, <code>boltzmann</code>, <code>universal</code>, <code>planck</code>, <code>planckreduced</code>, <code>lightspeed</code>, <code>planckmass</code>, <code>atomicmass</code>, <code>protonmass</code>, <code>electronmass</code>, <code>newton</code>, <code>einstein</code>, <code>permeability</code>, <code>permittivity</code>, <code>coulomb</code>, and additional constants <code>stefan</code>, <code>radiationintensity</code>, <code>impedance</code>, <code>charge</code>, <code>magneton</code>, <code>conductance</code>, <code>faraday</code>, <code>magneticflux</code>, <code>josephson</code>, <code>klitzing</code>, <code>hartree</code>, <code>rydberg</code>, <code>bohr</code>, <code>bohrreduced</code>, and <code>molarmass</code>.</p><p>Additional reference <code>UnitSystem</code> variants <code>CGS</code>, <code>CGS2019</code>, <code>SI2019</code>, <code>CODATA</code>, <code>Conventional</code>; along with several natural atomic units based on the fine structure constant <code>1/αinv</code> and the gravitational coupling constant <code>αG</code> (<code>Planck</code>, <code>PlanckGauss</code>, <code>Stoney</code>, <code>Hartree</code>, <code>Rydberg</code>, <code>Schrodinger</code>, <code>Electronic</code>, <code>Natural</code>, <code>NaturalGauss</code>, <code>QCD</code>, <code>QCDGauss</code>, and <code>QCDoriginal</code>).</p></div></section></article><h2 id="Metric-SI-Units-1"><a class="docs-heading-anchor" href="#Metric-SI-Units-1">Metric SI Units</a><a class="docs-heading-anchor-permalink" href="#Metric-SI-Units-1" title="Permalink"></a></h2><p>In the Systeme International d&#39;Unites (the SI units) the <code>UnitSystem</code> constants are derived from the most accurate possible physical measurements and a few exactly defined constants. Exact values are the <code>avogadro</code> number, <code>boltzmann</code> constant, <code>planck</code> constant, <code>lightspeed</code> definition, and elementary <code>charge</code> definition.</p><pre><code class="language-Julia">julia&gt; NA # avogadro
 6.02214076e23
 
 julia&gt; kB # boltzmann
@@ -25,21 +25,22 @@ julia&gt; R∞ # rydberg
 1.09737315681601e7
 
 julia&gt; mP # planckmass
-2.176434e-8</code></pre><p>From these numbers along with the <code>4π*1e-7</code> value of the Gaussian unit <code>μ₀</code>, the molar mass constant <code>Mᵤ</code>, <code>planckreduced</code>, <code>permeability</code>, <code>electronmass</code>, and proton to electon mass ratio are computed.</p><pre><code class="language-Julia">julia&gt; Mᵤ # αinv^2*R∞*NA*2𝘩/𝘤/μₑₐ
-0.000999999999656256
-
-julia&gt; ħ # 𝘩/2π
+2.176434e-8</code></pre><p>From these numbers along with the <code>4π*1e-7</code> value of the Gaussian unit <code>μ₀</code>, the constants <code>planckreduced</code>, <code>permeability</code>, <code>electronmass</code>, <code>molarmass</code>, and proton to electon mass ratio are computed.</p><pre><code class="language-Julia">julia&gt; ħ # 𝘩/2π
 1.0545718176461565e-34
 
-julia&gt; μ₀+δμ₀ # 2𝘩/𝘤/αinv/𝘦^2
+julia&gt; μ₀ # 2𝘩/𝘤/αinv/𝘦^2
 1.256637062121048e-6
 
-julia&gt; mₑ # Mᵤ*μₑₐ/NA
+julia&gt; mₑ # αinv^2*R∞*2𝘩/𝘤
 9.109383701558256e-31
 
+julia&gt; Mᵤ # mₑ*NA/μₑₐ
+0.000999999999656256
+
 julia&gt; μₚₑ # μₚₐ/μₑₐ
-1836.152673432705</code></pre><p>This results in the <code>Metric::UnitSystem{kB,ħ,𝘤,μ₀,mₑ}</code> and <code>SI2019::UnitSystem{kB,ħ,𝘤,μ₀+δμ₀,mₑ}</code> variants.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Metric" href="#Geophysics.Metric"><code>Geophysics.Metric</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Metric</code></pre><p>Systeme International d&#39;Unites (the SI units) adopted as the preffered <code>UnitSystem</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Metric) # J⋅K⁻¹
-1.380649e-23
+1836.152673432705</code></pre><p>These result in variants based on the original <code>molarmass</code> constant and Gaussian <code>permeability</code> along with the 2019 redefined exact values.</p><pre><code class="language-Julia">Metric::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,ħ,𝘤,4π*1e-7,mₑ}
+SI2019::UnitSystem{kB,ħ,𝘤,μ₀,mₑ}</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Metric" href="#Geophysics.Metric"><code>Geophysics.Metric</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Metric::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,ħ,𝘤,4π*1e-7,mₑ}</code></pre><p>Systeme International d&#39;Unites (the SI units) adopted as the preffered <code>UnitSystem</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Metric) # J⋅K⁻¹
+1.3806489995254104e-23
 
 julia&gt; planckreduced(Metric) # J⋅s⋅rad⁻¹
 1.0545718176461565e-34
@@ -51,7 +52,7 @@ julia&gt; permeability(Metric) # H⋅m⁻¹
 1.2566370614359173e-6
 
 julia&gt; electronmass(Metric) # kg
-9.109383701558256e-31</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.SI2019" href="#Geophysics.SI2019"><code>Geophysics.SI2019</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">SI2019</code></pre><p>Systeme International d&#39;Unites (the SI units) with <code>μ₀+6.851306461996397e-16</code> for a tuned <code>charge</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(SI2019) # J⋅K⁻¹
+9.109383701558256e-31</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.SI2019" href="#Geophysics.SI2019"><code>Geophysics.SI2019</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">SI2019::UnitSystem{kB,ħ,𝘤,μ₀,mₑ}</code></pre><p>Systeme International d&#39;Unites (the SI units) with <code>μ₀</code> for a tuned <code>charge</code> exactly.</p><pre><code class="language-Julia">julia&gt; boltzmann(SI2019) # J⋅K⁻¹
 1.380649e-23
 
 julia&gt; planckreduced(SI2019) # J⋅s⋅rad⁻¹
@@ -68,9 +69,9 @@ julia&gt; electronmass(SI2019) # kg
 9.19263177e9
 
 julia&gt; Kcd
-683.0</code></pre><h2 id="Other-historic-systems-1"><a class="docs-heading-anchor" href="#Other-historic-systems-1">Other historic systems</a><a class="docs-heading-anchor-permalink" href="#Other-historic-systems-1" title="Permalink"></a></h2><p>Alternatives to the SI unit system are the centimetre-gram-second variants.</p><pre><code class="language-Julia">CGS     ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}
-CGS2019 ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7(μ₀+δμ₀),1000mₑ}</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.CGS" href="#Geophysics.CGS"><code>Geophysics.CGS</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">CGS</code></pre><p>Centimetre-gram-second <code>UnitSystem</code> variant of <code>Metric</code> system based on factors of <code>1e2,1e3</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(CGS) # erg⋅K⁻¹
-1.380649e-16
+683.0</code></pre><h2 id="Other-historic-systems-1"><a class="docs-heading-anchor" href="#Other-historic-systems-1">Other historic systems</a><a class="docs-heading-anchor-permalink" href="#Other-historic-systems-1" title="Permalink"></a></h2><p>Alternatives to the SI unit system are the centimetre-gram-second variants.</p><pre><code class="language-Julia">CGS     ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,4π,1000mₑ}
+CGS2019 ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.CGS" href="#Geophysics.CGS"><code>Geophysics.CGS</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">CGS::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,4π,1000mₑ}</code></pre><p>Centimetre-gram-second <code>UnitSystem</code> variant of <code>Metric</code> system based on factors of <code>1e2,1e3</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(CGS) # erg⋅K⁻¹
+1.3806489995254104e-16
 
 julia&gt; planckreduced(CGS) # erg⋅s⋅rad⁻¹
 1.0545718176461565e-27
@@ -82,7 +83,7 @@ julia&gt; permeability(CGS) # erg⋅A⁻²⋅cm⁻¹
 12.566370614359172
 
 julia&gt; electronmass(CGS) # g
-9.109383701558256e-28</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.CGS2019" href="#Geophysics.CGS2019"><code>Geophysics.CGS2019</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">CGS2019</code></pre><p>Centimetre-gram-second <code>UnitSystem</code> variant of the tuned <code>SI2019</code> unit specification.</p><pre><code class="language-Julia">julia&gt; boltzmann(CGS2019) # erg⋅K⁻¹
+9.109383701558256e-28</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.CGS2019" href="#Geophysics.CGS2019"><code>Geophysics.CGS2019</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">CGS2019::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}</code></pre><p>Centimetre-gram-second <code>UnitSystem</code> variant of the tuned <code>SI2019</code> unit specification.</p><pre><code class="language-Julia">julia&gt; boltzmann(CGS2019) # erg⋅K⁻¹
 1.380649e-16
 
 julia&gt; planckreduced(CGS2019) # erg⋅s⋅rad⁻¹
@@ -95,18 +96,19 @@ julia&gt; permeability(CGS2019) # erg⋅A⁻²⋅cm⁻¹
 12.56637062121048
 
 julia&gt; electronmass(CGS2019 # g
-9.109383701558256e-28</code></pre></div></section></article><p>Historically, the <code>josephson</code> and <code>klitzing</code> constants have been used to define <code>Conventional</code> and <code>CODATA</code> derived <code>UnitSystem</code> variants.</p><pre><code class="language-Julia">julia&gt; josephson(Conventional)
+9.109383701558256e-28</code></pre></div></section></article><p>Historically, the <code>josephson</code> and <code>klitzing</code> constants have been used to define <code>Conventional</code> and <code>CODATA</code> derived <code>UnitSystem</code> variants.</p><pre><code class="language-Julia">CODATA::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,2/KJ2014/RK2014^2/π,𝘤,2KJ2014/𝘤/αinv,mₑ}()
+Conventional::UnitSystem{1000Rᵤ*mₑ/μₑᵤ,2/KJ1990/RK1990^2/π,𝘤,2KJ1990/𝘤/αinv,mₑ}()</code></pre><pre><code class="language-Julia">julia&gt; josephson(Conventional) # KJ1990
 4.835979e14
 
-julia&gt; klitzing(Conventional)
+julia&gt; klitzing(Conventional) # RK1990
 25812.807
 
-julia&gt; josephson(CODATA)
+julia&gt; josephson(CODATA) # KJ2014
 4.835978525e14
 
-julia&gt; klitzing(CODATA)
-25812.8074555</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Conventional" href="#Geophysics.Conventional"><code>Geophysics.Conventional</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Conventional</code></pre><p>Conventional electronic <code>UnitSystem</code> with 1990 tuned <code>josephson</code> and <code>klitzing</code> constants.</p><pre><code class="language-Julia">julia&gt; boltzmann(Conventional) # J⋅K⁻¹
-1.380649e-23
+julia&gt; klitzing(CODATA) # RK2014
+25812.8074555</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Conventional" href="#Geophysics.Conventional"><code>Geophysics.Conventional</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Conventional::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,2/KJ1990/RK1990^2/π,𝘤,2KJ1990/𝘤/αinv,mₑ}</code></pre><p>Conventional electronic <code>UnitSystem</code> with 1990 tuned <code>josephson</code> and <code>klitzing</code> constants.</p><pre><code class="language-Julia">julia&gt; boltzmann(Conventional) # J⋅K⁻¹
+1.3806489995254104e-23
 
 julia&gt; planckreduced(Conventional) # J⋅s⋅rad⁻¹
 1.054571611438857e-34
@@ -118,8 +120,8 @@ julia&gt; permeability(Conventional) # H⋅m⁻¹
 1.2566370397608662e-6
 
 julia&gt; electronmass(Conventional) # kg
-9.109383701558256e-31</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.CODATA" href="#Geophysics.CODATA"><code>Geophysics.CODATA</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">CODATA</code></pre><p>Metric <code>UnitSystem</code> based on Committee on Data of the International Science Council.</p><pre><code class="language-Julia">julia&gt; boltzmann(CODATA) # J⋅K⁻¹
-1.380649e-23
+9.109383701558256e-31</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.CODATA" href="#Geophysics.CODATA"><code>Geophysics.CODATA</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">CODATA::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,2/KJ2014/RK2014^2/π,𝘤,2KJ2014/𝘤/αinv,mₑ}</code></pre><p>Metric <code>UnitSystem</code> based on Committee on Data of the International Science Council.</p><pre><code class="language-Julia">julia&gt; boltzmann(CODATA) # J⋅K⁻¹
+1.3806489995254104e-23
 
 julia&gt; planckreduced(CODATA) # J⋅s⋅rad⁻¹
 1.0545717999940896e-34
@@ -131,17 +133,17 @@ julia&gt; permeability(CODATA) # H⋅m⁻¹
 1.2566370619358342e-6
 
 julia&gt; electronmass(CODATA) # kg
-9.109383701558256e-31</code></pre></div></section></article><p>In Britain and the United States an <code>English</code> system of engineering units was commonly used.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.English" href="#Geophysics.English"><code>Geophysics.English</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">English</code></pre><p>Engineering <code>UnitSystem</code> historically used by Britain and United States.</p><pre><code class="language-Julia">julia&gt; boltzmann(English) # ft⋅lb⋅°R⁻¹
+9.109383701558256e-31</code></pre></div></section></article><p>In Britain and the United States an <code>English</code> system of engineering units was commonly used.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.English" href="#Geophysics.English"><code>Geophysics.English</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">English::UnitSystem{5.657302466e-24,ħ/slug/ft^2,𝘤/ft,4π,mₑ/slug}</code></pre><p>Engineering <code>UnitSystem</code> historically used by Britain and United States.</p><pre><code class="language-Julia">julia&gt; boltzmann(English) # ft⋅lb⋅°R⁻¹
 5.657302466e-24
 
 julia&gt; planckreduced(English) # ft⋅lb⋅s⋅rad⁻¹
-7.778098449204079e-35
+7.778122556232396e-35
 
 julia&gt; lightspeed(English) # ft⋅s⁻¹
 9.83571056e8
 
 julia&gt; permeability(English) # slug⋅ft²⋅?⁻²
-1.2566370614359173e-6
+12.566370614359172
 
 julia&gt; electronmass(English) # kg
 6.241910570285988e-32</code></pre></div></section></article><h2 id="Natural-units-1"><a class="docs-heading-anchor" href="#Natural-units-1">Natural units</a><a class="docs-heading-anchor-permalink" href="#Natural-units-1" title="Permalink"></a></h2><p>With the introduction of the <code>planckmass</code> a set of natural atomic unit systems can be derived in terms of the gravitational coupling constant.</p><pre><code class="language-Julia">julia&gt; αG # (mₑ/mP)^2
@@ -156,7 +158,7 @@ Natural      ::UnitSystem{1,1,1,1,1}
 NaturalGauss ::UnitSystem{1,1,1,4π,1}
 QCD          ::UnitSystem{1,1,1,1,1/μₚₑ}
 QCDGauss     ::UnitSystem{1,1,1,4π,1/μₚₑ}
-QCDoriginal  ::UnitSystem{1,1,1,4π/αinv,1/μₚₑ}</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Planck" href="#Geophysics.Planck"><code>Geophysics.Planck</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Planck</code></pre><p>Planck <code>UnitSystem</code> with the <code>electronmass</code> value <code>√(4π*αG)</code> using gravitational coupling.</p><pre><code class="language-Julia">julia&gt; boltzmann(Planck)
+QCDoriginal  ::UnitSystem{1,1,1,4π/αinv,1/μₚₑ}</code></pre><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Planck" href="#Geophysics.Planck"><code>Geophysics.Planck</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Planck::UnitSystem{1,1,1,1,√(4π*αG)}</code></pre><p>Planck <code>UnitSystem</code> with the <code>electronmass</code> value <code>√(4π*αG)</code> using gravitational coupling.</p><pre><code class="language-Julia">julia&gt; boltzmann(Planck)
 1
 
 julia&gt; planckreduced(Planck)
@@ -169,7 +171,7 @@ julia&gt; permeability(Planck)
 1
 
 julia&gt; electronmass(Planck)
-1.4837079572551133e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.PlanckGauss" href="#Geophysics.PlanckGauss"><code>Geophysics.PlanckGauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">PlanckGauss</code></pre><p>Planck (Gauss) <code>UnitSystem</code> with <code>permeability</code> of <code>4π</code> and <code>electronmass</code> coupling <code>√αG</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(PlanckGauss)
+1.4837079572551133e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.PlanckGauss" href="#Geophysics.PlanckGauss"><code>Geophysics.PlanckGauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">PlanckGauss::UnitSystem{1,1,1,4π,√αG}</code></pre><p>Planck (Gauss) <code>UnitSystem</code> with <code>permeability</code> of <code>4π</code> and <code>electronmass</code> coupling <code>√αG</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(PlanckGauss)
 1
 
 julia&gt; planckreduced(PlanckGauss)
@@ -182,7 +184,7 @@ julia&gt; permeability(PlanckGauss)
 12.566370614359172
 
 julia&gt; electronmass(PlanckGauss)
-4.1854628725512725e-23</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Stoney" href="#Geophysics.Stoney"><code>Geophysics.Stoney</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Stoney</code></pre><p>Stoney <code>UnitSystem</code> with <code>permeability</code> of <code>4π</code> and <code>electronmass</code> coupling <code>√(αG*αinv)</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Stoney)
+4.1854628725512725e-23</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Stoney" href="#Geophysics.Stoney"><code>Geophysics.Stoney</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Stoney::UnitSystem{1,αinv,1,4π,√(αG*αinv)}</code></pre><p>Stoney <code>UnitSystem</code> with <code>permeability</code> of <code>4π</code> and <code>electronmass</code> coupling <code>√(αG*αinv)</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Stoney)
 1
 
 julia&gt; planckreduced(Stoney)
@@ -195,7 +197,7 @@ julia&gt; permeability(Stoney)
 12.566370614359172
 
 julia&gt; electronmass(Stoney)
-4.899602291219254e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Hartree" href="#Geophysics.Hartree"><code>Geophysics.Hartree</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Hartree</code></pre><p>Hartree atomic <code>UnitSystem</code> with <code>lightspeed</code> of <code>αinv</code> and <code>permeability</code> of <code>4π/αinv^2</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Hartree)
+4.899602291219254e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Hartree" href="#Geophysics.Hartree"><code>Geophysics.Hartree</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Hartree::UnitSystem{1,1,αinv,4π/αinv^2,1}</code></pre><p>Hartree atomic <code>UnitSystem</code> with <code>lightspeed</code> of <code>αinv</code> and <code>permeability</code> of <code>4π/αinv^2</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Hartree)
 1
 
 julia&gt; planckreduced(Hartree)
@@ -208,7 +210,7 @@ julia&gt; permeability(Hartree)
 0.0006691762566203904
 
 julia&gt; electronmass(Hartree)
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Rydberg" href="#Geophysics.Rydberg"><code>Geophysics.Rydberg</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Rydberg</code></pre><p>Rydberg <code>UnitSystem</code> with <code>lightspeed</code> of <code>2αinv</code> and <code>permeability</code> of <code>π/αinv^2</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Rydberg)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Rydberg" href="#Geophysics.Rydberg"><code>Geophysics.Rydberg</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Rydberg::UnitSystem{1,1,2αinv,π/αinv^2,1/2}</code></pre><p>Rydberg <code>UnitSystem</code> with <code>lightspeed</code> of <code>2αinv</code> and <code>permeability</code> of <code>π/αinv^2</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Rydberg)
 1
 
 julia&gt; planckreduced(Rydberg)
@@ -221,7 +223,7 @@ julia&gt; permeability(Rydberg)
 0.0001672940641550976
 
 julia&gt; electronmass(Rydberg)
-0.5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Schrodinger" href="#Geophysics.Schrodinger"><code>Geophysics.Schrodinger</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Schrodinger</code></pre><p>Schrodinger <code>UnitSystem</code> with <code>permeability</code> of <code>4π/αinv^2</code> and <code>electronmass</code> of <code>√αinv*mₑ/mP</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Schrodinger)
+0.5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Schrodinger" href="#Geophysics.Schrodinger"><code>Geophysics.Schrodinger</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Schrodinger::UnitSystem{1,1,αinv,4π/αinv^2,√αinv*mₑ/mP}</code></pre><p>Schrodinger <code>UnitSystem</code> with <code>permeability</code> of <code>4π/αinv^2</code> and <code>electronmass</code> of <code>√αinv*mₑ/mP</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Schrodinger)
 1
 
 julia&gt; planckreduced(Schrodinger)
@@ -234,7 +236,7 @@ julia&gt; permeability(Schrodinger)
 0.0006691762566203904
 
 julia&gt; electronmass(Schrodinger)
-4.899602291219254e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Electronic" href="#Geophysics.Electronic"><code>Geophysics.Electronic</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Electronic</code></pre><p>Electronic <code>UnitSystem</code> with <code>planckreduced</code> of <code>αinv</code> and <code>permeability</code> of <code>4π</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Electronic)
+4.899602291219254e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Electronic" href="#Geophysics.Electronic"><code>Geophysics.Electronic</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Electronic::UnitSystem{1,αinv,1,4π,1}</code></pre><p>Electronic <code>UnitSystem</code> with <code>planckreduced</code> of <code>αinv</code> and <code>permeability</code> of <code>4π</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(Electronic)
 1
 
 julia&gt; planckreduced(Electronic)
@@ -247,7 +249,7 @@ julia&gt; permeability(Electronic)
 12.566370614359172
 
 julia&gt; electronmass(Electronic)
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Natural" href="#Geophysics.Natural"><code>Geophysics.Natural</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Natural</code></pre><p>Natural <code>UnitSystem</code> with all primary constants having unit value.</p><pre><code class="language-Julia">julia&gt; boltzmann(Natural)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.Natural" href="#Geophysics.Natural"><code>Geophysics.Natural</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">Natural::UnitSystem{1,1,1,1,1}</code></pre><p>Natural <code>UnitSystem</code> with all primary constants having unit value.</p><pre><code class="language-Julia">julia&gt; boltzmann(Natural)
 1
 
 julia&gt; planckreduced(Natural)
@@ -260,7 +262,7 @@ julia&gt; permeability(Natural)
 1
 
 julia&gt; electronmass(Natural)
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.NaturalGauss" href="#Geophysics.NaturalGauss"><code>Geophysics.NaturalGauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">NaturalGauss</code></pre><p>Natural (Gauss) <code>UnitSystem</code> with the Gaussian <code>permeability</code> value of <code>4π</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(NaturalGauss)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.NaturalGauss" href="#Geophysics.NaturalGauss"><code>Geophysics.NaturalGauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">NaturalGauss::UnitSystem{1,1,1,4π,1}</code></pre><p>Natural (Gauss) <code>UnitSystem</code> with the Gaussian <code>permeability</code> value of <code>4π</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(NaturalGauss)
 1
 
 julia&gt; planckreduced(NaturalGauss)
@@ -273,7 +275,7 @@ julia&gt; permeability(NaturalGauss)
 12.566370614359172
 
 julia&gt; electronmass(NaturalGauss)
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.QCD" href="#Geophysics.QCD"><code>Geophysics.QCD</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">QCD</code></pre><p>Qunatum chromodynamics <code>UnitSystem</code> with <code>electronmass</code> of <code>1/μₚₑ</code> or <code>1/1836.152673432705</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(QCD)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.QCD" href="#Geophysics.QCD"><code>Geophysics.QCD</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">QCD::UnitSystem{1,1,1,1,1/μₚₑ}</code></pre><p>Qunatum chromodynamics <code>UnitSystem</code> with <code>electronmass</code> of <code>1/μₚₑ</code> or <code>1/1836.152673432705</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(QCD)
 1
 
 julia&gt; planckreduced(QCD)
@@ -286,7 +288,7 @@ julia&gt; permeability(QCD)
 1
 
 julia&gt; electronmass(QCD)
-0.0005446170214868301</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.QCDGauss" href="#Geophysics.QCDGauss"><code>Geophysics.QCDGauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">QCDGauss</code></pre><p>Qunatum chromodynamics (Gauss) <code>UnitSystem</code> with <code>electronmass</code> of <code>1/μₚₑ</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(QCDGauss)
+0.0005446170214868301</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.QCDGauss" href="#Geophysics.QCDGauss"><code>Geophysics.QCDGauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">QCDGauss::UnitSystem{1,1,1,4π,1/μₚₑ}</code></pre><p>Qunatum chromodynamics (Gauss) <code>UnitSystem</code> with <code>electronmass</code> of <code>1/μₚₑ</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(QCDGauss)
 1
 
 julia&gt; planckreduced(QCDGauss)
@@ -299,7 +301,7 @@ julia&gt; permeability(QCDGauss)
 12.566370614359172
 
 julia&gt; electronmass(QCDGauss)
-0.0005446170214868301</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.QCDoriginal" href="#Geophysics.QCDoriginal"><code>Geophysics.QCDoriginal</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">QCDoriginal</code></pre><p>Qunatum chromodynamics (original) <code>UnitSystem</code> with <code>permeability</code> of <code>4π/αinv</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(QCDoriginal)
+0.0005446170214868301</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.QCDoriginal" href="#Geophysics.QCDoriginal"><code>Geophysics.QCDoriginal</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">QCDoriginal::UnitSystem{1,1,1,4π/αinv,1/μₚₑ}</code></pre><p>Qunatum chromodynamics (original) <code>UnitSystem</code> with <code>permeability</code> of <code>4π/αinv</code>.</p><pre><code class="language-Julia">julia&gt; boltzmann(QCDoriginal)
 1
 
 julia&gt; planckreduced(QCDoriginal)
@@ -312,74 +314,333 @@ julia&gt; permeability(QCDoriginal)
 0.09170123688926636
 
 julia&gt; electronmass(QCDoriginal)
-0.0005446170214868301</code></pre></div></section></article><h2 id="Fundamental-constants-of-physics-1"><a class="docs-heading-anchor" href="#Fundamental-constants-of-physics-1">Fundamental constants of physics</a><a class="docs-heading-anchor-permalink" href="#Fundamental-constants-of-physics-1" title="Permalink"></a></h2><p>The following are fundamental constants of physics:</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.avogadro" href="#Geophysics.avogadro"><code>Geophysics.avogadro</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">avogadro(x) = universal(x)/boltzmann(x) # Mᵤ/atomicmass(x), Mᵤ ≈ 0.001-3.5e-13</code></pre><p>Avogadro <code>NA</code> is <code>molarmass(x)/molecularmass(x)</code> number of atoms in a 12 g sample of C₁₂.</p><pre><code class="language-Julia">julia&gt; avogadro(Metric) # mol⁻¹
+0.0005446170214868301</code></pre></div></section></article><h2 id="Fundamental-constants-of-physics-1"><a class="docs-heading-anchor" href="#Fundamental-constants-of-physics-1">Fundamental constants of physics</a><a class="docs-heading-anchor-permalink" href="#Fundamental-constants-of-physics-1" title="Permalink"></a></h2><p>The following are fundamental constants of physics:</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.molarmass" href="#Geophysics.molarmass"><code>Geophysics.molarmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">molarmass(U) = avogadro(U)*electronmass(U)/μₑᵤ # 1/μₑᵤ = 1822.8884862090001</code></pre><p>Molar mass constant <code>Mᵤ</code> is ratio of the <code>molarmass</code> and <code>relativemass</code> of a chemical.</p><pre><code class="language-Julia">julia&gt; molarmass(CGS) # g⋅mol⁻¹
+1
+
+julia&gt; molarmass(CGS2019) # g⋅mol⁻¹
+0.9999999996562561
+
+julia&gt; molarmass(Metric) # kg⋅mol⁻¹
+0.001
+
+julia&gt; molarmass(SI2019) # kg⋅mol⁻¹
+0.000999999999656256</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.avogadro" href="#Geophysics.avogadro"><code>Geophysics.avogadro</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">avogadro(x) = universal(x)/boltzmann(x) # Mᵤ/atomicmass(x), Mᵤ ≈ 0.001-3.5e-13</code></pre><p>Avogadro <code>NA</code> is <code>molarmass(x)/atomicmass(x)</code> number of atoms in a 12 g sample of C₁₂.</p><pre><code class="language-Julia">julia&gt; avogadro(SI2019) # mol⁻¹
 6.02214076e23
 
+julia&gt; avogadro(Metric) # mol⁻¹
+6.022140762070074e23
+
 julia&gt; avogadro(English) # slug-mol⁻¹
-8.788653773538476e24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.boltzmann" href="#Geophysics.boltzmann"><code>Geophysics.boltzmann</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">boltzmann(x) = universal(x)/avogadro(x)</code></pre><p>Boltzmann constant <code>kB</code> is the entropy amount of a unit number microstate permutation.</p><pre><code class="language-Julia">pressure*molecularmass == density*boltzmann*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; boltzmann(Metric) # J⋅K⁻¹
+8.788653776559523e24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.boltzmann" href="#Geophysics.boltzmann"><code>Geophysics.boltzmann</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">boltzmann(x) = universal(x)/avogadro(x)</code></pre><p>Boltzmann constant <code>kB</code> is the entropy amount of a unit number microstate permutation.</p><pre><code class="language-Julia">pressure*molecularmass == density*boltzmann*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; boltzmann(SI2019) # J⋅K⁻¹
 1.380649e-23
 
+julia&gt; boltzmann(Metric) # J⋅K⁻¹
+1.3806489995254104e-23
+
+julia&gt; boltzmann(CGS) # erg⋅K⁻¹
+1.3806489995254104e-16
+
+julia&gt; boltzmann(SI2019)/planck(SI2019) # Hz⋅K⁻¹
+2.0836619123327576e10
+
+julia&gt; boltzmann(SI2019)/calᵢₜ # calᵢₜ⋅K⁻¹
+3.2976234833285567e-24
+
+julia&gt; boltzmann(SI2019)/rankine/calᵢₜ # calᵢₜ⋅°R⁻¹
+1.8320130462936426e-24
+
 julia&gt; boltzmann(English) # ft⋅lb⋅°R⁻¹
-5.657302466e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.universal" href="#Geophysics.universal"><code>Geophysics.universal</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">universal(x) = boltzmann(x)*avogadro(x)</code></pre><p>Universal gas constant <code>Rᵤ</code> is factored into specific <code>gasconstant(x)*molarmass(x)</code> values.</p><pre><code class="language-Julia">pressure*molarmass == density*universal*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; universal(Metric) # J⋅K⁻¹⋅mol⁻¹
+5.657302466e-24
+
+julia&gt; boltzmann(SI2019)/planck(SI2019)/lightspeed(SI2019) # m⁻¹⋅K⁻¹
+69.50348004861274
+
+julia&gt; avogadro(SI2019)*boltzmann(SI2019)/calᵢₜ # calᵢₜ⋅mol⁻¹⋅K⁻¹
+1.985875279008608
+
+julia&gt; 10log10(boltzmann(SI2019)/1) # dB(W⋅K⁻¹⋅Hz⁻¹)
+-228.59916717321767</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.universal" href="#Geophysics.universal"><code>Geophysics.universal</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">universal(x) = boltzmann(x)*avogadro(x)</code></pre><p>Universal gas constant <code>Rᵤ</code> is factored into specific <code>gasconstant(x)*molarmass(x)</code> values.</p><pre><code class="language-Julia">pressure*molarmass == density*universal*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; universal(SI2019) # J⋅K⁻¹⋅mol⁻¹
 8.31446261815324
 
+julia&gt; universal(English)*lbm/2116.2 # atm⋅ft³⋅R⁻¹⋅slug-mol⁻¹
+0.7559285667271411
+
+julia&gt; universal(Metric)/cal # cal⋅K⁻¹⋅mol⁻¹
+1.987204258640832
+
+julia&gt; universal(Metric)/pressure(Earth1959) # atm⋅m³⋅K⁻¹⋅mol⁻¹
+8.20573660809597e-5
+
+julia&gt; universal(CGS) # erg⋅K⁻¹⋅mol⁻¹
+8.31446261815324e7
+
 julia&gt; universal(English) # ft⋅lb⋅°R⁻¹⋅slug-mol⁻¹
-49.720072665859426</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.planck" href="#Geophysics.planck"><code>Geophysics.planck</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">planck(x) = 2π*planckreduced(x)</code></pre><p>Planck constant <code>𝘩</code> is energy per electromagnetic frequency (J⋅s or ft⋅lb⋅s).</p><pre><code class="language-Julia">julia&gt; planck(Metric) # J⋅s
+49.7200726829504</code></pre><p>The 1976 United States Standard Atmosphere used R* = 8.31432 exactly.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.planck" href="#Geophysics.planck"><code>Geophysics.planck</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">planck(x) = 2π*planckreduced(x)</code></pre><p>Planck constant <code>𝘩</code> is energy per electromagnetic frequency (J⋅s or ft⋅lb⋅s).</p><pre><code class="language-Julia">julia&gt; planck(SI2019) # J⋅s
 6.62607015e-34
 
+julia&gt; planck(SI2019)*lightspeed(SI2019) # J⋅m
+1.9864458571489286e-25
+
+julia&gt; planck(CODATA) # J⋅s
+6.626070039088792e-34
+
+julia&gt; planck(Conventional) # J⋅s
+6.626068854361326e-34
+
 julia&gt; planck(English) # ft⋅lb⋅s
-4.88712338938354e-34</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.planckreduced" href="#Geophysics.planckreduced"><code>Geophysics.planckreduced</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">planckreduced(x) = planck(x)/2π</code></pre><p>Reduced Planck constant <code>ħ</code> is a Planck per radian (J⋅s⋅rad⁻¹ or ft⋅lb⋅s⋅rad⁻¹).</p><pre><code class="language-Julia">julia&gt; planckreduced(Metric) # J⋅s⋅rad⁻¹
+4.887138536276151e-34</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.planckreduced" href="#Geophysics.planckreduced"><code>Geophysics.planckreduced</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">planckreduced(x) = planck(x)/2π</code></pre><p>Reduced Planck constant <code>ħ</code> is a Planck per radian (J⋅s⋅rad⁻¹ or ft⋅lb⋅s⋅rad⁻¹).</p><pre><code class="language-Julia">julia&gt; planckreduced(SI2019) # J⋅s⋅rad⁻¹
 1.0545718176461565e-34
 
+julia&gt; planckreduced(SI2019)*lightspeed(SI2019) # J⋅m⋅rad⁻¹
+3.1615267734966903e-26
+
+julia&gt; planckreduced(CODATA) # J⋅s⋅rad⁻¹
+1.0545717999940896e-34
+
+julia&gt; planckreduced(Conventional) # J⋅s⋅rad⁻¹
+1.054571611438857e-34
+
 julia&gt; planckreduced(English) # ft⋅lb⋅s⋅rad⁻¹
-7.778098449204079e-35</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.lightspeed" href="#Geophysics.lightspeed"><code>Geophysics.lightspeed</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">lightspeed(x) = 1/sqrt(μ₀*ε₀)</code></pre><p>Speed of light in a vacuum <code>𝘤</code> for massless particles (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; universal(Metric) # m⋅s⁻¹
+7.778122556232396e-35</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.lightspeed" href="#Geophysics.lightspeed"><code>Geophysics.lightspeed</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">lightspeed(U::UnitSystem) = 1/sqrt(μ₀*ε₀)</code></pre><p>Speed of light in a vacuum <code>𝘤</code> for massless particles (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; lightspeed(Metric) # m⋅s⁻¹
 2.99792458e8
 
-julia&gt; universal(English) # ft⋅s⁻¹
-9.83571056e8</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.planckmass" href="#Geophysics.planckmass"><code>Geophysics.planckmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">planckmass(U::UnitSystem) = mass(2.176434e-8,U)</code></pre><p>Planck mass factor <code>mP</code> from the gravitational coupling constant <code>αG</code> (kg or slugs).</p><pre><code class="language-Julia">juila&gt; planckmass(Metric) # m³⋅kg⁻¹⋅s⁻²
+julia&gt; lightspeed(English) # ft⋅s⁻¹
+9.83571056e8</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.planckmass" href="#Geophysics.planckmass"><code>Geophysics.planckmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">planckmass(U::UnitSystem) = mass(2.176434e-8,U)</code></pre><p>Planck mass factor <code>mP</code> from the gravitational coupling constant <code>αG</code> (kg or slugs).</p><pre><code class="language-Julia">juila&gt; planckmass(Metric) # kg
 2.176434e-8
 
-julia&gt; planckmass(English) # ft³⋅slug⁻¹⋅s⁻²
-1.4913310093421511e-9</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.atomicmass" href="#Geophysics.atomicmass"><code>Geophysics.atomicmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">atomicmass(U::UnitSystem) = Mᵤ/avogadro(U) # 0.000999999999656256 ≈ 0.001-3.5e-13</code></pre><p>Atomic mass unit <code>mᵤ</code> of 1/12 of the C₁₂ carbon-12 atom&#39;s mass  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; atomicmass(Metric) # kg
+juila&gt; planckmass(Metric)/atomicmass(Metric) # mᵤ
+1.310679190735522e19
+
+juila&gt; planckmass(Metric)/sqrt(8π) # kg
+4.341357715516059e-9</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.atomicmass" href="#Geophysics.atomicmass"><code>Geophysics.atomicmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">atomicmass(U::UnitSystem) = Mᵤ/avogadro(U) # 0.000999999999656256 ≈ 0.001-3.5e-13</code></pre><p>Atomic mass unit <code>mᵤ</code> of 1/12 of the C₁₂ carbon-12 atom&#39;s mass  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; atomicmass(Metric) # kg
 1.6605390666030467e-27
+
+julia&gt; atomicmass(Metric)/electronmass(Metric) # mₑ
+1822.888486209
+
+julia&gt; atomicmass(Metric)*lightspeed(Metric)^2 # J
+1.4924180856042896e-10
 
 julia&gt; atomicmass(English) # slugs
 1.137830691052058e-28</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.protonmass" href="#Geophysics.protonmass"><code>Geophysics.protonmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">protonmass(U::UnitSystem) = 1.007276466621atomicmass(U)</code></pre><p>Proton mass unit <code>mₚ</code> of subatomic particle with <code>+𝘦</code> elementary charge  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; protonmass(Metric) # kg
 1.6726219236940502e-27
 
-julia&gt; protonmass(English) # slugs
-1.1461100780958476e-28</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.electronmass" href="#Geophysics.electronmass"><code>Geophysics.electronmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">electronmass(U::UnitSystem) = protonmass(U)/1836.152673432705</code></pre><p>Electron rest mass unit <code>mₑ</code> of subatomic particle with <code>-𝘦</code> elementary charge  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; electronmass(Metric) # kg
+julia&gt; protonmass(Metric)/atomicmass(Metric) # mᵤ
+1.007276466621
+
+julia&gt; protonmass(Metric)/electronmass(Metric) # mₑ
+1836.152673432705</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.electronmass" href="#Geophysics.electronmass"><code>Geophysics.electronmass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">electronmass(U::UnitSystem) = protonmass(U)/1836.152673432705 # αinv^2*R∞*2𝘩/𝘤</code></pre><p>Electron rest mass unit <code>mₑ</code> of subatomic particle with <code>-𝘦</code> elementary charge  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; electronmass(Metric) # kg
 9.109383701558256e-31
 
+julia&gt; electronmass(Metric)/atomicmass(Metric) # Da
+0.0005485799090649074
+
+julia&gt; electronmass(Metric)*lightspeed(Metric)^2 # J
+8.187105776876243e-14
+
 julia&gt; electronmass(English) # slugs
-6.241910570285988e-32</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.newton" href="#Geophysics.newton"><code>Geophysics.newton</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">newton(x) = lightspeed(x)*planckreduced(x)/planckmass(x)^2</code></pre><p>Universal gravitational constant <code>GG</code> of Newton&#39;s law (m³⋅kg⁻¹⋅s⁻² or ft³⋅slug⁻¹⋅s⁻²).</p><pre><code class="language-Julia">juila&gt; newton(Metric) # m³⋅kg⁻¹⋅s⁻²
+6.241910570285988e-32</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.newton" href="#Geophysics.newton"><code>Geophysics.newton</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">newton(U::UnitSystem) = lightspeed(U)*planckreduced(U)/planckmass(U)^2</code></pre><p>Universal gravitational constant <code>GG</code> of Newton&#39;s law (m³⋅kg⁻¹⋅s⁻² or ft³⋅slug⁻¹⋅s⁻²).</p><pre><code class="language-Julia">juila&gt; newton(Metric) # m³⋅kg⁻¹⋅s⁻²
 6.674302101972536e-11
 
 julia&gt; newton(English) # ft³⋅slug⁻¹⋅s⁻²
-3.439783265696398e-8</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.einstein" href="#Geophysics.einstein"><code>Geophysics.einstein</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">einstein(U::UnitSystem) = 8π*newton(U)/lightspeed(U)^4</code></pre><p>Einstein&#39;s gravitational constant from the Einstein field equations (? or ?).</p><pre><code class="language-Julia">julia&gt; einstein(Metric) # ?
-2.0766480968545148e-43
+3.439793926779326e-8</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.einstein" href="#Geophysics.einstein"><code>Geophysics.einstein</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">einstein(U::UnitSystem) = 8π*newton(U)/lightspeed(U)^4</code></pre><p>Einstein&#39;s gravitational constant from the Einstein field equations (? or ?).</p><pre><code class="language-Julia">julia&gt; einstein(Metric) # ?
+2.0766480968545148e-43</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.permeability" href="#Geophysics.permeability"><code>Geophysics.permeability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">permeability(U::UnitSystem) = 4π # Gaussian unit system</code></pre><p>Magnetic permeability in a classical vacuum defined as <code>μ₀</code> in SI units (H⋅m⁻¹, kg⋅m²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; permeability(CGS) # abhenry⋅cm⁻¹
+12.566370614359172
 
-julia&gt; einstein(English) # ?
-9.237362326991439e-43</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.permeability" href="#Geophysics.permeability"><code>Geophysics.permeability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">permeability(x) = 4π*1e-7</code></pre><p>Magnetic permeability in a classical vacuum defined as <code>μ₀</code> in SI units (H⋅m⁻¹).</p><pre><code class="language-Julia">julia&gt; permeability(Metric) # H⋅m⁻¹
+julia&gt; permeability(Metric) # H⋅m⁻¹
 1.2566370614359173e-6
 
-julia&gt; permeability(English) # slug⋅ft²⋅?⁻²
-1.2566370614359173e-6</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.permittivity" href="#Geophysics.permittivity"><code>Geophysics.permittivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">permittivity(x) = 1/μ₀/lightspeed(x)^2</code></pre><p>Dielectric permittivity constant <code>ε₀</code> of a classical vacuum (C²⋅N⁻¹⋅m⁻²).</p><pre><code class="language-Julia">julia&gt; permittivity(Metric) # C²⋅N⁻¹⋅m⁻²
-8.854187817620389e-12</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.coulomb" href="#Geophysics.coulomb"><code>Geophysics.coulomb</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">coulomb(x) = 1/4π/ϵ₀</code></pre><p>Electrostatic proportionality constant <code>kₑ</code> for the Coulomb&#39;s law force (N⋅m²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; coulomb(Metric) # N⋅m²⋅C⁻²
-8.987551787368177e9</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.stefan" href="#Geophysics.stefan"><code>Geophysics.stefan</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">stefan(x) = 2π^5*boltzmann(U)^4/(15planck(U)^3*lightspeed(U)^2)</code></pre><p>Stefan-Boltzmann proportionality <code>σ</code> of black body radiation (W⋅m⁻²⋅K⁻⁴ or ?⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; stefan(Metric) # W⋅m⁻²⋅K⁻⁴
-5.6703744191844314e-8
+julia&gt; permeability(Conventional) # H⋅m⁻¹
+1.2566370397608662e-6
+
+julia&gt; permeability(CODATA) # H⋅m⁻¹
+1.2566370619358342e-6
+
+julia&gt; permeability(SI2019) # H⋅m⁻¹
+1.256637062121048e-6</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.permittivity" href="#Geophysics.permittivity"><code>Geophysics.permittivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">permittivity(U::UnitSystem) = 1/permeability(U)/lightspeed(U)^2</code></pre><p>Dielectric permittivity constant <code>ε₀</code> of a classical vacuum (C²⋅N⁻¹⋅m⁻²).</p><pre><code class="language-Julia">julia&gt; permittivity(Metric) # F⋅m⁻¹
+8.854187817620389e-12
+
+julia&gt; permittivity(Conventional) # F⋅m⁻¹
+8.854187970341477e-12
+
+julia&gt; permittivity(CODATA) # F⋅m⁻¹
+8.854187814098007e-12
+
+julia&gt; permittivity(SI2019) # F⋅m⁻¹
+8.854187812793002e-12</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.coulomb" href="#Geophysics.coulomb"><code>Geophysics.coulomb</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">coulomb(U::UnitSystem) = 1/4π/permittivity(U)</code></pre><p>Electrostatic proportionality constant <code>kₑ</code> for the Coulomb&#39;s law force (N⋅m²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; coulomb(Metric) # N⋅m²⋅C⁻²
+8.987551787368177e9
+
+julia&gt; coulomb(Metric)/lightspeed(Metric)^2 # (N·s²⋅C⁻²)⋅𝘤²
+1.0000000000000002e-7
+
+julia&gt; coulomb(Conventional)/lightspeed(Conventional)^2 # (N·s²⋅C⁻²)⋅𝘤²
+9.999999827515423e-8
+
+julia&gt; coulomb(CODATA)/lightspeed(CODATA)^2 # (N·s²⋅C⁻²)⋅𝘤²
+1.0000000003978213e-7
+
+julia&gt; coulomb(SI2019)/lightspeed(SI2019)^2 # (N·s²⋅C⁻²)⋅𝘤²
+1.0000000005452097e-7</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.stefan" href="#Geophysics.stefan"><code>Geophysics.stefan</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">stefan(U::UnitSystem) = 2π^5*boltzmann(U)^4/(15planck(U)^3*lightspeed(U)^2)</code></pre><p>Stefan-Boltzmann proportionality <code>σ</code> of black body radiation (W⋅m⁻²⋅K⁻⁴ or ?⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; stefan(Metric) # W⋅m⁻²⋅K⁻⁴
+5.670374411387805e-8
+
+julia&gt; stefan(CGS) # erg⋅cm⁻²⋅s⁻¹⋅K⁻⁴
+5.670374411387804e-5
+
+julia&gt; stefan(Metric)*24*60^2/(cal*100^2) # cal⋅cm⁻²⋅day⁻¹⋅K⁻⁴
+1.170937736959623e-7
 
 julia&gt; stefan(English) # lb⋅s⁻¹⋅ft⁻³⋅°R⁻⁴
-3.701300130852963e-10</code></pre></div></section></article><div class="admonition is-warning"><header class="admonition-header">Missing docstring.</header><div class="admonition-body"><p>Missing docstring for <code>radiationintensity</code>. Check Documenter&#39;s build log for details.</p></div></div><article class="docstring"><header><a class="docstring-binding" id="Geophysics.impedance" href="#Geophysics.impedance"><code>Geophysics.impedance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">impedance(U::UnitSystem) = permeability(U)*lightspeed(U)</code></pre><p>Vacuum impedance of free space <code>Z₀</code> is magnitude ratio of electric to magnetic field (Ω).</p><pre><code class="language-Julia">julia&gt; impedance(Metric) # Ω
-376.73031346177066</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.charge" href="#Geophysics.charge"><code>Geophysics.charge</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">charge(U::UnitSystem) = sqrt(2𝘩/137.035999084impedance(U))</code></pre><p>Quantized elementary charge <code>𝘦</code> of a proton or electron  (C).</p><pre><code class="language-Julia">julia&gt; charge(Metric) # C
-1.6021766344367608e-19</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.magneton" href="#Geophysics.magneton"><code>Geophysics.magneton</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">magneton(U::UnitSystem) = charge(U)*planckreduced(U)/2electronmass(U)</code></pre><p>Bohr magneton <code>μB</code> natural unit for expressing magnetic moment of electron (J⋅T⁻¹).</p><pre><code class="language-Julia">julia&gt; magneton(Metric) # J⋅T⁻¹
-9.274010080830994e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.conductance" href="#Geophysics.conductance"><code>Geophysics.conductance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">conductance(U::UnitSystem) = 2charge(U)^2/𝘩</code></pre><p>Conductance quantum <code>G₀</code> is a quantized unit of electrical conductance (S).</p><pre><code class="language-Julia">julia&gt; conductance(Metric) # S
-7.748091734087984e-5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.faraday" href="#Geophysics.faraday"><code>Geophysics.faraday</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">faraday(U::UnitSystem) = charge(U)*avogadro(U)</code></pre><p>Electric charge per mole of electrons <code>𝔉</code> based on elementary charge (C⋅mol⁻¹).</p><pre><code class="language-Julia">julia&gt; faraday(Metric) # C⋅mol⁻¹
-96485.33214961237</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.magneticflux" href="#Geophysics.magneticflux"><code>Geophysics.magneticflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">magneticflux(U::UnitSystem) = planck(U)/2charge(U)</code></pre><p>Magnetic flux quantum <code>Φ₀</code> is <code>1/josephson(U)</code> (Wb).</p><pre><code class="language-Julia">julia&gt; magneticflux(Metric) # Wb
-2.067833847898228e-15</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.josephson" href="#Geophysics.josephson"><code>Geophysics.josephson</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">josephson(U::UnitSystem) = 2charge(U)/planck(U)</code></pre><p>Josephson constant <code>KJ</code> relating potential difference to irradiation frequency (Hz⋅V⁻¹).</p><pre><code class="language-Julia">julia&gt; josephson(Metric) # Hz⋅V⁻¹
-4.835978485488147e14</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.klitzing" href="#Geophysics.klitzing"><code>Geophysics.klitzing</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">klitzing(U::UnitSystem) = 2/conductance(U)</code></pre><p>Quantized Hall resistance <code>RK</code> (Ω).</p><pre><code class="language-Julia">julia&gt; klitzing(Metric) # Ω
-25812.80744523112</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.hardtree" href="#Geophysics.hardtree"><code>Geophysics.hardtree</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">hardtree(U::UnitSystem) = electronmass(U)*(lightspeed(U)/137.035999084)^2</code></pre><p>Hardtree electric potential energy <code>Eₕ</code> of the hydrogen atom at ground state (J).</p><pre><code class="language-Julia">julia&gt; hardtree(Metric) # J
-4.359744722207209e-18</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.rydberg" href="#Geophysics.rydberg"><code>Geophysics.rydberg</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">rydberg(U::UnitSystem) = hardtree(U)/2planck(U)/lightspeed(U)</code></pre><p>Rydberg constant <code>R∞</code> is lowest energy photon capable of ionizing atom at ground state (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric) # m⁻¹
-1.09737315681601e7</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.bohr" href="#Geophysics.bohr"><code>Geophysics.bohr</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">bohr(U) = 137.035999084*planckreduced(U)/electronmass(U)/lightspeed(U)</code></pre><p>Bohr radius of the hydrogen atom in its ground state <code>a₀</code> (m).</p><pre><code class="language-Julia">julia&gt; bohr(Metric) # m
-5.291772109022829e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.bohrreduced" href="#Geophysics.bohrreduced"><code>Geophysics.bohrreduced</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">bohrreduced(U::UnitSystem) = electronmass(U)/bohr(U)/1836.152673432705</code></pre><p>Reduced Bohr radius including the effect of reduced mass in hydrogen atom (m).</p><pre><code class="language-Julia">julia&gt; bohrreduced(Metric) # m
-2.6253145122281045e-44</code></pre></div></section></article><h2 id="Common-conversion-factors-1"><a class="docs-heading-anchor" href="#Common-conversion-factors-1">Common conversion factors</a><a class="docs-heading-anchor-permalink" href="#Common-conversion-factors-1" title="Permalink"></a></h2><p>Common conversion factors include <code>moles</code>, <code>molecules</code>, <code>kilograms</code>, <code>slugs</code>, <code>meters</code>, <code>feet</code>, <code>kelvin</code>, and <code>rankine</code>.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.moles" href="#Geophysics.moles"><code>Geophysics.moles</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">moles(N::Real,U::UnitSystem=Metric) = N/avogadro(U)</code></pre><p>Converts the number of molecules <code>N</code> to number of moles (mol).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.molecules" href="#Geophysics.molecules"><code>Geophysics.molecules</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">molecules(n::Real,U::UnitSystem=Metric) = n*avogadro(U)</code></pre><p>Converts the number of moles <code>n</code> to number of molecules (dimensionless).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.kilograms" href="#Geophysics.kilograms"><code>Geophysics.kilograms</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">kilograms(m::Real) = 14.593902938825488m</code></pre><p>Converts mass <code>m</code> from slugs to kilogram (kg).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.slugs" href="#Geophysics.slugs"><code>Geophysics.slugs</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">slugs(m::Real) = 0.06852176584918959m</code></pre><p>Converts mass <code>m</code> from kilograms to slugs (slug).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.meters" href="#Geophysics.meters"><code>Geophysics.meters</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">meters(d) = 0.3048000001333915d</code></pre><p>Converts distance <code>d</code> from feet to meters (m).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.feet" href="#Geophysics.feet"><code>Geophysics.feet</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">feet(d) = 3.2808398935773093d</code></pre><p>Converts distance <code>d</code> from meters to feet (ft).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.kelvin" href="#Geophysics.kelvin"><code>Geophysics.kelvin</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">kelvin(T) = (5/9)T</code></pre><p>Converts temperature <code>T</code> from degrees Rankine to Kelvin (K).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.rankine" href="#Geophysics.rankine"><code>Geophysics.rankine</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">rankine(T) = (9/5)T</code></pre><p>Converts temperature <code>T</code> from Kelvin to degrees Rankine (°R).</p></div></section></article><h2 id="Index-1"><a class="docs-heading-anchor" href="#Index-1">Index</a><a class="docs-heading-anchor-permalink" href="#Index-1" title="Permalink"></a></h2><ul><li><a href="units.html#Geophysics.CGS"><code>Geophysics.CGS</code></a></li><li><a href="units.html#Geophysics.CGS2019"><code>Geophysics.CGS2019</code></a></li><li><a href="units.html#Geophysics.CODATA"><code>Geophysics.CODATA</code></a></li><li><a href="units.html#Geophysics.Conventional"><code>Geophysics.Conventional</code></a></li><li><a href="units.html#Geophysics.Electronic"><code>Geophysics.Electronic</code></a></li><li><a href="units.html#Geophysics.English"><code>Geophysics.English</code></a></li><li><a href="units.html#Geophysics.Hartree"><code>Geophysics.Hartree</code></a></li><li><a href="units.html#Geophysics.Metric"><code>Geophysics.Metric</code></a></li><li><a href="units.html#Geophysics.Natural"><code>Geophysics.Natural</code></a></li><li><a href="units.html#Geophysics.NaturalGauss"><code>Geophysics.NaturalGauss</code></a></li><li><a href="units.html#Geophysics.Planck"><code>Geophysics.Planck</code></a></li><li><a href="units.html#Geophysics.PlanckGauss"><code>Geophysics.PlanckGauss</code></a></li><li><a href="units.html#Geophysics.QCD"><code>Geophysics.QCD</code></a></li><li><a href="units.html#Geophysics.QCDGauss"><code>Geophysics.QCDGauss</code></a></li><li><a href="units.html#Geophysics.QCDoriginal"><code>Geophysics.QCDoriginal</code></a></li><li><a href="units.html#Geophysics.Rydberg"><code>Geophysics.Rydberg</code></a></li><li><a href="units.html#Geophysics.SI2019"><code>Geophysics.SI2019</code></a></li><li><a href="units.html#Geophysics.Schrodinger"><code>Geophysics.Schrodinger</code></a></li><li><a href="units.html#Geophysics.Stoney"><code>Geophysics.Stoney</code></a></li><li><a href="units.html#Geophysics.UnitSystem"><code>Geophysics.UnitSystem</code></a></li><li><a href="units.html#Geophysics.atomicmass"><code>Geophysics.atomicmass</code></a></li><li><a href="units.html#Geophysics.avogadro"><code>Geophysics.avogadro</code></a></li><li><a href="units.html#Geophysics.bohr"><code>Geophysics.bohr</code></a></li><li><a href="units.html#Geophysics.bohrreduced"><code>Geophysics.bohrreduced</code></a></li><li><a href="units.html#Geophysics.boltzmann"><code>Geophysics.boltzmann</code></a></li><li><a href="units.html#Geophysics.charge"><code>Geophysics.charge</code></a></li><li><a href="units.html#Geophysics.conductance"><code>Geophysics.conductance</code></a></li><li><a href="units.html#Geophysics.coulomb"><code>Geophysics.coulomb</code></a></li><li><a href="units.html#Geophysics.einstein"><code>Geophysics.einstein</code></a></li><li><a href="units.html#Geophysics.electronmass"><code>Geophysics.electronmass</code></a></li><li><a href="units.html#Geophysics.faraday"><code>Geophysics.faraday</code></a></li><li><a href="units.html#Geophysics.feet"><code>Geophysics.feet</code></a></li><li><a href="units.html#Geophysics.hardtree"><code>Geophysics.hardtree</code></a></li><li><a href="units.html#Geophysics.impedance"><code>Geophysics.impedance</code></a></li><li><a href="units.html#Geophysics.josephson"><code>Geophysics.josephson</code></a></li><li><a href="units.html#Geophysics.kelvin"><code>Geophysics.kelvin</code></a></li><li><a href="units.html#Geophysics.kilograms"><code>Geophysics.kilograms</code></a></li><li><a href="units.html#Geophysics.klitzing"><code>Geophysics.klitzing</code></a></li><li><a href="units.html#Geophysics.lightspeed"><code>Geophysics.lightspeed</code></a></li><li><a href="units.html#Geophysics.magneticflux"><code>Geophysics.magneticflux</code></a></li><li><a href="units.html#Geophysics.magneton"><code>Geophysics.magneton</code></a></li><li><a href="units.html#Geophysics.meters"><code>Geophysics.meters</code></a></li><li><a href="units.html#Geophysics.molecules"><code>Geophysics.molecules</code></a></li><li><a href="units.html#Geophysics.moles"><code>Geophysics.moles</code></a></li><li><a href="units.html#Geophysics.newton"><code>Geophysics.newton</code></a></li><li><a href="units.html#Geophysics.permeability"><code>Geophysics.permeability</code></a></li><li><a href="units.html#Geophysics.permittivity"><code>Geophysics.permittivity</code></a></li><li><a href="units.html#Geophysics.planck"><code>Geophysics.planck</code></a></li><li><a href="units.html#Geophysics.planckmass"><code>Geophysics.planckmass</code></a></li><li><a href="units.html#Geophysics.planckreduced"><code>Geophysics.planckreduced</code></a></li><li><a href="units.html#Geophysics.protonmass"><code>Geophysics.protonmass</code></a></li><li><a href="units.html#Geophysics.rankine"><code>Geophysics.rankine</code></a></li><li><a href="units.html#Geophysics.rydberg"><code>Geophysics.rydberg</code></a></li><li><a href="units.html#Geophysics.slugs"><code>Geophysics.slugs</code></a></li><li><a href="units.html#Geophysics.stefan"><code>Geophysics.stefan</code></a></li><li><a href="units.html#Geophysics.universal"><code>Geophysics.universal</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="index.html">« Home</a><a class="docs-footer-nextpage" href="references.html">References »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 14 November 2020 23:36">Saturday 14 November 2020</span>. Using Julia version 1.5.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+3.7012657162227465e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.radiationdensity" href="#Geophysics.radiationdensity"><code>Geophysics.radiationdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">radiationdensity(U::UnitSystem) = 4stefan(U)/lightspeed(U)</code></pre><p>Raditation density constant of black body radiation (J⋅m⁻³⋅K⁻⁴ or lb⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; radiationdensity(Metric) # J⋅m⁻³⋅K⁻⁴
+7.565733239877308e-16
+
+julia&gt; radiationdensity(CGS) # erg⋅cm⁻³⋅K⁻⁴
+7.565733239877308e-15
+
+julia&gt; radiationdensity(English) # lb⋅ft⁻²⋅°R⁻⁴
+1.505235719837102e-18</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.impedance" href="#Geophysics.impedance"><code>Geophysics.impedance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">impedance(U::UnitSystem) = permeability(U)*lightspeed(U)</code></pre><p>Vacuum impedance of free space <code>Z₀</code> is magnitude ratio of electric to magnetic field (Ω).</p><pre><code class="language-Julia">julia&gt; impedance(Metric) # Ω
+376.73031346177066
+
+julia&gt; impedance(Conventional) # Ω
+376.7303069637538
+
+julia&gt; impedance(CODATA) # Ω
+376.730313611642
+
+julia&gt; impedance(SI2019) # Ω
+376.73031366716765
+
+julia&gt; 120π # 3e8*μ₀ # Ω
+376.99111843077515</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.charge" href="#Geophysics.charge"><code>Geophysics.charge</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">charge(U::UnitSystem) = sqrt(2𝘩/137.035999084impedance(U)) # faraday(U)/avogadro(U)</code></pre><p>Quantized elementary charge <code>𝘦</code> of a proton or electron <code>2/(klitzing(U)*josephson(U))</code> (C).</p><pre><code class="language-Julia">julia&gt; charge(SI2019) # C
+1.602176634e-19
+
+julia&gt; charge(Metric) # C
+1.6021766344367608e-19
+
+julia&gt; charge(CODATA) # C
+1.6021766207089657e-19
+
+julia&gt; charge(Conventional) # C
+1.6021764916122715e-19
+
+julia&gt; 10lightspeed(Metric)*charge(metric) # statC
+4.80320471387964e-10
+
+julia&gt; charge(Planck) # sqrt(4π/αinv)
+0.30282212087175264</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.magneton" href="#Geophysics.magneton"><code>Geophysics.magneton</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">magneton(U::UnitSystem) = charge(U)*planckreduced(U)/2electronmass(U)</code></pre><p>Bohr magneton <code>μB</code> natural unit for expressing magnetic moment of electron (J⋅T⁻¹).</p><pre><code class="language-Julia">julia&gt; magneton(SI2019) # J⋅T⁻¹
+9.274010078302855e-24
+
+julia&gt; magneton(Metric) # J⋅T⁻¹
+9.274010080830994e-24
+
+julia&gt; magneton(CODATA) # J⋅T⁻¹
+9.274009846135233e-24
+
+julia&gt; magneton(Conventional) # J⋅T⁻¹
+9.274007440700856e-24
+
+julia&gt; magneton(CGS2019) # erg⋅T⁻¹
+9.274010078302856e-21
+
+julia&gt; magneton(Hartree) # 𝘤⋅ħ⋅mₑ⁻¹
+0.5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.conductance" href="#Geophysics.conductance"><code>Geophysics.conductance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">conductance(U::UnitSystem) = 2charge(U)^2/𝘩 # 2/klitzing(U)</code></pre><p>Conductance quantum <code>G₀</code> is a quantized unit of electrical conductance (S).</p><pre><code class="language-Julia">julia&gt; conductance(SI2019) # S
+7.748091729863649e-5
+
+julia&gt; conductance(Metric) # S
+7.748091734087984e-5
+
+julia&gt; conductance(Conventional) # S
+7.748091867730621e-5
+
+julia&gt; conductance(CODATA) # S
+7.74809173100563e-5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.faraday" href="#Geophysics.faraday"><code>Geophysics.faraday</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">faraday(U::UnitSystem) = charge(U)*avogadro(U)</code></pre><p>Electric charge per mole of electrons <code>𝔉</code> based on elementary charge (C⋅mol⁻¹).</p><pre><code class="language-Julia">julia&gt; faraday(SI2019) # C⋅mol⁻¹
+96485.33212331001
+
+julia&gt; faraday(Metric) # C⋅mol⁻¹
+96485.33218277861
+
+julia&gt; faraday(CODATA) # C⋅mol⁻¹
+96485.33135607147
+
+julia&gt; faraday(Conventional) # C⋅mol⁻¹
+96485.32358168683
+
+julia&gt; faraday(Metric)/kcal # kcal⋅(V-g-e)⁻¹
+23.060547844832364
+
+julia&gt; faraday(Metric)/3600 # A⋅h⋅mol⁻¹
+26.801481161882947</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.magneticflux" href="#Geophysics.magneticflux"><code>Geophysics.magneticflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">magneticflux(U::UnitSystem) = planck(U)/2charge(U)</code></pre><p>Magnetic flux quantum <code>Φ₀</code> is <code>1/josephson(U)</code> (Wb).</p><pre><code class="language-Julia">julia&gt; magneticflux(SI2019) # Wb
+2.0678338484619295e-15
+
+julia&gt; magneticflux(Metric) # Wb
+2.067833847898228e-15
+
+julia&gt; magneticflux(Conventional) # Wb
+2.0678336278962334e-15
+
+julia&gt; magneticflux(CODATA) # Wb
+2.067833831003209e-15</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.josephson" href="#Geophysics.josephson"><code>Geophysics.josephson</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">josephson(U::UnitSystem) = 2charge(U)/planck(U) # 1/magneticflux(U)</code></pre><p>Josephson constant <code>KJ</code> relating potential difference to irradiation frequency (Hz⋅V⁻¹).</p><pre><code class="language-Julia">julia&gt; josephson(SI2019) # Hz⋅V⁻¹
+4.835978484169836e14
+
+julia&gt; josephson(Metric) # Hz⋅V⁻¹
+4.835978485488147e14
+
+julia&gt; josephson(Conventional) # Hz⋅V⁻¹
+4.835979e14
+
+julia&gt; josephson(CODATA) # Hz⋅V⁻¹
+4.8359785250000006e14</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.klitzing" href="#Geophysics.klitzing"><code>Geophysics.klitzing</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">klitzing(U::UnitSystem) = 2/conductance(U)</code></pre><p>Quantized Hall resistance <code>RK</code> (Ω).</p><pre><code class="language-Julia">julia&gt; klitzing(SI2019) # Ω
+25812.807459304513
+
+julia&gt; klitzing(Metric) # Ω
+25812.80744523112
+
+julia&gt; klitzing(Conventional) # Ω
+25812.806999999997
+
+julia&gt; klitzing(CODATA) # Ω
+25812.8074555</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.hartree" href="#Geophysics.hartree"><code>Geophysics.hartree</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">hartree(U::UnitSystem) = electronmass(U)*(lightspeed(U)/137.035999084)^2 # mₑ*(𝘤/αinv)^2</code></pre><p>Hartree electric potential energy <code>Eₕ</code> of the hydrogen atom at ground state is <code>2R∞*𝘩*𝘤</code> (J).</p><pre><code class="language-Julia">julia&gt; hartree(Metric) # J
+4.359744722207209e-18
+
+julia&gt; hartree(CGS) # erg
+4.359744722207211e-11
+
+julia&gt; hartree(Metric)*avogadro(Metric)/1000 # kJ⋅mol⁻¹
+2625.499640382391
+
+julia&gt; hartree(Metric)*avogadro(Metric)/kcal # kcal⋅mol⁻¹
+627.5094742787742
+
+julia&gt; 2rydberg(Metric)/100 # Eₕ/𝘩/𝘤/100 cm⁻¹
+219474.631363202
+
+julia&gt; hartree(Metric)/planck(Metric)/10^12 # THz
+6.579683920501822e15
+
+julia&gt; hartree(Metric)/boltzmann(Metric) # K
+315775.0249126204</code></pre><p>In a Gaussian unit system where <code>4π*ε₀ == 1</code> the Hartree energy is <code>𝘦^2/a₀</code>.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.rydberg" href="#Geophysics.rydberg"><code>Geophysics.rydberg</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">rydberg(U::UnitSystem) = hartree(U)/2planck(U)/lightspeed(U) # Eₕ/2𝘩/𝘤</code></pre><p>Rydberg constant <code>R∞</code> is lowest energy photon capable of ionizing atom at ground state (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric) # m⁻¹
+1.09737315681601e7</code></pre><p>The Rydberg constant for hydrogen <code>RH</code> is <code>R∞*mₚ/(mₑ+mₚ)</code> (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric)*protonmass(Metric)/(electronmass(Metric)+protonmass(Metric))
+1.096775834028043e7</code></pre><p>Rydberg unit of photon energy <code>Ry</code> is <code>𝘩*𝘤*R∞</code> or <code>Eₕ/2</code> (J).</p><pre><code class="language-Julia">julia&gt; hartree(Metric)/2
+2.1798723611036047e-18</code></pre><p>Rydberg photon frequency <code>𝘤*R∞</code> or <code>Eₕ/2𝘩</code> (Hz)</p><pre><code class="language-Julia">julia&gt; lightspeed(Metric)*rydberg(Metric)
+3.289841960250911e15</code></pre><p>Rydberg wavelength <code>1/R∞</code> (m)</p><pre><code class="language-Julia">julia&gt; 1/rydberg(Metric)
+9.11267050582379e-8
+
+julia&gt; 1/rydberg(Metric)/2π # angular wavelength
+1.4503265557695784e-8</code></pre><p>Precision measurements of the Rydberg constants are within a relative standard uncertainty of under 2 parts in 10¹², and is chosen to constrain values of other physical constants.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.bohr" href="#Geophysics.bohr"><code>Geophysics.bohr</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">bohr(U) = 137.035999084*planckreduced(U)/electronmass(U)/lightspeed(U)</code></pre><p>Bohr radius of the hydrogen atom in its ground state <code>a₀</code> (m).</p><pre><code class="language-Julia">julia&gt; bohr(Metric) # m
+5.291772109022829e-11
+
+julia&gt; 12bohr(English) # in
+2.08337484516022e-9
+
+julia&gt; bohr(Metric)/plancklength(Metric) # ℓP
+3.2740942461274044e24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.bohrreduced" href="#Geophysics.bohrreduced"><code>Geophysics.bohrreduced</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">bohrreduced(U::UnitSystem) = electronmass(U)/bohr(U)/1836.152673432705</code></pre><p>Reduced Bohr radius including the effect of reduced mass in hydrogen atom (m).</p><pre><code class="language-Julia">julia&gt; bohrreduced(Metric) # m
+5.2946540981872326e-11
+
+julia&gt; bohrreduced(Metric) # a₀
+1.000544617021487</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.electronradius" href="#Geophysics.electronradius"><code>Geophysics.electronradius</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">electronradius(U) = planckreduced(U)/electronmass(U)/lightspeed(U)/137.035999084</code></pre><p>Classical electron radius or Lorentz radius or Thomson scattering length (m).</p><pre><code class="language-Julia">julia&gt; electronradius(Metric) # m
+2.8179403261891358e-15
+
+julia&gt; electronradius(CODATA) # m
+2.81794027902073e-15
+
+julia&gt; electronradius(Conventional) # m
+2.8179397751789005e-15</code></pre></div></section></article><h2 id="Common-conversion-factors-1"><a class="docs-heading-anchor" href="#Common-conversion-factors-1">Common conversion factors</a><a class="docs-heading-anchor-permalink" href="#Common-conversion-factors-1" title="Permalink"></a></h2><p>Common conversion factors include <code>moles</code>, <code>molecules</code>, <code>kilograms</code>, <code>slugs</code>, <code>meters</code>, <code>feet</code>, <code>kelvin</code>, and <code>rankine</code>.</p><article class="docstring"><header><a class="docstring-binding" id="Geophysics.moles" href="#Geophysics.moles"><code>Geophysics.moles</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">moles(N::Real,U::UnitSystem=Metric) = N/avogadro(U)</code></pre><p>Converts the number of molecules <code>N</code> to number of moles (mol).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.molecules" href="#Geophysics.molecules"><code>Geophysics.molecules</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">molecules(n::Real,U::UnitSystem=Metric) = n*avogadro(U)</code></pre><p>Converts the number of moles <code>n</code> to number of molecules (dimensionless).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.kilograms" href="#Geophysics.kilograms"><code>Geophysics.kilograms</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">kilograms(m::Real) = 14.593902938825488m</code></pre><p>Converts mass <code>m</code> from slugs to kilogram (kg).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.slugs" href="#Geophysics.slugs"><code>Geophysics.slugs</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">slugs(m::Real) = 0.06852176584918959m</code></pre><p>Converts mass <code>m</code> from kilograms to slugs (slug).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.meters" href="#Geophysics.meters"><code>Geophysics.meters</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">meters(d) = 0.3048000001333915d</code></pre><p>Converts distance <code>d</code> from feet to meters (m).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.feet" href="#Geophysics.feet"><code>Geophysics.feet</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">feet(d) = 3.2808398935773093d</code></pre><p>Converts distance <code>d</code> from meters to feet (ft).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.kelvin" href="#Geophysics.kelvin"><code>Geophysics.kelvin</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">kelvin*T = (5/9)*T</code></pre><p>Converts temperature <code>T</code> from degrees Rankine to Kelvin (K).</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="Geophysics.rankine" href="#Geophysics.rankine"><code>Geophysics.rankine</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">rankine*T = (9/5)*T</code></pre><p>Converts temperature <code>T</code> from Kelvin to degrees Rankine (°R).</p></div></section></article><h2 id="Index-1"><a class="docs-heading-anchor" href="#Index-1">Index</a><a class="docs-heading-anchor-permalink" href="#Index-1" title="Permalink"></a></h2><ul><li><a href="units.html#Geophysics.CGS"><code>Geophysics.CGS</code></a></li><li><a href="units.html#Geophysics.CGS2019"><code>Geophysics.CGS2019</code></a></li><li><a href="units.html#Geophysics.CODATA"><code>Geophysics.CODATA</code></a></li><li><a href="units.html#Geophysics.Conventional"><code>Geophysics.Conventional</code></a></li><li><a href="units.html#Geophysics.Electronic"><code>Geophysics.Electronic</code></a></li><li><a href="units.html#Geophysics.English"><code>Geophysics.English</code></a></li><li><a href="units.html#Geophysics.Hartree"><code>Geophysics.Hartree</code></a></li><li><a href="units.html#Geophysics.Metric"><code>Geophysics.Metric</code></a></li><li><a href="units.html#Geophysics.Natural"><code>Geophysics.Natural</code></a></li><li><a href="units.html#Geophysics.NaturalGauss"><code>Geophysics.NaturalGauss</code></a></li><li><a href="units.html#Geophysics.Planck"><code>Geophysics.Planck</code></a></li><li><a href="units.html#Geophysics.PlanckGauss"><code>Geophysics.PlanckGauss</code></a></li><li><a href="units.html#Geophysics.QCD"><code>Geophysics.QCD</code></a></li><li><a href="units.html#Geophysics.QCDGauss"><code>Geophysics.QCDGauss</code></a></li><li><a href="units.html#Geophysics.QCDoriginal"><code>Geophysics.QCDoriginal</code></a></li><li><a href="units.html#Geophysics.Rydberg"><code>Geophysics.Rydberg</code></a></li><li><a href="units.html#Geophysics.SI2019"><code>Geophysics.SI2019</code></a></li><li><a href="units.html#Geophysics.Schrodinger"><code>Geophysics.Schrodinger</code></a></li><li><a href="units.html#Geophysics.Stoney"><code>Geophysics.Stoney</code></a></li><li><a href="units.html#Geophysics.kelvin"><code>Geophysics.kelvin</code></a></li><li><a href="units.html#Geophysics.rankine"><code>Geophysics.rankine</code></a></li><li><a href="units.html#Geophysics.UnitSystem"><code>Geophysics.UnitSystem</code></a></li><li><a href="units.html#Geophysics.atomicmass"><code>Geophysics.atomicmass</code></a></li><li><a href="units.html#Geophysics.avogadro"><code>Geophysics.avogadro</code></a></li><li><a href="units.html#Geophysics.bohr"><code>Geophysics.bohr</code></a></li><li><a href="units.html#Geophysics.bohrreduced"><code>Geophysics.bohrreduced</code></a></li><li><a href="units.html#Geophysics.boltzmann"><code>Geophysics.boltzmann</code></a></li><li><a href="units.html#Geophysics.charge"><code>Geophysics.charge</code></a></li><li><a href="units.html#Geophysics.conductance"><code>Geophysics.conductance</code></a></li><li><a href="units.html#Geophysics.coulomb"><code>Geophysics.coulomb</code></a></li><li><a href="units.html#Geophysics.einstein"><code>Geophysics.einstein</code></a></li><li><a href="units.html#Geophysics.electronmass"><code>Geophysics.electronmass</code></a></li><li><a href="units.html#Geophysics.electronradius"><code>Geophysics.electronradius</code></a></li><li><a href="units.html#Geophysics.faraday"><code>Geophysics.faraday</code></a></li><li><a href="units.html#Geophysics.feet"><code>Geophysics.feet</code></a></li><li><a href="units.html#Geophysics.hartree"><code>Geophysics.hartree</code></a></li><li><a href="units.html#Geophysics.impedance"><code>Geophysics.impedance</code></a></li><li><a href="units.html#Geophysics.josephson"><code>Geophysics.josephson</code></a></li><li><a href="units.html#Geophysics.kilograms"><code>Geophysics.kilograms</code></a></li><li><a href="units.html#Geophysics.klitzing"><code>Geophysics.klitzing</code></a></li><li><a href="units.html#Geophysics.lightspeed"><code>Geophysics.lightspeed</code></a></li><li><a href="units.html#Geophysics.magneticflux"><code>Geophysics.magneticflux</code></a></li><li><a href="units.html#Geophysics.magneton"><code>Geophysics.magneton</code></a></li><li><a href="units.html#Geophysics.meters"><code>Geophysics.meters</code></a></li><li><a href="units.html#Geophysics.molarmass"><code>Geophysics.molarmass</code></a></li><li><a href="units.html#Geophysics.molecules"><code>Geophysics.molecules</code></a></li><li><a href="units.html#Geophysics.moles"><code>Geophysics.moles</code></a></li><li><a href="units.html#Geophysics.newton"><code>Geophysics.newton</code></a></li><li><a href="units.html#Geophysics.permeability"><code>Geophysics.permeability</code></a></li><li><a href="units.html#Geophysics.permittivity"><code>Geophysics.permittivity</code></a></li><li><a href="units.html#Geophysics.planck"><code>Geophysics.planck</code></a></li><li><a href="units.html#Geophysics.planckmass"><code>Geophysics.planckmass</code></a></li><li><a href="units.html#Geophysics.planckreduced"><code>Geophysics.planckreduced</code></a></li><li><a href="units.html#Geophysics.protonmass"><code>Geophysics.protonmass</code></a></li><li><a href="units.html#Geophysics.radiationdensity"><code>Geophysics.radiationdensity</code></a></li><li><a href="units.html#Geophysics.rydberg"><code>Geophysics.rydberg</code></a></li><li><a href="units.html#Geophysics.slugs"><code>Geophysics.slugs</code></a></li><li><a href="units.html#Geophysics.stefan"><code>Geophysics.stefan</code></a></li><li><a href="units.html#Geophysics.universal"><code>Geophysics.universal</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="index.html">« Home</a><a class="docs-footer-nextpage" href="references.html">References »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Wednesday 25 November 2020 14:07">Wednesday 25 November 2020</span>. Using Julia version 1.5.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
