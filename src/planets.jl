@@ -127,13 +127,13 @@ const layers = Values("Troposphere","Tropopause","Stratosphere","Stratosphere","
 
 # Standard atmosphere weather conditions (sea level 45° lat)
 
-const Earth1922,Earth1922English = US22(288.16),US22E(518.69,2116.2,2.085553e7,32.174)
-const Earth1925,Earth1925English = US25(288.16),US25E(518.69,2116.2,2.085553e7,32.174)
-const Earth1956,Earth1956English = US56(288.16),US56E(518.69,2116.2,2.085553e7,32.174)
-const Earth1959,Earth1959English = US59(288.16),US59E(518.69,2116.2,2.085553e7,32.174)
-const Earth1962,Earth1962English = US62(288.15),US62E(518.67,2116.2,2.085553e7,32.174)
-const Earth1966,Earth1966English = US66(288.15),US66E(518.67,2116.2,2.085553e7,32.174)
-const Earth1976,Earth1976English = US76(288.15),US76E(518.67,2116.2,2.085553e7,32.174)
+const Earth1922,Earth1922English = US22(288.16),US22E(518.69,2116.2,2.085553e7,lbm)
+const Earth1925,Earth1925English = US25(288.16),US25E(518.69,2116.2,2.085553e7,lbm)
+const Earth1956,Earth1956English = US56(288.16),US56E(518.69,2116.2,2.085553e7,lbm)
+const Earth1959,Earth1959English = US59(288.16),US59E(518.69,2116.2,2.085553e7,lbm)
+const Earth1962,Earth1962English = US62(288.15),US62E(518.67,2116.2,2.085553e7,lbm)
+const Earth1966,Earth1966English = US66(288.15),US66E(518.67,2116.2,2.085553e7,lbm)
+const Earth1976,Earth1976English = US76(288.15),US76E(518.67,2116.2,2.085553e7,lbm)
 #const MarsWeather = MarsAtmosphere(242.15,699.) # to-do
 const english = haskey(ENV,"GEOUNITS") && ENV["GEOUNITS"] == "english"
 const Standard = if haskey(ENV,"STDATM")

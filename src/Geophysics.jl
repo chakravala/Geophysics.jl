@@ -242,7 +242,7 @@ function Weather{r,g}(A::Atmosphere{f,n},F::FluidState) where {r,g,f,n}
 end
 
 (A::Atmosphere)(F::FluidState=Air(288.16),r=6.356766e6,g=9.80665) = Weather{r,g}(A,F)
-(A::Atmosphere)(T,p=101325.0,r=6.356766e6,g=9.80665) = Weather{r,g}(A,fluid(A)(T,p))
+(A::Atmosphere)(T,p=atm,r=6.356766e6,g=9.80665) = Weather{r,g}(A,fluid(A)(T,p))
 (W::Weather)(hG::Real=0) = W(hG,layer(hG,W))
 function (W::Weather)(hG::Real,i)
     h = altgeopotent(hG,W)

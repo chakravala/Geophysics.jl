@@ -91,10 +91,10 @@ end
     return μ,k
 end
 @pure function viscond(G,T=518.69)
-    μ = viscosity(kelvin(T),G)*0.020886
-    Tμ = rankine(sutherlandviscosity(G))
-    k = conductivity(kelvin(T),G)*0.5778*778/3600
-    Tk = rankine(sutherlandconductivity(G))
+    μ = viscosity(kelvin*T,G)*0.020886
+    Tμ = rankine*sutherlandviscosity(G)
+    k = conductivity(kelvin*T,G)*0.5778*778/3600
+    Tk = rankine*sutherlandconductivity(G)
     return μ,Tμ,k,Tk
 end
 

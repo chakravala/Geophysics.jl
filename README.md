@@ -53,7 +53,7 @@ A `UnitSystem` is a consistent set of dimensional values selected to accomodate 
 Standardized for engineering based on fundamental constants: `kB` Boltzmann's constant, `ħ` reduced Planck's constant, `𝘤` speed of light, `μ₀` vacuum permeability, and `mₑ` electron rest mass.
 Primarily the `Metric` SI unit system is used in addition to the historic `English` engineering unit system.
 These constants induce derived values for `avogadro`, `boltzmann`, `universal`, `planck`, `planckreduced`, `lightspeed`, `planckmass`, `atomicmass`, `protonmass`, `electronmass`, `newton`, `einstein`, `permeability`, `permittivity`, `coulomb`, and
-additional constants `stefan`, `radiationintensity`, `impedance`, `charge`, `magneton`, `conductance`, `faraday`, `josephson`, `magneticflux`, `klitzing`, `hardtree`, `rydberg`, `bohr`, and `bohrreduced`.
+additional constants `stefan`, `radiationintensity`, `impedance`, `charge`, `magneton`, `conductance`, `faraday`, `magneticflux`, `josephson`, `klitzing`, `hartree`, `rydberg`, `bohr`, `bohrreduced`, and `molarmass`.
 
 https://geophysics.crucialflow.com/dev/units
 

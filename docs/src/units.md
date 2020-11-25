@@ -54,27 +54,30 @@ julia> mP # planckmass
 2.176434e-8
 ```
 
-From these numbers along with the `4π*1e-7` value of the Gaussian unit `μ₀`, the molar mass constant `Mᵤ`, `planckreduced`, `permeability`, `electronmass`, and proton to electon mass ratio are computed.
+From these numbers along with the `4π*1e-7` value of the Gaussian unit `μ₀`, the constants `planckreduced`, `permeability`, `electronmass`, `molarmass`, and proton to electon mass ratio are computed.
 
 ```Julia
-julia> Mᵤ # αinv^2*R∞*NA*2𝘩/𝘤/μₑₐ
-0.000999999999656256
-
 julia> ħ # 𝘩/2π
 1.0545718176461565e-34
 
-julia> μ₀+δμ₀ # 2𝘩/𝘤/αinv/𝘦^2
+julia> μ₀ # 2𝘩/𝘤/αinv/𝘦^2
 1.256637062121048e-6
 
-julia> mₑ # Mᵤ*μₑₐ/NA
+julia> mₑ # αinv^2*R∞*2𝘩/𝘤
 9.109383701558256e-31
+
+julia> Mᵤ # mₑ*NA/μₑₐ
+0.000999999999656256
 
 julia> μₚₑ # μₚₐ/μₑₐ
 1836.152673432705
 ```
 
-This results in the `Metric::UnitSystem{kB,ħ,𝘤,μ₀,mₑ}` and `SI2019::UnitSystem{kB,ħ,𝘤,μ₀+δμ₀,mₑ}` variants.
-
+These result in variants based on the original `molarmass` constant and Gaussian `permeability` along with the 2019 redefined exact values.
+```Julia
+Metric::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,ħ,𝘤,4π*1e-7,mₑ}
+SI2019::UnitSystem{kB,ħ,𝘤,μ₀,mₑ}
+```
 ```@docs
 Geophysics.Metric
 Geophysics.SI2019
@@ -94,8 +97,8 @@ julia> Kcd
 
 Alternatives to the SI unit system are the centimetre-gram-second variants.
 ```Julia
-CGS     ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}
-CGS2019 ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7(μ₀+δμ₀),1000mₑ}
+CGS     ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,4π,1000mₑ}
+CGS2019 ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}
 ```
 ```@docs
 Geophysics.CGS
@@ -105,16 +108,21 @@ Geophysics.CGS2019
 Historically, the `josephson` and `klitzing` constants have been used to define `Conventional` and `CODATA` derived `UnitSystem` variants.
 
 ```Julia
-julia> josephson(Conventional)
+CODATA::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,2/KJ2014/RK2014^2/π,𝘤,2KJ2014/𝘤/αinv,mₑ}()
+Conventional::UnitSystem{1000Rᵤ*mₑ/μₑᵤ,2/KJ1990/RK1990^2/π,𝘤,2KJ1990/𝘤/αinv,mₑ}()
+```
+
+```Julia
+julia> josephson(Conventional) # KJ1990
 4.835979e14
 
-julia> klitzing(Conventional)
+julia> klitzing(Conventional) # RK1990
 25812.807
 
-julia> josephson(CODATA)
+julia> josephson(CODATA) # KJ2014
 4.835978525e14
 
-julia> klitzing(CODATA)
+julia> klitzing(CODATA) # RK2014
 25812.8074555
 ```
 
@@ -175,6 +183,7 @@ Geophysics.QCDoriginal
 The following are fundamental constants of physics:
 
 ```@docs
+molarmass
 avogadro
 boltzmann
 universal
@@ -200,10 +209,11 @@ faraday
 magneticflux
 josephson
 klitzing
-hardtree
+hartree
 rydberg
 bohr
 bohrreduced
+electronradius
 ```
 
 ## Common conversion factors
