@@ -16,7 +16,17 @@ gage(P::Real,P0::Real=pressure()) = P-P0
 
 # thermodynamics
 
-include("units.jl")
+using UnitSystems
+import UnitSystems: Constants, molarmass
+for op ∈ (Constants...,UnitSystems.Physics...)
+    @eval import UnitSystems.$op
+end
+
+const Properties = (:units,:molarmass,:molecularmass,:gasconstant,UnitSystems.Constants...)
+
+const Intrinsic = (:viscosity,:conductivity,:heatvolume,:heatpressure,:heatratio,:prandtl,:sonicspeed,:freedom,:energy,:enthalpy)
+
+#include("units.jl")
 include("chemistry.jl")
 
 """
@@ -31,7 +41,7 @@ struct FluidState{f}
 end
 
 for Gas ∈ (:SutherlandGas,:Mixture,:AtomicGas,:DiatomicGas,:TriatomicGas)
-    @eval (G::$Gas)(T=288.15,P=101325.0) = FluidState{G}(T,P)
+    @eval (G::$Gas)(T=288.15,P=atm) = FluidState{G}(T,P)
 end
 
 """
@@ -241,8 +251,8 @@ function Weather{r,g}(A::Atmosphere{f,n},F::FluidState) where {r,g,f,n}
     Weather{r,g}(A,Values(T),Values(p),Values(ρ))
 end
 
-(A::Atmosphere)(F::FluidState=Air(288.16),r=6.356766e6,g=9.80665) = Weather{r,g}(A,F)
-(A::Atmosphere)(T,p=atm,r=6.356766e6,g=9.80665) = Weather{r,g}(A,fluid(A)(T,p))
+(A::Atmosphere)(F::FluidState=Air(288.16),r=6.356766e6,g=g₀) = Weather{r,g}(A,F)
+(A::Atmosphere)(T,p=atm,r=6.356766e6,g=g₀) = Weather{r,g}(A,fluid(A)(T,p))
 (W::Weather)(hG::Real=0) = W(hG,layer(hG,W))
 function (W::Weather)(hG::Real,i)
     h = altgeopotent(hG,W)

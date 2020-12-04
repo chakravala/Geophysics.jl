@@ -42,22 +42,7 @@ Other simple geophysical data about planets, can be added in a collaborative eff
 Complicated models will be excluded from this package, as it is only intended to provide a minimal foundation for geophysical data and constants of various planets, more complicated models should be built separately in packages to build on `Geophysics`.
 For example, some geographic conditions can be calculated externally, and then Geophysics is used to load that data.
 
-## Unit systems
-
-A `UnitSystem` is a consistent set of dimensional values selected to accomodate a particular use case or standardization. In total, five fundamental constants `kB,ħ,𝘤,μ,mₑ` are used to specify a specific unit system. These are the constants of `boltzmann`, `planckreduced`, `lightspeed`, `permeability`, and `electronmass`. Different choices of natural units or physical measurements result in a variety of unit systems optimized for many purposes.
-
-```Julia
-    UnitSystem{kB,ħ,𝘤,μ₀,mₑ}
-```
-
-Standardized for engineering based on fundamental constants: `kB` Boltzmann's constant, `ħ` reduced Planck's constant, `𝘤` speed of light, `μ₀` vacuum permeability, and `mₑ` electron rest mass.
-Primarily the `Metric` SI unit system is used in addition to the historic `English` engineering unit system.
-These constants induce derived values for `avogadro`, `boltzmann`, `universal`, `planck`, `planckreduced`, `lightspeed`, `planckmass`, `atomicmass`, `protonmass`, `electronmass`, `newton`, `einstein`, `permeability`, `permittivity`, `coulomb`, and
-additional constants `stefan`, `radiationintensity`, `impedance`, `charge`, `magneton`, `conductance`, `faraday`, `magneticflux`, `josephson`, `klitzing`, `hartree`, `rydberg`, `bohr`, `bohrreduced`, and `molarmass`.
-
-https://geophysics.crucialflow.com/dev/units
-
-Additional reference `UnitSystem` variants `CGS`, `CGS2019`, `SI2019`, `CODATA`, `Conventional`; along with several natural atomic units based on the fine structure constant `1/αinv` and the gravitational coupling constant `αG` (`Planck`, `PlanckGauss`, `Stoney`, `Hartree`, `Rydberg`, `Schrodinger`, `Electronic`, `Natural`, `NaturalGauss`, `QCD`, `QCDGauss`, and `QCDoriginal`).
+This package depends only on [AbstractTensors.jl](https://github.com/chakravala/AbstractTensors.jl) and [UnitSystems.jl](https://github.com/chakravala/UnitSystems.jl).
 
 ## References
 * R. A. Minzer and W. S. Ripley, [The ARDC Model Atmosphere, 1956](https://www.cia.gov/library/readingroom/docs/CIA-RDP81-01043R002600070006-6.pdf), ARDC (1956)

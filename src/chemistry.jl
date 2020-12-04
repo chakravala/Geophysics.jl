@@ -16,11 +16,18 @@ Induces dervived values of `molarmass`, `units`, `molecularmass`, `gasconstant`,
 abstract type AbstractMole{M,U} end
 
 """
-    molarmass(x) = molecularmass(x)*avogadro(x)
+    relativemass(x) = molecularmass(x)/atomicmass(units(x))
 
-Mass of 1 mole of a chemical (kg⋅mol⁻¹ or slug⋅slug-mol⁻¹).
+Relative atomic mass is ratio of average mass per (atom) to `atomicmass` (dimensionless).
 """
-@pure molarmass(::AbstractMole{M}) where M = M
+@pure relativemass(::AbstractMole{M}) where M = M
+
+"""
+    molarmass(x) = molarmass(units(x))*relativemass(x)
+
+Mass of 1 mole of a chemical `molecularmass(x)*avogadro(x)` (kg⋅mol⁻¹ or slug⋅slug-mol⁻¹).
+"""
+@pure molarmass(x::AbstractMole) = molarmass(units(x))*relativemass(x)
 
 """
     units(x)::UnitSystem
@@ -183,25 +190,25 @@ end
 
 function AtomicGas(G::AtomicGas,T=518.69)
     μ,Tμ,k,Tk = viscond(G,T)
-    AtomicGas(molarmass(G),μ,Tμ,k,Tk,T,English)
+    AtomicGas(relativemass(G),μ,Tμ,k,Tk,T,English)
 end
 function DiatomicGas(G::DiatomicGas,T=518.69)
     μ,Tμ,k,Tk = viscond(G,T)
-    M,ν = molarmass(G),meters(wavenumber(G))
+    M,ν = relativemass(G),meters(wavenumber(G))
     DiatomicGas(M,ν,μ,Tμ,k,Tk,T,English)
 end
 function TriatomicGas(G::TriatomicGas,T=518.69)
     μ,Tμ,k,Tk = viscond(G,T)
     ν1,ν2 = meters.(wavenumber(G))
-    TriatomicGas(molarmass(G),ν1,ν2,μ,Tμ,k,Tk,T,English)
+    TriatomicGas(relativemass(G),ν1,ν2,μ,Tμ,k,Tk,T,English)
 end
 function PentatomicGas(G::PentatomicGas,T=518.69)
     μ,Tμ,k,Tk = viscond(G,T)
-    PentatomicGas(molarmass(G),μ,Tμ,k,Tk,T,English)
+    PentatomicGas(relativemass(G),μ,Tμ,k,Tk,T,English)
 end
 function SutherlandGas(G::SutherlandGas,cᵥ,T=518.69)
     μ,Tμ,k,Tk = viscond(G,T)
-    SutherlandGas(molarmass(G),cᵥ,μ,Tμ,k,Tk,T,English)
+    SutherlandGas(relativemass(G),cᵥ,μ,Tμ,k,Tk,T,English)
 end
 
 """
@@ -260,7 +267,7 @@ struct Mixture{M,N,C,U} <: AbstractMole{M,U}
     f::Values{N,Float64}
 end
 
-Mixture{N,C,U}(f) where {N,C,U} = Mixture{f⋅molarmass.(C),N,C,U}(f)
+Mixture{N,C,U}(f) where {N,C,U} = Mixture{f⋅relativemass.(C),N,C,U}(f)
 Mixture{C,U}(f) where {C,U} = Mixture{length(C),C,U}(f)
 Mixture{C}(f) where C = Mixture{C,Metric}(f)
 

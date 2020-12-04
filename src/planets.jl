@@ -20,16 +20,16 @@ export N2E, O2E, CO2E, CH4E, H2E, N₂E, O₂E, CO₂E, CH₄E, H₂E, ArE, NeE,
 export AirMix, Nitrox, Traces
 export AirMixEnglish, NitroxEnglish, TracesEnglish
 
-const Nitrogen = DiatomicGas(28.013e-3,2744e2,1.735e-5,107,25.11e-3,150)
-const Oxygen = DiatomicGas(31.999e-3,2061e2,1.999e-5,139,25.33e-3,240)
-const Argon = AtomicGas(39.948e-3,2.187e-5,144,17.23e-3,170)
-const CarbonDioxide = TriatomicGas(44.01e-3,2565e2,1480e2,14.45e-5,222,15.8e-3,1800)
-const Neon = AtomicGas(20.18e-3,3.078e-5,NaN,48.29e-3,NaN)
-const Helium = AtomicGas(4.003e-3,2.928e-5,NaN,152.07e-3,NaN)
-const Methane = PentatomicGas(16.042e-3,10.74e-5,NaN,32.7e-3,NaN)
-const Krypton = AtomicGas(82.798e-3,2.432e-5,NaN,9.12e-3,NaN)
-const Hydrogen  = DiatomicGas(2.016e-3,4342e2,0.866e-5,97,180.1e-3,120)
-const Xenon = AtomicGas(131.293e-3,2.229e-5,NaN,5.27e-3,NaN)
+const Nitrogen = DiatomicGas(28.013,2744e2,1.735e-5,107,25.11e-3,150)
+const Oxygen = DiatomicGas(31.999,2061e2,1.999e-5,139,25.33e-3,240)
+const Argon = AtomicGas(39.948,2.187e-5,144,17.23e-3,170)
+const CarbonDioxide = TriatomicGas(44.01,2565e2,1480e2,14.45e-5,222,15.8e-3,1800)
+const Neon = AtomicGas(20.18,3.078e-5,NaN,48.29e-3,NaN)
+const Helium = AtomicGas(4.003,2.928e-5,NaN,152.07e-3,NaN)
+const Methane = PentatomicGas(16.042,10.74e-5,NaN,32.7e-3,NaN)
+const Krypton = AtomicGas(82.798,2.432e-5,NaN,9.12e-3,NaN)
+const Hydrogen  = DiatomicGas(2.016,4342e2,0.866e-5,97,180.1e-3,120)
+const Xenon = AtomicGas(131.293,2.229e-5,NaN,5.27e-3,NaN)
 const N2,O2,CO2,CH4,H2 = Nitrogen,Oxygen,CarbonDioxide,Methane,Hydrogen
 const N₂,O₂,CO₂,CH₄,H₂ = Nitrogen,Oxygen,CarbonDioxide,Methane,Hydrogen
 const Ar,Ne,He,Kr,Xe = Argon,Neon,Helium,Krypton,Xenon
@@ -60,7 +60,7 @@ const ArE,NeE,HeE,KrE,XeE = ArgonEnglish,NeonEnglish,HeliumEnglish,KryptonEnglis
 # Xenon Xe: 0.000009%, 131.293, 2.229, 5.27
 # Water H20: 0%,
 
-const air = SutherlandGas(0.028965923,720,1.7894e-5,110.4,0.02531,194,288.16) #287.0429-287.058, 0.0289654
+const air = SutherlandGas(28.965923,720,1.7894e-5,110.4,0.02531,194,288.16) #287.0429-287.058, 0.0289654
 const airEnglish = SutherlandGas(air,4290) # 3.7373e-7, 1716.49-.5
 #const MarsAir = Air # to-do
 export air, airEnglish
