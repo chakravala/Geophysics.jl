@@ -1,5 +1,5 @@
 #   This file is part of Geophysics.jl. It is licensed under the AGPL license
-#   Grassmann Copyright (C) 2019 Michael Reed
+#   Geophysics Copyright (C) 2019 Michael Reed
 
 using Documenter, UnitSystems, AbstractTensors, Geophysics
 
@@ -11,7 +11,11 @@ makedocs(
     authors = "Michael Reed",
     pages = Any[
         "Home" => "index.md",
-        "Unit systems" => "units.md",
+        "UnitSystems.jl" => Any[
+            "units.md",
+            "constants.md",
+            "convert.md"
+           ],
         "References" => "references.md"
         ]
 )

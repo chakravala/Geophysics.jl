@@ -1,34 +1,44 @@
-# Dimensional unit systems
+# The UnitSystem
+
+*Physical unit system constants (Metric, English, Natural, etc...)*
+
+[![DOI](https://zenodo.org/badge/317419353.svg)](https://zenodo.org/badge/latestdoi/317419353)
 
 ```@contents
-Pages = ["units.md","references.md"]
+Pages = ["units.md","constants.md","convert.md"]
 ```
 
-Specifications for dimensional units are in the [UnitSystems.jl](https://github.com/chakravala/UnitSystems.jl) repository.
+Specifications for dimensional units are in the [UnitSystems.jl](https://github.com/chakravala/UnitSystems.jl) and [UnitfulSystems.jl](https://github.com/chakravala/UnitfulSystems.jl) repositories.
+The two packages are designed so that they can be interchanged if compatibility with [Unitful.jl](https://github.com/PainterQubits/Unitful.jl) is desired or not.
+However, the `UnitfulSystems` package has fewer `UnitSystem` specifications available than the `UnitSystems` package due to limitations in combination with the `Unitful` package.
+Specifically, `Metric`, `SI2019`, `CODATA`, `Conventional`, `MTS`, `EMU2019`, `English`, and `EnglishUS` can have `Unitful` values; while `Gauss`, `LorentzHeaviside`, `Thomson`, `EMU`, `ESU`, `ESU2019`, `IAU`, `FFF`, `Planck`, `PlanckGauss`, `Stoney`, `Hartree`, `Rydberg`, `Schrodinger`, `Electronic`, `Natural`, `NaturalGauss`, `QCD`, `QCDGauss`, and `QCDoriginal` currently only support plain numerical values.
+
 ```Julia
-pkg> add UnitSystems
+pkg> add UnitSystems # or UnitfulSystems
 
 julia> using UnitSystems
 ```
 
 A `UnitSystem` is a consistent set of dimensional values selected to accomodate a particular use case or standardization.
+It is possible to convert derived physical quantities from any `UnitSystem` specification into any other using accurate values.
 In total, five fundamental constants `kB,ħ,𝘤,μ₀,mₑ` are used to specify a specific unit system.
 These are the constants of `boltzmann`, `planckreduced`, `lightspeed`, `permeability`, and `electronmass`.
 Different choices of natural units or physical measurements result in a variety of unit systems optimized for many purposes.
 
 ```math
-k_B, \qquad \hbar, \qquad c, \qquad \mu_0, \qquad m_e, \qquad (M_u)
+k_B, \qquad \hbar, \qquad c, \qquad \mu_0, \qquad m_e, \qquad (M_u), \qquad (\lambda), \qquad (\alpha_L)
 ```
-
-Another important additional definition is the `molarmass` constanat, which is automatically selected based on the choice of `boltzmann` constant (but can also be customized if necessary).
+Another important additional definition is the `molarmass` constant `Mᵤ`, which is automatically selected based on the choice of `boltzmann` constant (but can also be customized if necessary).
+Historically, older electromagnetic unit systems also relied on a `rationalization` constant `λ` and a `lorentz` force proportionality constant `αL`.
+In most unit systems these extra constants have a value of `1` unless otherwise specified.
 
 ```@docs
 UnitSystem
 ```
 
-Other similar packages include [PhysicalConstants.jl](https://github.com/JuliaPhysics/PhysicalConstants.jl), [MathPhysicalConstants.jl](https://github.com/LaGuer/MathPhysicalConstants.jl), [Unitful.jl](https://github.com/PainterQubits/Unitful.jl.git), [UnitfulUS](https://github.com/PainterQubits/UnitfulUS.jl), [UnitfulAstro](https://github.com/JuliaAstro/UnitfulAstro.jl), [UnitfulAtomic](https://github.com/sostock/UnitfulAtomic.jl), [NaturallyUnitful](https://github.com/MasonProtter/NaturallyUnitful.jl), and [UnitfulMoles](https://github.com/rafaqz/UnitfulMoles.jl).
+Other similar packages include [PhysicalConstants.jl](https://github.com/JuliaPhysics/PhysicalConstants.jl), [MathPhysicalConstants.jl](https://github.com/LaGuer/MathPhysicalConstants.jl), [Unitful.jl](https://github.com/PainterQubits/Unitful.jl.git), [UnitfulSystems.jl](https://github.com/chakravala/UnitfulSystems.jl), [UnitfulUS.jl](https://github.com/PainterQubits/UnitfulUS.jl), [UnitfulAstro.jl](https://github.com/JuliaAstro/UnitfulAstro.jl), [UnitfulAtomic.jl](https://github.com/sostock/UnitfulAtomic.jl), [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), and [UnitfulMoles.jl](https://github.com/rafaqz/UnitfulMoles.jl).
 
-## Metric SI Units
+## Metric SI Unit Systems
 
 In the Systeme International d'Unites (the SI units) the `UnitSystem` constants are derived from the most accurate possible physical measurements and a few exactly defined constants.
 Exact values are the `avogadro` number, `boltzmann` constant, `planck` constant, `lightspeed` definition, and elementary `charge` definition.
@@ -58,7 +68,7 @@ julia> 𝘦 # charge
 1.602176634e-19
 ```
 
-Physical measured values with uncertainty are the electron to proton mass ratio `μₑₐ`, proton to atomic mass ratio `μₚₐ`, fine structure constant `αinv`, the Rydberg `R∞` constant, and the Planck mass `mP`.
+Physical measured values with uncertainty are electron to proton mass ratio `μₑᵤ`, proton to atomic mass ratio `μₚᵤ`, inverted fine structure constant `αinv`, the Rydberg `R∞` constant, and the Planck mass `mP`.
 
 ```math
 \mu_{eu} = \frac{m_e}{m_u} \approx \frac{1}{1822.9},
@@ -85,13 +95,13 @@ julia> mP # planckmass
 2.176434e-8
 ```
 
-From these numbers along with the `4π*1e-7` value of the Gaussian unit `μ₀`, the constants `planckreduced`, `permeability`, `electronmass`, `molarmass`, and proton to electon mass ratio are computed.
+From these numbers along with the optional `4π` Gaussian `rationalization` value, the constants `planckreduced`, `permeability`, `electronmass`, `molarmass`, and proton to electon mass ratio are computed.
 
 ```math
 \hbar = \frac{h}{2\pi}, \qquad
 \mu_0 = \frac{2h\alpha}{ce^2}, \qquad
-m_e = \frac{2hR_\infty}{c\alpha}, \qquad
-M_u = \frac{m_e}{\mu_{eu}}N_A = \frac{2h R_\infty N_A}{c\alpha\mu_{eu}}, \qquad
+m_e = \frac{2hR_\infty}{c\alpha^2}, \qquad
+M_u = \frac{m_e}{\mu_{eu}}N_A = \frac{2h R_\infty N_A}{c\alpha^2\mu_{eu}}, \qquad
 \mu_{pe} = \frac{\mu_{pu}}{\mu_{eu}} = \frac{m_p}{m_e}
 ```
 
@@ -138,17 +148,17 @@ Metric
 SI2019
 ```
 
-Additional reference values include the ground state hyperfine structure transition frequency of caesium-133 `ΔνCs` and luminous efficacy `Kcd` of monochromatic radiation of 540 THz.
+Additional reference values include the ground state `hyperfine` structure transition frequency of caesium-133 `ΔνCs` and `luminousefficacy` of monochromatic radiation `Kcd` of 540 THz.
 
 ```Julia
-julia> ΔνCs
+julia> ΔνCs # hyperfine
 9.19263177e9
 
-julia> Kcd
-683.0
+julia> Kcd # luminousefficacy
+683.002
 ```
 
-## Other historic systems
+## Electromagnetic CGS Systems
 
 Alternatives to the SI unit system are the centimetre-gram-second variants.
 
@@ -158,32 +168,52 @@ Alternatives to the SI unit system are the centimetre-gram-second variants.
 \tilde c = 100c, \quad
 \tilde\mu_0 = 4\pi + \delta\tilde \mu_0, \quad
 \tilde m_e = 1000m_e, \quad
-(\tilde M_u = 1 + \delta \tilde M_u)
+(\tilde M_u, \, \tilde \lambda,\, \tilde \alpha_L)
 ```
-
+There are multiple choices of elctromagnetic units for these variants based on electromagnetic units, electrostatic units, Gaussian non-rationalized units, and Lorentz-Heaviside rationalized units.
 ```Julia
-CGS     ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,4π,1000mₑ}
-CGS2019 ::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}
+EMU              ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,1,1000mₑ,4π}
+ESU              ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,(100𝘤)^-2,1000mₑ,4π}
+Gauss            ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,1,1000mₑ,4π,0.01/𝘤}
+LorentzHeaviside ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,1,1000mₑ,1,0.01/𝘤}
+```
+Note that `CGS` is an alias for the `Gauss` system.
+```@docs
+EMU
+ESU
+Gauss
+LorentzHeaviside
+```
+When `Thomson` originally derived Maxwell's equations using electromagnetic notation, he arrived at a factor of `1/2` for the `lorentz` force constant, resulting in a slightly different sytem.
+```@docs
+Thomson
+```
+Newer modern and rationalized variants of electromagnetic and electrostatic units are also made available.
+```Julia
+EMU2019::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}
+ESU2019::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e3*μ₀/𝘤^2,1000mₑ}
 ```
 ```@docs
-CGS
-CGS2019
+EMU2019
+ESU2019
 ```
 
-Historically, the `josephson` and `klitzing` constants have been used to define `Conventional` and `CODATA` derived `UnitSystem` variants.
+## Historical Unit Systems
+
+Historically, the `josephson` and `klitzing` constants have been used to define `Conventional` and `CODATA` variants.
 
 ```math
-\tilde k_B = \frac{8 \tilde R_\infty R_u}{c\alpha\mu_{eu} \tilde M_u \tilde K_J^2 \tilde R_K}, \quad
+\tilde k_B = \frac{8 \tilde R_\infty R_u}{c\alpha^2\mu_{eu} \tilde M_u \tilde K_J^2 \tilde R_K}, \quad
 \tilde \hbar = \frac{2}{\pi\tilde K_J^2 \tilde R_K}, \quad
 \tilde c = c, \quad
 \tilde\mu_0 = \frac{2\tilde R_K\alpha}{c}, \quad
-\tilde m_e = \frac{8\tilde R_\infty}{\tilde K_J^2\tilde R_Kc\alpha}, \quad
+\tilde m_e = \frac{8\tilde R_\infty}{\tilde K_J^2\tilde R_Kc\alpha^2}, \quad
 (\tilde M_u = \frac{1}{1000})
 ```
 
 ```Julia
-CODATA::UnitSystem{1000Rᵤ*mₑ2014/μₑᵤ,2/RK2014/KJ2014^2/π,𝘤,2RK2014/𝘤/αinv,mₑ2014}()
-Conventional::UnitSystem{1000Rᵤ*mₑ/μₑᵤ,2/RK1990/KJ1990^2/π,𝘤,2RK1990/𝘤/αinv,mₑ}()
+CODATA       ::UnitSystem{Rᵤ*mₑ2014/μₑᵤ/0.001,2/RK2014/KJ2014^2/π,𝘤,2RK2014/𝘤/αinv,mₑ2014}
+Conventional ::UnitSystem{Rᵤ*mₑ1990/μₑᵤ/0.001,2/RK1990/KJ1990^2/π,𝘤,2RK1990/𝘤/αinv,mₑ1990}
 ```
 
 ```Julia
@@ -205,19 +235,36 @@ Conventional
 CODATA
 ```
 
+In the Soviet Union, a metre-tonne-second system was also used briefly.
+```math
+\tilde k_B = 10^3\frac{\tilde m_e R_u}{\mu_{eu} \tilde M_u}, \quad
+\tilde \hbar = 1000\hbar, \quad
+\tilde c = c, \quad
+\tilde\mu_0 = \frac{4\pi}{1000}, \quad
+\tilde m_e = \frac{m_e}{1000}, \quad
+(\tilde M_u = 10^{-6})
+```
+```@docs
+MTS
+```
+
 In Britain and the United States an `English` system of engineering units was commonly used.
 
 ```math
-\tilde k_B = 5.657302466\mathrm{e}{-24}, \quad
+\tilde k_B = \frac{m_e R_u}{\mu_{eu} M_u\text{slug}\,\text{ft}^2}, \quad
 \tilde \hbar = \frac{\hbar}{\text{slug}\cdot \text{ft}^2}, \quad
 \tilde c = \frac{c}{\text{ft}}, \quad
 \tilde\mu_0 = 4\pi, \quad
 \tilde m_e = \frac{m_e}{\text{slug}}, \quad
-(\tilde M_u = \frac{R_u \tilde m_e ^\circ R}{\tilde k_B\mu_{eu} \text{ft}})
+(\tilde M_u = 1)
 ```
-
+```Julia
+English   ::UnitSystem{kB*rankine/slug/ft^2,ħ/slug/ft^2,𝘤/ft,4π,mₑ/slug}
+EnglishUS ::UnitSystem{1000Rᵤ*mₑ/μₑᵤ*rankine/slug/ftUS^2,ħ/slug/ftUS^2,𝘤/ftUS,4π,mₑ/slug}
+```
 ```@docs
 English
+EnglishUS
 ```
 
 The International Astronomical Union (IAU) units are based on the solar mass, distance from the sun to the earth, and the length of a terrestrial day.
@@ -231,19 +278,23 @@ The International Astronomical Union (IAU) units are based on the solar mass, di
 (\tilde M_u = \frac{1}{1000m_\odot})
 ```
 
-
 ```@docs
 IAU
 ```
 
-## Natural units
+An impractical yet humorous unit system is the `FFF` specification.
+```@docs
+FFF
+```
+
+## Natural Unit Systems
 
 With the introduction of the `planckmass` a set of natural atomic unit systems can be derived in terms of the gravitational coupling constant.
 
 ```math
 \alpha_G = \left(\frac{m_e}{m_P}\right)^2, \qquad
 \tilde k_B = 1, \qquad
-(\tilde M_u = 1)
+(\tilde M_u = 1, \quad \tilde \lambda = 1, \quad \tilde \alpha_L = 1)
 ```
 
 ```Julia
@@ -259,7 +310,7 @@ PlanckGauss  ::UnitSystem{1,1,1,4π,√αG}
 Stoney       ::UnitSystem{1,αinv,1,4π,√(αG*αinv)}
 Hartree      ::UnitSystem{1,1,αinv,4π/αinv^2,1}
 Rydberg      ::UnitSystem{1,1,2αinv,π/αinv^2,1/2}
-Schrodinger  ::UnitSystem{1,1,αinv,4π/αinv^2,√αinv*mₑ/mP}
+Schrodinger  ::UnitSystem{1,1,αinv,4π/αinv^2,√(αG*αinv)}
 Electronic   ::UnitSystem{1,αinv,1,4π,1}
 Natural      ::UnitSystem{1,1,1,1,1}
 NaturalGauss ::UnitSystem{1,1,1,4π,1}
@@ -400,245 +451,9 @@ QCDGauss
 QCDoriginal
 ```
 
-## Fundamental constants of physics
-
-The following are fundamental constants of physics:
-
-```math
-M_u = m_uN_A = N_A\frac{m_e}{\mu_{eu}} = N_A\frac{m_p}{\mu_{pu}} = N_A\frac{2R_\infty h}{\mu_{eu}c\alpha^2}
-```
-```@docs
-molarmass
-```
-
-```math
-N_A = \frac{R_u}{k_B} = \frac{M_u}{m_u} = M_u\frac{\mu_{eu}}{m_e} = M_u\frac{\mu_{eu}c\alpha^2}{2R_\infty h}
-```
-```@docs
-avogadro
-```
-
-```math
-k_B = \frac{R_u}{N_A} = m_u\frac{R_u}{M_u} = \frac{m_e R_u}{\mu_{eu}M_u} = \frac{2R_uR_\infty h}{M_u \mu_{eu}c\alpha^2}
-```
-```@docs
-boltzmann
-```
-
-```math
-R_u = k_B N_A = \frac{PV}{nT}, \qquad R_s = \frac{R_u}{M_s} = c_p - c_v
-```
-```@docs
-universal
-```
-
-```math
-c = \frac1{\sqrt{\mu_0\varepsilon_0}}, \qquad \frac{dt}{d\tau} = \sqrt{1-\frac{v^2}{c^2}}
-```
-```@docs
-lightspeed
-```
-
-```math
-h = 2\pi\hbar = \frac{2e}{K_J} = \frac{8\alpha}{c\mu_0K_J^2} = \frac{4}{K_J^2R_K}
-```
-```@docs
-planck
-```
-
-```math
-\hbar = \frac{h}{2\pi} = \frac{e}{\pi K_J} = \frac{4\alpha}{\pi c\mu_0K_J^2} = \frac{2}{\pi K_J^2R_K}
-```
-```@docs
-planckreduced
-```
-
-```math
-m_P = \sqrt{\frac{\hbar c}{G}} = \frac{m_e}{\sqrt{\alpha_G}} = \frac{2R_\infty h}{c\alpha^2\sqrt{\alpha_G}}
-```
-```@docs
-planckmass
-```
-
-```math
-m_u = \frac{M_u}{N_A} = \frac{m_e}{\mu_{eu}} = \frac{m_p}{\mu_{pu}} = \frac{2R_\infty h}{\mu_{eu}c\alpha^2} = \frac{m_P}{\mu_{eu}}\sqrt{\alpha_G}
-```
-```@docs
-atomicmass
-```
-
-```math
-m_p = \mu_{pu} m_u = \mu_{pu}\frac{M_u}{N_A} = \mu_{pe}m_e = \mu_{pe}\frac{2R_\infty h}{c\alpha^2} = m_P\mu_{pe}\sqrt{\alpha_G}
-```
-```@docs
-protonmass
-```
-
-```math
-m_e = \mu_{eu}m_u = \mu_{eu}\frac{M_u}{N_A} = \frac{m_p}{\mu_{pe}} = \frac{2R_\infty h}{c\alpha^2} = m_P\sqrt{\alpha_G}
-```
-```@docs
-electronmass
-```
-
-```math
-G = \frac{\hbar c}{m_P^2} = \frac{\hbar c\alpha_G}{m_e^2} = \frac{c^3\alpha^2\alpha_G}{8\pi R_\infty^2 h} = \frac{\kappa c^4}{8\pi}
-```
-```@docs
-newton
-```
-
-```math
-\kappa = \frac{8\pi G}{c^4} = \frac{8\pi\hbar}{c^3m_P^2} = \frac{8\pi\hbar\alpha_G}{c^3m_e^2} = \frac{\alpha^2\alpha_G}{R_\infty^2 h c}
-```
-```@docs
-einstein
-```
-
-```math
-\sigma = \frac{2\pi^5 k_B^4}{15h^3c^2} = \frac{\pi^2 k_B^4}{60\hbar^3c^2} = \frac{32\pi^5 h}{15c^6\alpha^8} \left(\frac{R_uR_\infty}{\mu_{eu}M_u}\right)^4
-```
-```@docs
-stefan
-```
-
-```math
-a = 4\frac{\sigma}{c} = \frac{8\pi^5 k_B^4}{15h^3c^3} = \frac{\pi^2 k_B^4}{15\hbar^3c^3} = \frac{2^7\pi^5 h}{15c^7\alpha^8} \left(\frac{R_uR_\infty}{\mu_{eu}M_u}\right)^4
-```
-```@docs
-radiationdensity
-```
-
-```math
-\mu_0 = \frac{1}{\varepsilon_0 c^2} = \frac{4\pi k_e}{c^2} = \frac{2h\alpha}{ce^2} = \frac{2R_K\alpha}{c}
-```
-```@docs
-permeability
-```
-
-```math
-\varepsilon_0 = \frac{1}{\mu_0c^2} = \frac{1}{4\pi k_e} = \frac{e^2}{2\alpha hc} = \frac{1}{2R_K\alpha c}
-```
-```@docs
-permittivity
-```
-
-```math
-k_e = \frac{1}{4\pi\varepsilon_0} = \frac{\mu_0c^2}{4\pi} = \frac{\alpha h c}{2\pi e^2} = \frac{R_K\alpha c}{2\pi}
-```
-```@docs
-coulomb
-```
-
-```math
-e = \sqrt{\frac{2h\alpha}{Z_0}} = \frac{2}{K_JR_K} = \sqrt{\frac{h}{R_K}} = \frac{hK_J}{2} = \frac{F}{N_A}
-```
-```@docs
-charge
-```
-
-```math
-F = eN_A = N_A\sqrt{\frac{2h\alpha}{Z_0}} = \frac{2N_A}{K_JR_K} = N_A\sqrt{\frac{h}{R_K}} = \frac{hK_JN_A}{2}
-```
-```@docs
-faraday
-```
-
-```math
-Z_0 = \mu_0c = \frac{1}{\varepsilon_0 c} = \sqrt{\frac{\mu_0}{\varepsilon_0}} = \frac{2h\alpha}{e^2} = 2R_K\alpha
-```
-```@docs
-impedance
-```
-
-```math
-G_0 = \frac{2e^2}{h} = \frac{4\alpha}{Z_0} = \frac{2}{R_K} = \frac{hK_J^2}{2} = \frac{2F^2}{hN_A^2}
-```
-```@docs
-conductance
-```
-
-```math
-R_K = \frac{h}{e^2} = \frac{Z_0}{2\alpha} = \frac{2}{G_0} = \frac{4}{hK_J^2} = h\frac{N_A^2}{F^2}
-```
-```@docs
-klitzing
-```
-
-```math
-K_J = \frac{2e}{h} = \sqrt{\frac{8\alpha}{hZ_0}} = \sqrt{\frac{4}{hR_K}} = \frac{1}{\Phi_0} = \frac{2F}{hN_A}
-```
-```@docs
-josephson
-```
-
-```math
-\Phi_0 = \frac{h}{2e} = \sqrt{\frac{hZ_0}{8\alpha}} = \sqrt{\frac{hR_K}{4}} = \frac{1}{K_J} = \frac{hN_A}{2F}
-```
-```@docs
-magneticflux
-```
-
-```math
-\mu_B = \frac{e\hbar}{2m_e} = \frac{\hbar}{m_eK_JR_K} = \frac{h^2K_J}{8\pi m_e} = \frac{\hbar F}{2m_e N_A} = \frac{ec\alpha^2}{8\pi R_\infty}
-```
-```@docs
-magneton
-```
-
-```math
-E_h = m_e(c\alpha)^2 = \frac{\hbar c\alpha}{a_0} = \frac{\hbar^2}{m_ea_0^2} = 2R_\infty hc = m_P\sqrt{\alpha_G}(c\alpha)^2
-```
-```@docs
-hartree
-```
-
-```math
-R_\infty = \frac{E_h}{2hc} = \frac{m_e c\alpha^2}{2h} = \frac{\alpha}{4\pi a_0} = \frac{m_e c r_e}{2ha_0} = \frac{\alpha^2m_ec}{4\pi\hbar}  = \frac{m_Pc\sqrt{\alpha_G}\alpha^2}{2h}
-```
-```@docs
-rydberg
-```
-
-```math
-a_0 = \frac{\hbar}{m_ec\alpha} = \frac{\hbar^2}{k_e m_ee^2} = \frac{\mu_{pe}}{m_e}a_0^* = \frac{r_e}{\alpha^2} = \frac{\alpha}{4\pi R_\infty}
-```
-```@docs
-bohr
-```
-
-```math
-a_0* = \frac{m_e}{\mu_{pe}}a_0 = \frac{\hbar}{\mu_{pe}c\alpha} = \frac{\hbar^2}{k_e \mu_{pe}e^2} = \frac{m_er_e}{\mu_{pe}\alpha^2} = \frac{m_e\alpha}{4\pi\mu_{pe} R_\infty}
-```
-```@docs
-bohrreduced
-```
-
-```math
-r_e = \frac{\hbar\alpha}{m_ec} = \alpha^2a_0 = \frac{e^2 k_e}{m_ec^2} = \frac{2hR_\infty a_0}{m_ec} = \frac{\alpha^3}{4\pi R_\infty}
-```
-```@docs
-electronradius
-```
-
-## Common conversion factors
-
-Common conversion factors include `moles`, `molecules`, `kilograms`, `slugs`, `meters`, `feet`, `kelvin`, and `rankine`.
-
-```@docs
-moles
-molecules
-kilograms
-slugs
-meters
-feet
-kelvin
-rankine
-```
-
-## Index
+## UnitSystem Index
 
 ```@index
-Pages = ["units.md"]
+Pages = ["units.md","constants.md"]
 ```
 
