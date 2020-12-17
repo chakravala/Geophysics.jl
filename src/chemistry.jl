@@ -97,6 +97,13 @@ end
     k = k0*sqrt(Tk)*(T0+Tk)/T
     return μ,k
 end
+#=@pure function viscond(G,T=518.69)
+    μ = viscosity(T/kelvin,G)*0.020886
+    Tμ = sutherlandviscosity(G)/rankine
+    k = thermalconductivity(T/kelvin,G)*0.5778*778/3600
+    Tk = sutherlandconductivity(G)/rankine
+    return μ,Tμ,k,Tk
+end=#
 
 for heat ∈ (:heatratio,:heatvolume,:heatpressure)
     @eval @pure $heat(M::AbstractMole,U::US=Metric) = $heat(temperature(288.16,U,Metric),M,U)
