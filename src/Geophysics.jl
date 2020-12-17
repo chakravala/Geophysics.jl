@@ -31,7 +31,7 @@ include("chemistry.jl")
     FluidState{f}
 
 Thermodynamic state of fluid `f` at temperature `T` and pressure `P`.
-Induces derived values `fluid`, `temperature`, `pressure`, `density`, `specificvolume`, `kinematic`, `heatcapacity`, `thermaldiffusivity`, `elasticity`, `impedance`, `intensity`, and values associated with `f::AbstractMole` derivations.
+Induces derived values `fluid`, `temperature`, `pressure`, `density`, `specificvolume`, `kinematic`, `heatcapacity`, `thermaldiffusivity`, `elasticity`, `specificimpedance`, `intensity`, and values associated with `f::AbstractMole` derivations.
 """
 struct FluidState{f,u}
     T::Float64
@@ -42,7 +42,8 @@ for Gas ∈ (:SutherlandGas,:Mixture,:AtomicGas,:DiatomicGas,:TriatomicGas)
     @eval (G::$Gas)(T=288.15,P=atm,U=Metric) = FluidState{G,U}(T,P)
 end
 
-units(::FluidState{f,u}) where {f,u} = u
+@pure units(::FluidState{f,u}) where {f,u} = u
+(U::UnitSystem)(F::FluidState{G,S}) where {G,S} = FluidState{G,U}(temperature(F,U),pressure(F,U))
 
 """
     fluid(x)
@@ -71,7 +72,7 @@ for op ∈ Properties
     @eval @pure $op(F::FluidState,U::US=units(F)) = $op(fluid(F),U)
 end
 for op ∈ Intrinsic
-    @eval @pure $op(F::FluidState,U::US=units(F)) = $op(temperature(F),fluid(F),U)
+    @eval @pure $op(F::FluidState,U::US=units(F)) = $op(temperature(F,U),fluid(F),U)
 end
 
 @doc """
@@ -177,11 +178,11 @@ Bulk modulus of elasticity `B` at a pressure and temperature (Pa or slug⋅ft⁻
 @pure elasticity(F::FluidState,U::US=units(F)) = heatratio(F,U)*pressure(F,U)
 
 """
-    impedance(F::FluidState) = density(F)*sonicspeed(F)
+    specificimpedance(F::FluidState) = density(F)*sonicspeed(F)
 
 Specific acoustic resistance at a pressure and temperature (kg⋅m⁻³⋅s⁻¹ or slug⋅ft⁻³⋅s⁻¹).
 """
-@pure impedance(F::FluidState,U::US=units(F)) = density(F,U)*sonicspeed(F,U)
+@pure specificimpedance(F::FluidState,U::US=units(F)) = density(F,U)*sonicspeed(F,U)
 
 """
     intensity(F::FluidState) = pressure(F)^2/impedance(F)
@@ -207,6 +208,7 @@ end
 @pure units(::Atmosphere{n,U}) where {n,U} = U
 Atmosphere(a::Values{n},h::Values{n}) where n = Atmosphere{Metric}(a,h)
 Atmosphere{U}(a::Values{n},h::Values{n}) where {n,U} = Atmosphere{U}(a,h,zeros(Values{n}))
+(U::UnitSystem)(A::Atmosphere{n,S}) where {n,S} = Atmosphere{U}(lapserate.(A.a,Ref(U),Ref(S)),length.(A.h,Ref(U),Ref(S)))
 
 function display(A::Atmosphere)
     println(typeof(A))
@@ -221,7 +223,7 @@ end
     Weather{r,g,f,n}
 
 Thermodynamic column state of fluid `f` at sea level radius `r` and gravitational acceleration `g` having `n` thermal `Atmosphere` layers.
-Induces derived values `fluid`, `temperature`, `pressure`, `density`, `specificvolume`, `kinematic`, `heatcapacity`, `thermaldiffusivity`, `elasticity`, `impedance`, `intensity`, `specificweight`, `geopotential`, and inherited values associated with `f::AbstractMole` derivations.
+Induces derived values `fluid`, `temperature`, `pressure`, `density`, `specificvolume`, `kinematic`, `heatcapacity`, `thermaldiffusivity`, `elasticity`, `specificimpedance`, `intensity`, `specificweight`, `geopotential`, and inherited values associated with `f::AbstractMole` derivations.
 """
 struct Weather{r,g,f,n,U} # radius, acceleration
     A::Atmosphere{n,U} # altitude lapse rate
@@ -254,6 +256,7 @@ function Weather{r,g}(A::Atmosphere{n,U},F::FluidState{f}) where {r,g,f,n,U}
     Weather{r,g,f}(A,Values(T),Values(p),Values(ρ))
 end
 
+(U::UnitSystem)(W::Weather{r,g,f,n,S}) where {r,g,f,n,S} = Weather{r,g,f}(U(W.A),temperature.(W.T,Ref(U),Ref(S)),pressure.(W.p,Ref(U),Ref(S)),density.(W.ρ,Ref(U),Ref(S)))
 (A::Atmosphere)(F::FluidState=Air(288.16,atm,US(A)),r=6.356766e6,g=g₀) = Weather{r,g}(A,F)
 (A::Atmosphere)(T,p=atm,r=6.356766e6,g=g₀) = Weather{r,g}(A,Air(T,p,units(A)))
 (W::Weather)(hG::Real=0) = W(hG,layer(hG,W))
@@ -272,11 +275,14 @@ function display(W::Weather)
     println(" ρ = ",W.ρ)
 end
 
-@pure @inline Base.getindex(W::Weather,i::Int) = W.T[i],W.A.a[i],W.A.h[i],W.p[i],W.ρ[i]
+@pure @inline function Base.getindex(W::Weather,i::Int,U::UnitSystem=units(W))
+    T,a,h,p,ρ = W.T[i],W.A.a[i],W.A.h[i],W.p[i],W.ρ[i]; S = units(W)
+    temperature(T,U,S),lapserate(a,U,S),length(h,U,S),pressure(p,U,S),density(ρ,U,S)
+end
 @pure @inline Base.getindex(W::Weather,::Val{i}) where i = getindex(W,i)
-@pure @inline lapserate(h::Real,W::Weather=Standard) = W[layer(h,W)]
-@pure @inline layer(h::Real,W::Weather,U::US) = layer(length(h,U,units(W)),W)
-@pure layer(h::Real,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
+@pure @inline lapserate(h::Real,W::Weather=Standard) = W.A.a[layer(h,W)]
+@pure @inline layer(h::Real,W::Weather=Standard) = h≤W.A.h[1] ? 1 : (i=findfirst(x->x≥h,W.A.h); isnothing(i) ? length(W.A.h) : i-1)
+@pure @inline layer(h::Real,W::Weather,U::US) = layer(length(h,units(W),U),W)
 
 @pure units(::Weather{r,g,f,n,U}) where {r,g,f,n,U} = U
 @pure fluid(::Weather{r,g,f}=Standard) where {r,g,f} = f
@@ -286,18 +292,17 @@ end
 
 Sea level radius `r` to planet's center of gravity at `Weather` column location (m or ft).
 """
-@pure radius(::Weather{r}=Standard) where r = r
+@pure radius(W::Weather{r}=Standard,U::US=units(W)) where r = length(r,U,units(W))
 
 """
     gravity(::Weather)
 
 Sea level gravitational acceleration `g` at `Weather` column location (m⋅s⁻² or ft⋅s⁻²).
 """
-@pure gravity(::Weather{r,g}=Standard) where {r,g} = g
+@pure gravity(W::Weather{r,g}=Standard,U::US=units(W)) where {r,g} = acceleration(g,U,units(W))
 
-for op ∈ Properties
-    @eval @pure $op(W::Weather=Standard) = $op(fluid(W))
-end
+@pure molecularmass(W::Weather=Standard,U::US=units(W)) = molecularmass(fluid(W),U)
+@pure gasconstant(W::Weather=Standard,U::US=units(W)) = gasconstant(fluid(W),U)
 
 # hG = geopotential altitude, h = geometric altitude
 
@@ -306,44 +311,49 @@ end
 
 Absolute altitude from planet's center of gravity (m or ft).
 """
-@pure @inline altabs(h::Real=0,W::Weather=Standard) = radius(W)+h
+@pure @inline altabs(h::Real=0,W::Weather=Standard,U::US=units(W)) = radius(W,U)+h
+@pure @inline altabs(h::Real,W::Weather,U::US,S::US) = altabs(length(h,U,S),W,U)
 
 """
     altgeopotent(h::Real,W::Weather=Standard) = h*radius(W)/altabs(h,W)
 
 Geopotential altitude `hG` conversion from geometric altitude (m or ft).
 """
-@pure altgeopotent(h::Real,W::Weather=Standard) = (h/altabs(h,W))radius(W)
+@pure altgeopotent(h::Real,W::Weather=Standard,U::US=US(W)) = (h/altabs(h,W,U))radius(W,U)
+@pure altgeopotent(h::Real,W::Weather,U::US,S::US) = altgeopotent(length(h,U,S),W,U)
 
 """
     altgeometric(hG::Real,W::Weather=Standard) = radius(W)/(radius(W)/hG-1)
 
 Geometric altitude `h` conversion from geopotential altitude (m or ft).
 """
-@pure altgeometric(hG::Real,W::Weather=Standard) = (r=radius(W); r/(r/hG-1))
+@pure altgeometric(hG::Real,W::Weather=Standard,U::US=US(W)) = (r=radius(W,U); r/(r/hG-1))
+@pure altgeometric(hG::Real,W::Weather,U::US,S::US) = altgeometric(length(hG,U,S),W,U)
 
 """
     gravity(h::Real=0,W::Weather=Standard) = gravity(W)*radius(W)^2/altabs(h,W)^2
 
 Gravitational acceleration `g` at altitude `h` of `Weather` column (m⋅s⁻² or ft⋅s⁻²).
 """
-@pure gravity(h::Real,W::Weather=Standard) = (gravity(W)*radius(W)^2)/altabs(h,W)^2
+@pure gravity(h::Real,W::Weather=Standard,U::US=US(W)) = (gravity(W,U)*radius(W,U)^2)/altabs(h,W,U)^2
+@pure gravity(h::Real,W::Weather,U::US,S::US) = gravity(length(h,U,S),W,U)
 
 """
     temperature(h::Real=0,::Weather=Standard)
 
 Absolute temperature `T` at geometric altitude `h` of `Weather` location (K or °R).
 """
-@pure temperature(h::Real,i,W::Weather=Standard) = _temperature(altgeopotent(h,W),i,W)
-@pure function _temperature(hG::Real,i,W::Weather=Standard)
-    T0,a0,h0 = W[i]
+@pure temperature(h::Real,i,W::Weather=Standard,U::US=US(W)) = _temperature(altgeopotent(h,W,U),i,W,U)
+@pure function _temperature(hG::Real,i,W::Weather=Standard,U::US=units(W))
+    T0,a0,h0 = W[i,U]
     return T0+a0*(hG-h0)
 end
 
 # k, μ, cᵥ, cₚ, γ, Pr, a, e, h
 
 for op ∈ Intrinsic
-    @eval @pure $op(h::Real,i,W::Weather=Standard) = $op(temperature(h,i,W),fluid(W),US(W))
+    @eval @pure $op(h::Real,i,W::Weather=Standard,U::US=US(W)) = $op(temperature(h,i,W,U),fluid(W),U)
+    @eval @pure $op(h::Real,i,W::Weather,U::US,S::US) = $op(length(h,U,S),i,W,U)
 end
 
 @doc """
@@ -411,13 +421,13 @@ Speed of sound wave disturbance at altitude `h` of `Weather` location (m⋅s⁻�
 
 Absolute force per unit area `P`  at altitude `h` of `Weather` column (Pa or slug⋅ft⁻¹⋅s⁻²).
 """
-@pure function pressure(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    pressure(h,_temperature(hG,i,W),i,W)
+@pure function pressure(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    pressure(h,_temperature(hG,i,W,U),i,W,U)
 end
-@pure function pressure(hG::Real,T,i,W::Weather=Standard)
-    g,R = gravity(W),gasconstant(W)
-    T0,a,h0,p = W[i]
+@pure function pressure(hG::Real,T,i,W::Weather=Standard,U::US=units(W))
+    g,R = gravity(W,U),gasconstant(W,U)
+    T0,a,h0,p = W[i,U]
     p*(if iszero(a)
         exp((-g/R)*(hG-h0)/T)
     else
@@ -430,13 +440,14 @@ end
 
 Inertial mass per volume `ρ` at altitude `h` of `Weather` location (kg⋅m⁻³ or slugs⋅ft⁻³).
 """
-@pure function density(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    density(h,_temperature(hG,i,W),i,W)
+@pure function density(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    density(h,_temperature(hG,i,W,U),i,W,U)
 end
-@pure function density(hG::Real,T,i,W::Weather=Standard)
-    g,R = gravity(W),gasconstant(W)
-    T0,a,h0,_,ρ = W[i]
+@pure density(hG::Real,T,i,W::Weather,U::US,S::US) = density(length(h,U,S),temperature(T,U,S),i,W,U)
+@pure function density(hG::Real,T,i,W::Weather=Standard,U::US=units(W))
+    g,R = gravity(W,U),gasconstant(W,U)
+    T0,a,h0,_,ρ = W[i,U]
     ρ*(if iszero(a)
         exp((-g/R)*(hG-h0)/T)
     else
@@ -449,21 +460,22 @@ end
 
 Kinematic viscosity ratio `ν` at altitude `h` of `Weather` location (m²⋅s⁻¹ or ft²⋅s⁻¹).
 """
-@pure function kinematic(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    kinematic(h,_temperature(hG,i,W),i,W)
+@pure function kinematic(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    kinematic(h,_temperature(hG,i,W,U),i,W,U)
 end
-@pure kinematic(hG::Real,T,i,W::Weather=Standard) = viscosity(T,fluid(W),units(W))/density(hG,T,i,W)
+@pure kinematic(hG::Real,T,i,W::Weather,U::US,S::US) = kinematic(length(h,U,S),temperature(T,U,S),i,W,U)
+@pure kinematic(hG::Real,T,i,W::Weather=Standard,U::US=units(W)) = viscosity(T,fluid(W),U)/density(hG,T,i,W,U)
 
 """
     heatcapacity(h::Real=0,W::Weather=Standard) = heatcapacity(W(h))
 
 Specific heat per mass at altitude `h` of `Weather` location (J⋅m⁻³⋅K⁻¹ or lb⋅ft⁻²⋅°R⁻¹).
 """
-@pure function heatcapacity(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    T = _temperature(hG,i,W)
-    heatpressure(T,fluid(W),units(W))*density(hG,T,i,W)
+@pure function heatcapacity(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    T = _temperature(hG,i,W,U)
+    heatpressure(T,fluid(W),U)*density(hG,T,i,W,U)
 end
 
 """
@@ -471,11 +483,10 @@ end
 
 Thermal diffusivity `α` at altitude `h` of `Weather` location (m²⋅s⁻¹ or ft²⋅s⁻¹).
 """
-@pure function thermaldiffusivity(h::Real,i,W::Weather=Standard)
-    F,U = fluid(W),units(W)
-    hG = altgeopotent(h,W)
-    T = _temperature(h,i,W)
-    thermalconductivity(T,F,U)/heatpressure(T,F,U)/density(hG,T,i,W)
+@pure function thermaldiffusivity(h::Real,i,W::Weather=Standard,U::US=units(W))
+    F,hG = fluid(W),altgeopotent(h,W,U)
+    T = _temperature(hG,i,W,U)
+    thermalconductivity(T,F,U)/heatpressure(T,F,U)/density(hG,T,i,W,U)
 end
 
 """
@@ -483,21 +494,21 @@ end
 
 Bulk modulus of elasticity `B` at altitude `h` of `Weather` location (Pa or slug⋅ft⁻¹⋅s⁻²).
 """
-@pure function elasticity(h,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    T = _temperature(hG,i,W)
-    heatratio(T,fluid(W),units(W))*pressure(hG,T,i,W)
+@pure function elasticity(h,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    T = _temperature(hG,i,W,U)
+    heatratio(T,fluid(W),U)*pressure(hG,T,i,W,U)
 end
 
 """
-    impedance(h::Real=0,W::Weather=Standard) = impedance(W(h))
+    specificimpedance(h::Real=0,W::Weather=Standard) = impedance(W(h))
 
 Specific acoustic resistance at altitude `h` of `Weather` (kg⋅m⁻³⋅s⁻¹ or slug⋅ft⁻³⋅s⁻¹).
 """
-@pure function impedance(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    T = _temperature(hG,i,W)
-    density(hG,T,i,W)*sonicspeed(T,fluid(W),units(W))
+@pure function specificimpedance(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    T = _temperature(hG,i,W,U)
+    density(hG,T,i,W,U)*sonicspeed(T,fluid(W),U)
 end
 
 """
@@ -505,25 +516,25 @@ end
 
 Instantaneous intensity `I` at altitude `h` of `Weather` at location (W⋅m⁻² or slug⋅s⁻³).
 """
-@pure function intensity(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    T = _temperature(hG,i,W)
-    g,R = gravity(W),gasconstant(W)
-    T0,a,h0,p,ρ = W[i]
+@pure function intensity(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    T = _temperature(hG,i,W,U)
+    g,R = gravity(W,U),gasconstant(W,U)
+    T0,a,h0,p,ρ = W[i,U]
     (p^2/ρ)*(if iszero(a)
         exp((-g/R)*(hG-h0)/T)
     else
         t,gRa = T/T0,(-g/R)/a
         t^2gRa/t^(gRa-1)
-    end)/sonicspeed(T,fluid(W),units(W))
+    end)/sonicspeed(T,fluid(W),U)
 end
 
 # Grashof number
 
-@pure function grashof(h::Real,i,W::Weather=Standard)
-    hG = altgeopotent(h,W)
-    T = _temperature(hG,i,W)
-    gravity(h,W)*(temperature(W)-T)*(h^3)/(T*kinematic(hG,T,i,W)^2)
+@pure function grashof(h::Real,i,W::Weather=Standard,U::US=units(W))
+    hG = altgeopotent(h,W,U)
+    T = _temperature(hG,i,W,U)
+    gravity(h,W,U)*(temperature(W,U)-T)*(h^3)/(T*kinematic(hG,T,i,W,U)^2)
 end
 
 """
@@ -531,35 +542,39 @@ end
 
 Specific weight at altitude `h` of `Weather` location (kg⋅m⁻²⋅s⁻² or slugs⋅ft⁻²⋅s⁻²).
 """
-@pure specificweight(h::Real,i,W::Weather=Standard) = density(h,i,W)*gravity(h,W)
+@pure specificweight(h::Real,i,W::Weather=Standard,U::US=US(W)) = density(h,i,W,U)*gravity(h,W,U)
 
 """
     specificvolume(h::Real=0,W::Weather=Standard) = specificvolume(W(h))
 
 Specific volume per mass `v` at altitude `h` of `Weather` location (m³⋅kg⁻¹, ft³⋅slug⁻¹).
 """
-@pure specificvolume(h::Real,i,W::Weather=Standard) = inv(density(h,i,W))
+@pure specificvolume(h::Real,i,W::Weather=Standard,U::US=US(W)) = inv(density(h,i,W,U))
 
 """
     geopotential(h::Real=0,W::Weather=Standard) = gravity(h,W)*h
 
 Specifc gravitational potential energy `g` at altitude `h` of `Weather` (m²⋅s⁻², ft²⋅s⁻²).
 """
-@pure geopotential(h::Real,i,W::Weather=Standard) = gravity(h,W)*h
+@pure geopotential(h::Real,i,W::Weather=Standard,U::US=US(W)) = gravity(h,W,U)*h
 
 # common interface
 
-for op ∈ (:temperature,:pressure,:density,:weight,:specificvolume,:geopotential,:impedance,:grashof,:thermaldiffusivity,:intensity,:heatcapacity,:kinematic,:elasticity,Intrinsic...)
+for op ∈ (:temperature,:pressure,:density,:specificweight,:specificvolume,:geopotential,:specificimpedance,:grashof,:thermaldiffusivity,:intensity,:heatcapacity,:kinematic,:elasticity,Intrinsic...)
     opratio = Symbol(op,:ratio)
     @eval begin
         export $op
-        @pure $op(W::Weather=Standard) = $op(0,W)
-        @pure $op(h::Real,W::Weather=Standard) = $op(h,layer(h,W),W)
+        @pure $op(W::Weather=Standard,U::US=Metric) = $op(0,W,U)
+        @pure $op(h::Real,W::Weather=Standard,U::US=US(W)) = $op(h,layer(h,W,U),W,U)
+        @pure $op(h::Real,W::Weather,U::US,S::US) = $op(length(h,U,S),W,U)
+        @pure $op(h,i,W::Weather,U::US,S::US) = $op(length(h,U,S),i,W,U)
     end
     op ∉ (:heatcapacity,:grashof,:geopotential) && @eval begin
         export $opratio
-        @pure $opratio(h::Real,W::Weather=Standard) = $opratio(h,layer(h,W),W)
-        @pure $opratio(h::Real,i,W::Weather=Standard) = $op(h,i,W)/$op(W)
+        @pure $opratio(h::Real,W::Weather=Standard,U::US=US(W)) = $opratio(h,layer(h,W,U),W,U)
+        @pure $opratio(h::Real,i,W::Weather=Standard,U::US=US(W)) = $op(h,i,W,U)/$op(W,U)
+        @pure $opratio(h::Real,W::Weather,U::US,S::US) = $opratio(length(h,U,S),W,U)
+        @pure $opratio(h::Real,i,W::Weather,U::US,S::US) = $opratio(length(h,U,S),i,W,U)
     end
 end
 
