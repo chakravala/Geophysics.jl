@@ -264,3 +264,168 @@ function Base.:+(m::Mixture...)
     Mixture{N,Tuple(vcat(molecules.(m)...))}(Values{N}(vcat(fractions.(m)...)))
 end
 
+# thermodynamic states
+
+"""
+    FluidState{f}
+
+Thermodynamic state of fluid `f` at temperature `T` and pressure `P`.
+Induces derived values `fluid`, `temperature`, `pressure`, `density`, `specificvolume`, `kinematic`, `heatcapacity`, `thermaldiffusivity`, `elasticity`, `specificimpedance`, `intensity`, and values associated with `f::AbstractMole` derivations.
+"""
+struct FluidState{f,u}
+    T::Float64
+    P::Float64
+end
+
+for Gas ∈ (:SutherlandGas,:Mixture,:AtomicGas,:DiatomicGas,:TriatomicGas)
+    @eval (G::$Gas)(T=288.15,P=atm,U=Metric) = FluidState{G,U}(T,P)
+end
+
+@pure units(::FluidState{f,u}) where {f,u} = u
+(U::UnitSystem)(F::FluidState{G,S}) where {G,S} = FluidState{G,U}(temperature(F,U),pressure(F,U))
+
+"""
+    fluid(x)
+
+Specification of an `AbstractMole` fluid chemical instance.
+"""
+@pure fluid(::FluidState{f}) where f = f
+
+"""
+    temperature(F::FluidState)
+
+Absolute thermodynamic temperature scale `T` at `F` (K or °R).
+"""
+@pure temperature(F::FluidState) = F.T
+@pure temperature(F::FluidState,U::UnitSystem) = temperature(temperature(F),U,units(F))
+
+"""
+    pressure(F::FluidState)
+
+Absolute force per unit area `P` exerted by `F` (Pa or lb⋅ft⁻²).
+"""
+@pure pressure(F::FluidState) = F.P
+@pure pressure(F::FluidState,U::UnitSystem) = pressure(pressure(F),U,units(F))
+
+for op ∈ Properties
+    @eval @pure $op(F::FluidState,U::US=units(F)) = $op(fluid(F),U)
+end
+for op ∈ Intrinsic
+    @eval @pure $op(F::FluidState,U::US=units(F)) = $op(temperature(F,U),fluid(F),U)
+end
+
+@doc """
+    viscosity(F::FluidState) = viscosity(temperature(F),fluid(F))
+
+Laminar dynamic vicsosity `μ` at the temperature of `F` (Pa⋅s or lb⋅s¹⋅ft⁻²).
+""" viscosity(F::FluidState)
+
+@doc """
+    thermalconductivity(F::FluidState) = conductivity(temperature(F),fluid(F))
+
+Laminar thermal conductivity `k` at the temperature `F` (W⋅m⁻¹⋅K⁻¹ or lb⋅s⁻¹⋅°R⁻¹).
+""" thermalconductivity(F::FluidState)
+
+@doc """
+    heatvolume(F::FluidState) = heatvolume(temperature(F),fluid(F))
+
+Specific heat `cᵥ` at the temperature of `F` (J⋅kg⁻¹⋅K⁻¹ or ft⋅lb⋅slug⁻¹⋅°R⁻¹).
+""" heatvolume(F::FluidState)
+
+@doc """
+    heatpressure(F::FluidState) = heatpressure(temperature(F),fluid(F))
+
+Specific heat `cₚ` at the temperature of `F` (J⋅kg⁻¹⋅K⁻¹ or ft⋅lb⋅slug⁻¹⋅°R⁻¹).
+""" heatpressure(F::FluidState)
+
+@doc """
+    heatratio(F::FluidState) = heatratio(temperature(F),fluid(F))
+
+Specific heat ratio `γ` at the temperature of `F` (dimensionless).
+""" heatratio(F::FluidState)
+
+@doc """
+    specificenergy(F::FluidState) = specificenergy(temperature(F),fluid(F))
+
+Specific energy `e` at the temperature of `F` (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).
+""" specificenergy(F::FluidState)
+
+@doc """
+    specificenthalpy(F::FluidState) = specificenthalpy(temperature(F),fluid(F))
+
+Specific enthalpy `h` at the temperature of `F` (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).
+""" specificenthalpy(F::FluidState)
+
+@doc """
+    freedom(F::FluidState) = freedom(temperature(F),fluid(F))
+
+Degrees of freedom `f` at the temperature of `F` (dimensionless).
+""" freedom(F::FluidState)
+
+@doc """
+    prandtl(F::FluidState) = prandtl(temperature(F),fluid(F))
+
+Prandtl number ratio at the temperature of `F` (dimensionless).
+""" prandtl(F::FluidState)
+
+@doc """
+    sonicspeed(F::FluidState) = sonicspeed(temperature(F),fluid(F))
+
+Speed of sound wave disturbance at the temperature of `F` (m⋅s⁻¹ or ft⋅s⁻¹).
+""" sonicspeed(F::FluidState)
+
+"""
+    density(F::FluidState) = pressure(F)/temperature(F)/gasconstant(F)
+
+Inertial mass per volume `ρ` of at a pressure and temperature (kg⋅m⁻³ or slugs⋅ft⁻³).
+"""
+@pure density(F::FluidState,U::US=units(F)) = (pressure(F,U)/temperature(F,U))/gasconstant(F,U)
+
+"""
+    specificvolume(F::FluidState) = 1/density(F)
+
+Specific volume per mass `v` at a pressure and temperature (m³⋅kg⁻¹ or ft³⋅slug⁻¹).
+"""
+@pure specificvolume(F::FluidState,U::US=units(F)) = inv(density(F,U))
+
+"""
+    kinematic(F::FluidState) = viscosity(F)/density(F)
+
+Kinematic viscosity ratio `ν` at a pressure and temperature (m²⋅s⁻¹ or ft²⋅s⁻¹).
+"""
+@pure kinematic(F::FluidState,U::US=units(F)) = viscosity(F,U)/density(F,U)
+
+"""
+    heatcapacity(F::FluidState) = heatpressure(F)*density(F)
+
+Specific heat per mass at a pressure and temperature (J⋅m⁻³⋅K⁻¹ or lb⋅ft⁻²⋅°R⁻¹).
+"""
+@pure heatcapacity(F::FluidState,U::US=units(F)) = heatpressure(F,U)*density(F,U)
+
+"""
+    thermaldiffusivity(F::FluidState) = thermalconductivity(F)/heatcapacity(F)
+
+Thermal diffusivity `α` at a pressure and temperature (m²⋅s⁻¹ or ft²⋅s⁻¹).
+"""
+@pure thermaldiffusivity(F::FluidState,U::US=units(F)) = thermalconductivity(F,U)/heatcapacity(F,U)
+
+"""
+    elasticity(F::FluidState) = heatratio(F)*pressure(F)
+
+Bulk modulus of elasticity `B` at a pressure and temperature (Pa or slug⋅ft⁻¹⋅s⁻²).
+"""
+@pure elasticity(F::FluidState,U::US=units(F)) = heatratio(F,U)*pressure(F,U)
+
+"""
+    specificimpedance(F::FluidState) = density(F)*sonicspeed(F)
+
+Specific acoustic resistance at a pressure and temperature (kg⋅m⁻³⋅s⁻¹ or slug⋅ft⁻³⋅s⁻¹).
+"""
+@pure specificimpedance(F::FluidState,U::US=units(F)) = density(F,U)*sonicspeed(F,U)
+
+"""
+    intensity(F::FluidState) = pressure(F)^2/impedance(F)
+
+Instantaneous acoustic intensity `I` at a pressure and temperature (W⋅m⁻² or slug⋅s⁻³).
+""" # irradiance
+@pure intensity(F::FluidState,U::US=units(F)) = pressure(F,U)^2/impedance(F,U)
