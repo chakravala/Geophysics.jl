@@ -18,39 +18,37 @@ julia&gt; length(EnglishUS,English) # ft⋅ftUS⁻¹
 1.0000020000039997
 
 julia&gt; length(PlanckGauss,Metric) # m⋅ℓP⁻¹
-1.6162552789315494e-35</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.area" href="#UnitSystems.area"><code>UnitSystems.area</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">area(U::UnitSystem,S::UnitSystem) = length(U,S)^2
+1.6162552789315494e-35</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.area" href="#MeasureSystems.area"><code>MeasureSystems.area</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">area(U::UnitSystem,S::UnitSystem) = length(U,S)^2
 area(v::Real,U::UnitSystem,S::UnitSystem) = v/area(U,S)</code></pre><p>Extent of two-dimensional shape or <code>area</code> (m²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; area(CGS,Metric) # m²⋅cm⁻²
-0.0001
+0.0001 ± 1.1e-29
 
 julia&gt; area(English,Metric) # m²⋅ft⁻²
-0.09290304000000008
+0.09290304000000009 ± 1.1e-26
 
 julia&gt; area(EnglishUS,English) # ft²⋅ftUS⁻²
-1.0000040000119994</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.volume-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.volume-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.volume</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">volume(U::UnitSystem,S::UnitSystem) = length(U,S)^3
+1.0000040000119994 ± 1.5e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.volume-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.volume-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.volume</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">volume(U::UnitSystem,S::UnitSystem) = length(U,S)^3
 volume(v::Real,U::UnitSystem,S::UnitSystem) = v/volume(U,S)</code></pre><p>Extent of three-dimensional shape or <code>volume</code> (m³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; volume(CGS,Metric) # m³⋅cm⁻³
-1.0000000000000002e-6
+1.0000000000000002e-6 ± 1.6999999999999998e-31
 
 julia&gt; volume(English,Metric) # m³⋅ft⁻³
-0.028316846592000035
+0.028316846592000035 ± 5.1e-27
 
 julia&gt; volume(EnglishUS,English) # ft³⋅ftUS⁻³
-1.0000060000239992</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.wavenumber" href="#UnitSystems.wavenumber"><code>UnitSystems.wavenumber</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">wavenumber(G::MoleGas) = frequency(G)/lightspeed(G)</code></pre><p>Spectroscopic vibrational wavenumbers of polyatomic molecules if applicable (m⁻¹ or ft⁻¹).</p></div></section><section><div><pre><code class="language-Julia">wavenumber(U::UnitSystem,S::UnitSystem) = 1/length(U,S)
+1.0000060000239992 ± 2.1999999999999997e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.wavenumber" href="#MeasureSystems.wavenumber"><code>MeasureSystems.wavenumber</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">wavenumber(U::UnitSystem,S::UnitSystem) = 1/length(U,S)
 wavenumber(v::Real,U::UnitSystem,S::UnitSystem) = v/wavenumber(U,S)</code></pre><p>Number of occurences per unit of space (m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; wavenumber(CGS,Metric) # cm⋅m⁻¹
-100.0
+100.0 ± 9.3e-24
 
 julia&gt; wavenumber(English,Metric) # ft⋅m⁻¹
-3.280839895013122</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.fuelefficiency" href="#UnitSystems.fuelefficiency"><code>UnitSystems.fuelefficiency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">fuelefficiency(U::UnitSystem,S::UnitSystem) = 1/area(U,S)
+3.280839895013122 ± 1.5e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.fuelefficiency" href="#MeasureSystems.fuelefficiency"><code>MeasureSystems.fuelefficiency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">fuelefficiency(U::UnitSystem,S::UnitSystem) = 1/area(U,S)
 fuelefficiency(v::Real,U::UnitSystem,S::UnitSystem) = v/fuelefficiency(U,S)</code></pre><p>Distance per volume or <code>fuelefficiency</code> (m⋅m⁻³, m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; fuelefficiency(CGS,Metric) # cm²⋅m⁻²
-10000.0
+10000.0 ± 1.9e-21
 
 julia&gt; fuelefficiency(English,Metric) # ft²⋅m⁻²
-10.763910416709715</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.frequency" href="#UnitSystems.frequency"><code>UnitSystems.frequency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">frequency(G::MoleGas) = wavenumber(G)*lightspeed(G)</code></pre><p>Spectroscopic vibrational frequencies <code>ν</code> of polyatomic molecules if applicable (Hz or s⁻¹).</p></div></section><section><div><pre><code class="language-none">frequency(P::Planet) = 1/period(P)</code></pre><p>Cyclic <code>frequency</code> of sidereal <code>Planet</code> rotation (Hz).</p><pre><code class="language-Julia">julia&gt; frequency(Earth) # Hz
-1.1605761711936886e-5</code></pre></div></section><section><div><pre><code class="language-Julia">frequency(U::UnitSystem,S::UnitSystem) = 1/time(U,S)
+10.763910416709715 ± 9.6e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.frequency" href="#MeasureSystems.frequency"><code>MeasureSystems.frequency</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">frequency(U::UnitSystem,S::UnitSystem) = 1/time(U,S)
 frequency(v::Real,U::UnitSystem,S::UnitSystem) = v/frequency(U,S)</code></pre><p>Number of occurences per unit of time (Hz or s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; frequency(IAU,Metric) day⋅s⁻¹
-1.1574074074074073e-5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.frequencydrift" href="#UnitSystems.frequencydrift"><code>UnitSystems.frequencydrift</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">frequencydrift(U::UnitSystem,S::UnitSystem) = 1/time(U,S)^2
+1.1574074074074073e-5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.frequencydrift" href="#MeasureSystems.frequencydrift"><code>MeasureSystems.frequencydrift</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">frequencydrift(U::UnitSystem,S::UnitSystem) = 1/time(U,S)^2
 frequencydrift(v::Real,U::UnitSystem,S::UnitSystem) = v/frequencydrift(U,S)</code></pre><p>Drift of <code>frequency</code> per <code>time</code> or <code>frequencydrift</code> (Hz⋅s⁻¹, s⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; frequencydrift(IAU,Metric) day²⋅Hz⋅s⁻¹
-1.3395919067215363e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.speed" href="#UnitSystems.speed"><code>UnitSystems.speed</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">speed(θ,P::Planet) = cos(θ)*radius(θ,P)*angularfrequency(P)</code></pre><p>Velocity component due to sidereal rotation of <code>Planet</code> at latitude <code>θ</code> (m⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; speed(0,Earth)
-465.1010942547186</code></pre></div></section><section><div><pre><code class="language-Julia">speed(U::UnitSystem,S::UnitSystem) = lightspeed(S)/lightspeed(U)
+1.3395919067215363e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.speed" href="#MeasureSystems.speed"><code>MeasureSystems.speed</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">speed(U::UnitSystem,S::UnitSystem) = lightspeed(S)/lightspeed(U)
 speed(v::Real,U::UnitSystem,S::UnitSystem) = v/speed(U,S)</code></pre><p>Velocity or <code>length</code> per <code>time</code> or <code>speed</code> (m⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; speed(CGS,Metric) # m⋅cm⁻¹
 0.01
 
@@ -61,7 +59,7 @@ julia&gt; speed(English,Metric) # m⋅ft⁻¹
 0.3048
 
 julia&gt; speed(EnglishUS,English) # ft⋅ftUS⁻¹
-1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.acceleration" href="#UnitSystems.acceleration"><code>UnitSystems.acceleration</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">acceleration(U::UnitSystem,S::UnitSystem) = speed(U,S)/time(U,S)
+1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.acceleration" href="#MeasureSystems.acceleration"><code>MeasureSystems.acceleration</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">acceleration(U::UnitSystem,S::UnitSystem) = speed(U,S)/time(U,S)
 acceleration(v::Real,U::UnitSystem,S::UnitSystem) = v/acceleration(U,S)</code></pre><p>Specific force or <code>speed</code> per <code>time</code> or <code>acceleration</code> (m⋅s⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; acceleration(CGS,Metric) # m⋅s⁻¹⋅gal⁻¹
 0.01
 
@@ -72,7 +70,7 @@ julia&gt; acceleration(English,Metric) # m⋅ft⁻¹
 0.3048
 
 julia&gt; acceleration(EnglishUS,English) # ft⋅ftUS⁻¹
-1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.jerk" href="#UnitSystems.jerk"><code>UnitSystems.jerk</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">jerk(U::UnitSystem,S::UnitSystem) = speed(U,S)/time(U,S)^2
+1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.jerk" href="#MeasureSystems.jerk"><code>MeasureSystems.jerk</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">jerk(U::UnitSystem,S::UnitSystem) = speed(U,S)/time(U,S)^2
 jerk(v::Real,U::UnitSystem,S::UnitSystem) = v/jerk(U,S)</code></pre><p>Jolt or <code>acceleration</code> per <code>time</code> or <code>jerk</code> (m⋅s⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; jerk(CGS,Metric) # m⋅cm⁻¹
 0.01
 
@@ -83,7 +81,7 @@ julia&gt; jerk(English,Metric) # m⋅ft⁻¹
 0.3048
 
 julia&gt; jerk(EnglishUS,English) # ft⋅ftUS⁻¹
-1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.snap" href="#UnitSystems.snap"><code>UnitSystems.snap</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">snap(U::UnitSystem,S::UnitSystem) = speed(U,S)/time(U,S)^3
+1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.snap" href="#MeasureSystems.snap"><code>MeasureSystems.snap</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">snap(U::UnitSystem,S::UnitSystem) = speed(U,S)/time(U,S)^3
 snap(v::Real,U::UnitSystem,S::UnitSystem) = v/snap(U,S)</code></pre><p>Jounce or <code>jerk</code> per <code>time</code> or <code>snap</code> (m⋅s⁻⁴), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; snap(CGS,Metric) # m⋅cm⁻¹
 0.01
 
@@ -94,169 +92,169 @@ julia&gt; snap(English,Metric) # m⋅ft⁻¹
 0.3048
 
 julia&gt; snap(EnglishUS,English) # ft⋅ftUS⁻¹
-1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.volumeflow" href="#UnitSystems.volumeflow"><code>UnitSystems.volumeflow</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">volumeflow(U::UnitSystem,S::UnitSystem) = area(U,S)*speed(U,S)
+1.000002000004</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.volumeflow" href="#MeasureSystems.volumeflow"><code>MeasureSystems.volumeflow</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">volumeflow(U::UnitSystem,S::UnitSystem) = area(U,S)*speed(U,S)
 volumeflow(v::Real,U::UnitSystem,S::UnitSystem) = v/volumeflow(U,S)</code></pre><p>Volumetric flow rate or <code>volumeflow</code> (m³⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; volumeflow(CGS,Metric) # m³⋅cm⁻³
-1.0000000000000002e-6
+1.0000000000000002e-6 ± 1.6999999999999998e-31
 
 julia&gt; volumeflow(English,Metric) # m³⋅ft⁻³
-0.028316846592000035
+0.028316846592000035 ± 5.1e-27
 
 julia&gt; volumeflow(EnglishUS,English) # ft³⋅ftUS⁻³
-1.0000060000239992</code></pre></div></section></article><h2 id="Mechanical-Units-1"><a class="docs-heading-anchor" href="#Mechanical-Units-1">Mechanical Units</a><a class="docs-heading-anchor-permalink" href="#Mechanical-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.mass" href="#UnitSystems.mass"><code>UnitSystems.mass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">mass(U::UnitSystem,S::UnitSystem) = electronmass(S)/electronmass(U)
+1.0000060000239992 ± 2.1999999999999997e-25</code></pre></div></section></article><h2 id="Mechanical-Units-1"><a class="docs-heading-anchor" href="#Mechanical-Units-1">Mechanical Units</a><a class="docs-heading-anchor-permalink" href="#Mechanical-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.mass" href="#MeasureSystems.mass"><code>MeasureSystems.mass</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">mass(U::UnitSystem,S::UnitSystem) = electronmass(S)/electronmass(U)
 mass(v::Real,U::UnitSystem,S::UnitSystem) = v/mass(U,S)</code></pre><p>Inertal <code>mass</code> or matter quantity or resistance to aceleration (kg), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; mass(CGS,Metric) # kg⋅g⁻¹
-0.001
+0.001 ± 3.6e-29
 
 julia&gt; mass(CODATA,Metric) # kg⋅kg⁻¹
-1.0000000167386112
+1.000000017 ± 1.2e-8
 
 julia&gt; mass(Conventional,Metric) # kg⋅kg⁻¹
-1.0000001955365547
+1.0000001955365547 ± 7.3e-26
 
 julia&gt; mass(English,Metric) # kg⋅slug⁻¹
-14.593902937206364
+14.593902937206366 ± 5.8e-25
 
 julia&gt; mass(IAU,Metric) # kg⋅m⊙⁻¹
-1.9884092759268104e30
+1.988409e30 ± 4.4e25
 
 julia&gt; mass(PlanckGauss,Metric) # kg⋅mP⁻¹
-2.176434e-8</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.massflow" href="#UnitSystems.massflow"><code>UnitSystems.massflow</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">massflow(U::UnitSystem,S::UnitSystem) = mass(U,S)/time(U,S)
+2.176434e-8 ± 2.4e-13</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.massflow" href="#MeasureSystems.massflow"><code>MeasureSystems.massflow</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">massflow(U::UnitSystem,S::UnitSystem) = mass(U,S)/time(U,S)
 massflow(v::Real,U::UnitSystem,S::UnitSystem) = v/massflow(U,S)</code></pre><p>Rate of <code>massflow</code> or <code>mass</code> per <code>time</code> (kg⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; massflow(CGS,Metric) # kg⋅g⁻¹
-0.001
+0.001 ± 3.6e-29
 
 julia&gt; massflow(CODATA,Metric) # kg⋅kg⁻¹
-1.0000000167386112
+1.000000017 ± 1.2e-8
 
 julia&gt; massflow(Conventional,Metric) # kg⋅kg⁻¹
-1.0000001955365547
+1.0000001955365547 ± 7.3e-26
 
 julia&gt; massflow(English,Metric) # kg⋅slug⁻¹
-14.593902937206364</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.lineardensity" href="#UnitSystems.lineardensity"><code>UnitSystems.lineardensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">lineardensity(U::UnitSystem,S::UnitSystem) = mass(U,S)/length(U,S)
+14.593902937206366 ± 5.8e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lineardensity" href="#MeasureSystems.lineardensity"><code>MeasureSystems.lineardensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">lineardensity(U::UnitSystem,S::UnitSystem) = mass(U,S)/length(U,S)
 lineardensity(v::Real,U::UnitSystem,S::UnitSystem) = v/lineardensity(U,S)</code></pre><p>Amount of <code>lineardensity</code> or <code>mass</code> per <code>length</code> (kg⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; lineardensity(CGS,Metric) # kg⋅cm¹⋅g⁻¹⋅m⁻¹
-0.1
+0.1 ± 9.2e-27
 
 julia&gt; lineardensity(CGS,English) # slug⋅cm¹⋅g⁻¹⋅ft⁻¹
-0.0020885434233150137
+0.0020885434233150137 ± 2.8e-28
 
 julia&gt; lineardensity(English,Metric) # kg⋅ft¹⋅slug⁻¹⋅m⁻¹
-47.88025898033582</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.areadensity" href="#UnitSystems.areadensity"><code>UnitSystems.areadensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">areadensity(U::UnitSystem,S::UnitSystem) = mass(U,S)/area(U,S)
+47.88025898033582 ± 9.499999999999999e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.areadensity" href="#MeasureSystems.areadensity"><code>MeasureSystems.areadensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">areadensity(U::UnitSystem,S::UnitSystem) = mass(U,S)/area(U,S)
 areadensity(v::Real,U::UnitSystem,S::UnitSystem) = v/areadensity(U,S)</code></pre><p>Surface or <code>areadensity</code> or <code>mass</code> per <code>area</code> (kg⋅m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; areadensity(CGS,Metric) # kg⋅cm²⋅g⁻¹⋅m⁻²
-10.0
+10.0 ± 1.4999999999999998e-24
 
 julia&gt; areadensity(CGS,English) # slug⋅cm²⋅g⁻¹⋅ft⁻²
-0.06365880354264163
+0.06365880354264163 ± 1.3e-26
 
 julia&gt; areadensity(English,Metric) # kg⋅ft²⋅slug⁻¹⋅m⁻²
-157.08746384624607</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.density" href="#UnitSystems.density"><code>UnitSystems.density</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">density(F::FluidState) = pressure(F)/temperature(F)/gasconstant(F)</code></pre><p>Inertial mass per volume <code>ρ</code> of at a pressure and temperature (kg⋅m⁻³ or slugs⋅ft⁻³).</p></div></section><section><div><pre><code class="language-none">density(h::Real=0,W::Weather=Standard) = density(W(h))</code></pre><p>Inertial mass per volume <code>ρ</code> at altitude <code>h</code> of <code>Weather</code> location (kg⋅m⁻³ or slugs⋅ft⁻³).</p></div></section><section><div><pre><code class="language-Julia">density(U::UnitSystem,S::UnitSystem) = mass(U,S)/volume(U,S)
+157.08746384624607 ± 1.3e-23</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.density" href="#MeasureSystems.density"><code>MeasureSystems.density</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">density(U::UnitSystem,S::UnitSystem) = mass(U,S)/volume(U,S)
 density(v::Real,U::UnitSystem,S::UnitSystem) = v/density(U,S)</code></pre><p>Specific mass or <code>mass</code> per <code>volume</code> or <code>density</code> (kg⋅m⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; density(CGS,Metric) # kg⋅cm³⋅g⁻¹⋅m⁻³
-999.9999999999999
+1000.0 ± 2.1e-22
 
 julia&gt; density(CGS,English) # slug⋅cm³⋅g⁻¹⋅ft⁻³
-1.940320331979717
+1.9403203319797169 ± 5.3e-25
 
 julia&gt; density(English,Metric) # kg⋅ft³⋅slug⁻¹⋅m⁻³
-515.3788183931955</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificvolume" href="#UnitSystems.specificvolume"><code>UnitSystems.specificvolume</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">specificvolume(F::FluidState) = 1/density(F)</code></pre><p>Specific volume per mass <code>v</code> at a pressure and temperature (m³⋅kg⁻¹ or ft³⋅slug⁻¹).</p></div></section><section><div><pre><code class="language-none">specificvolume(h::Real=0,W::Weather=Standard) = specificvolume(W(h))</code></pre><p>Specific volume per mass <code>v</code> at altitude <code>h</code> of <code>Weather</code> location (m³⋅kg⁻¹, ft³⋅slug⁻¹).</p></div></section><section><div><pre><code class="language-Julia">specificvolume(U::UnitSystem,S::UnitSystem) = volume(U,S)/mass(U,S)
+515.3788183931955 ± 7.2e-23</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificvolume" href="#MeasureSystems.specificvolume"><code>MeasureSystems.specificvolume</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificvolume(U::UnitSystem,S::UnitSystem) = volume(U,S)/mass(U,S)
 specificvolume(v::Real,U::UnitSystem,S::UnitSystem) = v/specificvolume(U,S)</code></pre><p>Reciprocal <code>density</code> or <code>volume</code> per <code>mass</code> or <code>specificvolume</code> (m³⋅kg), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificvolume(CGS,Metric) # g⋅m³⋅kg⁻¹⋅cm⁻³
-0.0010000000000000002
+0.0010000000000000002 ± 2.0999999999999996e-28
 
 julia&gt; specificvolume(CGS,English) # kg⋅ft³⋅slug⁻¹⋅cm⁻³
-0.5153788183931958
+0.5153788183931958 ± 1.4e-25
 
 julia&gt; specificvolume(English,Metric) # slug⋅m³⋅kg⁻¹⋅ft⁻³
-0.0019403203319797182</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.force" href="#UnitSystems.force"><code>UnitSystems.force</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">force(U::UnitSystem,S::UnitSystem) = mass(U,S)*acceleration(U,S)
+0.0019403203319797182 ± 2.7e-28</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.force" href="#MeasureSystems.force"><code>MeasureSystems.force</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">force(U::UnitSystem,S::UnitSystem) = mass(U,S)*acceleration(U,S)
 force(v::Real,U::UnitSystem,S::UnitSystem) = v/force(U,S)</code></pre><p>Weight or force or <code>mass</code> times <code>acceleration</code> (N, kg⋅m⋅s⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; force(CGS,Metric) # N⋅dyn⁻¹
-1.0e-5
+1.0e-5 ± 3.5999999999999996e-31
 
 julia&gt; force(CGS,English) # lb⋅dyn⁻¹
-2.2480894309971053e-6
+2.2480894309971053e-6 ± 1.5e-31
 
 julia&gt; force(English,Metric) # N⋅lb⁻¹
-4.4482216152605
+4.4482216152605 ± 1.8e-25
 
 julia&gt; force(1/lbm,Metric,English) # pdl⋅N⁻¹
-0.13825495437600002
+0.13825495437600002 ± 9.2e-27
 
 julia&gt; g₀ # kp⋅N⁻¹
-9.80665</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.stiffness" href="#UnitSystems.stiffness"><code>UnitSystems.stiffness</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">stiffness(U::UnitSystem,S::UnitSystem) = mass(U,S)/time(U,S)^2
+9.80665</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stiffness" href="#MeasureSystems.stiffness"><code>MeasureSystems.stiffness</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">stiffness(U::UnitSystem,S::UnitSystem) = mass(U,S)/time(U,S)^2
 stiffness(v::Real,U::UnitSystem,S::UnitSystem) = v/stiffness(U,S)</code></pre><p>Amount of <code>force</code> per <code>length</code> or <code>stiffness</code> (N⋅m⁻¹, J⋅m⁻², kg⋅s⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; stiffness(CGS,Metric) # kg⋅g⁻¹
-0.001
+0.001 ± 1.4999999999999998e-28
 
 julia&gt; stiffness(CGS,English) # slug⋅g⁻¹
-6.852176585679179e-5
+6.852176585679179e-5 ± 1.3999999999999998e-29
 
 julia&gt; stiffness(English,Metric) # kg⋅slug⁻¹
-14.593902937206352</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.pressure" href="#UnitSystems.pressure"><code>UnitSystems.pressure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">pressure(U::UnitSystem,S::UnitSystem) = energy(U,S)/volume(U,S)
+14.593902937206352 ± 1.2e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.pressure" href="#MeasureSystems.pressure"><code>MeasureSystems.pressure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">pressure(U::UnitSystem,S::UnitSystem) = energy(U,S)/volume(U,S)
 pressure(v::Real,U::UnitSystem,S::UnitSystem) = v/pressure(U,S)</code></pre><p>Pressure or stress or <code>force</code> per <code>area</code> (Pa, N⋅m⁻², kg⋅m⁻¹⋅s⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; pressure(CGS,Metric) # Pa⋅Ba⁻¹
-0.1
+0.1 ± 9.2e-27
 
 julia&gt; 1/atm # Pa⋅atm⁻¹
 9.869232667160129e-6
 
 julia&gt; pressure(English,Metric) # Pa⋅ft²⋅lb⁻¹
-47.88025898033582
+47.88025898033582 ± 9.499999999999999e-25
 
 julia&gt; pressure(Metric,English)/12^2 # psi⋅Pa⁻¹
-0.00014503773773020927</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.compressibility" href="#UnitSystems.compressibility"><code>UnitSystems.compressibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">compressibility(U::UnitSystem,S::UnitSystem) = 1/pressure(U,S)
+0.00014503773773020927 ± 3.2e-30</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.compressibility" href="#MeasureSystems.compressibility"><code>MeasureSystems.compressibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">compressibility(U::UnitSystem,S::UnitSystem) = 1/pressure(U,S)
 compressibility(v::Real,U::UnitSystem,S::UnitSystem) = v/compressibility(U,S)</code></pre><p>Relative volume change or <code>compressibility</code> (Pa⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; compressibility(CGS,Metric) # Ba⋅Pa⁻¹
-10.0
+10.0 ± 1.2999999999999998e-24
 
 julia&gt; compressibility(English,Metric) # lb⋅ft⁻²⋅Pa⁻¹
-0.020885434233150136
+0.020885434233150136 ± 4.6e-28
 
 julia&gt; compressibility(Metric,English)/12^2 # Pa⋅psi⁻¹
-0.3325017984745543</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.viscosity" href="#UnitSystems.viscosity"><code>UnitSystems.viscosity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">viscosity(T::Real,G::AbstractMole)</code></pre><p>Laminar dynamic vicsosity <code>μ</code> is stress to normal acceleration ratio (Pa⋅s or slug⋅ft⁻¹⋅s⁻¹).</p></div></section><section><div><pre><code class="language-none">viscosity(F::FluidState) = viscosity(temperature(F),fluid(F))</code></pre><p>Laminar dynamic vicsosity <code>μ</code> at the temperature of <code>F</code> (Pa⋅s or lb⋅s¹⋅ft⁻²).</p></div></section><section><div><pre><code class="language-none">viscosity(h::Real=0,W::Weather) = viscosity(temperature(h,W),fluid(W))</code></pre><p>Laminar dynamic vicsosity <code>μ</code> at altitude <code>h</code> of <code>Weather</code> column (Pa⋅s or slug⋅ft⁻¹⋅s⁻¹).</p></div></section><section><div><pre><code class="language-Julia">viscosity(U::UnitSystem,S::UnitSystem) = mass(U,S)/length(U,S)/time(U,S)^2
+0.3325017984745543 ± 6.6e-27</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.viscosity" href="#MeasureSystems.viscosity"><code>MeasureSystems.viscosity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">viscosity(U::UnitSystem,S::UnitSystem) = mass(U,S)/length(U,S)/time(U,S)^2
 viscosity(v::Real,U::UnitSystem,S::UnitSystem) = v/viscosity(U,S)</code></pre><p>Resistance to deformation or <code>viscosity</code> (Pa⋅s, kg⋅m⁻¹⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; viscosity(CGS,Metric) # Pa⋅Ba⁻¹
-0.1
+0.1 ± 9.2e-27
 
 julia&gt; viscosity(English,Metric) # Pa⋅ft²⋅lb⁻¹
-47.88025898033582</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.diffusivity" href="#UnitSystems.diffusivity"><code>UnitSystems.diffusivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">diffusivity(U::UnitSystem,S::UnitSystem) = planck(U,S)/mass(U,S)
+47.88025898033582 ± 9.499999999999999e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.diffusivity" href="#MeasureSystems.diffusivity"><code>MeasureSystems.diffusivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">diffusivity(U::UnitSystem,S::UnitSystem) = planck(U,S)/mass(U,S)
 diffusivity(v::Real,U::UnitSystem,S::UnitSystem) = v/diffusivity(U,S)</code></pre><p>Thermal <code>diffusivity</code> or kinematic viscostiy (m²⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; diffusivity(CGS,Metric) # m²⋅cm⁻²
-0.0001
+0.0001 ± 4.4000000000000004e-30
 
 julia&gt; diffusivity(English,Metric) # m²⋅ft⁻²
-0.09290304000000002
+0.09290304000000002 ± 0.0
 
 julia&gt; diffusivity(EnglishUS,English) # ft²⋅ftUS⁻²
-1.0000040000119996</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.rotationalinertia" href="#UnitSystems.rotationalinertia"><code>UnitSystems.rotationalinertia</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">rotationalinertia(U::UnitSystem,S::UnitSystem) = mass(U,S)*area(U,S)
+1.0000040000119996 ± 3.6e-26</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rotationalinertia" href="#MeasureSystems.rotationalinertia"><code>MeasureSystems.rotationalinertia</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">rotationalinertia(U::UnitSystem,S::UnitSystem) = mass(U,S)*area(U,S)
 rotationalinertia(v::Real,U::UnitSystem,S::UnitSystem) = v/rotationalinertia(U,S)</code></pre><p>Moment of inertia or <code>rotationalinertia</code> (kg⋅m²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; rotationalinertia(CGS,Metric) # kg⋅m²⋅g⁻¹⋅cm⁻²
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 7.8e-33
 
 julia&gt; rotationalinertia(CGS,English) # slug⋅ft²⋅g⁻¹⋅cm⁻²
-7.37562149277265e-8
+7.37562149277265e-8 ± 5.5e-33
 
 julia&gt; rotationalinertia(English,Metric) # kg⋅m²⋅slug⁻¹⋅ft⁻²
-1.3558179483314015</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.momentum" href="#UnitSystems.momentum"><code>UnitSystems.momentum</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">momentum(U::UnitSystem,S::UnitSystem) = mass(U,S)*speed(U,S)
+1.3558179483314015 ± 2.1999999999999997e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.momentum" href="#MeasureSystems.momentum"><code>MeasureSystems.momentum</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">momentum(U::UnitSystem,S::UnitSystem) = mass(U,S)*speed(U,S)
 momentum(v::Real,U::UnitSystem,S::UnitSystem) = v/momentum(U,S)</code></pre><p>Linear <code>momentum</code> or <code>mass</code> times <code>speed</code> (N⋅s, kg⋅m⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; momentum(CGS,Metric) # N⋅dyn⁻¹
-1.0e-5
+1.0e-5 ± 3.5999999999999996e-31
 
 julia&gt; momentum(CGS,English) # lb⋅dyn⁻¹
-2.2480894309971053e-6
+2.2480894309971053e-6 ± 1.5e-31
 
 julia&gt; momentum(English,Metric) # N⋅lb⁻¹
-4.4482216152605</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.angularmomentum" href="#UnitSystems.angularmomentum"><code>UnitSystems.angularmomentum</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">angularmomentum(U::UnitSystem,S::UnitSystem) = momentum(U,S)*length(U,S)
+4.4482216152605 ± 1.8e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.angularmomentum" href="#MeasureSystems.angularmomentum"><code>MeasureSystems.angularmomentum</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">angularmomentum(U::UnitSystem,S::UnitSystem) = momentum(U,S)*length(U,S)
 angularmomentum(v::Real,U::UnitSystem,S::UnitSystem) = v/angularmomentum(U,S)</code></pre><p>Rotational momentum or <code>angularmomentum</code> (N⋅m⋅s, kg⋅m²⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; momentum(CGS,Metric) # N⋅m⋅dyn⁻¹⋅cm⁻¹
-1.0e-5
+1.0e-5 ± 3.5999999999999996e-31
 
 julia&gt; momentum(CGS,English) # lb⋅ft⋅dyn⁻¹⋅cm⁻¹
-2.2480894309971053e-6
+2.2480894309971053e-6 ± 1.5e-31
 
 julia&gt; momentum(English,Metric) # N⋅m⋅lb⁻¹⋅ft⁻¹
-4.4482216152605</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.yank" href="#UnitSystems.yank"><code>UnitSystems.yank</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">yank(U::UnitSystem,S::UnitSystem) = mass(U,S)*jerk(U,S)
+4.4482216152605 ± 1.8e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.yank" href="#MeasureSystems.yank"><code>MeasureSystems.yank</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">yank(U::UnitSystem,S::UnitSystem) = mass(U,S)*jerk(U,S)
 yank(v::Real,U::UnitSystem,S::UnitSystem) = v/yank(U,S)</code></pre><p>Rate of change of <code>force</code> or <code>yank</code> (N⋅s⁻¹, kg⋅m⋅s⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; yank(CGS,Metric) # N⋅dyn⁻¹
-1.0e-5
+1.0e-5 ± 3.5999999999999996e-31
 
 julia&gt; yank(CGS,English) # lb⋅dyn⁻¹
-2.2480894309971053e-6
+2.2480894309971053e-6 ± 1.5e-31
 
 julia&gt; yank(English,Metric) # N⋅lb⁻¹⋅
-4.4482216152605</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.energy" href="#UnitSystems.energy"><code>UnitSystems.energy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">energy(U::UnitSystem,S::UnitSystem) = mass(U,S)*specificenergy(U,S)
+4.4482216152605 ± 1.8e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.energy" href="#MeasureSystems.energy"><code>MeasureSystems.energy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">energy(U::UnitSystem,S::UnitSystem) = mass(U,S)*specificenergy(U,S)
 energy(v::Real,U::UnitSystem,S::UnitSystem) = v/energy(U,S)</code></pre><p>Work or heat or <code>energy</code> (J, N⋅m, kg⋅m²⋅s⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; energy(CGS,Metric) # J⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 3.5999999999999997e-33
 
 julia&gt; energy(CGS,English) # ft⋅lb⋅erg⁻¹
-7.375621492772654e-8
+7.375621492772654e-8 ± 4.8e-33
 
 julia&gt; energy(English,Metric) # J⋅ft⁻¹⋅lb⁻¹
-1.3558179483314003
+1.3558179483314003 ± 5.4e-26
 
 julia&gt; 0.001/3600 # J⋅kW⁻¹⋅h⁻¹
 2.7777777777777776e-7
@@ -268,7 +266,7 @@ julia&gt; 1/BTUJ # J⋅BTU⁻¹
 0.0009478346453434791
 
 julia&gt; 1/charge(SI2019) # J⋅eV⁻¹
-6.241509074460763e18</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificenergy" href="#UnitSystems.specificenergy"><code>UnitSystems.specificenergy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">specificenergy(T::Real,G::AbstractMole) = heatvolume(T,G)*T</code></pre><p>Specific energy <code>e</code> of ideal gas <code>specificenthalpy(T,G)-gasconstant(G)*T</code> (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).</p></div></section><section><div><pre><code class="language-none">specificenergy(F::FluidState) = specificenergy(temperature(F),fluid(F))</code></pre><p>Specific energy <code>e</code> at the temperature of <code>F</code> (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).</p></div></section><section><div><pre><code class="language-none">specificenergy(h::Real=0,W::Weather) = specificenergy(temperature(h,W),fluid(W))</code></pre><p>Specific energy <code>e</code> at altitude <code>h</code> of <code>Weather</code> location (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).</p></div></section><section><div><pre><code class="language-Julia">specificenergy(U::UnitSystem,S::UnitSystem) = speed(U,S)^2
+6.241509074460763e18 ± 1.0e-7</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificenergy" href="#MeasureSystems.specificenergy"><code>MeasureSystems.specificenergy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificenergy(U::UnitSystem,S::UnitSystem) = speed(U,S)^2
 specificenergy(v::Real,U::UnitSystem,S::UnitSystem) = v/specificenergy(U,S)</code></pre><p>Massic energy or <code>energy</code> per <code>mass</code> or <code>specificenergy</code> (J⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificenergy(CGS,Metric) # m²⋅cm⁻²
 0.0001
 
@@ -279,91 +277,91 @@ julia&gt; specificenergy(English,Metric) # m²⋅ft⁻²
 0.09290304
 
 julia&gt; specificenergy(EnglishUS,English) # ft²⋅ftUS⁻²
-1.0000040000119998</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.action" href="#UnitSystems.action"><code>UnitSystems.action</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">action(U::UnitSystem,S::UnitSystem) = energy(U,S)*time(U,S)
+1.0000040000119998</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.action" href="#MeasureSystems.action"><code>MeasureSystems.action</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">action(U::UnitSystem,S::UnitSystem) = energy(U,S)*time(U,S)
 action(v::Real,U::UnitSystem,S::UnitSystem) = v/action(U,S)</code></pre><p>Integrated <code>momentum</code> over <code>length</code> or <code>action</code> (J⋅s, N⋅m⋅s), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; action(CGS,Metric) # J⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 2.1e-33
 
 julia&gt; action(CGS,English) # ft⋅lb⋅erg⁻¹
-7.375621492772653e-8
+7.375621492772653e-8 ± 3.3000000000000003e-34
 
 julia&gt; action(English,Metric) # J⋅ft⁻¹⋅lb⁻¹
-1.3558179483314008</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.fluence" href="#UnitSystems.fluence"><code>UnitSystems.fluence</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">fluence(U::UnitSystem,S::UnitSystem) = energy(U,S)/area(U,S
+1.3558179483314008 ± 1.4e-25</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.fluence" href="#MeasureSystems.fluence"><code>MeasureSystems.fluence</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">fluence(U::UnitSystem,S::UnitSystem) = energy(U,S)/area(U,S
 fluence(v::Real,U::UnitSystem,S::UnitSystem) = v/fluence(U,S)</code></pre><p>Radiant exposure or <code>energy</code> per <code>area</code> or <code>fluence</code> (J⋅m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; fluence(CGS,Metric) # kg⋅g⁻¹
-0.001
+0.001 ± 3.6e-29
 
 julia&gt; fluence(CODATA,Metric) # kg⋅kg⁻¹
-1.0000000167386112
+1.000000017 ± 1.2e-8
 
 julia&gt; fluence(Conventional,Metric) # kg⋅kg⁻¹
-1.0000001955365547
+1.0000001955365547 ± 7.3e-26
 
 julia&gt; fluence(English,Metric) # kg⋅slug⁻¹
-14.593902937206352</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.power" href="#UnitSystems.power"><code>UnitSystems.power</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">power(U::UnitSystem,S::UnitSystem) = energy(U,S)/time(U,S))
+14.593902937206352 ± 1.2e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.power" href="#MeasureSystems.power"><code>MeasureSystems.power</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">power(U::UnitSystem,S::UnitSystem) = energy(U,S)/time(U,S))
 power(v::Real,U::UnitSystem,S::UnitSystem) = v/power(U,S)</code></pre><p>Radiant flux or <code>power</code> or <code>energy</code> per <code>time</code> (W, J⋅s⁻¹, kg⋅m²⋅s⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; power(CGS,Metric) # W⋅s⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 3.5999999999999997e-33
 
 julia&gt; power(English,Metric) # W⋅s⋅ft⁻¹⋅lb⁻¹
-1.3558179483314003</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.powerdensity" href="#UnitSystems.powerdensity"><code>UnitSystems.powerdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">powerdensity(U::UnitSystem,S::UnitSystem) = power(U,S)/volume(U,S)
+1.3558179483314003 ± 5.4e-26</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.powerdensity" href="#MeasureSystems.powerdensity"><code>MeasureSystems.powerdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">powerdensity(U::UnitSystem,S::UnitSystem) = power(U,S)/volume(U,S)
 powerdensity(v::Real,U::UnitSystem,S::UnitSystem) = v/powerdensity(U,S)</code></pre><p>Spectral irradiance (volume) or <code>powerdensity</code> (W⋅m⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; powerdensity(CGS,Metric) # kg⋅cm⋅g⁻¹⋅m⁻¹
-0.09999999999999999
+0.09999999999999999 ± 2.1e-26
 
 julia&gt; powerdensity(CGS,English) # slug⋅cm⋅g⁻¹⋅ft⁻¹
-0.0020885434233150145
+0.0020885434233150145 ± 5.6999999999999995e-28
 
 julia&gt; powerdensity(English,Metric) # kg⋅ft⋅slug⁻¹⋅m⁻¹
-47.88025898033578</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.intensity" href="#UnitSystems.intensity"><code>UnitSystems.intensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">intensity(F::FluidState) = pressure(F)^2/impedance(F)</code></pre><p>Instantaneous acoustic intensity <code>I</code> at a pressure and temperature (W⋅m⁻² or slug⋅s⁻³).</p></div></section><section><div><pre><code class="language-none">intensity(h::Real=0,W::Weather=Standard) = intensity(W(h))</code></pre><p>Instantaneous intensity <code>I</code> at altitude <code>h</code> of <code>Weather</code> at location (W⋅m⁻² or slug⋅s⁻³).</p></div></section><section><div><pre><code class="language-Julia">intensity(U::UnitSystem,S::UnitSystem) = power(U,S)/area(U,S)
+47.88025898033578 ± 6.7e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.intensity" href="#MeasureSystems.intensity"><code>MeasureSystems.intensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">intensity(U::UnitSystem,S::UnitSystem) = power(U,S)/area(U,S)
 intensity(v::Real,U::UnitSystem,S::UnitSystem) = v/intensity(U,S)</code></pre><p>Heat flux density or irradiance or <code>power</code> per <code>area</code> (W⋅m⁻², kg⋅s⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; intensity(CGS,Metric) # kg⋅g⁻¹
-0.001
+0.001 ± 1.4999999999999998e-28
 
 julia&gt; intensity(CGS,English) # slug⋅g⁻¹
-6.852176585679179e-5
+6.852176585679179e-5 ± 1.3999999999999998e-29
 
 julia&gt; intensity(English,Metric) # kg⋅slug⁻¹
-14.593902937206352</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.spectralflux" href="#UnitSystems.spectralflux"><code>UnitSystems.spectralflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">spectralflux(U::UnitSystem,S::UnitSystem) = power(U,S)/length(U,S)
+14.593902937206352 ± 1.2e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.spectralflux" href="#MeasureSystems.spectralflux"><code>MeasureSystems.spectralflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">spectralflux(U::UnitSystem,S::UnitSystem) = power(U,S)/length(U,S)
 spectralflux(v::Real,U::UnitSystem,S::UnitSystem) = v/spectralflux(U,S)</code></pre><p>Spectral power or <code>radiantflux</code> per wave <code>length</code> (W⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; spectralflux(CGS,Metric) # kg⋅m⋅g⁻¹⋅cm⁻¹
-1.0e-5
+1.0e-5 ± 9.2e-31
 
 julia&gt; spectralflux(CGS,English) # slug⋅ft⋅g⁻¹⋅cm⁻¹
-2.2480894309971057e-6
+2.2480894309971057e-6 ± 3.0e-31
 
 julia&gt; spectralflux(English,Metric) # kg⋅m⋅slug⁻¹⋅ft⁻¹
-4.448221615260498</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.soundexposure" href="#UnitSystems.soundexposure"><code>UnitSystems.soundexposure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">soundexposure(U::UnitSystem,S::UnitSystem) = pressure(U,S)^2*time(U,S)
+4.448221615260498 ± 8.8e-26</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.soundexposure" href="#MeasureSystems.soundexposure"><code>MeasureSystems.soundexposure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">soundexposure(U::UnitSystem,S::UnitSystem) = pressure(U,S)^2*time(U,S)
 soundexposure(v::Real,U::UnitSystem,S::UnitSystem) = v/soundexposure(U,S)</code></pre><p>Square of <code>pressure</code> by <code>time</code> or <code>soundexposure</code> (Pa²⋅s, N²⋅m⁻⁴), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; soundexposure(CGS,Metric) # Pa²⋅Ba⁻²
-0.010000000000000002
+0.010000000000000002 ± 1.8e-27
 
 julia&gt; soundexposure(English,Metric) # Pa²⋅ft⁴⋅lb⁻²
-2292.5192000240286</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.impedance-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.impedance-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.impedance</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">impedance(U::UnitSystem,S::UnitSystem) = specificimpedance(U,S)/area(U,S)
+2292.5192000240286 ± 9.1e-23</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.impedance-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.impedance-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.impedance</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">impedance(U::UnitSystem,S::UnitSystem) = specificimpedance(U,S)/area(U,S)
 impedance(v::Real,U::UnitSystem,S::UnitSystem) = v/impedance(U,S)</code></pre><p>Acoustic <code>impedance</code> (Rayl⋅m⁻², Pa⋅s⋅m⁻³, kg⋅s⁻¹⋅m⁻⁴), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; impedance(CGS,Metric) # Pa⋅cm³⋅m⁻³⋅Ba⁻¹
-100000.0
+100000.0 ± 2.1e-20
 
 julia&gt; impedance(English,Metric) # Pa⋅ft⁵⋅m⁻³⋅lb⁻¹
-1690.875388429119</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificimpedance" href="#UnitSystems.specificimpedance"><code>UnitSystems.specificimpedance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">specificimpedance(F::FluidState) = density(F)*sonicspeed(F)</code></pre><p>Specific acoustic resistance at a pressure and temperature (kg⋅m⁻³⋅s⁻¹ or slug⋅ft⁻³⋅s⁻¹).</p></div></section><section><div><pre><code class="language-none">specificimpedance(h::Real=0,W::Weather=Standard) = impedance(W(h))</code></pre><p>Specific acoustic resistance at altitude <code>h</code> of <code>Weather</code> (kg⋅m⁻³⋅s⁻¹ or slug⋅ft⁻³⋅s⁻¹).</p></div></section><section><div><pre><code class="language-Julia">specificimpedance(U::UnitSystem,S::UnitSystem) = pressure(U,S)/speed(U,S)
+1690.875388429119 ± 2.4e-22</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificimpedance" href="#MeasureSystems.specificimpedance"><code>MeasureSystems.specificimpedance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificimpedance(U::UnitSystem,S::UnitSystem) = pressure(U,S)/speed(U,S)
 specificimpedance(v::Real,U::UnitSystem,S::UnitSystem) = v/specificimpedance(U,S)</code></pre><p>Characteristic specific acoustic impedance (Rayl, Pa⋅s⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificimpedance(CGS,Metric) # Pa⋅cm⋅m⁻¹⋅Ba⁻¹
-10.0
+10.0 ± 9.2e-25
 
 julia&gt; specificimpedance(English,Metric) # Pa⋅ft³⋅m⁻¹⋅lb⁻¹
-157.08746384624612</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.admittance" href="#UnitSystems.admittance"><code>UnitSystems.admittance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">admittance(U::UnitSystem,S::UnitSystem) = area(U,S)/specificimpedance(U,S)
+157.08746384624612 ± 3.0999999999999997e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.admittance" href="#MeasureSystems.admittance"><code>MeasureSystems.admittance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">admittance(U::UnitSystem,S::UnitSystem) = area(U,S)/specificimpedance(U,S)
 admittance(v::Real,U::UnitSystem,S::UnitSystem) = v/admittance(U,S)</code></pre><p>Acoustic <code>admittance</code> (m²⋅Rayl⁻¹, m³⋅s⁻¹⋅Pa⁻¹, m⁴⋅s⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; admittance(CGS,Metric) # Ba⋅m³⋅cm⁻³⋅Pa⁻¹
-1.0e-5
+1.0e-5 ± 2.1e-30
 
 julia&gt; admittance(English,Metric) # lb⋅m³⋅ft⁻⁵⋅Pa⁻¹
-0.000591409637187418</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.compliance" href="#UnitSystems.compliance"><code>UnitSystems.compliance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">compliance(U::UnitSystem,S::UnitSystem) = time(U,S)^2/mass(U,S)
+0.000591409637187418 ± 8.2e-29</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.compliance" href="#MeasureSystems.compliance"><code>MeasureSystems.compliance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">compliance(U::UnitSystem,S::UnitSystem) = time(U,S)^2/mass(U,S)
 compliance(v::Real,U::UnitSystem,S::UnitSystem) = v/compliance(U,S)</code></pre><p>Acoustic <code>compliance</code> is reciprocal of <code>stiffness</code> (m⋅N⁻¹, m³⋅Pa⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; compliance(CGS,Metric) # kg⋅g⁻¹
-1000.0
+1000.0 ± 3.6e-23
 
 julia&gt; compliance(CGS,English) # slug⋅g⁻¹
-14593.902937206363
+14593.902937206363 ± 9.500000000000001e-22
 
 julia&gt; compliance(English,Metric) # kg⋅slug⁻¹
-0.06852176585679176</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.inertance" href="#UnitSystems.inertance"><code>UnitSystems.inertance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">inertance(U::UnitSystem,S::UnitSystem) = mass(U,S)/length(U,S)^4
+0.06852176585679176 ± 2.7000000000000002e-27</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.inertance" href="#MeasureSystems.inertance"><code>MeasureSystems.inertance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">inertance(U::UnitSystem,S::UnitSystem) = mass(U,S)/length(U,S)^4
 inertance(v::Real,U::UnitSystem,S::UnitSystem) = v/inertance(U,S)</code></pre><p>Acoustic mass or <code>inertance</code> (kg⋅m⁴, Pa⋅s²⋅m⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; inertance(CGS,Metric) # kg⋅cm⁴⋅g⁻¹⋅m⁻⁴
-100000.0
+100000.0 ± 2.6e-20
 
 julia&gt; inertance(CGS,English) # slug⋅cm⁴⋅g⁻¹⋅ft⁻⁴
-59.1409637187418
+59.1409637187418 ± 2.0e-23
 
 julia&gt; inertance(English,Metric) # kg⋅ft⁴⋅slug⁻¹⋅m⁻⁴
-1690.8753884291186</code></pre></div></section></article><h2 id="Electromagnetic-Units-1"><a class="docs-heading-anchor" href="#Electromagnetic-Units-1">Electromagnetic Units</a><a class="docs-heading-anchor-permalink" href="#Electromagnetic-Units-1" title="Permalink"></a></h2><p><strong>Warning</strong>: the following unit conversions have not yet been verified for CGS <code>UnitSystem</code> variants due to lack of <a href="https://www.qsl.net/g4cnn/units/units.htm">reference</a> <a href="https://phys.libretexts.org/Bookshelves/Electricity_and_Magnetism/Book%3A_Electricity_and_Magnetism_(Tatum)/17%3A_Magnetic_Dipole_Moment/17.05%3A_Possible_Alternative_Definitions_of_Magnetic_Moment">information</a>: <code>rigidity</code>, <code>mobility</code>, <code>magneticmoment</code>.</p><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.charge-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.charge-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.charge</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">charge(U::UnitSystem,S::UnitSystem) = sqrt(planck(U,S)*current(U,S)/electricpotential(U,S))
+1690.8753884291186 ± 3.4000000000000003e-22</code></pre></div></section></article><h2 id="Electromagnetic-Units-1"><a class="docs-heading-anchor" href="#Electromagnetic-Units-1">Electromagnetic Units</a><a class="docs-heading-anchor-permalink" href="#Electromagnetic-Units-1" title="Permalink"></a></h2><p><strong>Warning</strong>: the following unit conversions have not yet been verified for CGS <code>UnitSystem</code> variants due to lack of <a href="https://www.qsl.net/g4cnn/units/units.htm">reference</a> <a href="https://phys.libretexts.org/Bookshelves/Electricity_and_Magnetism/Book%3A_Electricity_and_Magnetism_(Tatum)/17%3A_Magnetic_Dipole_Moment/17.05%3A_Possible_Alternative_Definitions_of_Magnetic_Moment">information</a>: <code>rigidity</code>, <code>mobility</code>, <code>magneticmoment</code>.</p><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.charge-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.charge-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.charge</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">charge(U::UnitSystem,S::UnitSystem) = sqrt(planck(U,S)*current(U,S)/electricpotential(U,S))
 charge(v::Real,U::UnitSystem,S::UnitSystem) = v/charge(U,S)</code></pre><p>Electric <code>charge</code> quantization (C, A⋅s), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; charge(EMU,Metric) # C⋅abC⁻¹
 10.0
 
@@ -374,48 +372,48 @@ julia&gt; charge(ESU,Metric) # C⋅stC⁻¹
 3.33564095198152e-10
 
 julia&gt; charge(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952
+0.999999999727 ± 7.7e-11
 
 julia&gt; charge(Hartree,SI2019) # C⋅𝘦⁻¹
-1.602176634e-19</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.chargedensity" href="#UnitSystems.chargedensity"><code>UnitSystems.chargedensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">chargedensity(U::UnitSystem,S::UnitSystem) = charge(U,S)/volume(U,S)
+1.6021766340000001e-19 ± 2.7000000000000002e-45</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.chargedensity" href="#MeasureSystems.chargedensity"><code>MeasureSystems.chargedensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">chargedensity(U::UnitSystem,S::UnitSystem) = charge(U,S)/volume(U,S)
 chargedensity(v::Real,U::UnitSystem,S::UnitSystem) = v/chargedensity(U,S)</code></pre><p>Volume <code>chargedensity</code> or <code>charge</code> per <code>volume</code> (C⋅m⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; chargedensity(EMU,Metric) # C⋅cm³⋅abC⁻¹⋅m⁻³
-9.999999999999998e6
+9.999999999999998e6 ± 1.7e-18
 
 julia&gt; chargedensity(ESU,Metric) # C⋅cm³⋅statC⁻¹⋅m⁼³
-0.00033356409519815194
+0.000333564095198152 ± 5.7e-29
 
 julia&gt; chargedensity(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.linearchargedensity" href="#UnitSystems.linearchargedensity"><code>UnitSystems.linearchargedensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">linearchargedensity(U::UnitSystem,S::UnitSystem) = charge(U,S)/length(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.linearchargedensity" href="#MeasureSystems.linearchargedensity"><code>MeasureSystems.linearchargedensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">linearchargedensity(U::UnitSystem,S::UnitSystem) = charge(U,S)/length(U,S)
 linearchargedensity(v::Real,U::UnitSystem,S::UnitSystem) = v/linearchargedensity(U,S)</code></pre><p>Amount of <code>linearchargedensity</code> or <code>charge</code> per <code>length</code> (C⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; linearchargedensity(EMU,Metric) # C⋅cm⋅abC⁻¹⋅m⁻¹
-1000.0
+1000.0 ± 5.7e-23
 
 julia&gt; linearchargedensity(ESU,Metric) # C⋅cm⋅statC⁻¹⋅m⁼¹
-3.33564095198152e-8
+3.33564095198152e-8 ± 1.9e-33
 
 julia&gt; linearchargedensity(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.exposure" href="#UnitSystems.exposure"><code>UnitSystems.exposure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">exposure(U::UnitSystem,S::UnitSystem) = charge(U,S)/mass(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.exposure" href="#MeasureSystems.exposure"><code>MeasureSystems.exposure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">exposure(U::UnitSystem,S::UnitSystem) = charge(U,S)/mass(U,S)
 exposure(v::Real,U::UnitSystem,S::UnitSystem) = v/exposure(U,S)</code></pre><p>Ionizing radiation <code>exposure</code> or <code>charge</code> per <code>mass</code> (C⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; exposure(EMU,Metric) # C⋅g⋅abC⁻¹⋅kg
-10000.0
+10000.0 ± 3.6000000000000003e-22
 
 julia&gt; exposure(EMU,ESU) # statC⋅abC⁻¹
 2.99792458e10
 
 julia&gt; expsure(ESU,Metric) # C⋅g⋅statC⁻¹⋅kg
-3.3356409519815204e-7
+3.3356409519815204e-7 ± 1.2e-32
 
 julia&gt; exposure(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.mobility" href="#UnitSystems.mobility"><code>UnitSystems.mobility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">mobility(U::UnitSystem,S::UnitSystem) = charge(U,S)*time(U,S)/mass(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.mobility" href="#MeasureSystems.mobility"><code>MeasureSystems.mobility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">mobility(U::UnitSystem,S::UnitSystem) = charge(U,S)*time(U,S)/mass(U,S)
 mobility(v::Real,U::UnitSystem,S::UnitSystem) = v/mobility(U,S)</code></pre><p>Electron <code>mobility</code> in solid state physics (m²⋅V⁻¹⋅s⁻¹, A⋅s²⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; mobility(EMU,Metric) # C⋅g⋅abC⁻¹⋅kg
-10000.0
+10000.0 ± 3.6000000000000003e-22
 
 julia&gt; mobility(EMU,ESU) # statC⋅abC⁻¹
 2.99792458e10
 
 julia&gt; mobility(ESU,Metric) # C⋅g⋅statC⁻¹⋅kg
-3.3356409519815204e-7
+3.3356409519815204e-7 ± 1.2e-32
 
 julia&gt; mobility(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.current" href="#UnitSystems.current"><code>UnitSystems.current</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">current(U::UnitSystem,S::UnitSystem) = charge(U,S)/time(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.current" href="#MeasureSystems.current"><code>MeasureSystems.current</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">current(U::UnitSystem,S::UnitSystem) = charge(U,S)/time(U,S)
 current(v::Real,U::UnitSystem,S::UnitSystem) = v/current(U,S)</code></pre><p>Flow of electric <code>charge</code> per <code>time</code> or <code>current</code> (A, C⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; current(EMU,Metric) # A⋅Bi⁻¹
 10.0
 
@@ -426,87 +424,87 @@ julia&gt; current(ESU,Metric) # A⋅statA⁻¹
 3.33564095198152e-10
 
 julia&gt; current(Metric,SI2019) # A⋅A⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.currentdensity" href="#UnitSystems.currentdensity"><code>UnitSystems.currentdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">currentdensity(U::UnitSystem,S::UnitSystem) = current(U,S)/area(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.currentdensity" href="#MeasureSystems.currentdensity"><code>MeasureSystems.currentdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">currentdensity(U::UnitSystem,S::UnitSystem) = current(U,S)/area(U,S)
 currentdensity(v::Real,U::UnitSystem,S::UnitSystem) = v/currentdensity(U,S)</code></pre><p>Cross-section <code>currentdensity</code> or <code>current</code> per <code>area</code> (A⋅m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; currentdensity(EMU,Metric) # A⋅cm²⋅Bi⁻¹⋅m⁻²
-100000.0
+100000.0 ± 1.1e-20
 
 julia&gt; currentdensity(ESU,Metric) # A⋅cm²⋅statA⁻¹⋅m⁼²
-3.33564095198152e-6
+3.33564095198152e-6 ± 3.8e-31
 
 julia&gt; currentdensity(Metric,SI2019) # A⋅A⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.resistance" href="#UnitSystems.resistance"><code>UnitSystems.resistance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">resistance(U::UnitSystem,S::UnitSystem) = electricpotential(U,S)/current(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.resistance" href="#MeasureSystems.resistance"><code>MeasureSystems.resistance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">resistance(U::UnitSystem,S::UnitSystem) = electricpotential(U,S)/current(U,S)
 resistance(v::Real,U::UnitSystem,S::UnitSystem) = v/resistance(U,S)</code></pre><p>Electrical <code>resistance</code> or <code>electricpotential</code> per <code>current</code> (Ω, S⁻¹, V⋅A⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; resistance(EMU,Metric) # Ω⋅abΩ⁻¹
-1.0e-9
+1.0e-9 ± 3.5999999999999997e-35
 
 julia&gt; resistance(ESU,Metric) # Ω⋅statΩ⁻¹
-8.987551787368179e11
+8.987551787368179e11 ± 3.2e-14
 
 julia&gt; resistance(Metric,SI2019) # Ω⋅Ω⁻¹
-1.0000000005452097</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.conductance-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.conductance-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.conductance</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">conductance(U::UnitSystem,S::UnitSystem) = current(U,S)/electricpotential(U,S)
+1.00000000055 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.conductance-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.conductance-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.conductance</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">conductance(U::UnitSystem,S::UnitSystem) = current(U,S)/electricpotential(U,S)
 conductance(v::Real,U::UnitSystem,S::UnitSystem) = v/conductance(U,S)</code></pre><p>Electrical <code>conductance</code> or <code>current</code> per <code>electricpotential</code> (S, Ω⁻¹, A⋅V⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; conductance(EMU,Metric) # S⋅abS⁻¹
-1.0e9
+1.0e9 ± 3.6e-17
 
 julia&gt; conductance(ESU,Metric) # S⋅statS⁻¹
-1.112650056053618e-12
+1.112650056053618e-12 ± 4.0e-38
 
 julia&gt; conductance(Metric,SI2019) # S⋅S⁻¹
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.resistivity" href="#UnitSystems.resistivity"><code>UnitSystems.resistivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">resistivity(U::UnitSystem,S::UnitSystem) = resistance(U,S)*length(U,S)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.resistivity" href="#MeasureSystems.resistivity"><code>MeasureSystems.resistivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">resistivity(U::UnitSystem,S::UnitSystem) = resistance(U,S)*length(U,S)
 resistivity(v::Real,U::UnitSystem,S::UnitSystem) = v/resistivity(U,S)</code></pre><p>Electrical <code>resistivity</code> or <code>resistance</code> by <code>length</code> (Ω⋅m), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; resistance(EMU,Metric) # Ω⋅m⋅abΩ⁻¹⋅cm⁻¹
-1.0e-9
+1.0e-9 ± 3.5999999999999997e-35
 
 julia&gt; resistance(ESU,Metric) # Ω⋅m⋅statΩ⁻¹⋅cm⁻¹
-8.987551787368179e11
+8.987551787368179e11 ± 3.2e-14
 
 julia&gt; resistance(Metric,SI2019) # Ω⋅Ω⁻¹
-1.0000000005452097</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.conductivity" href="#UnitSystems.conductivity"><code>UnitSystems.conductivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">conductivity(U::UnitSystem,S::UnitSystem) = conductance(U,S)/length(U,S)
+1.00000000055 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.conductivity" href="#MeasureSystems.conductivity"><code>MeasureSystems.conductivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">conductivity(U::UnitSystem,S::UnitSystem) = conductance(U,S)/length(U,S)
 conductivity(v::Real,U::UnitSystem,S::UnitSystem) = v/conductivity(U,S)</code></pre><p>Reciprocal <code>resistivity</code> or electrical <code>conductivity</code> (S⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; conductivity(EMU,Metric) # S⋅cm⋅abS⁻¹⋅m⁻¹
-1.0e11
+1.0e11 ± 2.1e-15
 
 julia&gt; conductivity(ESU,Metric) # S⋅cm⋅statS⁻¹⋅m⁼¹
-1.112650056053618e-10
+1.112650056053618e-10 ± 2.4e-36
 
 julia&gt; conductivity(Metric,SI2019) # S⋅S⁻¹
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.capacitance" href="#UnitSystems.capacitance"><code>UnitSystems.capacitance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">capacitance(U::UnitSystem,S::UnitSystem) = charge(U,S)/electricpotential(U,S)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.capacitance" href="#MeasureSystems.capacitance"><code>MeasureSystems.capacitance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">capacitance(U::UnitSystem,S::UnitSystem) = charge(U,S)/electricpotential(U,S)
 capacitance(v::Real,U::UnitSystem,S::UnitSystem) = v/capacitance(U,S)</code></pre><p>Electrical <code>capactiance</code> or <code>charge</code> per <code>electricpotential</code> (F, C⋅V⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; capacitance(EMU,Metric) # F⋅abF⁻¹
-1.0e9
+1.0e9 ± 3.6e-17
 
 julia&gt; capacitance(ESU,Metric) # F⋅cm⁻¹
-1.112650056053618e-12
+1.112650056053618e-12 ± 4.0e-38
 
 julia&gt; capactiance(Metric,SI2019) # F⋅F⁻¹
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.inductance" href="#UnitSystems.inductance"><code>UnitSystems.inductance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">inductance(U::UnitSystem,S::UnitSystem) = mass(U,S)*area(U,S)/charge(U,S)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.inductance" href="#MeasureSystems.inductance"><code>MeasureSystems.inductance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">inductance(U::UnitSystem,S::UnitSystem) = mass(U,S)*area(U,S)/charge(U,S)
 inductance(v::Real,U::UnitSystem,S::UnitSystem) = v/inductance(U,S)</code></pre><p>Electro-<code>magneticflux</code> per <code>current</code> or <code>inductance</code> (H, Ω⋅s, Wb⋅A⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; inductance(EMU,Metric) # H⋅abH⁻¹
-1.0e-9
+1.0e-9 ± 7.8e-35
 
 julia&gt; inductance(ESU,Metric) # H⋅statH⁻¹
-8.987551787368177e11
+8.987551787368177e11 ± 7.0e-14
 
 julia&gt; inductance(Metric,SI2019) # H⋅H⁻¹
-1.0000000005452097</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.reluctance" href="#UnitSystems.reluctance"><code>UnitSystems.reluctance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">reluctance(U::UnitSystem,S::UnitSystem) = rationalization(U,S)*lorentz(U,S)^2/inductance(U,S)
+1.00000000055 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.reluctance" href="#MeasureSystems.reluctance"><code>MeasureSystems.reluctance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">reluctance(U::UnitSystem,S::UnitSystem) = rationalization(U,S)*lorentz(U,S)^2/inductance(U,S)
 reluctance(v::Real,U::UnitSystem,S::UnitSystem) = v/reluctance(U,S)</code></pre><p>Magnetic <code>reluctance</code> or magnetic resistance (H⁻¹, Gb⋅Mx⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; reluctance(EMU,Metric) # abH⋅H⁻¹
-7.957747154594767e7
+7.957747154594767e7 ± 6.2e-18
 
 julia&gt; reluctance(ESU,Metric) # statH⋅H⁻¹
-8.85418781762039e-14
+8.854187817620391e-14 ± 6.899999999999999e-39
 
 julia&gt; reluctance(Metric,SI2019) # H⋅H⁻¹
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.permeance" href="#UnitSystems.permeance"><code>UnitSystems.permeance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">permeance(U::UnitSystem,S::UnitSystem) = 1/reluctance(U,S)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.permeance" href="#MeasureSystems.permeance"><code>MeasureSystems.permeance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">permeance(U::UnitSystem,S::UnitSystem) = 1/reluctance(U,S)
 permeance(v::Real,U::UnitSystem,S::UnitSystem) = v/permeance(U,S)</code></pre><p>Magnetic <code>permeance</code> or magnetic conductance (H, Mx⋅Gb⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; permeance(EMU,Metric) # abH⋅H⁻¹
-1.2566370614359176e-8
+1.2566370614359176e-8 ± 1.9e-33
 
 julia&gt; permeance(ESU,Metric) # statH⋅H⁻¹
-1.129409066758147e13
+1.129409066758147e13 ± 1.7e-12
 
 julia&gt; permeance(Metric,SI2019) # H⋅H⁻¹
-1.0000000005452097</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.permittivity-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.permittivity-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.permittivity</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">permittivity(U::UnitSystem,S::UnitSystem) = capacitance(U,S)*rationalization(U,S)/length(U,S)
+1.00000000055 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.permittivity-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.permittivity-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.permittivity</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">permittivity(U::UnitSystem,S::UnitSystem) = capacitance(U,S)*rationalization(U,S)/length(U,S)
 permittivity(v::Real,U::UnitSystem,S::UnitSystem) = v/permittivity(U,S)</code></pre><p>Absolute <code>permittivity</code> or <code>capacitance</code> per <code>length</code> (F⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; permittivity(EMU,Metric) # F⋅cm⋅abF⁻¹⋅m⁻¹
-7.957747154594767e9
+7.957747154594766e9 ± 1.7e-16
 
 julia&gt; permittivity(ESU,Metric) # F⋅m⁼¹
-8.854187817620386e-12
+8.854187817620386e-12 ± 1.9e-37
 
 julia&gt; permittivity(Metric,SI2019) # F⋅F⁻¹
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.permeability-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.permeability-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.permeability</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">permeability(U::UnitSystem,S::UnitSystem) = permeability(S)/permeability(U)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.permeability-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.permeability-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.permeability</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">permeability(U::UnitSystem,S::UnitSystem) = permeability(S)/permeability(U)
 permeability(v::Real,U::UnitSystem,S::UnitSystem) = v/permeability(U,S)</code></pre><p>Magnetic <code>permeability</code> or <code>inductance</code> per <code>length</code> (H⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; permeability(EMU,Metric) # H⋅cm⋅abH⁻¹⋅m⁻¹
 1.2566370614359173e-6
 
@@ -514,7 +512,7 @@ julia&gt; permeability(ESU,Metric) # H⋅cm⋅statH⁻¹⋅m⁼¹
 1.1294090667581472e15
 
 julia&gt; permeability(Metric,SI2019) # H⋅H⁻¹
-1.0000000005452097</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.susceptibility" href="#UnitSystems.susceptibility"><code>UnitSystems.susceptibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">susceptibility(U::UnitSystem,S::UnitSystem) = 1/rationalization(U,S)
+1.00000000055 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.susceptibility" href="#MeasureSystems.susceptibility"><code>MeasureSystems.susceptibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">susceptibility(U::UnitSystem,S::UnitSystem) = 1/rationalization(U,S)
 susceptibility(v::Real,U::UnitSystem,S::UnitSystem) = v/susceptibility(U,S)</code></pre><p>Magnetic/electric volume <code>susceptibility</code> (dimensionless), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; susceptibility(EMU,Metric)
 12.566370614359172
 
@@ -522,15 +520,15 @@ julia&gt; susceptibility(ESU,Metric)
 12.566370614359172
 
 julia&gt; susceptibility(Metric,SI2019)
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificsusceptibility" href="#UnitSystems.specificsusceptibility"><code>UnitSystems.specificsusceptibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificsusceptibility(U::UnitSystem,S::UnitSystem) = susceptibility(U,S)/density(U,S)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificsusceptibility" href="#MeasureSystems.specificsusceptibility"><code>MeasureSystems.specificsusceptibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificsusceptibility(U::UnitSystem,S::UnitSystem) = susceptibility(U,S)/density(U,S)
 specificsusceptibility(v::Real,U::UnitSystem,S::UnitSystem) = v/specificsusceptibility(U,S)</code></pre><p>Magnetic/electric mass specific <code>susceptibility</code> (m³⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificsusceptibility(EMU,Metric) # m³⋅g⋅kg⁻¹⋅cm⁻³
-0.012566370614359171
+0.012566370614359171 ± 2.6e-27
 
 julia&gt; specificsusceptibility(ESU,Metric) # m³⋅g⋅kg⁻¹⋅cm⁻³
-0.012566370614359173
+0.012566370614359173 ± 2.6e-27
 
 julia&gt; specificsusceptibility(Metric,SI2019) # m³⋅kg⋅kg⁻¹⋅m⁻³
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.demagnetizingfactor" href="#UnitSystems.demagnetizingfactor"><code>UnitSystems.demagnetizingfactor</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">demagnetizingfactor(U::UnitSystem,S::UnitSystem) = 1/susceptibility(U,S)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.demagnetizingfactor" href="#MeasureSystems.demagnetizingfactor"><code>MeasureSystems.demagnetizingfactor</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">demagnetizingfactor(U::UnitSystem,S::UnitSystem) = 1/susceptibility(U,S)
 demagnetizingfactor(v::Real,U::UnitSystem,S::UnitSystem) = v/demagnetizingfactor(U,S)</code></pre><p>Quantitiy of <code>demagnetizingfactor</code> (dimensionless), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; demagnetizingfactor(EMU,Metric)
 0.07957747154594767
 
@@ -538,337 +536,337 @@ julia&gt; demagnetizingfactor(ESU,Metric)
 0.07957747154594767
 
 julia&gt; demagnetizingfactor(Metric,SI2019)
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.vectorpotential" href="#UnitSystems.vectorpotential"><code>UnitSystems.vectorpotential</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">vectorpotential(U::UnitSystem,S::UnitSystem) = magneticflux(U,S)/length(U,S)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.vectorpotential" href="#MeasureSystems.vectorpotential"><code>MeasureSystems.vectorpotential</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">vectorpotential(U::UnitSystem,S::UnitSystem) = magneticflux(U,S)/length(U,S)
 vectorpotential(v::Real,U::UnitSystem,S::UnitSystem) = v/vectorpotential(U,S)</code></pre><p>Magnetic <code>vectorpotential</code> (Wb⋅m⁻¹), unit conversion factor.</p><pre><code class="language-julia">julia&gt; vectorpotential(EMU,Metric) # Wb⋅cm⋅Mx⁻¹⋅m⁻¹
-1.0e-6
+1.0e-6 ± 9.2e-32
 
 julia&gt; vectorpotential(ESU,Metric) # Wb⋅cm⋅statWb⁻¹⋅m⁻¹
-29979.245800000008
+29979.245800000008 ± 2.8e-21
 
 julia&gt; vectorpotential(Metric,SI2019) # Wb⋅Wb⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.electricpotential" href="#UnitSystems.electricpotential"><code>UnitSystems.electricpotential</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricpotential(U::UnitSystem,S::UnitSystem) = energy(U,S)/charge(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricpotential" href="#MeasureSystems.electricpotential"><code>MeasureSystems.electricpotential</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricpotential(U::UnitSystem,S::UnitSystem) = energy(U,S)/charge(U,S)
 electricpotential(v::Real,U::UnitSystem,S::UnitSystem) = v/electricpotential(U,S)</code></pre><p>Voltage or <code>electricpotential</code> or <code>energy</code> per <code>charge</code> (V, J⋅C⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricpotential(EMU,Metric) # V⋅abV⁻¹
-1.0e-8
+1.0e-8 ± 3.6e-34
 
 julia&gt; electricpotential(EMU,ESU) # statV⋅abV⁻¹
 3.33564095198152e-11
 
 julia&gt; electricpotential(ESU,Metric) # V⋅statV⁻¹
-299.79245800000007
+299.79245800000007 ± 1.1e-23
 
 julia&gt; electricpotential(Metric,SI2019) # V⋅V⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticpotential" href="#UnitSystems.magneticpotential"><code>UnitSystems.magneticpotential</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticpotential(U::UnitSystem,S::UnitSystem) = magneticflux(U,S)*reluctance(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticpotential" href="#MeasureSystems.magneticpotential"><code>MeasureSystems.magneticpotential</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticpotential(U::UnitSystem,S::UnitSystem) = magneticflux(U,S)*reluctance(U,S)
 magneticpotential(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticpotential(U,S)</code></pre><p>Magnetomotive force or <code>magneticpotential</code> (A, Gb), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magneticpotential(EMU,Metric) # A⋅Gb⁻¹
-0.7957747154594768
+0.7957747154594768 ± 9.1e-26
 
 julia&gt; magneticpotential(Metric,SI2019) # A⋅A⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.electricfield" href="#UnitSystems.electricfield"><code>UnitSystems.electricfield</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricfield(U::UnitSystem,S::UnitSystem) = electricpotential(U,S)/length(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricfield" href="#MeasureSystems.electricfield"><code>MeasureSystems.electricfield</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricfield(U::UnitSystem,S::UnitSystem) = electricpotential(U,S)/length(U,S)
 electricfield(v::Real,U::UnitSystem,S::UnitSystem) = v/electricfield(U,S)</code></pre><p>The <code>electricpotential</code> per <code>length</code> or <code>electricfield</code> (V⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricfield(EMU,Metric) # V⋅cm⋅abV⁻¹⋅m⁻¹
-1.0e-6
+1.0e-6 ± 9.2e-32
 
 julia&gt; electricfield(EMU,ESU) # statV⋅abV⁻¹
 3.33564095198152e-11
 
 julia&gt; electricfield(ESU,Metric) # V⋅cm⋅statV⁻¹⋅m⁻¹
-29979.245800000008
+29979.245800000008 ± 2.8e-21
 
 julia&gt; electricfield(Metric,SI2019) # V⋅V⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticfield" href="#UnitSystems.magneticfield"><code>UnitSystems.magneticfield</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticfield(U::UnitSystem,S::UnitSystem) = current(U,S)*rationalization(U,S)*lorentz(U,S)/length(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticfield" href="#MeasureSystems.magneticfield"><code>MeasureSystems.magneticfield</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticfield(U::UnitSystem,S::UnitSystem) = current(U,S)*rationalization(U,S)*lorentz(U,S)/length(U,S)
 magneticfield(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticfield(U,S)</code></pre><p>Magnetization or <code>magneticfield</code> or <code>current</code> per <code>length</code> (A⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magneticfield(EMU,Metric) # A⋅m⁻¹⋅Oe⁻¹
-79.57747154594767
+79.57747154594767 ± 4.5e-24
 
 julia&gt; magneticfield(ESU,Metric) # A⋅cm⋅m⁻¹⋅statA⁻¹
-2.654418729438072e-9
+2.654418729438072e-9 ± 1.5e-34
 
 julia&gt; magneticfield(Metric,SI2019) # A⋅A⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.electricflux" href="#UnitSystems.electricflux"><code>UnitSystems.electricflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricflux(U::UnitSystem,S::UnitSystem) = electricpotential(U,S)*length(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricflux" href="#MeasureSystems.electricflux"><code>MeasureSystems.electricflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricflux(U::UnitSystem,S::UnitSystem) = electricpotential(U,S)*length(U,S)
 electricflux(v::Real,U::UnitSystem,S::UnitSystem) = v/electricflux(U,S)</code></pre><p>Amount of <code>electricflux</code> or <code>electricpotential</code> by <code>length</code> (V⋅m), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricflux(EMU,Metric) # V⋅m⋅abV⁻¹⋅cm⁻¹
-1.0e-10
+1.0e-10 ± 2.1000000000000002e-36
 
 julia&gt; electricflux(EMU,ESU) # statV⋅abV⁻¹
 3.33564095198152e-11
 
 julia&gt; electricflux(ESU,Metric) # V⋅m⋅statV⁻¹⋅cm⁻¹
-2.9979245800000007
+2.9979245800000007 ± 6.4e-26
 
 julia&gt; electricflux(Metric,SI2019) # V⋅V⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticflux-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.magneticflux-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.magneticflux</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">magneticflux(U::UnitSystem,S::UnitSystem) = energy(U,S)/lorentz(U,S)/current(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticflux-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.magneticflux-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.magneticflux</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">magneticflux(U::UnitSystem,S::UnitSystem) = energy(U,S)/lorentz(U,S)/current(U,S)
 magneticflux(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticflux(U,S)</code></pre><p>Surface <code>magneticflux</code> or <code>energy</code> per <code>current</code> (Wb, J⋅A⁻¹, V⋅s), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magneticflux(EMU,Metric) # Wb⋅Mx⁻¹
-1.0e-8
+1.0e-8 ± 3.6e-34
 
 julia&gt; magneticflux(ESU,Metric) # Wb⋅statWb⁻¹
-299.79245800000007
+299.79245800000007 ± 1.1e-23
 
 julia&gt; magneticflux(Metric,SI2019) # Wb⋅Wb⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.electricfluxdensity" href="#UnitSystems.electricfluxdensity"><code>UnitSystems.electricfluxdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricfluxdensity(U::UnitSystem,S::UnitSystem) = charge(U,S)*rationalization(U,S)/area(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricfluxdensity" href="#MeasureSystems.electricfluxdensity"><code>MeasureSystems.electricfluxdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricfluxdensity(U::UnitSystem,S::UnitSystem) = charge(U,S)*rationalization(U,S)/area(U,S)
 electricfluxdensity(v::Real,U::UnitSystem,S::UnitSystem) = v/electricfluxdensity(U,S)</code></pre><p>Electric field displacement or surface <code>electricfluxdensity</code> (C⋅m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricfluxdensity(EMU,Metric) # C⋅cm²⋅abC⁻¹⋅m⁻²
-7957.747154594767
+7957.7471545947665 ± 9.1e-22
 
 julia&gt; electricfluxdensity(ESU,Metric) # C⋅cm²⋅statC⁻¹⋅m⁼²
-2.654418729438072e-7
+2.654418729438072e-7 ± 3.0e-32
 
 julia&gt; electricfluxdensity(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticfluxdensity" href="#UnitSystems.magneticfluxdensity"><code>UnitSystems.magneticfluxdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticfluxdensity(U::UnitSystem,S::UnitSystem) = mass(U,S)/lorentz(U,S)/current(U,S)/time(U,S)^2
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticfluxdensity" href="#MeasureSystems.magneticfluxdensity"><code>MeasureSystems.magneticfluxdensity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticfluxdensity(U::UnitSystem,S::UnitSystem) = mass(U,S)/lorentz(U,S)/current(U,S)/time(U,S)^2
 magneticfluxdensity(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticfluxdensity(U,S)</code></pre><p>Magnetic induction or surface <code>magneticfluxdensity</code> (T, Wb⋅m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magneticfluxdensity(EMU,Metric) # T⋅G⁻¹
-0.0001
+0.0001 ± 3.6e-30
 
 julia&gt; magneticfluxdensity(EMU,ESU) # statT⋅G⁻¹
 3.33564095198152e-11
 
 julia&gt; magneticfluxdensity(Metric,SI2019) # T⋅T⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.electricdipolemoment" href="#UnitSystems.electricdipolemoment"><code>UnitSystems.electricdipolemoment</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricdipolemoment(U::UnitSystem,S::UnitSystem) = charge(U,S)*length(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricdipolemoment" href="#MeasureSystems.electricdipolemoment"><code>MeasureSystems.electricdipolemoment</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricdipolemoment(U::UnitSystem,S::UnitSystem) = charge(U,S)*length(U,S)
 electricdipolemoment(v::Real,U::UnitSystem,S::UnitSystem) = v/electricdipolemoment(U,S)</code></pre><p>Electric dipole moment or <code>electricdipolemoment</code> (C⋅m), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricdipolemoment(EMU,Metric) # C⋅m⋅abC⁻¹⋅cm⁻¹
-0.1
+0.1 ± 5.7000000000000004e-27
 
 julia&gt; electricdipolemoment(ESU,Metric) # C⋅m⋅statC⁻¹⋅cm⁼¹
-3.3356409519815203e-12
+3.3356409519815207e-12 ± 1.9e-37
 
 julia&gt; electricdipolemoment(Metric,Gauss)/1e-18 # D⋅C⁻¹⋅m⁻¹
-2.9979245799999992e29
+2.9979245799999992e29 ± 28000.0
 
 julia&gt; electricdipolemoment(Metric,SI2019) # C⋅C⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticdipolemoment" href="#UnitSystems.magneticdipolemoment"><code>UnitSystems.magneticdipolemoment</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticdipolemoment(U::UnitSystem,S::UnitSystem) = current(U,S)*lorentz(U,S)/area(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticdipolemoment" href="#MeasureSystems.magneticdipolemoment"><code>MeasureSystems.magneticdipolemoment</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticdipolemoment(U::UnitSystem,S::UnitSystem) = current(U,S)*lorentz(U,S)/area(U,S)
 magneticdipolemoment(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticdipolemoment(U,S)</code></pre><p>Magnetic dipole moment or <code>magneticdipolemoment</code> (J⋅T⁻¹, A⋅m²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magneticdipolemoment(EMU,Metric) # J⋅G⋅T⁻¹⋅erg⁻¹
-0.001
+0.001 ± 1.1e-28
 
 julia&gt; magneticdipolemoment(ESU,Metric) # J⋅statT⋅T⁻¹⋅erg⁼¹
-3.3356409519815204e-14
+3.3356409519815204e-14 ± 3.7999999999999996e-39
 
 julia&gt; magneticdipolemoment(Metric,SI2019) # A⋅A⁻¹⋅
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.electricpolarizability" href="#UnitSystems.electricpolarizability"><code>UnitSystems.electricpolarizability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricpolarizability(U::UnitSystem,S::UnitSystem) = electricdipolemoment(U,S)/electricfield(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricpolarizability" href="#MeasureSystems.electricpolarizability"><code>MeasureSystems.electricpolarizability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">electricpolarizability(U::UnitSystem,S::UnitSystem) = electricdipolemoment(U,S)/electricfield(U,S)
 electricpolarizability(v::Real,U::UnitSystem,S::UnitSystem) = v/electricpolarizability(U,S)</code></pre><p>Polarizability or <code>electricdipolemoment</code> per <code>electricfield</code> (C⋅m²⋅V⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricpolarizability(EMU,Metric) # C⋅m²⋅abV⋅abC⁻¹⋅cm⁻²⋅V⁻¹
-100000.00000000001
+100000.00000000003 ± 1.5e-20
 
 julia&gt; electricpolarizability(ESU,Metric) # C⋅m²⋅statV⋅statC⁻¹⋅cm⁼²⋅V⁻¹
-1.1126500560536182e-16
+1.1126500560536182e-16 ± 1.7000000000000002e-41
 
 julia&gt; electricpolarizability(Metric,Gauss) # D⋅cm²⋅V⁻¹⋅C⁻¹⋅m⁻²⋅abV⁻¹
-8.987551787368173e15
+8.987551787368172e15 ± 2.0e-9
 
 julia&gt; electricpolarizability(Metric,SI2019) # C⋅V⋅C⁻¹⋅V⁻¹
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticpolarizability" href="#UnitSystems.magneticpolarizability"><code>UnitSystems.magneticpolarizability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticpolarizability(U::UnitSystem,S::UnitSystem) = magneticdipolemoment(U,S)/magneticfield(U,S)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticpolarizability" href="#MeasureSystems.magneticpolarizability"><code>MeasureSystems.magneticpolarizability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticpolarizability(U::UnitSystem,S::UnitSystem) = magneticdipolemoment(U,S)/magneticfield(U,S)
 magneticpolarizability(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticpolarizability(U,S)</code></pre><p>Polarizability or <code>magneticdipolemoment</code> per <code>magneticfield</code> (m³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; electricpolarizability(EMU,Metric) # m³⋅cm⁻³
-100000.00000000001
+100000.00000000003 ± 1.5e-20
 
 julia&gt; electricpolarizability(ESU,Metric) # m³⋅cm⁼³
-1.1126500560536182e-16
+1.1126500560536182e-16 ± 1.7000000000000002e-41
 
 julia&gt; electricpolarizability(Metric,Gauss) # cm³⋅m⁻³
-8.987551787368173e15
+8.987551787368172e15 ± 2.0e-9
 
 julia&gt; electricpolarizability(Metric,SI2019)
-0.9999999994547903</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magneticmoment" href="#UnitSystems.magneticmoment"><code>UnitSystems.magneticmoment</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticmoment(U::UnitSystem,S::UnitSystem) = magneticflux(U,S)*length(U,S)
+0.99999999945 ± 1.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticmoment" href="#MeasureSystems.magneticmoment"><code>MeasureSystems.magneticmoment</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magneticmoment(U::UnitSystem,S::UnitSystem) = magneticflux(U,S)*length(U,S)
 magneticmoment(v::Real,U::UnitSystem,S::UnitSystem) = v/magneticmoment(U,S)</code></pre><p>Amount of <code>magneticmoment</code> or <code>magneticflux</code> by <code>length</code> (Wb⋅m), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magneticmoment(EMU,Metric) # Wb⋅m⋅Mx⁻¹⋅cm⁻¹
-1.0e-10
+1.0e-10 ± 2.1000000000000002e-36
 
 julia&gt; magneticmoment(ESU,Metric) # Wb⋅m⋅statWb⁻¹⋅cm⁻¹
-2.9979245800000007
+2.9979245800000007 ± 6.4e-26
 
 julia&gt; magneticmoment(Metric,SI2019) # Wb⋅Wb⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magnetizability" href="#UnitSystems.magnetizability"><code>UnitSystems.magnetizability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magnetizability(U::UnitSystem,S::UnitSystem) = magneticmoment(U,S)/magneticfluxdensity(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magnetizability" href="#MeasureSystems.magnetizability"><code>MeasureSystems.magnetizability</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magnetizability(U::UnitSystem,S::UnitSystem) = magneticmoment(U,S)/magneticfluxdensity(U,S)
 magnetizability(v::Real,U::UnitSystem,S::UnitSystem) = v/magnetizability(U,S)</code></pre><p>Quantity of <code>magneticmoment</code> per <code>magneticfluxdensity</code> (m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magnetizability(EMU,Metric) # cm⋅m⁻¹
-1.0e-6
+1.0e-6 ± 5.7e-32
 
 julia&gt; magnetizability(ESU,Metric) # cm⋅m⁻¹
-1.0000000000000002e-6
+1.0000000000000002e-6 ± 5.7e-32
 
 julia&gt; magnetizability(Metric,SI2019) # m⋅m⁻¹
-1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.magnetization" href="#UnitSystems.magnetization"><code>UnitSystems.magnetization</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magnetization(U::UnitSystem,S::UnitSystem) = magneticmoment(U,S)/volume(U,S)
+1</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magnetization" href="#MeasureSystems.magnetization"><code>MeasureSystems.magnetization</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">magnetization(U::UnitSystem,S::UnitSystem) = magneticmoment(U,S)/volume(U,S)
 magnetization(v::Real,U::UnitSystem,S::UnitSystem) = v/magnetization(U,S)</code></pre><p>Amount of <code>magneticmoment</code> per <code>volume</code> (Wb⋅m⁻²), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; magnetization(EMU,Metric) # Wb⋅cm²⋅Mx⁻¹⋅m⁻²
-9.999999999999999e-5
+9.999999999999999e-5 ± 1.4999999999999998e-29
 
 julia&gt; magnetization(ESU,Metric) # Wb⋅cm²⋅statWb⁻¹⋅m⁻²
-2.99792458e6
+2.99792458e6 ± 4.5e-19
 
 julia&gt; magnetization(Metric,SI2019) # Wb⋅Wb⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificmagnetization" href="#UnitSystems.specificmagnetization"><code>UnitSystems.specificmagnetization</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificmagnetization(U::UnitSystem,S::UnitSystem) = magneticmoment(U,S)/mass(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificmagnetization" href="#MeasureSystems.specificmagnetization"><code>MeasureSystems.specificmagnetization</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificmagnetization(U::UnitSystem,S::UnitSystem) = magneticmoment(U,S)/mass(U,S)
 specificmagnetization(v::Real,U::UnitSystem,S::UnitSystem) = v/specificmagnetization(U,S)</code></pre><p>Amount of <code>magneticmoment</code> per <code>mass</code> (Wb⋅m⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificmagnetization(EMU,Metric) # Wb⋅m⋅g⋅Mx⁻¹⋅cm⁻¹⋅kg⁻¹
-1.0e7
+1.0e7 ± 9.3e-19
 
 julia&gt; specificmagnetization(ESU,Metric) # Wb⋅m⋅g⋅statWb⁻¹⋅cm⁻¹⋅kg⁻¹
-0.00033356409519815205
+0.00033356409519815205 ± 3.0999999999999997e-29
 
 julia&gt; specificmagnetization(Metric,SI2019) # Wb⋅Wb⁻¹
-0.9999999997273952</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.rigidity" href="#UnitSystems.rigidity"><code>UnitSystems.rigidity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">rigidity(U::UnitSystem,S::UnitSystem) = magneticfluxdensity(U,S)*length(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rigidity" href="#MeasureSystems.rigidity"><code>MeasureSystems.rigidity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">rigidity(U::UnitSystem,S::UnitSystem) = magneticfluxdensity(U,S)*length(U,S)
 rigidity(v::Real,U::UnitSystem,S::UnitSystem) = v/rigidity(U,S)</code></pre><p>Electromagnetic <code>rigidity</code> (T⋅m), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; rigidity(EMU,Metric) # T⋅m⋅G⁻¹⋅cm⁻¹
-1.0000000000000002e-6
+1.0000000000000002e-6 ± 2.1000000000000002e-32
 
 julia&gt; rigidity(EMU,ESU) # statT⋅G⁻¹
 3.33564095198152e-11
 
 julia&gt; rigidity(Metric,SI2019) # T⋅T⁻¹
-1.0000000002726048</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.polestrength" href="#UnitSystems.polestrength"><code>UnitSystems.polestrength</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">polestrength(U::UnitSystem,S::UnitSystem) = magneticdipolemoment(U,S)/length(U,S)
+1.000000000273 ± 7.7e-11</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.polestrength" href="#MeasureSystems.polestrength"><code>MeasureSystems.polestrength</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">polestrength(U::UnitSystem,S::UnitSystem) = magneticdipolemoment(U,S)/length(U,S)
 polestrength(v::Real,U::UnitSystem,S::UnitSystem) = v/polestrength(U,S)</code></pre><p>Magnetic <code>polestrength</code> is analogous to <code>charge</code> (A⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; polestrength(EMU,Metric) # A⋅m⁻¹⋅pole⁻¹
-0.1
+0.1 ± 5.7000000000000004e-27
 
 julia&gt; polestrength(Metric,SI2019) # A⋅A⁻¹⋅
-0.9999999997273952</code></pre></div></section></article><h2 id="Thermodynamic-Units-1"><a class="docs-heading-anchor" href="#Thermodynamic-Units-1">Thermodynamic Units</a><a class="docs-heading-anchor-permalink" href="#Thermodynamic-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.temperature" href="#UnitSystems.temperature"><code>UnitSystems.temperature</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">temperature(F::FluidState)</code></pre><p>Absolute thermodynamic temperature scale <code>T</code> at <code>F</code> (K or °R).</p></div></section><section><div><pre><code class="language-none">temperature(h::Real=0,::Weather=Standard)</code></pre><p>Absolute temperature <code>T</code> at geometric altitude <code>h</code> of <code>Weather</code> location (K or °R).</p></div></section><section><div><pre><code class="language-Julia">temperature(U::UnitSystem,S::UnitSystem) = mass(U,S)*speed(U,S)^2/boltzmann(U,S)
+0.999999999727 ± 7.7e-11</code></pre></div></section></article><h2 id="Thermodynamic-Units-1"><a class="docs-heading-anchor" href="#Thermodynamic-Units-1">Thermodynamic Units</a><a class="docs-heading-anchor-permalink" href="#Thermodynamic-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.temperature" href="#MeasureSystems.temperature"><code>MeasureSystems.temperature</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">temperature(U::UnitSystem,S::UnitSystem) = mass(U,S)*speed(U,S)^2/boltzmann(U,S)
 temperature(v::Real,U::UnitSystem,S::UnitSystem) = v/temperature(U,S)</code></pre><p>Measurement scale for thermodynamic energy or <code>temperature</code> (K), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; temperature(Metric,SI2019) # K⋅K⁻¹
-0.9999999996562562
+0.99999999966 ± 3.1e-10
 
 julia&gt; temperature(English,SI2019) # K⋅°R⁻¹
-0.5555555555555555
+0.5555555555555555 ± 3.6e-26
 
 julia&gt; temperature(English,Metric) # K⋅°R⁻¹
-0.5555555557465244
+0.55555555575 ± 1.7e-10
 
 julia&gt; temperature(PlanckGauss,Metric) # K⋅TP⁻¹
-1.4167839395467477e32</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.entropy" href="#UnitSystems.entropy"><code>UnitSystems.entropy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">entropy(U::UnitSystem,S::UnitSystem) = energy(U,S)/temperature(U,S)
+1.416784e32 ± 1.6e27</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.entropy" href="#MeasureSystems.entropy"><code>MeasureSystems.entropy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">entropy(U::UnitSystem,S::UnitSystem) = energy(U,S)/temperature(U,S)
 entropy(v::Real,U::UnitSystem,S::UnitSystem) = v/entropy(U,S)</code></pre><p>Heat capacity or <code>energy</code> per <code>temperature</code> or <code>entropy</code> (J⋅K⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; entropy(Metric,SI2019) # K⋅K⁻¹
-1.000000000343744
+1.00000000034 ± 3.1e-10
 
 julia&gt; entropy(CGS,Metric) # J⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 3.5999999999999997e-33
 
 julia&gt; entropy(English,SI2019) # J⋅°R⋅K⁻¹⋅ft⁻¹⋅lb⁻¹
-2.440472306996521
+2.440472306996521 ± 6.299999999999999e-26
 
 julia&gt; entropy(EnglishUS,English) # ftUS²⋅°R⋅°ft⁻²⋅°R⁻¹
-1.000004000355745</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificentropy" href="#UnitSystems.specificentropy"><code>UnitSystems.specificentropy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificentropy(U::UnitSystem,S::UnitSystem) = specificenergy(U,S)/temperature(U,S)
+1.00000400036 ± 3.1e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificentropy" href="#MeasureSystems.specificentropy"><code>MeasureSystems.specificentropy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificentropy(U::UnitSystem,S::UnitSystem) = specificenergy(U,S)/temperature(U,S)
 specificentropy(v::Real,U::UnitSystem,S::UnitSystem) = v/specificentropy(U,S)</code></pre><p>Specific heat capacity or <code>specificentropy</code> (J⋅K⁻¹⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificentropy(Metric,SI2019) # m²⋅K⋅K⁻¹⋅cm⁻²
-1.000000000343744
+1.00000000034 ± 3.1e-10
 
 julia&gt; specificentropy(CGS,Metric) # m²⋅cm⁻²
 0.0001
 
 julia&gt; specificentropy(English,Metric) # m²⋅°R⋅K⁻¹⋅ft⁻²
-0.16722547194251727
+0.167225471943 ± 5.1e-11
 
 julia&gt; specificentropy(EnglishUS,English) # ft²⋅°R⋅ftUS⁻²⋅°R⁻¹
-1.000004000355745</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.volumeheatcapacity" href="#UnitSystems.volumeheatcapacity"><code>UnitSystems.volumeheatcapacity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">volumeheatcapacity(U::UnitSystem,S::UnitSystem) = entropy(U,S)/volume(U,S)
+1.00000400036 ± 3.1e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.volumeheatcapacity" href="#MeasureSystems.volumeheatcapacity"><code>MeasureSystems.volumeheatcapacity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">volumeheatcapacity(U::UnitSystem,S::UnitSystem) = entropy(U,S)/volume(U,S)
 volumeheatcapacity(v::Real,U::UnitSystem,S::UnitSystem) = v/volumeheatcapacity(U,S)</code></pre><p>The <code>entropy</code> per <code>volume</code> or <code>volumeheatcapacity</code> (J⋅K⁻¹⋅m⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; volumeheatcapacity(Metric,SI2019) # K⋅K⁻¹
-1.000000000343744
+1.00000000034 ± 3.1e-10
 
 julia&gt; volumeheatcapacity(CGS,Metric) # J⋅cm³⋅erg⁻¹⋅m⁻³
-0.09999999999999999
+0.09999999999999999 ± 2.1e-26
 
 julia&gt; volumeheatcapacity(English,SI2019) # J⋅ft²⋅°R⋅K⁻¹⋅lb⁻¹⋅m⁻³
-86.18446616460442
+86.18446616460442 ± 1.8e-23
 
 julia&gt; volumeheatcapacity(EnglishUS,English) # ftUS⁵°R⋅°ft⁻⁵⋅°R⁻¹
-0.9999980003437439</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.thermalconductivity" href="#UnitSystems.thermalconductivity"><code>UnitSystems.thermalconductivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">thermalconductivity(T::Real,G::AbstractMole)</code></pre><p>Laminar thermal conductivity <code>k</code> of temperature variation (W⋅m⁻¹⋅K⁻¹ or lb⋅s⁻¹⋅°R⁻¹).</p></div></section><section><div><pre><code class="language-none">thermalconductivity(F::FluidState) = conductivity(temperature(F),fluid(F))</code></pre><p>Laminar thermal conductivity <code>k</code> at the temperature <code>F</code> (W⋅m⁻¹⋅K⁻¹ or lb⋅s⁻¹⋅°R⁻¹).</p></div></section><section><div><pre><code class="language-none">thermalconductivity(h::Real=0,W::Weather) = thermalconductivity(temperature(h,W),fluid(W))</code></pre><p>Laminar thermal conductivity <code>k</code> at altitude <code>h</code> of <code>Weather</code> (W⋅m⁻¹⋅K⁻¹ or lb⋅s⁻¹⋅°R⁻¹).</p></div></section><section><div><pre><code class="language-Julia">thermalconductivity(U::UnitSystem,S::UnitSystem) = force(U,S)/time(U,S)/temperature(U,S)
+0.99999800034 ± 3.1e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.thermalconductivity" href="#MeasureSystems.thermalconductivity"><code>MeasureSystems.thermalconductivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalconductivity(U::UnitSystem,S::UnitSystem) = force(U,S)/time(U,S)/temperature(U,S)
 thermalconductivity(v::Real,U::UnitSystem,S::UnitSystem) = v/thermalconductivity(U,S)</code></pre><p>Heat conductivity or <code>thermalconductivity</code> (W⋅m⁻¹⋅K⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; thermalconductivity(Metric,SI2019) # K⋅K⁻¹
-1.000000000343744
+1.00000000034 ± 3.1e-10
 
 julia&gt; thermalconductivity(CGS,Metric) # N⋅dyn⁻¹
-1.0e-5
+1.0e-5 ± 3.5999999999999996e-31
 
 julia&gt; thermalconductivity(English,Metric) # N⋅°R⋅K⁻¹⋅ft⁻¹⋅lb⁻¹
-8.00679890471661</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.thermalconductance" href="#UnitSystems.thermalconductance"><code>UnitSystems.thermalconductance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalconductance(U::UnitSystem,S::UnitSystem) = thermalconductivity(U,S)*length(U,S)
+8.0067989047 ± 2.5e-9</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.thermalconductance" href="#MeasureSystems.thermalconductance"><code>MeasureSystems.thermalconductance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalconductance(U::UnitSystem,S::UnitSystem) = thermalconductivity(U,S)*length(U,S)
 thermalconductance(v::Real,U::UnitSystem,S::UnitSystem) = v/thermalconductance(U,S)</code></pre><p>Reciprocal of <code>thermalresistance</code> (W⋅K⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; thermalconductance(Metric,SI2019) # K⋅K⁻¹
-1.000000000343744
+1.00000000034 ± 3.1e-10
 
 julia&gt; thermalconductance(CGS,Metric) # W⋅s⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 2.1e-33
 
 julia&gt; thermalconductance(English,Metric) # J⋅°R⋅K⁻¹⋅ft⁻¹⋅lb⁻¹
-2.440472306157624</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.thermalresistance" href="#UnitSystems.thermalresistance"><code>UnitSystems.thermalresistance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalresistance(U::UnitSystem,S::UnitSystem) = 1/thermalconductivity(U,S)/length(U,S)
+2.44047230616 ± 7.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.thermalresistance" href="#MeasureSystems.thermalresistance"><code>MeasureSystems.thermalresistance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalresistance(U::UnitSystem,S::UnitSystem) = 1/thermalconductivity(U,S)/length(U,S)
 thermalresistance(v::Real,U::UnitSystem,S::UnitSystem) = v/thermalresistance(U,S)</code></pre><p>Resistance to heat flow or <code>thermalresistance</code> (K⋅W⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; thermalresistance(Metric,SI2019) # K⋅K⁻¹
-0.9999999996562561
+0.99999999966 ± 3.1e-10
 
 julia&gt; thermalresistance(CGS,Metric) # erg⋅s⁻¹⋅W⁻¹
-1.0e7
+1.0e7 ± 5.6e-19
 
 julia&gt; thermalresistance(English,Metric) # ft⋅lb⋅K⋅°R⁻¹⋅J⁻¹
-0.40975674973933196</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.thermalexpansion" href="#UnitSystems.thermalexpansion"><code>UnitSystems.thermalexpansion</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalexpansion(U::UnitSystem,S::UnitSystem) = 1/temperature(U,S)
+0.40975674974 ± 1.3e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.thermalexpansion" href="#MeasureSystems.thermalexpansion"><code>MeasureSystems.thermalexpansion</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">thermalexpansion(U::UnitSystem,S::UnitSystem) = 1/temperature(U,S)
 thermalexpansion(v::Real,U::UnitSystem,S::UnitSystem) = v/thermalexpansion(U,S)</code></pre><p>Measurement scale for coefficient of <code>thermalexpansion</code> (K⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; thermalexpansion(Metric,SI2019) # K⋅K⁻¹
-1.000000000343744
+1.00000000034 ± 3.1e-10
 
 julia&gt; thermalexpansion(English,SI2019) # °R⋅K⁻¹
-1.8
+1.8 ± 1.5e-25
 
 julia&gt; thermalexpansion(English,Metric) # °R⋅K⁻¹
-1.799999999381261</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.lapserate" href="#UnitSystems.lapserate"><code>UnitSystems.lapserate</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">lapserate(U::UnitSystem,S::UnitSystem) = temperature(U,S)/length(U,S)
+1.79999999938 ± 5.5e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lapserate" href="#MeasureSystems.lapserate"><code>MeasureSystems.lapserate</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">lapserate(U::UnitSystem,S::UnitSystem) = temperature(U,S)/length(U,S)
 lapserate(v::Real,U::UnitSystem,S::UnitSystem) = v/lapserate(U,S)</code></pre><p>Temperature gradient over <code>length</code> or <code>lapserate</code> (K⋅m⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; lapserate(Metric,SI2019) # K⋅K⁻¹
-0.9999999996562562
+0.99999999966 ± 3.1e-10
 
 julia&gt; lapserate(English,SI2019) # K⋅ft⋅°R⁻¹⋅m⁻¹
-1.8226888305628453
+1.8226888305628453 ± 1.1e-26
 
 julia&gt; lapserate(English,Metric) # K⋅ft⋅°R⁻¹⋅m⁻¹
-1.8226888311893836
+1.82268883119 ± 5.6e-10
 
 julia&gt; lapserate(EnglishUS,English) # °R⋅ftUS⋅°R⁻¹⋅ft⁻¹
-0.9999979996562571</code></pre></div></section></article><h2 id="Molar-Units-1"><a class="docs-heading-anchor" href="#Molar-Units-1">Molar Units</a><a class="docs-heading-anchor-permalink" href="#Molar-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarmass-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.molarmass-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.molarmass</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">molarmass(U::UnitSystem,S::UnitSystem) = molarmass(S)/molarmass(U)
+0.99999799966 ± 3.1e-10</code></pre></div></section></article><h2 id="Molar-Units-1"><a class="docs-heading-anchor" href="#Molar-Units-1">Molar Units</a><a class="docs-heading-anchor-permalink" href="#Molar-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarmass-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.molarmass-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.molarmass</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">molarmass(U::UnitSystem,S::UnitSystem) = molarmass(S)/molarmass(U)
 molarmass(v::Real,U::UnitSystem,S::UnitSystem) = v/molarmass(U,S)</code></pre><p>Molar mass or <code>mass</code> per <code>mole</code> (kg⋅mol⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarmass(CGS,Metric) # mol⋅mol⁻¹
 0.001
 
 julia&gt; molarmass(Metric,SI2019) # mol⋅mol⁻¹
-0.9999999996562561</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molality" href="#UnitSystems.molality"><code>UnitSystems.molality</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molality(U::UnitSystem,S::UnitSystem) = molarmass(U)/molarmass(S)
+0.99999999966 ± 3.1e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molality" href="#MeasureSystems.molality"><code>MeasureSystems.molality</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molality(U::UnitSystem,S::UnitSystem) = molarmass(U)/molarmass(S)
 molality(v::Real,U::UnitSystem,S::UnitSystem) = v/molality(U,S)</code></pre><p>Molality or <code>mole</code> per <code>mass</code> (mol⋅kg⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molality(CGS,Metric) # mol⋅mol⁻¹
 1000.0
 
 julia&gt; molality(Metric,SI2019) # mol⋅mol⁻¹
-1.000000000343744</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.mole" href="#UnitSystems.mole"><code>UnitSystems.mole</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">mole(U::UnitSystem,S::UnitSystem) = mass(U,S)*molality(U,S)
+1.00000000034 ± 3.1e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.mole" href="#MeasureSystems.mole"><code>MeasureSystems.mole</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">mole(U::UnitSystem,S::UnitSystem) = mass(U,S)*molality(U,S)
 mole(v::Real,U::UnitSystem,S::UnitSystem) = v/mole(U,S)</code></pre><p>Amount of molecular substance or <code>mole</code> (mol), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; mole(SI2019,Metric) # mol⋅mol⁻¹
-0.9999999996562561
+0.99999999966 ± 3.1e-10
 
 julia&gt; mole(English,SI2019) # mol⋅slug-mol⁻¹
-14593.902937206363
+14593.902937206363 ± 9.4e-23
 
 julia&gt; mole(English,SI2019)/lbm # mol⋅lb-mol⁻¹
-453.59237</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarity" href="#UnitSystems.molarity"><code>UnitSystems.molarity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarity(U::UnitSystem,S::UnitSystem) = mole(U,S)/volume(U,S)
+453.59237 ± 2.9e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarity" href="#MeasureSystems.molarity"><code>MeasureSystems.molarity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarity(U::UnitSystem,S::UnitSystem) = mole(U,S)/volume(U,S)
 molarity(v::Real,U::UnitSystem,S::UnitSystem) = v/molarity(U,S)</code></pre><p>Molar concentration or <code>mole</code> per <code>volume</code> or <code>molarity</code> (mol⋅m⁻³), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarity(CGS,Metric) # cm³⋅m⁻³
-999999.9999999999
+999999.9999999999 ± 1.7e-19
 
 julia&gt; molarity(English,SI2019) # ft³⋅m⁻³
-515378.8183931955</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarvolume" href="#UnitSystems.molarvolume"><code>UnitSystems.molarvolume</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarvolume(U::UnitSystem,S::UnitSystem) = volume(U,S)/mole(U,S)
+515378.8183931955 ± 9.1e-20</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarvolume" href="#MeasureSystems.molarvolume"><code>MeasureSystems.molarvolume</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarvolume(U::UnitSystem,S::UnitSystem) = volume(U,S)/mole(U,S)
 molarvolume(v::Real,U::UnitSystem,S::UnitSystem) = v/molarvolume(U,S)</code></pre><p>Occupied <code>volume</code> per <code>mole</code> or <code>molarvolume</code> (m³⋅mol⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarvolume(CGS,Metric) # m³⋅cm⁻³
-1.0000000000000002e-6
+1.0000000000000002e-6 ± 1.6999999999999998e-31
 
 julia&gt; molarvolume(English,SI2019) # m³⋅ft⁻³
-1.940320331979718e-6</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarentropy" href="#UnitSystems.molarentropy"><code>UnitSystems.molarentropy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarentropy(U::UnitSystem,S::UnitSystem) = entropy(U,S)/mole(U,S)
+1.940320331979718e-6 ± 3.3999999999999997e-31</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarentropy" href="#MeasureSystems.molarentropy"><code>MeasureSystems.molarentropy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarentropy(U::UnitSystem,S::UnitSystem) = entropy(U,S)/mole(U,S)
 molarentropy(v::Real,U::UnitSystem,S::UnitSystem) = v/molarentropy(U,S)</code></pre><p>Molar heat capacity or <code>entropy</code> per <code>mole</code> (J⋅K⁻¹⋅mol⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarentropy(CGS,Metric) # J⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 3.5999999999999997e-33
 
 julia&gt; molarentropy(English,SI2019) # J⋅°R⋅slug-mol⋅ft⁻¹⋅lb⁻¹⋅K⁻¹⋅mol⁻¹
-0.00016722547200000002</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarenergy" href="#UnitSystems.molarenergy"><code>UnitSystems.molarenergy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarenergy(U::UnitSystem,S::UnitSystem) = energy(U,S)/mole(U,S)
+0.00016722547200000002 ± 4.8000000000000004e-30</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarenergy" href="#MeasureSystems.molarenergy"><code>MeasureSystems.molarenergy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarenergy(U::UnitSystem,S::UnitSystem) = energy(U,S)/mole(U,S)
 molarenergy(v::Real,U::UnitSystem,S::UnitSystem) = v/molarenergy(U,S)</code></pre><p>Gibbs free <code>energy</code> per <code>mole</code> or <code>molarenergy</code> (J⋅mol⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarenergy(CGS,Metric) # J⋅erg⁻¹
-1.0000000000000001e-7
+1.0000000000000001e-7 ± 3.5999999999999997e-33
 
 julia&gt; molarenergy(English,SI2019) # J⋅slug-mol⋅ft⁻¹⋅lb⁻¹⋅mol⁻¹
-9.290304e-5</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarconductivity" href="#UnitSystems.molarconductivity"><code>UnitSystems.molarconductivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarconductivity(U::UnitSystem,S::UnitSystem) = conductivity(U,S)*area(U,S)/mole(U,S)
+9.290304e-5 ± 3.5e-30</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarconductivity" href="#MeasureSystems.molarconductivity"><code>MeasureSystems.molarconductivity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarconductivity(U::UnitSystem,S::UnitSystem) = conductivity(U,S)*area(U,S)/mole(U,S)
 molarconductivity(v::Real,U::UnitSystem,S::UnitSystem) = v/molarconductivity(U,S)</code></pre><p>Conductivity per <code>molarvolume</code> or <code>molarconductivity</code> (S⋅m²⋅mol⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarconductivity(EMU,Metric) # S⋅m²⋅abΩ⋅cm⁻²
-1.0e7
+1.0e7 ± 9.2e-19
 
 julia&gt; molarconductivity(ESU,Metric) # S⋅m²⋅statΩ⋅cm⁻²
-1.112650056053618e-14</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.molarsusceptibility" href="#UnitSystems.molarsusceptibility"><code>UnitSystems.molarsusceptibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarsusceptibility(U::UnitSystem,S::UnitSystem) = specificsusceptibility(U,S)*molarmass(U,S)
+1.1126500560536179e-14 ± 1.0e-39</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarsusceptibility" href="#MeasureSystems.molarsusceptibility"><code>MeasureSystems.molarsusceptibility</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">molarsusceptibility(U::UnitSystem,S::UnitSystem) = specificsusceptibility(U,S)*molarmass(U,S)
 molarsusceptibility(v::Real,U::UnitSystem,S::UnitSystem) = v/molarsusceptibility(U,S)</code></pre><p>Magnetic/electric molar mass <code>susceptibility</code> (m³⋅mol⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; molarsusceptibility(CGS,Metric) # m³⋅cm⁻³
-1.2566370614359175e-5
+1.2566370614359175e-5 ± 2.6000000000000002e-30
 
 julia&gt; molarsusceptibility(Metric,SI2019) # m³⋅mol⋅mol⁻¹⋅cm⁻³
-0.9999999996562561</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.catalysis" href="#UnitSystems.catalysis"><code>UnitSystems.catalysis</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">catalysis(U::UnitSystem,S::UnitSystem) = mole(U,S)/time(U,S)
+0.99999999966 ± 3.1e-10</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.catalysis" href="#MeasureSystems.catalysis"><code>MeasureSystems.catalysis</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">catalysis(U::UnitSystem,S::UnitSystem) = mole(U,S)/time(U,S)
 catalysis(v::Real,U::UnitSystem,S::UnitSystem) = v/catalysis(U,S)</code></pre><p>Catalytic activity or <code>mole</code> per <code>time</code> or <code>catalysis</code> (kat, mol⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; catalysis(English,Metric) # kat⋅s⋅slug-mol⁻¹
-14593.902932189798</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.specificity" href="#UnitSystems.specificity"><code>UnitSystems.specificity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificity(U::UnitSystem,S::UnitSystem) = volume(U,S)/mole(U,S)/time(U,S)
+14593.9029322 ± 4.5e-6</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.specificity" href="#MeasureSystems.specificity"><code>MeasureSystems.specificity</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">specificity(U::UnitSystem,S::UnitSystem) = volume(U,S)/mole(U,S)/time(U,S)
 specificity(v::Real,U::UnitSystem,S::UnitSystem) = v/specificity(U,S)</code></pre><p>Catalytic efficiency or <code>volume</code> per <code>mole</code> per <code>time</code> (m³⋅mol⁻¹⋅s⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; specificity(CGS,Metric) # m³⋅cm⁻³
-1.0000000000000002e-6
+1.0000000000000002e-6 ± 1.6999999999999998e-31
 
 julia&gt; specificity(English,Metric) # m³⋅slug-mol⋅mol⁻¹⋅ft⁻³
-1.9403203326466914e-6</code></pre></div></section></article><h2 id="Photometric-Units-1"><a class="docs-heading-anchor" href="#Photometric-Units-1">Photometric Units</a><a class="docs-heading-anchor-permalink" href="#Photometric-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.luminousflux" href="#UnitSystems.luminousflux"><code>UnitSystems.luminousflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminousflux(U::UnitSystem,S::UnitSystem) = luminousefficacy(U,S)*planck(U,S)/time(U,S)^2
-luminousflux(v::Real,U::UnitSystem,S::UnitSystem) = v/luminousflux(U,S)</code></pre><p>Perceived power of light or <code>luminousflux</code> (lm, cd⋅sr), unit conversion factor.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.luminance" href="#UnitSystems.luminance"><code>UnitSystems.luminance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminance(U::UnitSystem,S::UnitSystem) = luminousflux(U,S)/area(U,S)
+1.94032033265e-6 ± 6.0e-16</code></pre></div></section></article><h2 id="Photometric-Units-1"><a class="docs-heading-anchor" href="#Photometric-Units-1">Photometric Units</a><a class="docs-heading-anchor-permalink" href="#Photometric-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.luminousflux" href="#MeasureSystems.luminousflux"><code>MeasureSystems.luminousflux</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminousflux(U::UnitSystem,S::UnitSystem) = luminousefficacy(U,S)*planck(U,S)/time(U,S)^2
+luminousflux(v::Real,U::UnitSystem,S::UnitSystem) = v/luminousflux(U,S)</code></pre><p>Perceived power of light or <code>luminousflux</code> (lm, cd⋅sr), unit conversion factor.</p></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.luminance" href="#MeasureSystems.luminance"><code>MeasureSystems.luminance</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminance(U::UnitSystem,S::UnitSystem) = luminousflux(U,S)/area(U,S)
 luminance(v::Real,U::UnitSystem,S::UnitSystem) = v/luminance(U,S)</code></pre><p>Luminous intensity per <code>area</code> or <code>luminance</code> (lx, lm⋅m⁻², cd⋅m⁻²⋅sr), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; luminance(CGS,Metric) # lx⋅ph⁻¹
-10000.0
+10000.0 ± 1.1e-21
 
 julia&gt; luminance(IAU,Metric) # lx⋅au²⋅lm⁻¹
 4.4683704995197134e-23
 
 julia&gt; luminance(English,Metric) # ft²⋅m⁻²
-10.763910416709713
+10.763910416709713 ± 1.2999999999999998e-24
 
 julia&gt; 1/10.76 # lx⋅fc⁻¹
-0.0929368029739777</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.luminousenergy" href="#UnitSystems.luminousenergy"><code>UnitSystems.luminousenergy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminousenergy(U::UnitSystem,S::UnitSystem) = luminousflux(U,S)*time(U,S)
+0.0929368029739777</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.luminousenergy" href="#MeasureSystems.luminousenergy"><code>MeasureSystems.luminousenergy</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminousenergy(U::UnitSystem,S::UnitSystem) = luminousflux(U,S)*time(U,S)
 luminousenergy(v::Real,U::UnitSystem,S::UnitSystem) = v/luminousenergy(U,S)</code></pre><p>Perceived quantity of light or <code>luminousenergy</code> (lm⋅s, cd⋅s⋅sr), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; luminousenergy(IAU,Metric) # s⋅day⁻¹
-86400.00000000006</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.luminousexposure" href="#UnitSystems.luminousexposure"><code>UnitSystems.luminousexposure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminousexposure(U::UnitSystem,S::UnitSystem) = luminance(U,S)*time(U,S)
+86400.00000000001 ± 3.7e-16</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.luminousexposure" href="#MeasureSystems.luminousexposure"><code>MeasureSystems.luminousexposure</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-Julia">luminousexposure(U::UnitSystem,S::UnitSystem) = luminance(U,S)*time(U,S)
 luminousexposure(v::Real,U::UnitSystem,S::UnitSystem) = v/luminousexposure(U,S)</code></pre><p>Integrated <code>luminance</code> along <code>time</code> (lx⋅s, lm⋅s⋅m⁻², cd⋅s⋅m⁻²⋅sr), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; luminousexposure(CGS,Metric) # lx⋅ph⁻¹
-10000.0
+10000.0 ± 1.1e-21
 
 julia&gt; luminousexposure(IAU,Metric) # s⋅au²⋅day⁻¹⋅m⁻²
 3.8606721115850325e-18
 
 julia&gt; luminousexposure(English,Metric) # ft²⋅m⁻²
-10.763910416709713</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="UnitSystems.luminousefficacy-Tuple{UnitSystem, UnitSystem}" href="#UnitSystems.luminousefficacy-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.luminousefficacy</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">luminousefficacy(U::UnitSystem,S::UnitSystem) = luminousefficacy(S)/luminousefficacy(U)
+10.763910416709713 ± 1.2999999999999998e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.luminousefficacy-Tuple{UnitSystem, UnitSystem}" href="#MeasureSystems.luminousefficacy-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.luminousefficacy</code></a> — <span class="docstring-category">Method</span></header><section><div><pre><code class="language-Julia">luminousefficacy(U::UnitSystem,S::UnitSystem) = luminousefficacy(S)/luminousefficacy(U)
 luminousefficacy(v::Real,U::UnitSystem,S::UnitSystem) = v/luminousefficacy(U,S)</code></pre><p>Ratio of <code>luminousflux</code> to <code>power</code> or <code>luminousefficacy</code> (lm⋅W⁻¹), unit conversion factor.</p><pre><code class="language-Julia">julia&gt; luminousefficacy(CGS,Metric) # erg⋅s⁻¹⋅W⁻¹
-1.0e7
+1.0e7 ± 3.7e-19
 
 julia&gt; luminousefficacy(English,Metric) # ft⋅lb⋅s⁻¹⋅W⁻¹
-0.7375621492772653</code></pre></div></section></article><h2 id="Conversion-Index-1"><a class="docs-heading-anchor" href="#Conversion-Index-1">Conversion Index</a><a class="docs-heading-anchor-permalink" href="#Conversion-Index-1" title="Permalink"></a></h2><ul><li><a href="convert.html#Base.Libc.time"><code>Base.Libc.time</code></a></li><li><a href="convert.html#Base.length"><code>Base.length</code></a></li><li><a href="convert.html#UnitSystems.acceleration"><code>UnitSystems.acceleration</code></a></li><li><a href="convert.html#UnitSystems.action"><code>UnitSystems.action</code></a></li><li><a href="convert.html#UnitSystems.admittance"><code>UnitSystems.admittance</code></a></li><li><a href="convert.html#UnitSystems.angularmomentum"><code>UnitSystems.angularmomentum</code></a></li><li><a href="convert.html#UnitSystems.area"><code>UnitSystems.area</code></a></li><li><a href="convert.html#UnitSystems.areadensity"><code>UnitSystems.areadensity</code></a></li><li><a href="convert.html#UnitSystems.capacitance"><code>UnitSystems.capacitance</code></a></li><li><a href="convert.html#UnitSystems.catalysis"><code>UnitSystems.catalysis</code></a></li><li><a href="convert.html#UnitSystems.charge-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.charge</code></a></li><li><a href="convert.html#UnitSystems.chargedensity"><code>UnitSystems.chargedensity</code></a></li><li><a href="convert.html#UnitSystems.compliance"><code>UnitSystems.compliance</code></a></li><li><a href="convert.html#UnitSystems.compressibility"><code>UnitSystems.compressibility</code></a></li><li><a href="convert.html#UnitSystems.conductance-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.conductance</code></a></li><li><a href="convert.html#UnitSystems.conductivity"><code>UnitSystems.conductivity</code></a></li><li><a href="convert.html#UnitSystems.current"><code>UnitSystems.current</code></a></li><li><a href="convert.html#UnitSystems.currentdensity"><code>UnitSystems.currentdensity</code></a></li><li><a href="convert.html#UnitSystems.demagnetizingfactor"><code>UnitSystems.demagnetizingfactor</code></a></li><li><a href="convert.html#UnitSystems.density"><code>UnitSystems.density</code></a></li><li><a href="convert.html#UnitSystems.diffusivity"><code>UnitSystems.diffusivity</code></a></li><li><a href="convert.html#UnitSystems.electricdipolemoment"><code>UnitSystems.electricdipolemoment</code></a></li><li><a href="convert.html#UnitSystems.electricfield"><code>UnitSystems.electricfield</code></a></li><li><a href="convert.html#UnitSystems.electricflux"><code>UnitSystems.electricflux</code></a></li><li><a href="convert.html#UnitSystems.electricfluxdensity"><code>UnitSystems.electricfluxdensity</code></a></li><li><a href="convert.html#UnitSystems.electricpolarizability"><code>UnitSystems.electricpolarizability</code></a></li><li><a href="convert.html#UnitSystems.electricpotential"><code>UnitSystems.electricpotential</code></a></li><li><a href="convert.html#UnitSystems.energy"><code>UnitSystems.energy</code></a></li><li><a href="convert.html#UnitSystems.entropy"><code>UnitSystems.entropy</code></a></li><li><a href="convert.html#UnitSystems.exposure"><code>UnitSystems.exposure</code></a></li><li><a href="convert.html#UnitSystems.fluence"><code>UnitSystems.fluence</code></a></li><li><a href="convert.html#UnitSystems.force"><code>UnitSystems.force</code></a></li><li><a href="convert.html#UnitSystems.frequency"><code>UnitSystems.frequency</code></a></li><li><a href="convert.html#UnitSystems.frequencydrift"><code>UnitSystems.frequencydrift</code></a></li><li><a href="convert.html#UnitSystems.fuelefficiency"><code>UnitSystems.fuelefficiency</code></a></li><li><a href="convert.html#UnitSystems.impedance-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.impedance</code></a></li><li><a href="convert.html#UnitSystems.inductance"><code>UnitSystems.inductance</code></a></li><li><a href="convert.html#UnitSystems.inertance"><code>UnitSystems.inertance</code></a></li><li><a href="convert.html#UnitSystems.intensity"><code>UnitSystems.intensity</code></a></li><li><a href="convert.html#UnitSystems.jerk"><code>UnitSystems.jerk</code></a></li><li><a href="convert.html#UnitSystems.lapserate"><code>UnitSystems.lapserate</code></a></li><li><a href="convert.html#UnitSystems.linearchargedensity"><code>UnitSystems.linearchargedensity</code></a></li><li><a href="convert.html#UnitSystems.lineardensity"><code>UnitSystems.lineardensity</code></a></li><li><a href="convert.html#UnitSystems.luminance"><code>UnitSystems.luminance</code></a></li><li><a href="convert.html#UnitSystems.luminousefficacy-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.luminousefficacy</code></a></li><li><a href="convert.html#UnitSystems.luminousenergy"><code>UnitSystems.luminousenergy</code></a></li><li><a href="convert.html#UnitSystems.luminousexposure"><code>UnitSystems.luminousexposure</code></a></li><li><a href="convert.html#UnitSystems.luminousflux"><code>UnitSystems.luminousflux</code></a></li><li><a href="convert.html#UnitSystems.magneticdipolemoment"><code>UnitSystems.magneticdipolemoment</code></a></li><li><a href="convert.html#UnitSystems.magneticfield"><code>UnitSystems.magneticfield</code></a></li><li><a href="convert.html#UnitSystems.magneticflux-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.magneticflux</code></a></li><li><a href="convert.html#UnitSystems.magneticfluxdensity"><code>UnitSystems.magneticfluxdensity</code></a></li><li><a href="convert.html#UnitSystems.magneticmoment"><code>UnitSystems.magneticmoment</code></a></li><li><a href="convert.html#UnitSystems.magneticpolarizability"><code>UnitSystems.magneticpolarizability</code></a></li><li><a href="convert.html#UnitSystems.magneticpotential"><code>UnitSystems.magneticpotential</code></a></li><li><a href="convert.html#UnitSystems.magnetizability"><code>UnitSystems.magnetizability</code></a></li><li><a href="convert.html#UnitSystems.magnetization"><code>UnitSystems.magnetization</code></a></li><li><a href="convert.html#UnitSystems.mass"><code>UnitSystems.mass</code></a></li><li><a href="convert.html#UnitSystems.massflow"><code>UnitSystems.massflow</code></a></li><li><a href="convert.html#UnitSystems.mobility"><code>UnitSystems.mobility</code></a></li><li><a href="convert.html#UnitSystems.molality"><code>UnitSystems.molality</code></a></li><li><a href="convert.html#UnitSystems.molarconductivity"><code>UnitSystems.molarconductivity</code></a></li><li><a href="convert.html#UnitSystems.molarenergy"><code>UnitSystems.molarenergy</code></a></li><li><a href="convert.html#UnitSystems.molarentropy"><code>UnitSystems.molarentropy</code></a></li><li><a href="convert.html#UnitSystems.molarity"><code>UnitSystems.molarity</code></a></li><li><a href="convert.html#UnitSystems.molarmass-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.molarmass</code></a></li><li><a href="convert.html#UnitSystems.molarsusceptibility"><code>UnitSystems.molarsusceptibility</code></a></li><li><a href="convert.html#UnitSystems.molarvolume"><code>UnitSystems.molarvolume</code></a></li><li><a href="convert.html#UnitSystems.mole"><code>UnitSystems.mole</code></a></li><li><a href="convert.html#UnitSystems.momentum"><code>UnitSystems.momentum</code></a></li><li><a href="convert.html#UnitSystems.permeability-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.permeability</code></a></li><li><a href="convert.html#UnitSystems.permeance"><code>UnitSystems.permeance</code></a></li><li><a href="convert.html#UnitSystems.permittivity-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.permittivity</code></a></li><li><a href="convert.html#UnitSystems.polestrength"><code>UnitSystems.polestrength</code></a></li><li><a href="convert.html#UnitSystems.power"><code>UnitSystems.power</code></a></li><li><a href="convert.html#UnitSystems.powerdensity"><code>UnitSystems.powerdensity</code></a></li><li><a href="convert.html#UnitSystems.pressure"><code>UnitSystems.pressure</code></a></li><li><a href="convert.html#UnitSystems.reluctance"><code>UnitSystems.reluctance</code></a></li><li><a href="convert.html#UnitSystems.resistance"><code>UnitSystems.resistance</code></a></li><li><a href="convert.html#UnitSystems.resistivity"><code>UnitSystems.resistivity</code></a></li><li><a href="convert.html#UnitSystems.rigidity"><code>UnitSystems.rigidity</code></a></li><li><a href="convert.html#UnitSystems.rotationalinertia"><code>UnitSystems.rotationalinertia</code></a></li><li><a href="convert.html#UnitSystems.snap"><code>UnitSystems.snap</code></a></li><li><a href="convert.html#UnitSystems.soundexposure"><code>UnitSystems.soundexposure</code></a></li><li><a href="convert.html#UnitSystems.specificenergy"><code>UnitSystems.specificenergy</code></a></li><li><a href="convert.html#UnitSystems.specificentropy"><code>UnitSystems.specificentropy</code></a></li><li><a href="convert.html#UnitSystems.specificimpedance"><code>UnitSystems.specificimpedance</code></a></li><li><a href="convert.html#UnitSystems.specificity"><code>UnitSystems.specificity</code></a></li><li><a href="convert.html#UnitSystems.specificmagnetization"><code>UnitSystems.specificmagnetization</code></a></li><li><a href="convert.html#UnitSystems.specificsusceptibility"><code>UnitSystems.specificsusceptibility</code></a></li><li><a href="convert.html#UnitSystems.specificvolume"><code>UnitSystems.specificvolume</code></a></li><li><a href="convert.html#UnitSystems.spectralflux"><code>UnitSystems.spectralflux</code></a></li><li><a href="convert.html#UnitSystems.speed"><code>UnitSystems.speed</code></a></li><li><a href="convert.html#UnitSystems.stiffness"><code>UnitSystems.stiffness</code></a></li><li><a href="convert.html#UnitSystems.susceptibility"><code>UnitSystems.susceptibility</code></a></li><li><a href="convert.html#UnitSystems.temperature"><code>UnitSystems.temperature</code></a></li><li><a href="convert.html#UnitSystems.thermalconductance"><code>UnitSystems.thermalconductance</code></a></li><li><a href="convert.html#UnitSystems.thermalconductivity"><code>UnitSystems.thermalconductivity</code></a></li><li><a href="convert.html#UnitSystems.thermalexpansion"><code>UnitSystems.thermalexpansion</code></a></li><li><a href="convert.html#UnitSystems.thermalresistance"><code>UnitSystems.thermalresistance</code></a></li><li><a href="convert.html#UnitSystems.vectorpotential"><code>UnitSystems.vectorpotential</code></a></li><li><a href="convert.html#UnitSystems.viscosity"><code>UnitSystems.viscosity</code></a></li><li><a href="convert.html#UnitSystems.volume-Tuple{UnitSystem, UnitSystem}"><code>UnitSystems.volume</code></a></li><li><a href="convert.html#UnitSystems.volumeflow"><code>UnitSystems.volumeflow</code></a></li><li><a href="convert.html#UnitSystems.volumeheatcapacity"><code>UnitSystems.volumeheatcapacity</code></a></li><li><a href="convert.html#UnitSystems.wavenumber"><code>UnitSystems.wavenumber</code></a></li><li><a href="convert.html#UnitSystems.yank"><code>UnitSystems.yank</code></a></li><li><a href="units.html#UnitSystems.CODATA"><code>UnitSystems.CODATA</code></a></li><li><a href="units.html#UnitSystems.Conventional"><code>UnitSystems.Conventional</code></a></li><li><a href="units.html#UnitSystems.EMU"><code>UnitSystems.EMU</code></a></li><li><a href="units.html#UnitSystems.EMU2019"><code>UnitSystems.EMU2019</code></a></li><li><a href="units.html#UnitSystems.ESU"><code>UnitSystems.ESU</code></a></li><li><a href="units.html#UnitSystems.ESU2019"><code>UnitSystems.ESU2019</code></a></li><li><a href="units.html#UnitSystems.Electronic"><code>UnitSystems.Electronic</code></a></li><li><a href="units.html#UnitSystems.English"><code>UnitSystems.English</code></a></li><li><a href="units.html#UnitSystems.EnglishUS"><code>UnitSystems.EnglishUS</code></a></li><li><a href="units.html#UnitSystems.FFF"><code>UnitSystems.FFF</code></a></li><li><a href="units.html#UnitSystems.Gauss"><code>UnitSystems.Gauss</code></a></li><li><a href="units.html#UnitSystems.Hartree"><code>UnitSystems.Hartree</code></a></li><li><a href="units.html#UnitSystems.IAU"><code>UnitSystems.IAU</code></a></li><li><a href="units.html#UnitSystems.LorentzHeaviside"><code>UnitSystems.LorentzHeaviside</code></a></li><li><a href="units.html#UnitSystems.MTS"><code>UnitSystems.MTS</code></a></li><li><a href="units.html#UnitSystems.Metric"><code>UnitSystems.Metric</code></a></li><li><a href="units.html#UnitSystems.Natural"><code>UnitSystems.Natural</code></a></li><li><a href="units.html#UnitSystems.NaturalGauss"><code>UnitSystems.NaturalGauss</code></a></li><li><a href="units.html#UnitSystems.Planck"><code>UnitSystems.Planck</code></a></li><li><a href="units.html#UnitSystems.PlanckGauss"><code>UnitSystems.PlanckGauss</code></a></li><li><a href="units.html#UnitSystems.QCD"><code>UnitSystems.QCD</code></a></li><li><a href="units.html#UnitSystems.QCDGauss"><code>UnitSystems.QCDGauss</code></a></li><li><a href="units.html#UnitSystems.QCDoriginal"><code>UnitSystems.QCDoriginal</code></a></li><li><a href="units.html#UnitSystems.Rydberg"><code>UnitSystems.Rydberg</code></a></li><li><a href="units.html#UnitSystems.SI2019"><code>UnitSystems.SI2019</code></a></li><li><a href="units.html#UnitSystems.Schrodinger"><code>UnitSystems.Schrodinger</code></a></li><li><a href="units.html#UnitSystems.Stoney"><code>UnitSystems.Stoney</code></a></li><li><a href="units.html#UnitSystems.Thomson"><code>UnitSystems.Thomson</code></a></li><li><a href="units.html#UnitSystems.UnitSystem"><code>UnitSystems.UnitSystem</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="constants.html">« Physics Constants</a><a class="docs-footer-nextpage" href="references.html">References »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Tuesday 18 May 2021 18:57">Tuesday 18 May 2021</span>. Using Julia version 1.6.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+0.7375621492772653 ± 4.9e-26</code></pre></div></section></article><h2 id="Conversion-Index-1"><a class="docs-heading-anchor" href="#Conversion-Index-1">Conversion Index</a><a class="docs-heading-anchor-permalink" href="#Conversion-Index-1" title="Permalink"></a></h2><ul><li><a href="convert.html#Base.Libc.time"><code>Base.Libc.time</code></a></li><li><a href="convert.html#Base.length"><code>Base.length</code></a></li><li><a href="convert.html#MeasureSystems.acceleration"><code>MeasureSystems.acceleration</code></a></li><li><a href="convert.html#MeasureSystems.action"><code>MeasureSystems.action</code></a></li><li><a href="convert.html#MeasureSystems.admittance"><code>MeasureSystems.admittance</code></a></li><li><a href="convert.html#MeasureSystems.angularmomentum"><code>MeasureSystems.angularmomentum</code></a></li><li><a href="convert.html#MeasureSystems.area"><code>MeasureSystems.area</code></a></li><li><a href="convert.html#MeasureSystems.areadensity"><code>MeasureSystems.areadensity</code></a></li><li><a href="convert.html#MeasureSystems.capacitance"><code>MeasureSystems.capacitance</code></a></li><li><a href="convert.html#MeasureSystems.catalysis"><code>MeasureSystems.catalysis</code></a></li><li><a href="convert.html#MeasureSystems.charge-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.charge</code></a></li><li><a href="convert.html#MeasureSystems.chargedensity"><code>MeasureSystems.chargedensity</code></a></li><li><a href="convert.html#MeasureSystems.compliance"><code>MeasureSystems.compliance</code></a></li><li><a href="convert.html#MeasureSystems.compressibility"><code>MeasureSystems.compressibility</code></a></li><li><a href="convert.html#MeasureSystems.conductance-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.conductance</code></a></li><li><a href="convert.html#MeasureSystems.conductivity"><code>MeasureSystems.conductivity</code></a></li><li><a href="convert.html#MeasureSystems.current"><code>MeasureSystems.current</code></a></li><li><a href="convert.html#MeasureSystems.currentdensity"><code>MeasureSystems.currentdensity</code></a></li><li><a href="convert.html#MeasureSystems.demagnetizingfactor"><code>MeasureSystems.demagnetizingfactor</code></a></li><li><a href="convert.html#MeasureSystems.density"><code>MeasureSystems.density</code></a></li><li><a href="convert.html#MeasureSystems.diffusivity"><code>MeasureSystems.diffusivity</code></a></li><li><a href="convert.html#MeasureSystems.electricdipolemoment"><code>MeasureSystems.electricdipolemoment</code></a></li><li><a href="convert.html#MeasureSystems.electricfield"><code>MeasureSystems.electricfield</code></a></li><li><a href="convert.html#MeasureSystems.electricflux"><code>MeasureSystems.electricflux</code></a></li><li><a href="convert.html#MeasureSystems.electricfluxdensity"><code>MeasureSystems.electricfluxdensity</code></a></li><li><a href="convert.html#MeasureSystems.electricpolarizability"><code>MeasureSystems.electricpolarizability</code></a></li><li><a href="convert.html#MeasureSystems.electricpotential"><code>MeasureSystems.electricpotential</code></a></li><li><a href="convert.html#MeasureSystems.energy"><code>MeasureSystems.energy</code></a></li><li><a href="convert.html#MeasureSystems.entropy"><code>MeasureSystems.entropy</code></a></li><li><a href="convert.html#MeasureSystems.exposure"><code>MeasureSystems.exposure</code></a></li><li><a href="convert.html#MeasureSystems.fluence"><code>MeasureSystems.fluence</code></a></li><li><a href="convert.html#MeasureSystems.force"><code>MeasureSystems.force</code></a></li><li><a href="convert.html#MeasureSystems.frequency"><code>MeasureSystems.frequency</code></a></li><li><a href="convert.html#MeasureSystems.frequencydrift"><code>MeasureSystems.frequencydrift</code></a></li><li><a href="convert.html#MeasureSystems.fuelefficiency"><code>MeasureSystems.fuelefficiency</code></a></li><li><a href="convert.html#MeasureSystems.impedance-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.impedance</code></a></li><li><a href="convert.html#MeasureSystems.inductance"><code>MeasureSystems.inductance</code></a></li><li><a href="convert.html#MeasureSystems.inertance"><code>MeasureSystems.inertance</code></a></li><li><a href="convert.html#MeasureSystems.intensity"><code>MeasureSystems.intensity</code></a></li><li><a href="convert.html#MeasureSystems.jerk"><code>MeasureSystems.jerk</code></a></li><li><a href="convert.html#MeasureSystems.lapserate"><code>MeasureSystems.lapserate</code></a></li><li><a href="convert.html#MeasureSystems.linearchargedensity"><code>MeasureSystems.linearchargedensity</code></a></li><li><a href="convert.html#MeasureSystems.lineardensity"><code>MeasureSystems.lineardensity</code></a></li><li><a href="convert.html#MeasureSystems.luminance"><code>MeasureSystems.luminance</code></a></li><li><a href="convert.html#MeasureSystems.luminousefficacy-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.luminousefficacy</code></a></li><li><a href="convert.html#MeasureSystems.luminousenergy"><code>MeasureSystems.luminousenergy</code></a></li><li><a href="convert.html#MeasureSystems.luminousexposure"><code>MeasureSystems.luminousexposure</code></a></li><li><a href="convert.html#MeasureSystems.luminousflux"><code>MeasureSystems.luminousflux</code></a></li><li><a href="convert.html#MeasureSystems.magneticdipolemoment"><code>MeasureSystems.magneticdipolemoment</code></a></li><li><a href="convert.html#MeasureSystems.magneticfield"><code>MeasureSystems.magneticfield</code></a></li><li><a href="convert.html#MeasureSystems.magneticflux-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.magneticflux</code></a></li><li><a href="convert.html#MeasureSystems.magneticfluxdensity"><code>MeasureSystems.magneticfluxdensity</code></a></li><li><a href="convert.html#MeasureSystems.magneticmoment"><code>MeasureSystems.magneticmoment</code></a></li><li><a href="convert.html#MeasureSystems.magneticpolarizability"><code>MeasureSystems.magneticpolarizability</code></a></li><li><a href="convert.html#MeasureSystems.magneticpotential"><code>MeasureSystems.magneticpotential</code></a></li><li><a href="convert.html#MeasureSystems.magnetizability"><code>MeasureSystems.magnetizability</code></a></li><li><a href="convert.html#MeasureSystems.magnetization"><code>MeasureSystems.magnetization</code></a></li><li><a href="convert.html#MeasureSystems.mass"><code>MeasureSystems.mass</code></a></li><li><a href="convert.html#MeasureSystems.massflow"><code>MeasureSystems.massflow</code></a></li><li><a href="convert.html#MeasureSystems.mobility"><code>MeasureSystems.mobility</code></a></li><li><a href="convert.html#MeasureSystems.molality"><code>MeasureSystems.molality</code></a></li><li><a href="convert.html#MeasureSystems.molarconductivity"><code>MeasureSystems.molarconductivity</code></a></li><li><a href="convert.html#MeasureSystems.molarenergy"><code>MeasureSystems.molarenergy</code></a></li><li><a href="convert.html#MeasureSystems.molarentropy"><code>MeasureSystems.molarentropy</code></a></li><li><a href="convert.html#MeasureSystems.molarity"><code>MeasureSystems.molarity</code></a></li><li><a href="convert.html#MeasureSystems.molarmass-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.molarmass</code></a></li><li><a href="convert.html#MeasureSystems.molarsusceptibility"><code>MeasureSystems.molarsusceptibility</code></a></li><li><a href="convert.html#MeasureSystems.molarvolume"><code>MeasureSystems.molarvolume</code></a></li><li><a href="convert.html#MeasureSystems.mole"><code>MeasureSystems.mole</code></a></li><li><a href="convert.html#MeasureSystems.momentum"><code>MeasureSystems.momentum</code></a></li><li><a href="convert.html#MeasureSystems.permeability-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.permeability</code></a></li><li><a href="convert.html#MeasureSystems.permeance"><code>MeasureSystems.permeance</code></a></li><li><a href="convert.html#MeasureSystems.permittivity-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.permittivity</code></a></li><li><a href="convert.html#MeasureSystems.polestrength"><code>MeasureSystems.polestrength</code></a></li><li><a href="convert.html#MeasureSystems.power"><code>MeasureSystems.power</code></a></li><li><a href="convert.html#MeasureSystems.powerdensity"><code>MeasureSystems.powerdensity</code></a></li><li><a href="convert.html#MeasureSystems.pressure"><code>MeasureSystems.pressure</code></a></li><li><a href="convert.html#MeasureSystems.reluctance"><code>MeasureSystems.reluctance</code></a></li><li><a href="convert.html#MeasureSystems.resistance"><code>MeasureSystems.resistance</code></a></li><li><a href="convert.html#MeasureSystems.resistivity"><code>MeasureSystems.resistivity</code></a></li><li><a href="convert.html#MeasureSystems.rigidity"><code>MeasureSystems.rigidity</code></a></li><li><a href="convert.html#MeasureSystems.rotationalinertia"><code>MeasureSystems.rotationalinertia</code></a></li><li><a href="convert.html#MeasureSystems.snap"><code>MeasureSystems.snap</code></a></li><li><a href="convert.html#MeasureSystems.soundexposure"><code>MeasureSystems.soundexposure</code></a></li><li><a href="convert.html#MeasureSystems.specificenergy"><code>MeasureSystems.specificenergy</code></a></li><li><a href="convert.html#MeasureSystems.specificentropy"><code>MeasureSystems.specificentropy</code></a></li><li><a href="convert.html#MeasureSystems.specificimpedance"><code>MeasureSystems.specificimpedance</code></a></li><li><a href="convert.html#MeasureSystems.specificity"><code>MeasureSystems.specificity</code></a></li><li><a href="convert.html#MeasureSystems.specificmagnetization"><code>MeasureSystems.specificmagnetization</code></a></li><li><a href="convert.html#MeasureSystems.specificsusceptibility"><code>MeasureSystems.specificsusceptibility</code></a></li><li><a href="convert.html#MeasureSystems.specificvolume"><code>MeasureSystems.specificvolume</code></a></li><li><a href="convert.html#MeasureSystems.spectralflux"><code>MeasureSystems.spectralflux</code></a></li><li><a href="convert.html#MeasureSystems.speed"><code>MeasureSystems.speed</code></a></li><li><a href="convert.html#MeasureSystems.stiffness"><code>MeasureSystems.stiffness</code></a></li><li><a href="convert.html#MeasureSystems.susceptibility"><code>MeasureSystems.susceptibility</code></a></li><li><a href="convert.html#MeasureSystems.temperature"><code>MeasureSystems.temperature</code></a></li><li><a href="convert.html#MeasureSystems.thermalconductance"><code>MeasureSystems.thermalconductance</code></a></li><li><a href="convert.html#MeasureSystems.thermalconductivity"><code>MeasureSystems.thermalconductivity</code></a></li><li><a href="convert.html#MeasureSystems.thermalexpansion"><code>MeasureSystems.thermalexpansion</code></a></li><li><a href="convert.html#MeasureSystems.thermalresistance"><code>MeasureSystems.thermalresistance</code></a></li><li><a href="convert.html#MeasureSystems.vectorpotential"><code>MeasureSystems.vectorpotential</code></a></li><li><a href="convert.html#MeasureSystems.viscosity"><code>MeasureSystems.viscosity</code></a></li><li><a href="convert.html#MeasureSystems.volume-Tuple{UnitSystem, UnitSystem}"><code>MeasureSystems.volume</code></a></li><li><a href="convert.html#MeasureSystems.volumeflow"><code>MeasureSystems.volumeflow</code></a></li><li><a href="convert.html#MeasureSystems.volumeheatcapacity"><code>MeasureSystems.volumeheatcapacity</code></a></li><li><a href="convert.html#MeasureSystems.wavenumber"><code>MeasureSystems.wavenumber</code></a></li><li><a href="convert.html#MeasureSystems.yank"><code>MeasureSystems.yank</code></a></li><li><a href="units.html#MeasureSystems.CODATA"><code>MeasureSystems.CODATA</code></a></li><li><a href="units.html#MeasureSystems.Conventional"><code>MeasureSystems.Conventional</code></a></li><li><a href="units.html#MeasureSystems.EMU"><code>MeasureSystems.EMU</code></a></li><li><a href="units.html#MeasureSystems.EMU2019"><code>MeasureSystems.EMU2019</code></a></li><li><a href="units.html#MeasureSystems.ESU"><code>MeasureSystems.ESU</code></a></li><li><a href="units.html#MeasureSystems.ESU2019"><code>MeasureSystems.ESU2019</code></a></li><li><a href="units.html#MeasureSystems.Electronic"><code>MeasureSystems.Electronic</code></a></li><li><a href="units.html#MeasureSystems.English"><code>MeasureSystems.English</code></a></li><li><a href="units.html#MeasureSystems.EnglishUS"><code>MeasureSystems.EnglishUS</code></a></li><li><a href="units.html#MeasureSystems.FFF"><code>MeasureSystems.FFF</code></a></li><li><a href="units.html#MeasureSystems.Gauss"><code>MeasureSystems.Gauss</code></a></li><li><a href="units.html#MeasureSystems.Hartree"><code>MeasureSystems.Hartree</code></a></li><li><a href="units.html#MeasureSystems.IAU"><code>MeasureSystems.IAU</code></a></li><li><a href="units.html#MeasureSystems.LorentzHeaviside"><code>MeasureSystems.LorentzHeaviside</code></a></li><li><a href="units.html#MeasureSystems.MTS"><code>MeasureSystems.MTS</code></a></li><li><a href="units.html#MeasureSystems.Metric"><code>MeasureSystems.Metric</code></a></li><li><a href="units.html#MeasureSystems.Natural"><code>MeasureSystems.Natural</code></a></li><li><a href="units.html#MeasureSystems.NaturalGauss"><code>MeasureSystems.NaturalGauss</code></a></li><li><a href="units.html#MeasureSystems.Planck"><code>MeasureSystems.Planck</code></a></li><li><a href="units.html#MeasureSystems.PlanckGauss"><code>MeasureSystems.PlanckGauss</code></a></li><li><a href="units.html#MeasureSystems.QCD"><code>MeasureSystems.QCD</code></a></li><li><a href="units.html#MeasureSystems.QCDGauss"><code>MeasureSystems.QCDGauss</code></a></li><li><a href="units.html#MeasureSystems.QCDoriginal"><code>MeasureSystems.QCDoriginal</code></a></li><li><a href="units.html#MeasureSystems.Rydberg"><code>MeasureSystems.Rydberg</code></a></li><li><a href="units.html#MeasureSystems.SI2019"><code>MeasureSystems.SI2019</code></a></li><li><a href="units.html#MeasureSystems.Schrodinger"><code>MeasureSystems.Schrodinger</code></a></li><li><a href="units.html#MeasureSystems.Stoney"><code>MeasureSystems.Stoney</code></a></li><li><a href="units.html#MeasureSystems.Thomson"><code>MeasureSystems.Thomson</code></a></li><li><a href="units.html#UnitSystems.UnitSystem"><code>UnitSystems.UnitSystem</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="constants.html">« Physics Constants</a><a class="docs-footer-nextpage" href="references.html">References »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 29 May 2021 19:04">Saturday 29 May 2021</span>. Using Julia version 1.6.0.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
