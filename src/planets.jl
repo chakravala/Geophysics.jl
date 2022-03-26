@@ -6,26 +6,36 @@ export Earth1922, Earth1925, Earth1956, Earth1959, Earth1962, Earth1966, Earth19
 export Earth1922English, Earth1925English, Earth1956English
 export Earth1959English, Earth1962English, Earth1966English, Earth1976English
 
-#   This file is part of Geophysics.jl. It is licensed under the AGPL license
+#   This file is part of Geophysics.jl
+#   It is licensed under the AGPL license
 #   Geophysics Copyright (C) 2020 Michael Reed
+#       _           _                         _
+#      | |         | |                       | |
+#   ___| |__   __ _| | ___ __ __ ___   ____ _| | __ _
+#  / __| '_ \ / _` | |/ / '__/ _` \ \ / / _` | |/ _` |
+# | (__| | | | (_| |   <| | | (_| |\ V / (_| | | (_| |
+#  \___|_| |_|\__,_|_|\_\_|  \__,_| \_/ \__,_|_|\__,_|
+#
+#   https://github.com/chakravala
+#   https://crucialflow.com
 
 export Mercury, Venus, Earth, Mars
 export Jupiter, Saturn, Uranus, Neptune
 export Sun, Moon, Pluto, Ceres, Eris
 
-const Sun = Planet{0.00005,696342e3,25.38*24*60^2,1.32712440018e20}()
-const Mercury = Planet{0,2439.7e3,1407.5*60^2,2.2032e13}()
-const Venus = Planet{0,6051.8e3,-243.025*24*60^2,3.24859e14}()
-const Earth = Planet{1/298.257223563,6378137.0,86164.098903691,3.986004418e14}()
-const Moon = Planet{0.0012,1738.1e3,27.321661*24*60^2,4.9048695e12}()
-const Mars = Planet{0.00589,3396.2e3,1.025957*24*60^2,4.282837e13}()
-const Jupiter = Planet{0.06487,71492e3,9.925*60^2,1.26686534e17}()
-const Saturn = Planet{0.09796,60268e3,38018,3.7931187e16}()
-const Uranus = Planet{0.02293,25559e3,-0.71833*24*60^2,5.793939e15}()
-const Neptune = Planet{0.01708,24764e3,16.11*60^2,6.836529e15}()
-const Pluto = Planet{0,1188.3e3,6.38723*24*60^2,8.71e11}()
-const Ceres = Planet{0,469.73e3,9.074170*60^2,6.26325e10}()
-const Eris = Planet{0,1163e3,349.44*60^2,1.108e12}()
+const Sun = Planet(0.00005,696342e3,25.38*24*60^2,1.32712440018e20)
+const Mercury = Planet(0,2439.7e3,1407.5*60^2,2.2032e13)
+const Venus = Planet(0,6051.8e3,-243.025*24*60^2,3.24859e14)
+const Earth = Planet(1/298.257223563,6378137.0,86164.098903691,3.986004418e14)
+const Moon = Planet(0.0012,1738.1e3,27.321661*24*60^2,4.9048695e12)
+const Mars = Planet(0.00589,3396.2e3,1.025957*24*60^2,4.282837e13)
+const Jupiter = Planet(0.06487,71492e3,9.925*60^2,1.26686534e17)
+const Saturn = Planet(0.09796,60268e3,38018,3.7931187e16)
+const Uranus = Planet(0.02293,25559e3,-0.71833*24*60^2,5.793939e15)
+const Neptune = Planet(0.01708,24764e3,16.11*60^2,6.836529e15)
+const Pluto = Planet(0,1188.3e3,6.38723*24*60^2,8.71e11)
+const Ceres = Planet(0,469.73e3,9.074170*60^2,6.26325e10)
+const Eris = Planet(0,1163e3,349.44*60^2,1.108e12)
 
 export Nitrogen, Oxygen, CarbonDioxide, Methane, Hydrogen
 export Argon, Neon, Helium, Krypton, Xenon

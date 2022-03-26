@@ -1,10 +1,10 @@
 #   This file is part of Geophysics.jl. It is licensed under the AGPL license
 #   Geophysics Copyright (C) 2019 Michael Reed
 
-using Documenter, UnitSystems, AbstractTensors, Geophysics
+using Documenter, AbstractTensors, Geophysics, MeasureSystems
 
 makedocs(
-    modules = [Geophysics,UnitSystems],
+    modules = [Geophysics,MeasureSystems,UnitSystems],
     doctest = false,
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"),
     sitename = "Geophysics.jl",

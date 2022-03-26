@@ -8,35 +8,40 @@
 Pages = ["units.md","constants.md","convert.md"]
 ```
 
-Specifications for dimensional units are in the [UnitSystems.jl](https://github.com/chakravala/UnitSystems.jl) and [UnitfulSystems.jl](https://github.com/chakravala/UnitfulSystems.jl) repositories.
-The two packages are designed so that they can be interchanged if compatibility with [Unitful.jl](https://github.com/PainterQubits/Unitful.jl) is desired or not.
-However, the `UnitfulSystems` package has fewer `UnitSystem` specifications available than the `UnitSystems` package due to limitations in combination with the `Unitful` package.
-Specifically, `Metric`, `SI2019`, `CODATA`, `Conventional`, `MTS`, `EMU2019`, `English`, and `EnglishUS` can have `Unitful` values; while `Gauss`, `LorentzHeaviside`, `Thomson`, `EMU`, `ESU`, `ESU2019`, `IAU`, `FFF`, `Planck`, `PlanckGauss`, `Stoney`, `Hartree`, `Rydberg`, `Schrodinger`, `Electronic`, `Natural`, `NaturalGauss`, `QCD`, `QCDGauss`, and `QCDoriginal` currently only support plain numerical values.
+> In fact there is nothing transcendental about dimensions; the ultimate principle is precisely expressible (in Newton's terminology) as one of *similitude*, exact or approximate, to be tested by the rule that mere change in the magnitudes of the ordered scheme of units of measurement that is employed must not affect sensibly the forms of the equations that are the adequate expression of the underlying relations of the problem. (J.L.)
+
+Specifications for dimensional units are in the [UnitSystems.jl](https://github.com/chakravala/UnitSystems.jl) and [Similitude.jl](https://github.com/chakravala/Similitude.jl) and [MeasureSystems.jl](https://github.com/chakravala/MeasureSystems.jl) repositories.
+The three packages are designed so that they can be interchanged with compatibility.
+On its own `UnitSystems` is the fastest package, while `Similitude` (provides `Quantity` type) and `MeasureSystems` (introduces [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) uncertainty) build additional features on top of `UnitSystems` base defintions.
+Additionally, in the `UnitSystems` repository there is an equivalent [Wolfram language paclet](https://reference.wolfram.com/language/guide/Paclets) `Kernel` and also an unmaintained Rust `src` implementation.
+Defaults are shared across the packages: `Metric`, `SI2019`, `CODATA`, `Conventional`, `International`, `InternationalMean`, `MetricEngineering`, `SI2019Engineering`, `GravitationalMetric`, `GravitationalSI2019`, `British`, `British2019`, `Survey`, `Survey2019`, `English`, `English2019`, `FPS`, `FPS2019`, `Gauss`, `LorentzHeaviside`, `Thomson`, `EMU`, `ESU`, `EMU2019`, `ESU2019`, `IAU`, `IAUE`, `IAUJ`, `Astronomical`, `Hubble`, `Cosmological`, `CosmologicalQuantum`, `Nautical`, `MPH`, `KKH`, `MTS`, `FFF`, `Planck`, `PlanckGauss`, `Stoney`, `Hartree`, `Rydberg`, `Schrodinger`, `Electronic`, `Natural`, `NaturalGauss`, `QCD`, `QCDGauss`, and `QCDoriginal`.
 
 ```Julia
-pkg> add UnitSystems # or UnitfulSystems
-
-julia> using UnitSystems
+julia> using UnitSystems # or Similitude or MeasureSystems
 ```
 
-A `UnitSystem` is a consistent set of dimensional values selected to accomodate a particular use case or standardization.
+A `UnitSystem` is a consistent set of dimensional values selected to accomodate a particular use case standardization.
 It is possible to convert derived physical quantities from any `UnitSystem` specification into any other using accurate values.
-In total, five fundamental constants `kB,ħ,𝘤,μ₀,mₑ` are used to specify a specific unit system.
-These are the constants of `boltzmann`, `planckreduced`, `lightspeed`, `permeability`, and `electronmass`.
-Different choices of natural units or physical measurements result in a variety of unit systems optimized for many purposes.
+Eleven fundamental constants `kB`, `ħ`, `𝘤`, `μ₀`, `mₑ`, `Mᵤ`, `Kcd`, `θ`, `λ`, `αL`, `g₀` are used to govern a specific unit system consistent scaling.
+These are the constants `boltzmann`, `planckreduced`, `lightspeed`, `vacuumpermeability`, `electronmass`, `molarmass`, `luminousefficacy`, `angle`, `rationalization`, `lorentz`, and `gravity`.
+Different choices of natural units or physical measurements result in a variety of unit systems for many purposes.
 
 ```math
-k_B, \qquad \hbar, \qquad c, \qquad \mu_0, \qquad m_e, \qquad (M_u), \qquad (\lambda), \qquad (\alpha_L)
+k_B, \qquad \hbar, \qquad c, \qquad \mu_0, \qquad m_e, \qquad M_u, \qquad K_{cd}, \qquad \theta, \qquad \lambda, \qquad \alpha_L, \qquad g_0
 ```
-Another important additional definition is the `molarmass` constant `Mᵤ`, which is automatically selected based on the choice of `boltzmann` constant (but can also be customized if necessary).
 Historically, older electromagnetic unit systems also relied on a `rationalization` constant `λ` and a `lorentz` force proportionality constant `αL`.
 In most unit systems these extra constants have a value of `1` unless otherwise specified.
 
 ```@docs
-UnitSystem
+MeasureSystems.UnitSystem
 ```
 
-Other similar packages include [PhysicalConstants.jl](https://github.com/JuliaPhysics/PhysicalConstants.jl), [MathPhysicalConstants.jl](https://github.com/LaGuer/MathPhysicalConstants.jl), [Unitful.jl](https://github.com/PainterQubits/Unitful.jl.git), [UnitfulSystems.jl](https://github.com/chakravala/UnitfulSystems.jl), [UnitfulUS.jl](https://github.com/PainterQubits/UnitfulUS.jl), [UnitfulAstro.jl](https://github.com/JuliaAstro/UnitfulAstro.jl), [UnitfulAtomic.jl](https://github.com/sostock/UnitfulAtomic.jl), [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), and [UnitfulMoles.jl](https://github.com/rafaqz/UnitfulMoles.jl).
+Specification of `Universe` with the dimensionless `Coupling` constants `coupling`, `finestructure`, `electronunit`, `protonunit`, `protonelectron`, and `darkenergydensity`. Alterations to these values can be facilitated and quantified using parametric polymorphism.
+Due to the `Coupling` interoperability, the `MeasureSystems` package is made possible to support calculations with `Measurements` having error standard deviations.
+
+Similar packages: [UnitSystems.jl](https://github.com/chakravala/UnitSystems.jl), [Similitude.jl](https://github.com/chakravala/Similitude.jl), [MeasureSystems.jl](https://github.com/chakravala/MeasureSystems.jl), [PhysicalConstants.jl](https://github.com/JuliaPhysics/PhysicalConstants.jl), [MathPhysicalConstants.jl](https://github.com/LaGuer/MathPhysicalConstants.jl), [Unitful.jl](https://github.com/PainterQubits/Unitful.jl), [UnitfulUS.jl](https://github.com/PainterQubits/UnitfulUS.jl), [UnitfulAstro.jl](https://github.com/JuliaAstro/UnitfulAstro.jl), [UnitfulAtomic.jl](https://github.com/sostock/UnitfulAtomic.jl), [NaturallyUnitful.jl](https://github.com/MasonProtter/NaturallyUnitful.jl), and [UnitfulMoles.jl](https://github.com/rafaqz/UnitfulMoles.jl).
+
+### Default UnitSystems
 
 ```@index
 Pages = ["units.md"]
@@ -57,19 +62,19 @@ e = 1.602176634\mathrm{e}{-19}
 
 ```Julia
 julia> NA # avogadro
-6.02214076e23
+NA = 6.02214076e23
 
 julia> kB # boltzmann
-1.380649e-23
+kB = 1.380649e-23
 
 julia> 𝘩 # planck
-6.62607015e-34
+𝘩 = 6.62607015e-34
 
 julia> 𝘤 # lightspeed
-2.99792458e8
+𝘤 = 2.99792458e8
 
 julia> 𝘦 # charge
-1.602176634e-19
+𝘦 = 1.602176634e-19
 ```
 
 Physical measured values with uncertainty are electron to proton mass ratio `μₑᵤ`, proton to atomic mass ratio `μₚᵤ`, inverted fine structure constant `αinv`, the Rydberg `R∞` constant, and the Planck mass `mP`.
@@ -83,20 +88,20 @@ m_P \approx 2.176434\mathrm{e}{-8},
 ```
 
 ```Julia
-julia> μₑᵤ # mₑ/mᵤ
-0.0005485799090649074
+julia> μₑᵤ # electronunit
+μₑᵤ = 0.000548579909065 ± 1.6e-14
 
-julia> μₚᵤ # mₚ/mᵤ
-1.007276466621
+julia> μₚᵤ # protonunit
+μₚᵤ = 1.007276466621 ± 5.3e-11
 
-julia> αinv # 1/(fine structure)
-137.035999084
+julia> αinv # 1/finestructure
+α⁻¹ = 137.035999084 ± 2.1e-8
 
-julia> R∞ # rydberg
-1.09737315681601e7
+julia> R∞ # rydbgerg
+R∞ = 1.097373156816e7 ± 2.1e-5
 
 julia> mP # planckmass
-2.176434e-8
+mP = 2.176434e-8 ± 2.4e-13
 ```
 
 From these numbers along with the optional `4π` Gaussian `rationalization` value, the constants `planckreduced`, `permeability`, `electronmass`, `molarmass`, and proton to electon mass ratio are computed.
@@ -110,20 +115,20 @@ M_u = \frac{m_e}{\mu_{eu}}N_A = \frac{2h R_\infty N_A}{c\alpha^2\mu_{eu}}, \qqua
 ```
 
 ```Julia
-julia> ħ # 𝘩/2π
-1.0545718176461565e-34
+julia> ħ # planckreduced
+𝘩*τ⁻¹ = 1.0545718176461565e-34
 
-julia> μ₀ # 2𝘩/𝘤/αinv/𝘦^2
-1.256637062121048e-6
+julia> μ₀ # vacuumpermeability
+𝘩*𝘤⁻¹𝘦⁻²α*2 = 1.25663706212e-6 ± 1.9e-16
 
-julia> mₑ # αinv^2*R∞*2𝘩/𝘤
-9.109383701558256e-31
+julia> mₑ # electronmass
+𝘩*𝘤⁻¹R∞*α⁻²2 = 9.1093837016e-31 ± 2.8e-40
 
-julia> Mᵤ # mₑ*NA/μₑᵤ
-0.000999999999656256
+julia> Mᵤ # molarmass
+𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2 = 0.00099999999966 ± 3.1e-13
 
-julia> μₚₑ # μₚᵤ/μₑᵤ, mₚ/mₑ
-1836.152673432705
+julia> μₚₑ # protonelectron
+μₑᵤ⁻¹μₚᵤ = 1836.15267343 ± 1.1e-7
 ```
 
 These result in variants based on the original `molarmass` constant and Gaussian `permeability` along with the 2019 redefined exact values. The main difference between the two is determined by $\delta\tilde M_u$ and $\delta\tilde\mu_0$.
@@ -137,29 +142,23 @@ These result in variants based on the original `molarmass` constant and Gaussian
 (\tilde M_u = \frac{1}{1000} + \delta \tilde M_u)
 ```
 
-```Julia
-Metric::UnitSystem{Rᵤ*mₑ/μₑᵤ/0.001,ħ,𝘤,4π*1e-7,mₑ}
-SI2019::UnitSystem{kB,ħ,𝘤,μ₀,mₑ}
-```
-
-```math
-\frac{1}{1000} - M_u = 3.437439135417497\mathrm{e}{-13}, \qquad
-\frac{4π}{10^7} - \mu_0 \approx -6.851306461996397\mathrm{e}{-16}
-```
-
 ```@docs
-Metric
+MetricSystem
+MeasureSystems.Metric
 SI2019
+MetricEngineering
+SI2019Engineering
+SI1976
 ```
 
 Additional reference values include the ground state `hyperfine` structure transition frequency of caesium-133 `ΔνCs` and `luminousefficacy` of monochromatic radiation `Kcd` of 540 THz.
 
 ```Julia
 julia> ΔνCs # hyperfine
-9.19263177e9
+ΔνCs = 9.19263177e9
 
 julia> Kcd # luminousefficacy
-683.002
+Kcd = 683.01969009009
 ```
 
 ## Electromagnetic CGS Systems
@@ -175,11 +174,8 @@ Alternatives to the SI unit system are the centimetre-gram-second variants.
 (\tilde M_u, \, \tilde \lambda,\, \tilde \alpha_L)
 ```
 There are multiple choices of elctromagnetic units for these variants based on electromagnetic units, electrostatic units, Gaussian non-rationalized units, and Lorentz-Heaviside rationalized units.
-```Julia
-EMU              ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,1,1000mₑ,4π}
-ESU              ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,(100𝘤)^-2,1000mₑ,4π}
-Gauss            ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,1,1000mₑ,4π,0.01/𝘤}
-LorentzHeaviside ::UnitSystem{1e10*Rᵤ*mₑ/μₑᵤ,1e7*ħ,100𝘤,1,1000mₑ,1,0.01/𝘤}
+```@docs
+GaussSystem
 ```
 Note that `CGS` is an alias for the `Gauss` system.
 ```@docs
@@ -191,18 +187,23 @@ LorentzHeaviside
 When `Thomson` originally derived Maxwell's equations using electromagnetic notation, he arrived at a factor of `1/2` for the `lorentz` force constant, resulting in a slightly different sytem.
 ```@docs
 Thomson
+Kennelly
+```
+## Modified (Entropy) Unit Systems
+
+```@docs
+EntropySystem
+GravitationalMetric
+GravitationalSI2019
 ```
 Newer modern and rationalized variants of electromagnetic and electrostatic units are also made available.
-```Julia
-EMU2019::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e7*μ₀,1000mₑ}
-ESU2019::UnitSystem{1e7*kB,1e7*ħ,100𝘤,1e3*μ₀/𝘤^2,1000mₑ}
-```
 ```@docs
 EMU2019
 ESU2019
+ElectricSystem
+International
+InternationalMean
 ```
-
-## Historical Unit Systems
 
 Historically, the `josephson` and `klitzing` constants have been used to define `Conventional` and `CODATA` variants.
 
@@ -215,23 +216,22 @@ Historically, the `josephson` and `klitzing` constants have been used to define 
 (\tilde M_u = \frac{1}{1000})
 ```
 
-```Julia
-CODATA       ::UnitSystem{Rᵤ*mₑ2014/μₑᵤ/0.001,2/RK2014/KJ2014^2/π,𝘤,2RK2014/𝘤/αinv,mₑ2014}
-Conventional ::UnitSystem{Rᵤ*mₑ1990/μₑᵤ/0.001,2/RK1990/KJ1990^2/π,𝘤,2RK1990/𝘤/αinv,mₑ1990}
+```@docs
+ConventionalSystem
 ```
 
 ```Julia
 julia> josephson(Conventional) # KJ1990
-4.835979e14
+KJ90 = 4.835979e14 [M⁻¹L⁻²TQ] Conventional
 
 julia> klitzing(Conventional) # RK1990
-25812.807
+RK90 = 25812.807 [ML²T⁻¹Q⁻²] Conventional
 
 julia> josephson(CODATA) # KJ2014
-4.835978525e14
+KJ = 4.835978525e14 ± 3.0e6 [M⁻¹L⁻²TQ] CODATA
 
 julia> klitzing(CODATA) # RK2014
-25812.8074555
+RK = 25812.8074555 ± 5.9e-6 [ML²T⁻¹Q⁻²] CODATA
 ```
 
 ```@docs
@@ -250,7 +250,12 @@ In the Soviet Union, a metre-tonne-second system was also used briefly.
 ```
 ```@docs
 MTS
+KKH
+MPH
+Nautical
 ```
+
+## Foot-Pound-Second-Rankine
 
 In Britain and the United States an `English` system of engineering units was commonly used.
 
@@ -262,13 +267,28 @@ In Britain and the United States an `English` system of engineering units was co
 \tilde m_e = \frac{m_e}{\text{slug}}, \quad
 (\tilde M_u = 1)
 ```
-```Julia
-English   ::UnitSystem{kB*rankine/slug/ft^2,ħ/slug/ft^2,𝘤/ft,4π,mₑ/slug}
-EnglishUS ::UnitSystem{1000Rᵤ*mₑ/μₑᵤ*rankine/slug/ftUS^2,ħ/slug/ftUS^2,𝘤/ftUS,4π,mₑ/slug}
-```
+
 ```@docs
-English
-EnglishUS
+RankineSystem
+MeasureSystems.British
+British2019
+Survey
+Survey2019
+MeasureSystems.English
+MeasureSystems.English2019
+FPS
+FPS2019
+```
+
+An impractical yet humorous unit system is the `FFF` specification.
+```@docs
+FFF
+```
+
+## Astronomical Unit Systems
+
+```@docs
+Astronomical
 ```
 
 The International Astronomical Union (IAU) units are based on the solar mass, distance from the sun to the earth, and the length of a terrestrial day.
@@ -284,11 +304,11 @@ The International Astronomical Union (IAU) units are based on the solar mass, di
 
 ```@docs
 IAU
-```
-
-An impractical yet humorous unit system is the `FFF` specification.
-```@docs
-FFF
+IAUE
+IAUJ
+Hubble
+Cosmological
+CosmologicalQuantum
 ```
 
 ## Natural Unit Systems
@@ -303,7 +323,7 @@ With the introduction of the `planckmass` a set of natural atomic unit systems c
 
 ```Julia
 julia> αG # (mₑ/mP)^2
-1.751809945750515e-45
+𝘩²𝘤⁻²mP⁻²R∞²α⁻⁴2² = 1.75181e-45 ± 3.9e-50
 ```
 
 Some of the notable variants include

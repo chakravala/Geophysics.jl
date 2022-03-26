@@ -9,51 +9,61 @@ Common conversion factors for physics units between `UnitSystem` specifications.
 ## Kinematic Units
 
 ```@docs
-time
-length
+MeasureSystems.A
+solidangle
+MeasureSystems.T
+MeasureSystems.L
 area
-UnitSystems.volume(::UnitSystem,::UnitSystem)
-wavenumber
+MeasureSystems.volume
+MeasureSystems.wavenumber
+angularwavenumber
 fuelefficiency
-frequency
+MeasureSystems.frequency
+angularfrequency
 frequencydrift
-speed
+MeasureSystems.speed
 acceleration
 jerk
 snap
+crackle
+pop
 volumeflow
 ```
 
 ## Mechanical Units
 
 ```@docs
-mass
+inertia
+MeasureSystems.mass
 massflow
 lineardensity
 areadensity
-density
-specificvolume
+MeasureSystems.density
+MeasureSystems.specificweight
+MeasureSystems.specificvolume
 force
+gforce
 stiffness
-pressure
+MeasureSystems.pressure
 compressibility
-viscosity
+MeasureSystems.viscosity
 diffusivity
 rotationalinertia
+impulse
 momentum
 angularmomentum
 yank
 energy
-specificenergy
+MeasureSystems.specificenergy
 action
 fluence
 power
 powerdensity
-intensity
+MeasureSystems.intensity
 spectralflux
 soundexposure
 impedance(::UnitSystem,::UnitSystem)
-specificimpedance
+MeasureSystems.specificimpedance
 admittance
 compliance
 inertance
@@ -80,7 +90,7 @@ inductance
 reluctance
 permeance
 permittivity(::UnitSystem,::UnitSystem)
-permeability(::UnitSystem,::UnitSystem)
+MeasureSystems.permeability(::UnitSystem,::UnitSystem)
 susceptibility
 specificsusceptibility
 demagnetizingfactor
@@ -108,11 +118,11 @@ polestrength
 ## Thermodynamic Units
 
 ```@docs
-temperature
+MeasureSystems.temperature
 entropy
 specificentropy
 volumeheatcapacity
-thermalconductivity
+MeasureSystems.thermalconductivity
 thermalconductance
 thermalresistance
 thermalexpansion
@@ -122,7 +132,7 @@ lapserate
 ## Molar Units
 
 ```@docs
-molarmass(::UnitSystem,::UnitSystem)
+MeasureSystems.molarmass(::UnitSystem,::UnitSystem)
 molality
 mole
 molarity
@@ -142,7 +152,7 @@ luminousflux
 luminance
 luminousenergy
 luminousexposure
-luminousefficacy(::UnitSystem,::UnitSystem)
+MeasureSystems.luminousefficacy(::UnitSystem,::UnitSystem)
 ```
 
 ## Conversion Index

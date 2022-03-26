@@ -1,6 +1,16 @@
 
-#   This file is part of Geophysics.jl. It is licensed under the AGPL license
+#   This file is part of Geophysics.jl
+#   It is licensed under the AGPL license
 #   Geophysics Copyright (C) 2020 Michael Reed
+#       _           _                         _
+#      | |         | |                       | |
+#   ___| |__   __ _| | ___ __ __ ___   ____ _| | __ _
+#  / __| '_ \ / _` | |/ / '__/ _` \ \ / / _` | |/ _` |
+# | (__| | | | (_| |   <| | | (_| |\ V / (_| | | (_| |
+#  \___|_| |_|\__,_|_|\_\_|  \__,_| \_/ \__,_|_|\__,_|
+#
+#   https://github.com/chakravala
+#   https://crucialflow.com
 
 export molarmass, units, molecularmass, gasconstant, AbstractMole, MoleGas
 export sutherlandviscosity, sutherlandconductivity
@@ -65,8 +75,8 @@ Laminar dynamic vicsosity `μ` is stress to normal acceleration ratio (Pa⋅s or
 @pure viscosity(::MoleGas{M,μ}) where {M,μ} = μ
 @pure sutherlandviscosity(::MoleGas{M,μ,Tμ}) where {M,μ,Tμ} = Tμ
 
-@pure viscosity(G::MoleGas,U::UnitSystem) = viscosity(viscosity(G),U,Metric)
-@pure sutherlandviscosity(G::MoleGas,U::UnitSystem) = temperature(sutherlandviscosity(G),U,Metric)
+@pure viscosity(G::MoleGas,U::UnitSystem) = viscosity(G)*viscosity(Metric,U)
+@pure sutherlandviscosity(G::MoleGas,U::UnitSystem) = sutherlandviscosity(G)*temperature(Metric,U)
 
 """
     thermalconductivity(T::Real,G::AbstractMole)
@@ -76,8 +86,8 @@ Laminar thermal conductivity `k` of temperature variation (W⋅m⁻¹⋅K⁻¹ o
 @pure thermalconductivity(::MoleGas{M,μ,Tμ,k}) where {M,μ,Tμ,k} = k
 @pure sutherlandconductivity(::MoleGas{M,μ,Tμ,k,Tk}) where {M,μ,Tμ,k,Tk} = Tk
 
-@pure thermalconductivity(G::MoleGas,U::UnitSystem) = thermalconductivity(thermalconductivity(G),U,Metric)
-@pure sutherlandconductivity(G::MoleGas,U::UnitSystem) = temperature(sutherlandconductivity(G),U,Metric)
+@pure thermalconductivity(G::MoleGas,U::UnitSystem) = thermalconductivity(G)*thermalconductivity(Metric,U)
+@pure sutherlandconductivity(G::MoleGas,U::UnitSystem) = sutherlandconductivity(G)*temperature(Metric,U)
 
 gastext(::MoleGas) = "MoleGas{$(molarmass(G)),"
 
@@ -87,15 +97,15 @@ for op ∈ (:viscosity,:thermalconductivity)
     OP = Symbol(:sutherland,op ≠ :viscosity ? :conductivity : op)
     @eval @pure function $op(T::Real,G::MoleGas,U::UnitSystem=Metric)
         Tk = $OP(G,U)
-        ((2*$op(G,U))/sqrt(Tk))*(sqrt(T)/(1+Tk/T))
+        ((2*$op(G,U))/sqrt(normal(Tk)))*(sqrt(T)/(1+normal(Tk)/T))
     end
 end
 
-@pure function viscond(μ0,Tμ,k0,Tk,T0=288.16)
-    T = 2(T0^1.5)
-    μ = μ0*sqrt(Tμ)*(T0+Tμ)/T
-    k = k0*sqrt(Tk)*(T0+Tk)/T
-    return μ,k
+@pure function viscond(μ0,Tμ,k0,Tk,T0=288.16,U=Metric)
+    T1 = 2(T0^1.5)
+    μ = μ0*sqrt(Tμ)*(T0+Tμ)/T1
+    k = k0*sqrt(Tk)*(T0+Tk)/T1
+    return Quantity(F*T/L/L,U,μ),Quantity(F/T/Θ,U,k)
 end
 
 for heat ∈ (:heatratio,:heatvolume,:heatpressure)
@@ -121,14 +131,14 @@ Specific heat ratio `γ` at constant pressure to constant volume of ideal gas (d
 
 Specific energy `e` of ideal gas `specificenthalpy(T,G)-gasconstant(G)*T` (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).
 """
-@pure specificenergy(T::Real,G::AbstractMole,U::UnitSystem=Metric) = heatvolume(T,G,U)*T
+@pure specificenergy(T::Real,G::AbstractMole,U::UnitSystem=Metric) = heatvolume(T,G,U)*Quantity(Θ,U,T)
 
 """
     enthalpy(T::Real,G::AbstractMole) = heatpressure(T,G)*T
 
 Specific enthalpy `h` of ideal gas `specificenergy(T,G)+gasconstant(G)*T` (J⋅kg⁻¹ or ft⋅lb⋅slug⁻¹).
 """
-@pure specificenthalpy(T::Real,G::AbstractMole,U::UnitSystem=Metric) = heatpressure(T,G,U)*T
+@pure specificenthalpy(T::Real,G::AbstractMole,U::UnitSystem=Metric) = heatpressure(T,G,U)*Quantity(Θ,U,T)
 
 """
     freedom(T::Real,G::AbstractMole) = 2heatvolume(T,G)/gasconstant(G)
@@ -142,14 +152,14 @@ Degrees of freedom `f` with storage energy per mole `gasconstant(G)*T/2` (dimens
 
 Prandtl number is the ratio of momentum diffusivity to heat diffusivity (dimensionless).
 """
-@pure prandtl(T::Real,G::AbstractMole,U::UnitSystem=Metric) = viscosity(T,G,U)*heatpressure(T,G,U)/thermalconductivity(T,G,U)
+@pure prandtl(T::Real,G::AbstractMole,U::UnitSystem=Metric) = gravity(U)*viscosity(T,G,U)*heatpressure(T,G,U)/thermalconductivity(T,G,U)
 
 """
     sonicspeed(T::Real,G::AbstractMole) = sqrt(gasconstant(G)*heatratio(T,G)*T)
 
 Speed of sound wave disturbance at isentropic conditions in ideal gas (m⋅s⁻¹ or ft⋅s⁻¹).
 """
-@pure sonicspeed(T::Real,G::AbstractMole,U::UnitSystem=Metric) = sqrt((gasconstant(G,U)*heatratio(T,G,U))*T)
+@pure sonicspeed(T::Real,G::AbstractMole,U::UnitSystem=Metric) = sqrt((gasconstant(G,U)*gravity(U)*heatratio(T,G,U))*Quantity(Θ,U,T))
 
 export AtomicGas, DiatomicGas, TriatomicGas, SutherlandGas
 export wavenumber, frequency, vibration
@@ -160,25 +170,25 @@ struct TriatomicGas{M,ν1,ν2,μ,Tμ,k,Tk} <: MoleGas{M,μ,Tμ,k,Tk} end
 struct PentatomicGas{M,μ,Tμ,k,Tk} <: MoleGas{M,μ,Tμ,k,Tk} end
 struct SutherlandGas{M,cᵥ,μ,Tμ,k,Tk} <: MoleGas{M,μ,Tμ,k,Tk} end
 
-function AtomicGas(M,μ0,Tμ,k0,Tk,T0=288.16)
-    μ,k = viscond(μ0,Tμ,k0,Tk,T0)
-    AtomicGas{M,μ,Tμ,k,Tk}()
+function AtomicGas(M,μ0,Tμ,k0,Tk,T0=288.16,U=Metric)
+    μ,k = viscond(μ0,Tμ,k0,Tk,T0,U)
+    AtomicGas{M,μ,Quantity(Θ,U,Tμ),k,Quantity(Θ,U,Tk)}()
 end
-function DiatomicGas(M,ν,μ0,Tμ,k0,Tk,T0=288.16)
-    μ,k = viscond(μ0,Tμ,k0,Tk,T0)
-    DiatomicGas{M,ν,μ,Tμ,k,Tk}()
+function DiatomicGas(M,ν,μ0,Tμ,k0,Tk,T0=288.16,U=Metric)
+    μ,k = viscond(μ0,Tμ,k0,Tk,T0,U)
+    DiatomicGas{M,Quantity(inv(L),U,ν),μ,Quantity(Θ,U,Tμ),k,Quantity(Θ,U,Tk)}()
 end
-function TriatomicGas(M,ν1,ν2,μ0,Tμ,k0,Tk,T0=288.16)
-    μ,k = viscond(μ0,Tμ,k0,Tk,T0)
-    TriatomicGas{M,ν1,ν2,μ,Tμ,k,Tk}()
+function TriatomicGas(M,ν1,ν2,μ0,Tμ,k0,Tk,T0=288.16,U=Metric)
+    μ,k = viscond(μ0,Tμ,k0,Tk,T0,U)
+    TriatomicGas{M,Quantity(inv(L),U,ν1),Quantity(inv(L),U,ν2),μ,Quantity(Θ,U,Tμ),k,Quantity(Θ,U,Tk)}()
 end
-function PentatomicGas(M,μ0,Tμ,k0,Tk,T0=288.16)
-    μ,k = viscond(μ0,Tμ,k0,Tk,T0)
-    PentatomicGas{M,μ,Tμ,k,Tk}()
+function PentatomicGas(M,μ0,Tμ,k0,Tk,T0=288.16,U=Metric)
+    μ,k = viscond(μ0,Tμ,k0,Tk,T0,U)
+    PentatomicGas{M,μ,Quantity(Θ,U,Tμ),k,Quantity(Θ,U,Tk)}()
 end
-function SutherlandGas(M,cᵥ,μ0,Tμ,k0,Tk,T0)
-    μ,k = viscond(μ0,Tμ,k0,Tk,T0)
-    SutherlandGas{M,cᵥ,μ,Tμ,k,Tk}()
+function SutherlandGas(M,cᵥ,μ0,Tμ,k0,Tk,T0=288.16,U=Metric)
+    μ,k = viscond(μ0,Tμ,k0,Tk,T0,U)
+    SutherlandGas{M,Quantity(F*L/M/Θ,U,cᵥ),μ,Quantity(Θ,U,Tμ),k,Quantity(Θ,U,Tk)}()
 end
 
 """
@@ -189,7 +199,7 @@ Spectroscopic vibrational wavenumbers of polyatomic molecules if applicable (m�
 @pure wavenumber(::DiatomicGas{M,ν}) where {M,ν} = ν
 @pure wavenumber(::TriatomicGas{M,ν1,ν2}) where {M,ν1,ν2} = ν1,ν2
 
-@pure wavenumber(G::MoleGas,U::UnitSystem) = wavenumber.(wavenumber(G),Ref(U),Ref(Metric))
+@pure wavenumber(G::MoleGas,U::UnitSystem) = wavenumber(G).*Ref(wavenumber(Metric,U))
 
 """
     wavelength(G::MoleGas) = 1/wavenumber(G)
@@ -211,7 +221,10 @@ Spectroscopic vibrational frequencies `ν` of polyatomic molecules if applicable
 Vibrational temperature `θ` of polyatomic molecules if applicable (K or °R).
 """
 @pure vibration(G::MoleGas,U::US=Metric) = frequency(G,U).*(planck(U)/boltzmann(U)/1.2)
-@pure vibration(θT::Float64) = (eθT = exp(θT); θT^2*eθT/(eθT-1)^2)
+@pure vibration(θT::T) where T<:AbstractFloat = (eθT = exp(θT); θT^2*eθT/(eθT-1)^2)
+if usingSimilitude
+@pure vibration(θT::Quantity{D,U}) where {D,U} = Quantity{D,U}(vibration(θT.v))
+end
 
 """
     heatvolume(T::Real,G::AbstractMole) = translation + rotation + vibration
@@ -223,12 +236,12 @@ Specific heat `cᵥ` of ideal gas at constant volume (J⋅kg⁻¹⋅K⁻¹ or ft
 @pure heatvolume(::Real,G::SutherlandGas,U::US) = specificentropy(heatvolume(G),U,Metric)
 @pure function heatvolume(T::Real,G::DiatomicGas,U::UnitSystem=Metric)
     R,θ = gasconstant(G,U),vibration(G,U)
-    R*((5/2)+vibration(θ/T))
+    R*((5/2)+vibration(normal(θ)/T))
 end
 @pure function heatvolume(T::Real,G::TriatomicGas,U::UnitSystem=Metric)
     R = gasconstant(G,U)
     θ1,θ2 = vibration(G,U)
-    R*((5/2)+vibration(θ1/T)+vibration(θ2/T))
+    R*((5/2)+vibration(normal(θ1)/T)+vibration(normal(θ2)/T))
 end
 
 gastext(G::AtomicGas) = "AtomicGas{M=$(molarmass(G)),"
