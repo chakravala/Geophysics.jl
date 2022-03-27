@@ -25,354 +25,354 @@ julia&gt; αG # coupling(Universe)
 
 julia&gt; ΩΛ # darkenergydensity(Universe)
 ΩΛ = 0.6889 ± 0.0056</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.turn" href="#MeasureSystems.turn"><code>MeasureSystems.turn</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">turn(U::UnitSystem) = 2π/angle(U)</code></pre><p>Complete rotation <code>angle</code> of revolution from a full circle.</p><pre><code class="language-Julia">julia&gt; turn(MetricEngineering)
-τ = 6.283185307179586 [A] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.sphere" href="#MeasureSystems.sphere"><code>MeasureSystems.sphere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">sphere(U::UnitSystem) = turn(U)/angle(U)</code></pre><p>Complete spherical <code>solidangle</code> of from a full sphere.</p><pre><code class="language-Julia">julia&gt; sphere(MetricEngineering)
-τ*2 = 12.566370614359172 [A²] MetricEngineering</code></pre></div></section></article><h2 id="Fundamental-Constants-1"><a class="docs-heading-anchor" href="#Fundamental-Constants-1">Fundamental Constants</a><a class="docs-heading-anchor-permalink" href="#Fundamental-Constants-1" title="Permalink"></a></h2><div>\[c = \frac1{\alpha_L\sqrt{\mu_0\varepsilon_0}} = \frac{1}{\alpha}\sqrt{\frac{E_h}{m_e}} = \frac{\hbar\alpha}{m_e r_e}  = \frac{e^2k_e}{\hbar\alpha} = \frac{m_e^2G}{\hbar\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lightspeed" href="#MeasureSystems.lightspeed"><code>MeasureSystems.lightspeed</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lightspeed(U::UnitSystem) = 1/sqrt(vacuumpermeability(U)*vacuumpermittivity(U))/lorentz(U)</code></pre><p>Speed of light in a vacuum <code>𝘤</code> for massless particles (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; lightspeed(Metric) # m⋅s⁻¹
-𝘤 = 2.99792458e8 [LT⁻¹] Metric
+τ = 6.283185307179586 [rad] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.sphere" href="#MeasureSystems.sphere"><code>MeasureSystems.sphere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">sphere(U::UnitSystem) = turn(U)/angle(U)</code></pre><p>Complete spherical <code>solidangle</code> of from a full sphere.</p><pre><code class="language-Julia">julia&gt; sphere(MetricEngineering)
+τ*2 = 12.566370614359172 [rad²] MetricEngineering</code></pre></div></section></article><h2 id="Fundamental-Constants-1"><a class="docs-heading-anchor" href="#Fundamental-Constants-1">Fundamental Constants</a><a class="docs-heading-anchor-permalink" href="#Fundamental-Constants-1" title="Permalink"></a></h2><div>\[c = \frac1{\alpha_L\sqrt{\mu_0\varepsilon_0}} = \frac{1}{\alpha}\sqrt{\frac{E_h}{m_e}} = \frac{\hbar\alpha}{m_e r_e}  = \frac{e^2k_e}{\hbar\alpha} = \frac{m_e^2G}{\hbar\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lightspeed" href="#MeasureSystems.lightspeed"><code>MeasureSystems.lightspeed</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lightspeed(U::UnitSystem) = 1/sqrt(vacuumpermeability(U)*vacuumpermittivity(U))/lorentz(U)</code></pre><p>Speed of light in a vacuum <code>𝘤</code> for massless particles (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; lightspeed(Metric) # m⋅s⁻¹
+𝘤 = 2.99792458e8 [m*s⁻¹] Metric
 
 julia&gt; lightspeed(English) # ft⋅s⁻¹
-𝘤*ft⁻¹ = 9.835710564304461e8 [LT⁻¹] English</code></pre></div></section></article><div>\[h = 2\pi\hbar = \frac{2e\alpha_L}{K_J} = \frac{8\alpha}{\lambda c\mu_0K_J^2} = \frac{4\alpha_L^2}{K_J^2R_K}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.planck" href="#MeasureSystems.planck"><code>MeasureSystems.planck</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">planck(x) = turn(x)*planckreduced(x)</code></pre><p>Planck constant <code>𝘩</code> is energy per electromagnetic frequency (J⋅s or ft⋅lb⋅s).</p><pre><code class="language-Julia">julia&gt; planck(SI2019) # J⋅s
-𝘩 = 6.62607015e-34 [ML²T⁻¹] SI2019
+𝘤*ft⁻¹ = 9.835710564304461e8 [ft*s⁻¹] English</code></pre></div></section></article><div>\[h = 2\pi\hbar = \frac{2e\alpha_L}{K_J} = \frac{8\alpha}{\lambda c\mu_0K_J^2} = \frac{4\alpha_L^2}{K_J^2R_K}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.planck" href="#MeasureSystems.planck"><code>MeasureSystems.planck</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">planck(x) = turn(x)*planckreduced(x)</code></pre><p>Planck constant <code>𝘩</code> is energy per electromagnetic frequency (J⋅s or ft⋅lb⋅s).</p><pre><code class="language-Julia">julia&gt; planck(SI2019) # J⋅s
+𝘩 = 6.62607015e-34 [kg*m²s⁻¹] SI2019
 
 julia&gt; planck(SI2019)*lightspeed(SI2019) # J⋅m
-𝘩*𝘤 = 1.9864458571489286e-25 [ML³T⁻²] SI2019
+𝘩*𝘤 = 1.9864458571489286e-25 [kg*m³s⁻²] SI2019
 
 julia&gt; planck(CODATA) # J⋅s
-RK⁻¹KJ⁻²2² = 6.626070039e-34 ± 8.2e-42 [ML²T⁻¹] CODATA
+RK⁻¹KJ⁻²2² = 6.626070039e-34 ± 8.2e-42 [kg*m²s⁻¹] CODATA
 
 julia&gt; planck(Conventional) # J⋅s
-RK90⁻¹KJ90⁻²2² = 6.626068854361325e-34 [ML²T⁻¹] Conventional
+RK90⁻¹KJ90⁻²2² = 6.626068854361325e-34 [kg*m²s⁻¹] Conventional
 
 julia&gt; planck(SI2019)/elementarycharge(SI2019) # eV⋅s
-𝘩*𝘦⁻¹ = 4.135667696923859e-15 [ML²T⁻¹Q⁻¹] SI2019
+𝘩*𝘦⁻¹ = 4.135667696923859e-15 [kg*m²s⁻¹C⁻¹] SI2019
 
 julia&gt; planck(SI2019)*lightspeed(SI2019)/elementarycharge(SI2019) # eV⋅m
-𝘩*𝘤*𝘦⁻¹ = 1.2398419843320026e-6 [ML³T⁻²Q⁻¹] SI2019
+𝘩*𝘤*𝘦⁻¹ = 1.2398419843320026e-6 [kg*m³s⁻²C⁻¹] SI2019
 
 julia&gt; planck(British) # ft⋅lb⋅s
-𝘩*g₀⁻¹ft⁻¹lb⁻¹ = 4.887138541095932e-34 [FLT] English</code></pre></div></section></article><div>\[\hbar = \frac{h}{2\pi} = \frac{e\alpha_L}{\pi K_J} = \frac{4\alpha}{\pi\lambda c\mu_0K_J^2} = \frac{2\alpha_L}{\pi K_J^2R_K}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.planckreduced" href="#MeasureSystems.planckreduced"><code>MeasureSystems.planckreduced</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">planckreduced(x) = planck(x)/turn(x)</code></pre><p>Reduced Planck constant <code>ħ</code> is a Planck per radian (J⋅s⋅rad⁻¹ or ft⋅lb⋅s⋅rad⁻¹).</p><pre><code class="language-Julia">julia&gt; planckreduced(SI2019) # J⋅s⋅rad⁻¹
-𝘩*τ⁻¹ = 1.0545718176461565e-34 [ML²T⁻¹] SI2019
+𝘩*g₀⁻¹ft⁻¹lb⁻¹ = 4.887138541095932e-34 [lbf*ft*s] English</code></pre></div></section></article><div>\[\hbar = \frac{h}{2\pi} = \frac{e\alpha_L}{\pi K_J} = \frac{4\alpha}{\pi\lambda c\mu_0K_J^2} = \frac{2\alpha_L}{\pi K_J^2R_K}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.planckreduced" href="#MeasureSystems.planckreduced"><code>MeasureSystems.planckreduced</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">planckreduced(x) = planck(x)/turn(x)</code></pre><p>Reduced Planck constant <code>ħ</code> is a Planck per radian (J⋅s⋅rad⁻¹ or ft⋅lb⋅s⋅rad⁻¹).</p><pre><code class="language-Julia">julia&gt; planckreduced(SI2019) # J⋅s⋅rad⁻¹
+𝘩*τ⁻¹ = 1.0545718176461565e-34 [kg*m²s⁻¹] SI2019
 
 julia&gt; planckreduced(SI2019)*lightspeed(SI2019) # J⋅m⋅rad⁻¹
-𝘩*𝘤*τ⁻¹ = 3.1615267734966903e-26 [ML³T⁻²] SI2019
+𝘩*𝘤*τ⁻¹ = 3.1615267734966903e-26 [kg*m³s⁻²] SI2019
 
 julia&gt; planckreduced(CODATA) # J⋅s⋅rad⁻¹
-RK⁻¹KJ⁻²τ⁻¹2² = 1.0545718e-34 ± 1.3e-42 [ML²T⁻¹] CODATA
+RK⁻¹KJ⁻²τ⁻¹2² = 1.0545718e-34 ± 1.3e-42 [kg*m²s⁻¹] CODATA
 
 julia&gt; planckreduced(Conventional) # J⋅s⋅rad⁻¹
-RK90⁻¹KJ90⁻²τ⁻¹2² = 1.054571611438857e-34 [ML²T⁻¹] Conventional
+RK90⁻¹KJ90⁻²τ⁻¹2² = 1.054571611438857e-34 [kg*m²s⁻¹] Conventional
 
 julia&gt; planckreduced(SI2019)/elementarycharge(SI2019) # eV⋅s⋅rad⁻¹
-𝘩*𝘦⁻¹τ⁻¹ = 6.582119569509067e-16 [ML²T⁻¹Q⁻¹] SI2019
+𝘩*𝘦⁻¹τ⁻¹ = 6.582119569509067e-16 [kg*m²s⁻¹C⁻¹] SI2019
 
 julia&gt; planckreduced(SI2019)*lightspeed(SI2019)/elementarycharge(SI2019) # eV⋅m⋅rad⁻¹
-𝘩*𝘤*𝘦⁻¹τ⁻¹ = 1.973269804593025e-7 [ML³T⁻²Q⁻¹] SI2019
+𝘩*𝘤*𝘦⁻¹τ⁻¹ = 1.973269804593025e-7 [kg*m³s⁻²C⁻¹] SI2019
 
 julia&gt; planckreduced(British) # ft⋅lb⋅s⋅rad⁻¹
-𝘩*g₀⁻¹ft⁻¹lb⁻¹τ⁻¹ = 7.778122563903315e-35 [FLT] British</code></pre></div></section></article><div>\[m_P = \sqrt{\frac{\hbar c}{G}} = \frac{m_e}{\sqrt{\alpha_G}} = \frac{2R_\infty h}{c\alpha^2\sqrt{\alpha_G}}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.planckmass" href="#MeasureSystems.planckmass"><code>MeasureSystems.planckmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">planckmass(U::UnitSystem) = electronmass(U)/sqrt(coupling(U))</code></pre><p>Planck mass factor <code>mP</code> from the gravitational coupling constant <code>αG</code> (kg or slugs).</p><pre><code class="language-Julia">juila&gt; planckmass(Metric)*lightspeed(Metric)^2/elementarycharge(Metric) # eV⋅𝘤⁻²
-𝘩⁻¹ᐟ²𝘤⁵ᐟ²mP*α⁻¹ᐟ²τ¹ᐟ²2⁻⁷ᐟ²5⁻⁷ᐟ² = 1.22089e28 ± 1.3e23 [ML²T⁻²Q⁻¹] Metric
+𝘩*g₀⁻¹ft⁻¹lb⁻¹τ⁻¹ = 7.778122563903315e-35 [lb*ft*s] British</code></pre></div></section></article><div>\[m_P = \sqrt{\frac{\hbar c}{G}} = \frac{m_e}{\sqrt{\alpha_G}} = \frac{2R_\infty h}{c\alpha^2\sqrt{\alpha_G}}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.planckmass" href="#MeasureSystems.planckmass"><code>MeasureSystems.planckmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">planckmass(U::UnitSystem) = electronmass(U)/sqrt(coupling(U))</code></pre><p>Planck mass factor <code>mP</code> from the gravitational coupling constant <code>αG</code> (kg or slugs).</p><pre><code class="language-Julia">juila&gt; planckmass(Metric)*lightspeed(Metric)^2/elementarycharge(Metric) # eV⋅𝘤⁻²
+𝘩⁻¹ᐟ²𝘤⁵ᐟ²mP*α⁻¹ᐟ²τ¹ᐟ²2⁻⁷ᐟ²5⁻⁷ᐟ² = 1.22089e28 ± 1.3e23 [kg*m²s⁻²C⁻¹] Metric
 
 juila&gt; planckmass(Metric) # kg
-mP = 2.176434e-8 ± 2.4e-13 [M] Metric
+mP = 2.176434e-8 ± 2.4e-13 [kg] Metric
 
 juila&gt; planckmass(Metric)/atomicmass(Metric) # mᵤ
 𝘩⁻¹𝘤*mP*R∞⁻¹α²μₑᵤ*2⁻¹ = 1.310679e19 ± 1.4e14 [𝟙] Metric
 
 juila&gt; planckmass(Metric)*lightspeed(Metric)^2/elementarycharge(Metric)/sqrt(𝟐^2*τ) # eV⋅𝘤⁻²
-𝘩⁻¹ᐟ²𝘤⁵ᐟ²mP*α⁻¹ᐟ²2⁻⁹ᐟ²5⁻⁷ᐟ² = 2.435323e27 ± 2.7e22 [ML²T⁻²Q⁻¹] Metric
+𝘩⁻¹ᐟ²𝘤⁵ᐟ²mP*α⁻¹ᐟ²2⁻⁹ᐟ²5⁻⁷ᐟ² = 2.435323e27 ± 2.7e22 [kg*m²s⁻²C⁻¹] Metric
 
 juila&gt; planckmass(Metric)/sqrt(𝟐^2*τ) # kg
-mP*τ⁻¹ᐟ²2⁻¹ = 4.341358e-9 ± 4.8e-14 [M] Metric</code></pre></div></section></article><div>\[G = \frac{\hbar c}{m_P^2} = \frac{\hbar c\alpha_G}{m_e^2} = \frac{c^3\alpha^4\alpha_G}{8\pi R_\infty^2 h} = \frac{\kappa c^4}{8\pi}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.newton" href="#MeasureSystems.newton"><code>MeasureSystems.newton</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">newton(U::UnitSystem) = lightspeed(U)*planckreduced(U)/planckmass(U)^2</code></pre><p>Universal gravitational constant <code>G</code> of Newton&#39;s law (m³⋅kg⁻¹⋅s⁻² or ft³⋅slug⁻¹⋅s⁻²).</p><pre><code class="language-Julia">juila&gt; newton(Metric) # m³⋅kg⁻¹⋅s⁻²
-𝘩*𝘤*mP⁻²τ⁻¹ = 6.6743e-11 ± 1.5e-15 [M⁻¹L³T⁻²] Metric
+mP*τ⁻¹ᐟ²2⁻¹ = 4.341358e-9 ± 4.8e-14 [kg] Metric</code></pre></div></section></article><div>\[G = \frac{\hbar c}{m_P^2} = \frac{\hbar c\alpha_G}{m_e^2} = \frac{c^3\alpha^4\alpha_G}{8\pi R_\infty^2 h} = \frac{\kappa c^4}{8\pi}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.newton" href="#MeasureSystems.newton"><code>MeasureSystems.newton</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">newton(U::UnitSystem) = lightspeed(U)*planckreduced(U)/planckmass(U)^2</code></pre><p>Universal gravitational constant <code>G</code> of Newton&#39;s law (m³⋅kg⁻¹⋅s⁻² or ft³⋅slug⁻¹⋅s⁻²).</p><pre><code class="language-Julia">juila&gt; newton(Metric) # m³⋅kg⁻¹⋅s⁻²
+𝘩*𝘤*mP⁻²τ⁻¹ = 6.6743e-11 ± 1.5e-15 [kg⁻¹m³s⁻²] Metric
 
 julia&gt; newton(English) # ft³⋅lbm⁻¹⋅s⁻²
-𝘩*𝘤*mP⁻²g₀⁻¹ft⁻²lb*τ⁻¹ = 3.322929e-11 ± 7.3e-16 [FM⁻²L²] English
+𝘩*𝘤*mP⁻²g₀⁻¹ft⁻²lb*τ⁻¹ = 3.322929e-11 ± 7.3e-16 [lbf*lbm⁻²ft²] English
 
 julia&gt; newton(IAU) # au³⋅M☉⁻¹⋅day⁻²
-k² = 0.00029591220828559115 [M⁻¹L³T⁻²] IAU☉
+k² = 0.00029591220828559115 [M☉⁻¹au³D⁻²] IAU☉
 
 julia&gt; newton(Astronomical) # N⋅s⁴⋅m⁻⁴
 𝟏 = 1.0 [FL⁻⁴T⁴] Astronomical
 
 julia&gt; newton(PlanckGauss)
 𝟏 = 1.0 [M⁻²] PlanckGauss</code></pre></div></section></article><div>\[\kappa = \frac{8\pi G}{c^4} = \frac{8\pi\hbar}{c^3m_P^2} = \frac{8\pi\hbar\alpha_G}{c^3m_e^2} = \frac{\alpha^4\alpha_G}{R_\infty^2 h c}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.einstein" href="#MeasureSystems.einstein"><code>MeasureSystems.einstein</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">einstein(U::UnitSystem) = 2sphere(U)*newton(U)/lightspeed(U)^4</code></pre><p>Einstein&#39;s gravitational constant from the Einstein field equations (s⋅²⋅m⁻¹⋅kg⁻¹).</p><pre><code class="language-Julia">julia&gt; einstein(Metric) # s²⋅m⁻¹⋅kg⁻¹
-𝘩*𝘤⁻³mP⁻²2² = 2.076648e-43 ± 4.5999999999999995e-48 [M⁻¹L⁻¹T²] Metric
+𝘩*𝘤⁻³mP⁻²2² = 2.076648e-43 ± 4.5999999999999995e-48 [kg⁻¹m⁻¹s²] Metric
 
 julia&gt; einstein(IAU) # day²⋅au⁻¹⋅M☉⁻¹
-𝘤⁻⁴au⁴k²τ*2⁻²⁶3⁻¹²5⁻⁸ = 8.27497345359e-12 ± 6.6e-22 [M⁻¹L⁻¹T²] IAU☉</code></pre></div></section></article><div>\[\kappa = \frac{8\pi G}{c^2} = \frac{8\pi\hbar}{cm_P^2} = \frac{8\pi\hbar\alpha_G}{cm_e^2} = \frac{c\alpha^4\alpha_G}{R_\infty^2 h}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.einstein2" href="#MeasureSystems.einstein2"><code>MeasureSystems.einstein2</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">einstein2(U::UnitSystem) = 2sphere(U)*newton(U)/lightspeed(U)^2</code></pre><p>Einstein&#39;s gravitational constant from the Einstein field equations (m⋅kg⁻¹).</p><pre><code class="language-Julia">julia&gt; einstein2(Metric) # m⋅kg⁻¹
-𝘩*𝘤⁻¹mP⁻²2² = 1.866398e-26 ± 4.1e-31 [M⁻¹L] Metric
+𝘤⁻⁴au⁴k²τ*2⁻²⁶3⁻¹²5⁻⁸ = 8.27497345359e-12 ± 6.6e-22 [M☉⁻¹au⁻¹D²] IAU☉</code></pre></div></section></article><div>\[\kappa = \frac{8\pi G}{c^2} = \frac{8\pi\hbar}{cm_P^2} = \frac{8\pi\hbar\alpha_G}{cm_e^2} = \frac{c\alpha^4\alpha_G}{R_\infty^2 h}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.einstein2" href="#MeasureSystems.einstein2"><code>MeasureSystems.einstein2</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">einstein2(U::UnitSystem) = 2sphere(U)*newton(U)/lightspeed(U)^2</code></pre><p>Einstein&#39;s gravitational constant from the Einstein field equations (m⋅kg⁻¹).</p><pre><code class="language-Julia">julia&gt; einstein2(Metric) # m⋅kg⁻¹
+𝘩*𝘤⁻¹mP⁻²2² = 1.866398e-26 ± 4.1e-31 [kg⁻¹m] Metric
 
 julia&gt; einstein2(IAU) # au⋅M☉⁻¹
-𝘤⁻²au²k²τ*2⁻¹²3⁻⁶5⁻⁴ = 2.480759573063e-7 ± 9.9e-18 [M⁻¹L] IAU☉</code></pre></div></section></article><div>\[g_0 = [MLT^{-2}F^{-1}]\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gravity" href="#MeasureSystems.gravity"><code>MeasureSystems.gravity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">gravity(U::UnitSystem) # mass*acceleration/force</code></pre><p>Gravitational force reference used in technical engineering units (kg⋅m⋅N⁻¹⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; gravity(Metric)
+𝘤⁻²au²k²τ*2⁻¹²3⁻⁶5⁻⁴ = 2.480759573063e-7 ± 9.9e-18 [M☉⁻¹au] IAU☉</code></pre></div></section></article><div>\[g_0 = [MLT^{-2}F^{-1}]\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gravity" href="#MeasureSystems.gravity"><code>MeasureSystems.gravity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">gravity(U::UnitSystem) # mass*acceleration/force</code></pre><p>Gravitational force reference used in technical engineering units (kg⋅m⋅N⁻¹⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; gravity(Metric)
 𝟏 = 1.0 [𝟙] Metric
 
 julia&gt; gravity(MetricEngineering) # m⋅kg⋅N⁻¹⋅s⁻²
-g₀ = 9.80665 [F⁻¹MLT⁻²] MetricEngineering
+g₀ = 9.80665 [kgf⁻¹kg*m*s⁻²] MetricEngineering
 
 julia&gt; gravity(English) # ft⋅lbm⋅lbf⁻¹⋅s⁻²
-g₀*ft⁻¹ = 32.17404855643044 [F⁻¹MLT⁻²] English</code></pre></div></section></article><h2 id="Atomic-Constants-1"><a class="docs-heading-anchor" href="#Atomic-Constants-1">Atomic Constants</a><a class="docs-heading-anchor-permalink" href="#Atomic-Constants-1" title="Permalink"></a></h2><div>\[m_u = \frac{M_u}{N_A} = \frac{m_e}{\mu_{eu}} = \frac{m_p}{\mu_{pu}} = \frac{2R_\infty h}{\mu_{eu}c\alpha^2} = \frac{m_P}{\mu_{eu}}\sqrt{\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.atomicmass" href="#MeasureSystems.atomicmass"><code>MeasureSystems.atomicmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">atomicmass(U::UnitSystem) = Mᵤ/avogadro(U) # 𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2 = 0.00099999999966 ± 3.1e-13 [MN⁻¹] SI2019 ≈ 0.001-3.5e-13</code></pre><p>Atomic mass unit <code>mᵤ</code> of 1/12 of the C₁₂ carbon-12 atom&#39;s mass  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; atomicmass(Metric) # kg
-𝘩*𝘤⁻¹R∞*α⁻²μₑᵤ⁻¹2 = 1.6605390666e-27 ± 5.1e-37 [M] Metric
+g₀*ft⁻¹ = 32.17404855643044 [lbf⁻¹lbm*ft*s⁻²] English</code></pre></div></section></article><h2 id="Atomic-Constants-1"><a class="docs-heading-anchor" href="#Atomic-Constants-1">Atomic Constants</a><a class="docs-heading-anchor-permalink" href="#Atomic-Constants-1" title="Permalink"></a></h2><div>\[m_u = \frac{M_u}{N_A} = \frac{m_e}{\mu_{eu}} = \frac{m_p}{\mu_{pu}} = \frac{2R_\infty h}{\mu_{eu}c\alpha^2} = \frac{m_P}{\mu_{eu}}\sqrt{\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.atomicmass" href="#MeasureSystems.atomicmass"><code>MeasureSystems.atomicmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">atomicmass(U::UnitSystem) = Mᵤ/avogadro(U) # 𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2 = 0.00099999999966 ± 3.1e-13 [kg*mol⁻¹] SI2019 ≈ 0.001-3.5e-13</code></pre><p>Atomic mass unit <code>mᵤ</code> of 1/12 of the C₁₂ carbon-12 atom&#39;s mass  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; atomicmass(Metric) # kg
+𝘩*𝘤⁻¹R∞*α⁻²μₑᵤ⁻¹2 = 1.6605390666e-27 ± 5.1e-37 [kg] Metric
 
 julia&gt; atomicmass(Metric)/electronmass(Metric) # mₑ
 μₑᵤ⁻¹ = 1822.888486209 ± 5.3e-8 [𝟙] Metric
 
 julia&gt; atomicmass(Metric)*lightspeed(Metric)^2 # J
-𝘩*𝘤*R∞*α⁻²μₑᵤ⁻¹2 = 1.4924180856e-10 ± 4.6e-20 [ML²T⁻²] Metric
+𝘩*𝘤*R∞*α⁻²μₑᵤ⁻¹2 = 1.4924180856e-10 ± 4.6e-20 [kg*m²s⁻²] Metric
 
 julia&gt; atomicmass(SI2019)*lightspeed(SI2019)^2/elementarycharge(SI2019) # eV⋅𝘤⁻²
-𝘩*𝘤*𝘦⁻¹R∞*α⁻²μₑᵤ⁻¹2 = 9.3149410242e8 ± 0.29 [ML²T⁻²Q⁻¹] SI2019
+𝘩*𝘤*𝘦⁻¹R∞*α⁻²μₑᵤ⁻¹2 = 9.3149410242e8 ± 0.29 [kg*m²s⁻²C⁻¹] SI2019
 
 julia&gt; atomicmass(British) # lb
-𝘩*𝘤⁻¹R∞*α⁻²μₑᵤ⁻¹g₀⁻¹ft*lb⁻¹2 = 1.13783069118e-28 ± 3.4999999999999996e-38 [FL⁻¹T²] British</code></pre></div></section></article><div>\[m_p = \mu_{pu} m_u = \mu_{pu}\frac{M_u}{N_A} = \mu_{pe}m_e = \mu_{pe}\frac{2R_\infty h}{c\alpha^2} = m_P\mu_{pe}\sqrt{\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.protonmass" href="#MeasureSystems.protonmass"><code>MeasureSystems.protonmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">protonmass(U::UnitSystem) = protonunit(U)*atomicmass(U)</code></pre><p>Proton mass <code>mₚ</code> of subatomic particle with <code>+𝘦</code> elementary charge  (kg or mass).</p><pre><code class="language-Julia">julia&gt; protonmass(Metric) # kg
-𝘩*𝘤⁻¹R∞*α⁻²μₑᵤ⁻¹μₚᵤ*2 = 1.67262192369e-27 ± 5.2000000000000004e-37 [M] Metric
+𝘩*𝘤⁻¹R∞*α⁻²μₑᵤ⁻¹g₀⁻¹ft*lb⁻¹2 = 1.13783069118e-28 ± 3.4999999999999996e-38 [lb*ft⁻¹s²] British</code></pre></div></section></article><div>\[m_p = \mu_{pu} m_u = \mu_{pu}\frac{M_u}{N_A} = \mu_{pe}m_e = \mu_{pe}\frac{2R_\infty h}{c\alpha^2} = m_P\mu_{pe}\sqrt{\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.protonmass" href="#MeasureSystems.protonmass"><code>MeasureSystems.protonmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">protonmass(U::UnitSystem) = protonunit(U)*atomicmass(U)</code></pre><p>Proton mass <code>mₚ</code> of subatomic particle with <code>+𝘦</code> elementary charge  (kg or mass).</p><pre><code class="language-Julia">julia&gt; protonmass(Metric) # kg
+𝘩*𝘤⁻¹R∞*α⁻²μₑᵤ⁻¹μₚᵤ*2 = 1.67262192369e-27 ± 5.2000000000000004e-37 [kg] Metric
 
 julia&gt; protonmass(SI2019)*lightspeed(SI2019)^2/elementarycharge(SI2019) # eV⋅𝘤⁻²
-𝘩*𝘤*𝘦⁻¹R∞*α⁻²μₑᵤ⁻¹μₚᵤ*2 = 9.3827208816e8 ± 0.29 [ML²T⁻²Q⁻¹] SI2019
+𝘩*𝘤*𝘦⁻¹R∞*α⁻²μₑᵤ⁻¹μₚᵤ*2 = 9.3827208816e8 ± 0.29 [kg*m²s⁻²C⁻¹] SI2019
 
 julia&gt; protonmass(Metric)/atomicmass(Metric) # mᵤ
 μₚᵤ = 1.007276466621 ± 5.3e-11 [𝟙] Metric
 
 julia&gt; protonmass(Metric)/electronmass(Metric) # mₑ
 μₑᵤ⁻¹μₚᵤ = 1836.15267343 ± 1.1e-7 [𝟙] Metric</code></pre></div></section></article><div>\[m_e = \mu_{eu}m_u = \mu_{eu}\frac{M_u}{N_A} = \frac{m_p}{\mu_{pe}} = \frac{2R_\infty h}{c\alpha^2} = m_P\sqrt{\alpha_G}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electronmass" href="#MeasureSystems.electronmass"><code>MeasureSystems.electronmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">electronmass(U::UnitSystem) = protonmass(U)/protonelectron(U) # αinv^2*R∞*2𝘩/𝘤</code></pre><p>Electron rest mass <code>mₑ</code> of subatomic particle with <code>-𝘦</code> elementary charge  (kg or slugs).</p><pre><code class="language-Julia">julia&gt; electronmass(Metric) # kg
-𝘩*𝘤⁻¹R∞*α⁻²2 = 9.1093837016e-31 ± 2.8e-40 [M] Metric
+𝘩*𝘤⁻¹R∞*α⁻²2 = 9.1093837016e-31 ± 2.8e-40 [kg] Metric
 
 julia&gt; electronmass(Metric)/atomicmass(Metric) # Da
 μₑᵤ = 0.000548579909065 ± 1.6e-14
 
 julia&gt; electronmass(Metric)*lightspeed(Metric)^2 # J
-𝘩*𝘤*R∞*α⁻²2 = 8.1871057769e-14 ± 2.5e-23 [ML²T⁻²] Metric
+𝘩*𝘤*R∞*α⁻²2 = 8.1871057769e-14 ± 2.5e-23 [kg*m²s⁻²] Metric
 
 julia&gt; electronmass(SI2019)*lightspeed(SI2019)^2/elementarycharge(SI2019) # eV⋅𝘤⁻²
-𝘩*𝘤*𝘦⁻¹R∞*α⁻²2 = 510998.95 ± 0.00016 [ML²T⁻²Q⁻¹] SI2019
+𝘩*𝘤*𝘦⁻¹R∞*α⁻²2 = 510998.95 ± 0.00016 [kg*m²s⁻²C⁻¹] SI2019
 
 julia&gt; electronmass(English) # lb
-𝘩*𝘤⁻¹R∞*α⁻²lb⁻¹2 = 2.00827533796e-30 ± 6.2e-40 [M] English</code></pre></div></section></article><div>\[E_h = m_e(c\alpha)^2 = \frac{\hbar c\alpha}{a_0} = \frac{\hbar^2}{m_ea_0^2} = 2R_\infty hc = m_P\sqrt{\alpha_G}(c\alpha)^2\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hartree" href="#MeasureSystems.hartree"><code>MeasureSystems.hartree</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hartree(U::UnitSystem) = electronmass(U)*(lightspeed(U)*finestructure(U))^2 # mₑ*(𝘤/αinv)^2</code></pre><p>Hartree electric potential energy <code>Eₕ</code> of the hydrogen atom at ground state is <code>2R∞*𝘩*𝘤</code> (J).</p><pre><code class="language-Julia">julia&gt; hartree(SI2019)/elementarycharge(SI2019) # eV
-𝘩*𝘤*𝘦⁻¹R∞*2 = 27.211386245989 ± 5.2e-11 [ML²T⁻²Q⁻¹] SI2019
+𝘩*𝘤⁻¹R∞*α⁻²lb⁻¹2 = 2.00827533796e-30 ± 6.2e-40 [lbm] English</code></pre></div></section></article><div>\[E_h = m_e(c\alpha)^2 = \frac{\hbar c\alpha}{a_0} = \frac{\hbar^2}{m_ea_0^2} = 2R_\infty hc = m_P\sqrt{\alpha_G}(c\alpha)^2\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hartree" href="#MeasureSystems.hartree"><code>MeasureSystems.hartree</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hartree(U::UnitSystem) = electronmass(U)*(lightspeed(U)*finestructure(U))^2 # mₑ*(𝘤/αinv)^2</code></pre><p>Hartree electric potential energy <code>Eₕ</code> of the hydrogen atom at ground state is <code>2R∞*𝘩*𝘤</code> (J).</p><pre><code class="language-Julia">julia&gt; hartree(SI2019)/elementarycharge(SI2019) # eV
+𝘩*𝘤*𝘦⁻¹R∞*2 = 27.211386245989 ± 5.2e-11 [kg*m²s⁻²C⁻¹] SI2019
 
 julia&gt; hartree(Metric) # J
-𝘩*𝘤*R∞*2 = 4.3597447222072e-18 ± 8.3e-30 [ML²T⁻²] Metric
+𝘩*𝘤*R∞*2 = 4.3597447222072e-18 ± 8.3e-30 [kg*m²s⁻²] Metric
 
 julia&gt; hartree(CGS) # erg
-𝘩*𝘤*R∞*2⁸5⁷ = 4.3597447222072e-11 ± 8.3e-23 [ML²T⁻²] Gauss
+𝘩*𝘤*R∞*2⁸5⁷ = 4.3597447222072e-11 ± 8.3e-23 [g*cm²s⁻²] Gauss
 
 julia&gt; hartree(Metric)*avogadro(Metric)/1000 # kJ⋅mol⁻¹
-𝘤²α²μₑᵤ*2⁻⁶3⁻³5⁻³ = 12155.0909277 ± 3.7e-6 [ML²T⁻²N⁻¹] Metric
+𝘤²α²μₑᵤ*2⁻⁶3⁻³5⁻³ = 12155.0909277 ± 3.7e-6 [kg*m²s⁻²mol⁻¹] Metric
 
 julia&gt; hartree(Metric)*avogadro(Metric)/kilocalorie(Metric) # kcal⋅mol⁻¹
-𝘤²α²μₑᵤ*Ωᵢₜ*Vᵢₜ⁻²2⁻⁸3⁻²5⁻⁷43 = 627.09920344 ± 1.9e-7 [N⁻¹] Metric
+𝘤²α²μₑᵤ*Ωᵢₜ*Vᵢₜ⁻²2⁻⁸3⁻²5⁻⁷43 = 627.09920344 ± 1.9e-7 [mol⁻¹] Metric
 
 julia&gt; 2rydberg(Metric)/100 # Eₕ/𝘩/𝘤/100 cm⁻¹
-R∞*2⁻¹5⁻² = 219474.6313632 ± 4.2e-7 [L⁻¹] Metric
+R∞*2⁻¹5⁻² = 219474.6313632 ± 4.2e-7 [m⁻¹] Metric
 
 julia&gt; hartree(Metric)/planck(Metric)/10^12 # THz
-𝘤*R∞*2 = 6.579683920502e15 ± 13000.0 [T⁻¹] Metric
+𝘤*R∞*2 = 6.579683920502e15 ± 13000.0 [s⁻¹] Metric
 
 julia&gt; hartree(Metric)/boltzmann(Metric) # K
-kB⁻¹𝘤²NA⁻¹α²μₑᵤ*2⁻³5⁻³ = 315775.024913 ± 9.7e-5 [Θ] Metric</code></pre><p>In a Gaussian unit system where <code>4π*ε₀ == 1</code> the Hartree energy is <code>𝘦^2/a₀</code>.</p></div></section></article><div>\[R_\infty = \frac{E_h}{2hc} = \frac{m_e c\alpha^2}{2h} = \frac{\alpha}{4\pi a_0} = \frac{m_e r_e c}{2ha_0} = \frac{\alpha^2m_ec}{4\pi\hbar}  = \frac{m_Pc\alpha^2\sqrt{\alpha_G}}{2h}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rydberg" href="#MeasureSystems.rydberg"><code>MeasureSystems.rydberg</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">rydberg(U::UnitSystem) = hartree(U)/2planck(U)/lightspeed(U) # Eₕ/2𝘩/𝘤</code></pre><p>Rydberg constant <code>R∞</code> is lowest energy photon capable of ionizing atom at ground state (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric) # m⁻¹
-R∞ = 1.097373156816e7 ± 2.1e-5 [L⁻¹] Metric</code></pre><p>The Rydberg constant for hydrogen <code>RH</code> is <code>R∞*mₚ/(mₑ+mₚ)</code> (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric)*protonmass(Metric)/(electronmass(Metric)+protonmass(Metric)) # m⁻¹
-1.09677583403e7 ± 0.0048 [L⁻¹] Metric</code></pre><p>Rydberg unit of photon energy <code>Ry</code> is <code>𝘩*𝘤*R∞</code> or <code>Eₕ/2</code> (J).</p><pre><code class="language-Julia">julia&gt; hartree(Metric)/2 # J
-𝘩*𝘤*R∞ = 2.1798723611036e-18 ± 4.2e-30 [ML²T⁻²] Metric
+kB⁻¹𝘤²NA⁻¹α²μₑᵤ*2⁻³5⁻³ = 315775.024913 ± 9.7e-5 [K] Metric</code></pre><p>In a Gaussian unit system where <code>4π*ε₀ == 1</code> the Hartree energy is <code>𝘦^2/a₀</code>.</p></div></section></article><div>\[R_\infty = \frac{E_h}{2hc} = \frac{m_e c\alpha^2}{2h} = \frac{\alpha}{4\pi a_0} = \frac{m_e r_e c}{2ha_0} = \frac{\alpha^2m_ec}{4\pi\hbar}  = \frac{m_Pc\alpha^2\sqrt{\alpha_G}}{2h}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rydberg" href="#MeasureSystems.rydberg"><code>MeasureSystems.rydberg</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">rydberg(U::UnitSystem) = hartree(U)/2planck(U)/lightspeed(U) # Eₕ/2𝘩/𝘤</code></pre><p>Rydberg constant <code>R∞</code> is lowest energy photon capable of ionizing atom at ground state (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric) # m⁻¹
+R∞ = 1.097373156816e7 ± 2.1e-5 [m⁻¹] Metric</code></pre><p>The Rydberg constant for hydrogen <code>RH</code> is <code>R∞*mₚ/(mₑ+mₚ)</code> (m⁻¹).</p><pre><code class="language-Julia">julia&gt; rydberg(Metric)*protonmass(Metric)/(electronmass(Metric)+protonmass(Metric)) # m⁻¹
+1.09677583403e7 ± 0.0048 [m⁻¹] Metric</code></pre><p>Rydberg unit of photon energy <code>Ry</code> is <code>𝘩*𝘤*R∞</code> or <code>Eₕ/2</code> (J).</p><pre><code class="language-Julia">julia&gt; hartree(Metric)/2 # J
+𝘩*𝘤*R∞ = 2.1798723611036e-18 ± 4.2e-30 [kg*m²s⁻²] Metric
 
 julia&gt; hartree(SI2019)/𝟐/charge(SI2019) # eV
-𝘩*𝘤*𝘦⁻¹R∞ = 13.605693122994 ± 2.6e-11 [ML²T⁻²Q⁻¹] SI2019</code></pre><p>Rydberg photon frequency <code>𝘤*R∞</code> or <code>Eₕ/2𝘩</code> (Hz).</p><pre><code class="language-Julia">julia&gt; lightspeed(Metric)*rydberg(Metric) # Hz
-𝘤*R∞ = 3.2898419602509e15 ± 6300.0 [T⁻¹] Metric</code></pre><p>Rydberg wavelength <code>1/R∞</code> (m).</p><pre><code class="language-Julia">julia&gt; 𝟏/rydberg(Metric) # m
-R∞⁻¹ = 9.112670505824e-8 ± 1.7e-19 [L] Metric
+𝘩*𝘤*𝘦⁻¹R∞ = 13.605693122994 ± 2.6e-11 [kg*m²s⁻²C⁻¹] SI2019</code></pre><p>Rydberg photon frequency <code>𝘤*R∞</code> or <code>Eₕ/2𝘩</code> (Hz).</p><pre><code class="language-Julia">julia&gt; lightspeed(Metric)*rydberg(Metric) # Hz
+𝘤*R∞ = 3.2898419602509e15 ± 6300.0 [s⁻¹] Metric</code></pre><p>Rydberg wavelength <code>1/R∞</code> (m).</p><pre><code class="language-Julia">julia&gt; 𝟏/rydberg(Metric) # m
+R∞⁻¹ = 9.112670505824e-8 ± 1.7e-19 [m] Metric
 
 julia&gt; 𝟏/rydberg(Metric)/τ # m⋅rad⁻¹
-R∞⁻¹τ⁻¹ = 1.4503265557696e-8 ± 2.8e-20 [L] Metric</code></pre><p>Precision measurements of the Rydberg constants are within a relative standard uncertainty of under 2 parts in 10¹², and is chosen to constrain values of other physical constants.</p></div></section></article><div>\[a_0 = \frac{\hbar}{m_ec\alpha} = \frac{\hbar^2}{k_e m_ee^2} = \frac{\mu_{pe}a_0^*}{\mu_{pe}+1} = \frac{r_e}{\alpha^2} = \frac{\alpha}{4\pi R_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bohr" href="#MeasureSystems.bohr"><code>MeasureSystems.bohr</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">bohr(U) = planckreduced(U)/electronmass(U)/lightspeed(U)/finestructure(U)</code></pre><p>Bohr radius of the hydrogen atom in its ground state <code>a₀</code> (m).</p><pre><code class="language-Julia">julia&gt; bohr(Metric) # m
-R∞⁻¹α*τ⁻¹2⁻¹ = 5.29177210902e-11 ± 8.1e-21 [L] Metric</code></pre></div></section></article><div>\[a_0^* = \left(1+\frac{1}{\mu_{pe}}\right)a_0\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bohrreduced" href="#MeasureSystems.bohrreduced"><code>MeasureSystems.bohrreduced</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">bohrreduced(U::UnitSystem) = bohr(U)*(1+1/protonelectron(U))</code></pre><p>Reduced Bohr radius including the effect of reduced mass in hydrogen atom (m).</p><pre><code class="language-Julia">julia&gt; bohrreduced(Metric) # m
-R∞⁻¹α*τ⁻¹2⁻¹*1.000544617021487 = 5.29465409819e-11 ± 8.1e-21 [L] Metric
+R∞⁻¹τ⁻¹ = 1.4503265557696e-8 ± 2.8e-20 [m] Metric</code></pre><p>Precision measurements of the Rydberg constants are within a relative standard uncertainty of under 2 parts in 10¹², and is chosen to constrain values of other physical constants.</p></div></section></article><div>\[a_0 = \frac{\hbar}{m_ec\alpha} = \frac{\hbar^2}{k_e m_ee^2} = \frac{\mu_{pe}a_0^*}{\mu_{pe}+1} = \frac{r_e}{\alpha^2} = \frac{\alpha}{4\pi R_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bohr" href="#MeasureSystems.bohr"><code>MeasureSystems.bohr</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">bohr(U) = planckreduced(U)/electronmass(U)/lightspeed(U)/finestructure(U)</code></pre><p>Bohr radius of the hydrogen atom in its ground state <code>a₀</code> (m).</p><pre><code class="language-Julia">julia&gt; bohr(Metric) # m
+R∞⁻¹α*τ⁻¹2⁻¹ = 5.29177210902e-11 ± 8.1e-21 [m] Metric</code></pre></div></section></article><div>\[a_0^* = \left(1+\frac{1}{\mu_{pe}}\right)a_0\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bohrreduced" href="#MeasureSystems.bohrreduced"><code>MeasureSystems.bohrreduced</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">bohrreduced(U::UnitSystem) = bohr(U)*(1+1/protonelectron(U))</code></pre><p>Reduced Bohr radius including the effect of reduced mass in hydrogen atom (m).</p><pre><code class="language-Julia">julia&gt; bohrreduced(Metric) # m
+R∞⁻¹α*τ⁻¹2⁻¹*1.000544617021487 = 5.29465409819e-11 ± 8.1e-21 [m] Metric
 
 julia&gt; bohrreduced(Metric)/bohr(Metric) # a₀
 1.000544617021487 = 1.000544617021487 [𝟙] Metric</code></pre></div></section></article><div>\[r_e = \frac{\hbar\alpha}{m_ec} = \alpha^2a_0 = \frac{e^2 k_e}{m_ec^2} = \frac{2hR_\infty a_0}{m_ec} = \frac{\alpha^3}{4\pi R_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electronradius" href="#MeasureSystems.electronradius"><code>MeasureSystems.electronradius</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">electronradius(U) = finestructure(U)*planckreduced(U)/electronmass(U)/lightspeed(U)</code></pre><p>Classical electron radius or Lorentz radius or Thomson scattering length (m).</p><pre><code class="language-Julia">julia&gt; electronradius(Metric) # m
-R∞⁻¹α³τ⁻¹2⁻¹ = 2.8179403261999996e-15 ± 1.2999999999999998e-24 [L] Metric
+R∞⁻¹α³τ⁻¹2⁻¹ = 2.8179403261999996e-15 ± 1.2999999999999998e-24 [m] Metric
 
 julia&gt; electronradius(CODATA) # m
-R∞⁻¹α³τ⁻¹2⁻¹ = 2.8179403261999996e-15 ± 1.2999999999999998e-24 [L] CODATA
+R∞⁻¹α³τ⁻¹2⁻¹ = 2.8179403261999996e-15 ± 1.2999999999999998e-24 [m] CODATA
 
 julia&gt; electronradius(Conventional) # m
-R∞⁻¹α³τ⁻¹2⁻¹ = 2.8179403261999996e-15 ± 1.2999999999999998e-24 [L] Conventional</code></pre></div></section></article><h2 id="Thermodynamic-Constants-1"><a class="docs-heading-anchor" href="#Thermodynamic-Constants-1">Thermodynamic Constants</a><a class="docs-heading-anchor-permalink" href="#Thermodynamic-Constants-1" title="Permalink"></a></h2><div>\[M_u = m_uN_A = N_A\frac{m_e}{\mu_{eu}} = N_A\frac{m_p}{\mu_{pu}} = N_A\frac{2R_\infty h}{\mu_{eu}c\alpha^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarmass" href="#MeasureSystems.molarmass"><code>MeasureSystems.molarmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">molarmass(U::UnitSystem) = avogadro(U)*electronmass(U)/electronunit(U)</code></pre><p>Molar mass constant <code>Mᵤ</code> is the ratio of the <code>molarmass</code> and <code>relativemass</code> of a chemical.</p><pre><code class="language-Julia">julia&gt; molarmass(CGS) # g⋅mol⁻¹
-𝟏 = 1.0 [M] Gauss
+R∞⁻¹α³τ⁻¹2⁻¹ = 2.8179403261999996e-15 ± 1.2999999999999998e-24 [m] Conventional</code></pre></div></section></article><h2 id="Thermodynamic-Constants-1"><a class="docs-heading-anchor" href="#Thermodynamic-Constants-1">Thermodynamic Constants</a><a class="docs-heading-anchor-permalink" href="#Thermodynamic-Constants-1" title="Permalink"></a></h2><div>\[M_u = m_uN_A = N_A\frac{m_e}{\mu_{eu}} = N_A\frac{m_p}{\mu_{pu}} = N_A\frac{2R_\infty h}{\mu_{eu}c\alpha^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.molarmass" href="#MeasureSystems.molarmass"><code>MeasureSystems.molarmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">molarmass(U::UnitSystem) = avogadro(U)*electronmass(U)/electronunit(U)</code></pre><p>Molar mass constant <code>Mᵤ</code> is the ratio of the <code>molarmass</code> and <code>relativemass</code> of a chemical.</p><pre><code class="language-Julia">julia&gt; molarmass(CGS) # g⋅mol⁻¹
+𝟏 = 1.0 [g] Gauss
 
 julia&gt; molarmass(CGS2019) # g⋅mol⁻¹
 𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2⁴5³ = 0.99999999966 ± 3.1e-10 [MN⁻¹] EMU2019
 
 julia&gt; molarmass(Metric) # kg⋅mol⁻¹
-2⁻³5⁻³ = 0.001 [MN⁻¹] Metric
+2⁻³5⁻³ = 0.001 [kg*mol⁻¹] Metric
 
 julia&gt; molarmass(SI2019) # kg⋅mol⁻¹
-𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2 = 0.00099999999966 ± 3.1e-13 [MN⁻¹] SI2019</code></pre></div></section></article><div>\[N_A = \frac{R_u}{k_B} = \frac{M_u}{m_u} = M_u\frac{\mu_{eu}}{m_e} = M_u\frac{\mu_{eu}c\alpha^2}{2R_\infty h}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.avogadro" href="#MeasureSystems.avogadro"><code>MeasureSystems.avogadro</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">avogadro(x) = universalgas(x)/boltzmann(x) # Mᵤ/atomicmass(x), Mᵤ ≈ 0.001-3.5e-13</code></pre><p>Avogadro <code>NA</code> is <code>molarmass(x)/atomicmass(x)</code> number of atoms in a 12 g sample of C₁₂.</p><pre><code class="language-Julia">julia&gt; avogadro(SI2019) # mol⁻¹
-NA = 6.02214076e23 [N⁻¹] SI2019
+𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2 = 0.00099999999966 ± 3.1e-13 [kg*mol⁻¹] SI2019</code></pre></div></section></article><div>\[N_A = \frac{R_u}{k_B} = \frac{M_u}{m_u} = M_u\frac{\mu_{eu}}{m_e} = M_u\frac{\mu_{eu}c\alpha^2}{2R_\infty h}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.avogadro" href="#MeasureSystems.avogadro"><code>MeasureSystems.avogadro</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">avogadro(x) = universalgas(x)/boltzmann(x) # Mᵤ/atomicmass(x), Mᵤ ≈ 0.001-3.5e-13</code></pre><p>Avogadro <code>NA</code> is <code>molarmass(x)/atomicmass(x)</code> number of atoms in a 12 g sample of C₁₂.</p><pre><code class="language-Julia">julia&gt; avogadro(SI2019) # mol⁻¹
+NA = 6.02214076e23 [mol⁻¹] SI2019
 
 julia&gt; avogadro(Metric) # mol⁻¹
-𝘩⁻¹𝘤*R∞⁻¹α²μₑᵤ*2⁻⁴5⁻³ = 6.0221407621e23 ± 1.9e14 [N⁻¹] Metric
+𝘩⁻¹𝘤*R∞⁻¹α²μₑᵤ*2⁻⁴5⁻³ = 6.0221407621e23 ± 1.9e14 [mol⁻¹] Metric
 
 julia&gt; avogadro(English) # lb-mol⁻¹
-𝘩⁻¹𝘤*R∞⁻¹α²μₑᵤ*lb*2⁻¹ = 2.73159710074e26 ± 8.4e16 [N⁻¹] English
+𝘩⁻¹𝘤*R∞⁻¹α²μₑᵤ*lb*2⁻¹ = 2.73159710074e26 ± 8.4e16 [lb-mol⁻¹] English
 
 julia&gt; avogadro(British) # slug-mol⁻¹
-𝘩⁻¹𝘤*R∞⁻¹α²μₑᵤ*g₀*ft⁻¹lb*2⁻¹ = 8.7886537756e27 ± 2.7e18 [N⁻¹] British</code></pre></div></section></article><div>\[k_B = \frac{R_u}{N_A} = m_u\frac{R_u}{M_u} = \frac{m_e R_u}{\mu_{eu}M_u} = \frac{2R_uR_\infty h}{M_u \mu_{eu}c\alpha^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.boltzmann" href="#MeasureSystems.boltzmann"><code>MeasureSystems.boltzmann</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">boltzmann(x) = universalgas(x)/avogadro(x)</code></pre><p>Boltzmann constant <code>kB</code> is the entropy amount of a unit number microstate permutation.</p><pre><code class="language-Julia">pressure*molecularmass == density*boltzmann*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; boltzmann(SI2019) # J⋅K⁻¹
-kB = 1.380649e-23 [ML²T⁻²Θ⁻¹] SI2019
+𝘩⁻¹𝘤*R∞⁻¹α²μₑᵤ*g₀*ft⁻¹lb*2⁻¹ = 8.7886537756e27 ± 2.7e18 [slug-mol⁻¹] British</code></pre></div></section></article><div>\[k_B = \frac{R_u}{N_A} = m_u\frac{R_u}{M_u} = \frac{m_e R_u}{\mu_{eu}M_u} = \frac{2R_uR_\infty h}{M_u \mu_{eu}c\alpha^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.boltzmann" href="#MeasureSystems.boltzmann"><code>MeasureSystems.boltzmann</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">boltzmann(x) = universalgas(x)/avogadro(x)</code></pre><p>Boltzmann constant <code>kB</code> is the entropy amount of a unit number microstate permutation.</p><pre><code class="language-Julia">pressure*molecularmass == density*boltzmann*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; boltzmann(SI2019) # J⋅K⁻¹
+kB = 1.380649e-23 [kg*m²s⁻²K⁻¹] SI2019
 
 julia&gt; boltzmann(Metric) # J⋅K⁻¹
-kB*𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2⁴5³ = 1.3806489995299998e-23 ± 4.2999999999999996e-33 [ML²T⁻²Θ⁻¹] Metric
+kB*𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2⁴5³ = 1.3806489995299998e-23 ± 4.2999999999999996e-33 [kg*m²s⁻²K⁻¹] Metric
 
 julia&gt; boltzmann(SI2019)/elementarycharge(SI2019) # eV⋅K⁻¹
-kB*𝘦⁻¹ = 8.617333262145179e-5 [ML²T⁻²Q⁻¹Θ⁻¹] SI2019
+kB*𝘦⁻¹ = 8.617333262145179e-5 [kg*m²s⁻²C⁻¹K⁻¹] SI2019
 
 julia&gt; boltzmann(SI2019)/planck(SI2019) # Hz⋅K⁻¹
-kB*𝘩⁻¹ = 2.0836619123327576e10 [T⁻¹Θ⁻¹] SI2019
+kB*𝘩⁻¹ = 2.0836619123327576e10 [s⁻¹K⁻¹] SI2019
 
 julia&gt; boltzmann(CGS) # erg⋅K⁻¹
-kB*𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2¹¹5¹⁰ = 1.3806489995299999e-16 ± 4.3e-26 [ML²T⁻²Θ⁻¹] Gauss
+kB*𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹2¹¹5¹⁰ = 1.3806489995299999e-16 ± 4.3e-26 [g*cm²s⁻²K⁻¹] Gauss
 
 julia&gt; boltzmann(SI2019)/calorie(SI2019) # calᵢₜ⋅K⁻¹
-kB*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 3.2976728498006145e-24 [Θ⁻¹] SI2019
+kB*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 3.2976728498006145e-24 [K⁻¹] SI2019
 
 julia&gt; boltzmann(SI2019)*°R/calorie(SI2019) # calᵢₜ⋅°R⁻¹
-kB*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻⁴43 = 1.832040472111452e-24 [Θ⁻¹] SI2019
+kB*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻⁴43 = 1.832040472111452e-24 [K⁻¹] SI2019
 
 julia&gt; boltzmann(Brtish) # ft⋅lb⋅°R⁻¹
-kB*𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹g₀⁻¹ft⁻¹lb⁻¹2⁴3⁻²5⁴ = 5.6573024638e-24 ± 1.7e-33 [FLΘ⁻¹] British
+kB*𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹g₀⁻¹ft⁻¹lb⁻¹2⁴3⁻²5⁴ = 5.6573024638e-24 ± 1.7e-33 [lb*ft*°R⁻¹] British
 
 julia&gt; boltzmann(SI2019)/planck(SI2019)/lightspeed(SI2019) # m⁻¹⋅K⁻¹
-kB*𝘩⁻¹𝘤⁻¹ = 69.50348004861274 [L⁻¹Θ⁻¹] SI2019
+kB*𝘩⁻¹𝘤⁻¹ = 69.50348004861274 [m⁻¹K⁻¹] SI2019
 
 julia&gt; avogadro(SI2019)*boltzmann(SI2019)/calorie(SI2019) # calᵢₜ⋅mol⁻¹⋅K⁻¹
-kB*NA*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 1.9859050081929637 [Θ⁻¹N⁻¹] SI2019
+kB*NA*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 1.9859050081929637 [K⁻¹mol⁻¹] SI2019
 
 julia&gt; dB(boltzmann(SI2019)) # dB(W⋅K⁻¹⋅Hz⁻¹)
-dB(kB) = -228.5991671732176 [dB(ML²T⁻²Θ⁻¹)] SI2019</code></pre></div></section></article><div>\[R_u = k_B N_A = k_B\frac{M_u}{m_u} = k_BM_u\frac{\mu_{eu}}{m_e} = k_BM_u\frac{\mu_{eu}c\alpha^2}{2hR_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.universalgas" href="#MeasureSystems.universalgas"><code>MeasureSystems.universalgas</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">universalgas(x) = boltzmann(x)*avogadro(x)</code></pre><p>Universal gas constant <code>Rᵤ</code> is factored into specific <code>gasconstant(x)*molarmass(x)</code> values.</p><pre><code class="language-Julia">pressure*molarmass == density*universal*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; universalgas(SI2019) # J⋅K⁻¹⋅mol⁻¹
-kB*NA = 8.31446261815324 [ML²T⁻²Θ⁻¹N⁻¹] SI2019
+dB(kB) = -228.5991671732176 [dB(kg*m²s⁻²K⁻¹)] SI2019</code></pre></div></section></article><div>\[R_u = k_B N_A = k_B\frac{M_u}{m_u} = k_BM_u\frac{\mu_{eu}}{m_e} = k_BM_u\frac{\mu_{eu}c\alpha^2}{2hR_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.universalgas" href="#MeasureSystems.universalgas"><code>MeasureSystems.universalgas</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">universalgas(x) = boltzmann(x)*avogadro(x)</code></pre><p>Universal gas constant <code>Rᵤ</code> is factored into specific <code>gasconstant(x)*molarmass(x)</code> values.</p><pre><code class="language-Julia">pressure*molarmass == density*universal*temperature</code></pre><p>It satisfies the ideal gas law.</p><pre><code class="language-Julia">julia&gt; universalgas(SI2019) # J⋅K⁻¹⋅mol⁻¹
+kB*NA = 8.31446261815324 [kg*m²s⁻²K⁻¹mol⁻¹] SI2019
 
 julia&gt; universalgas(English)/𝟐^4/𝟑^2 # psi⋅ft³⋅°R⁻¹⋅lb-mol⁻¹
-kB*NA*g₀⁻¹ft⁻¹2⁻¹3⁻⁴5⁴ = 10.731577089016287 [FLΘ⁻¹N⁻¹] English
+kB*NA*g₀⁻¹ft⁻¹2⁻¹3⁻⁴5⁴ = 10.731577089016287 [lbf*ft*°R⁻¹lb-mol⁻¹] English
 
 julia&gt; universalgas(English)/standardpressure(English) # atm⋅ft³⋅R⁻¹⋅lb-mol⁻¹
-kB*NA*ft⁻³lb*atm⁻¹2³3⁻²5⁴ = 0.7302405072952731 [L³Θ⁻¹N⁻¹] English
+kB*NA*ft⁻³lb*atm⁻¹2³3⁻²5⁴ = 0.7302405072952731 [ft³°R⁻¹lb-mol⁻¹] English
 
 julia&gt; universalgas(English)/thermalunit(English) # BTU⋅°R⁻¹⋅lb-mol⁻¹
-kB*NA*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 1.9859050081929637 [Θ⁻¹N⁻¹] English
+kB*NA*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 1.9859050081929637 [°R⁻¹lb-mol⁻¹] English
 
 julia&gt; universalgas(Metric)/calorie(Metric) # cal⋅K⁻¹⋅mol⁻¹
-kB*NA*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 1.9859050081929637 [Θ⁻¹N⁻¹] Metric
+kB*NA*Ωᵢₜ*Vᵢₜ⁻²2⁻²3⁻²5⁻¹43 = 1.9859050081929637 [K⁻¹mol⁻¹] Metric
 
 julia&gt; universalgas(Metric)/standardpressure(Metric) # atm⋅m³⋅K⁻¹⋅mol⁻¹
-kB*NA*atm⁻¹ = 8.205736608095969e-5 [L³Θ⁻¹N⁻¹] Metric
+kB*NA*atm⁻¹ = 8.205736608095969e-5 [m³K⁻¹mol⁻¹] Metric
 
 julia&gt; universalgas(Metric)/torr(Metric) # m³⋅torr⋅K⁻¹⋅mol⁻¹
-kB*NA*atm⁻¹2³5*19 = 0.062363598221529364 [L³Θ⁻¹N⁻¹] Metric
+kB*NA*atm⁻¹2³5*19 = 0.062363598221529364 [m³K⁻¹mol⁻¹] Metric
 
 julia&gt; universalgas(English)/torr(English) # ft³⋅torr⋅°R⁻¹⋅lb-mol⁻¹
-kB*NA*ft⁻³lb*atm⁻¹2⁶3⁻²5⁵19 = 554.9827855444075 [L³Θ⁻¹N⁻¹] English
+kB*NA*ft⁻³lb*atm⁻¹2⁶3⁻²5⁵19 = 554.9827855444075 [ft³°R⁻¹lb-mol⁻¹] English
 
 julia&gt; universalgas(CGS) # erg⋅K⁻¹⋅mol⁻¹
-kB*NA*2⁷5⁷ = 8.31446261815324e7 [ML²T⁻²Θ⁻¹] Gauss
+kB*NA*2⁷5⁷ = 8.31446261815324e7 [g*cm²s⁻²K⁻¹] Gauss
 
 julia&gt; universalgas(British) # ft⋅lb⋅°R⁻¹⋅slug-mol⁻¹
-kB*NA*ft⁻²2³3⁻²5⁴ = 49720.07265826846 [FLΘ⁻¹N⁻¹] British</code></pre><p>The 1976 United States Standard Atmosphere used R* = 8.31432 exactly.</p></div></section></article><div>\[\sigma = \frac{2\pi^5 k_B^4}{15h^3c^2} = \frac{\pi^2 k_B^4}{60\hbar^3c^2} = \frac{32\pi^5 h}{15c^6\alpha^8} \left(\frac{R_uR_\infty}{\mu_{eu}M_u}\right)^4\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stefan" href="#MeasureSystems.stefan"><code>MeasureSystems.stefan</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">stefan(U::UnitSystem) = π^4/2*sphere(U)*boltzmann(U)^4/(15planck(U)^3*lightspeed(U)^2)</code></pre><p>Stefan-Boltzmann proportionality <code>σ</code> of black body radiation (W⋅m⁻²⋅K⁻⁴ or ?⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; stefan(Metric) # W⋅m⁻²⋅K⁻⁴
-kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹²3⁻¹5¹¹ = 5.6703744114e-8 ± 7.0e-17 [MT⁻³Θ⁻⁴] Metric
+kB*NA*ft⁻²2³3⁻²5⁴ = 49720.07265826846 [lb*ft*°R⁻¹slug-mol⁻¹] British</code></pre><p>The 1976 United States Standard Atmosphere used R* = 8.31432 exactly.</p></div></section></article><div>\[\sigma = \frac{2\pi^5 k_B^4}{15h^3c^2} = \frac{\pi^2 k_B^4}{60\hbar^3c^2} = \frac{32\pi^5 h}{15c^6\alpha^8} \left(\frac{R_uR_\infty}{\mu_{eu}M_u}\right)^4\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stefan" href="#MeasureSystems.stefan"><code>MeasureSystems.stefan</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">stefan(U::UnitSystem) = π^4/2*sphere(U)*boltzmann(U)^4/(15planck(U)^3*lightspeed(U)^2)</code></pre><p>Stefan-Boltzmann proportionality <code>σ</code> of black body radiation (W⋅m⁻²⋅K⁻⁴ or ?⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; stefan(Metric) # W⋅m⁻²⋅K⁻⁴
+kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹²3⁻¹5¹¹ = 5.6703744114e-8 ± 7.0e-17 [kg*s⁻³K⁻⁴] Metric
 
 julia&gt; stefan(CGS) # erg⋅cm⁻²⋅s⁻¹⋅K⁻⁴
-kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹⁵3⁻¹5¹⁴ = 5.6703744114e-5 ± 7.0e-14 [MT⁻³Θ⁻⁴] Gauss
+kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹⁵3⁻¹5¹⁴ = 5.6703744114e-5 ± 7.0e-14 [g*s⁻³K⁻⁴] Gauss
 
 julia&gt; stefan(Metric)*day(Metric)/(calorie(Metric)*100^2) # cal⋅cm⁻²⋅day⁻¹⋅K⁻⁴
-kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴Ωᵢₜ*Vᵢₜ⁻²τ⁵2¹⁷5¹²43 = 0.0011701721683 ± 1.4e-12 [L⁻²Θ⁻⁴] Metric
+kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴Ωᵢₜ*Vᵢₜ⁻²τ⁵2¹⁷5¹²43 = 0.0011701721683 ± 1.4e-12 [m⁻²K⁻⁴] Metric
 
 julia&gt; stefan(English) # lb⋅s⁻¹⋅ft⁻³⋅°R⁻⁴
-kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴g₀⁻¹ft*lb⁻¹τ⁵2¹²3⁻⁹5¹⁵ = 3.7012656963e-10 ± 4.6e-19 [FL⁻¹T⁻¹Θ⁻⁴A²] English</code></pre></div></section></article><div>\[a = 4\frac{\sigma}{c} = \frac{8\pi^5 k_B^4}{15h^3c^3} = \frac{\pi^2 k_B^4}{15\hbar^3c^3} = \frac{2^7\pi^5 h}{15c^7\alpha^8} \left(\frac{R_uR_\infty}{\mu_{eu}M_u}\right)^4\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.radiationdensity" href="#MeasureSystems.radiationdensity"><code>MeasureSystems.radiationdensity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">radiationdensity(U::UnitSystem) = 4stefan(U)/lightspeed(U)</code></pre><p>Raditation density constant of black body radiation (J⋅m⁻³⋅K⁻⁴ or lb⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; radiationdensity(Metric) # J⋅m⁻³⋅K⁻⁴
-kB⁴𝘩*𝘤⁻⁷NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹⁴3⁻¹5¹¹ = 7.5657332399e-16 ± 9.3e-25 [ML⁻¹T⁻²Θ⁻⁴] Metric
+kB⁴𝘩*𝘤⁻⁶NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴g₀⁻¹ft*lb⁻¹τ⁵2¹²3⁻⁹5¹⁵ = 3.7012656963e-10 ± 4.6e-19 [lbf*ft⁻¹s⁻¹°R⁻⁴rad²] English</code></pre></div></section></article><div>\[a = 4\frac{\sigma}{c} = \frac{8\pi^5 k_B^4}{15h^3c^3} = \frac{\pi^2 k_B^4}{15\hbar^3c^3} = \frac{2^7\pi^5 h}{15c^7\alpha^8} \left(\frac{R_uR_\infty}{\mu_{eu}M_u}\right)^4\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.radiationdensity" href="#MeasureSystems.radiationdensity"><code>MeasureSystems.radiationdensity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">radiationdensity(U::UnitSystem) = 4stefan(U)/lightspeed(U)</code></pre><p>Raditation density constant of black body radiation (J⋅m⁻³⋅K⁻⁴ or lb⋅ft⁻²⋅°R⁻⁴).</p><pre><code class="language-Julia">julia&gt; radiationdensity(Metric) # J⋅m⁻³⋅K⁻⁴
+kB⁴𝘩*𝘤⁻⁷NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹⁴3⁻¹5¹¹ = 7.5657332399e-16 ± 9.3e-25 [kg*m⁻¹s⁻²K⁻⁴] Metric
 
 julia&gt; radiationdensity(CGS) # erg⋅cm⁻³⋅K⁻⁴
-kB⁴𝘩*𝘤⁻⁷NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹⁵3⁻¹5¹² = 7.565733239899999e-15 ± 9.3e-24 [ML⁻¹T⁻²Θ⁻⁴] Gauss</code></pre></div></section></article><div>\[K_{\text{cd}} = \frac{I_v}{\int_0^\infty \bar{y}(\lambda)\cdot\frac{dI_e}{d\lambda}d\lambda}, \qquad 
+kB⁴𝘩*𝘤⁻⁷NA⁴R∞⁴α⁻⁸μₑᵤ⁻⁴τ⁵2¹⁵3⁻¹5¹² = 7.565733239899999e-15 ± 9.3e-24 [g*cm⁻¹s⁻²K⁻⁴] Gauss</code></pre></div></section></article><div>\[K_{\text{cd}} = \frac{I_v}{\int_0^\infty \bar{y}(\lambda)\cdot\frac{dI_e}{d\lambda}d\lambda}, \qquad 
 \bar{y}\left(\frac{c}{540\times 10^{12}}\right)\cdot I_e = 1\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.luminousefficacy" href="#MeasureSystems.luminousefficacy"><code>MeasureSystems.luminousefficacy</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">luminousefficacy(U::UnitSystem{1}) = 1
 luminousefficacy(U::UnitSystem) = Kcd = 683.01969009009power(U)</code></pre><p>Luminous efficacy of monochromatic radiation <code>Kcd</code> of frequency 540 THz (lm⋅W⁻¹).</p><pre><code class="language-Julia">julia&gt; luminousefficacy(Metric) # lm⋅W⁻¹
-Kcd = 683.01969009009 [M⁻¹L⁻²T³J] Metric
+Kcd = 683.01969009009 [kg⁻¹m⁻²s³lm] Metric
 
 julia&gt; luminousefficacy(CODATA) # lm⋅W⁻¹
-𝘩*Kcd*RK*KJ²2⁻² = 683.0197015 ± 8.5e-6 [M⁻¹L⁻²T³J] CODATA
+𝘩*Kcd*RK*KJ²2⁻² = 683.0197015 ± 8.5e-6 [kg⁻¹m⁻²s³lm] CODATA
 
 julia&gt; luminousefficacy(Conventional) # lm⋅W⁻¹
-𝘩*Kcd*RK90*KJ90²2⁻² = 683.0198236454071 [M⁻¹L⁻²T³J] Conventional
+𝘩*Kcd*RK90*KJ90²2⁻² = 683.0198236454071 [kg⁻¹m⁻²s³lm] Conventional
 
 julia&gt; luminousefficacy(CGS) # lm⋅s⋅erg⁻¹
-Kcd*2⁻⁷5⁻⁷ = 6.830196900900899e-5 [M⁻¹L⁻²T³J] Gauss
+Kcd*2⁻⁷5⁻⁷ = 6.830196900900899e-5 [g⁻¹cm⁻²s³lm] Gauss
 
 julia&gt; luminousefficacy(British) # lm⋅s³⋅slug⋅ft⁻²
-Kcd*g₀*ft*lb = 926.0503548878947 [F⁻¹L⁻¹TJ] British</code></pre></div></section></article><h2 id="Electromagnetic-Constants-1"><a class="docs-heading-anchor" href="#Electromagnetic-Constants-1">Electromagnetic Constants</a><a class="docs-heading-anchor-permalink" href="#Electromagnetic-Constants-1" title="Permalink"></a></h2><div>\[\lambda = \frac{4\pi\alpha_B}{\mu_0\alpha_L} = 4\pi k_e\varepsilon_0 = Z_0\varepsilon_0c\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rationalization" href="#MeasureSystems.rationalization"><code>MeasureSystems.rationalization</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">rationalization(U::UnitSystem) = sphere(U)*biotsavart(U)/vacuumpermeability(U)/lorentz(U)</code></pre><p>Constant of magnetization and polarization density or <code>sphere(U)*coulomb(U)*permittivity(U)</code>.</p><pre><code class="language-Julia">julia&gt; rationalization(Metric)
+Kcd*g₀*ft*lb = 926.0503548878947 [lb⁻¹ft⁻¹s*lm] British</code></pre></div></section></article><h2 id="Electromagnetic-Constants-1"><a class="docs-heading-anchor" href="#Electromagnetic-Constants-1">Electromagnetic Constants</a><a class="docs-heading-anchor-permalink" href="#Electromagnetic-Constants-1" title="Permalink"></a></h2><div>\[\lambda = \frac{4\pi\alpha_B}{\mu_0\alpha_L} = 4\pi k_e\varepsilon_0 = Z_0\varepsilon_0c\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rationalization" href="#MeasureSystems.rationalization"><code>MeasureSystems.rationalization</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">rationalization(U::UnitSystem) = sphere(U)*biotsavart(U)/vacuumpermeability(U)/lorentz(U)</code></pre><p>Constant of magnetization and polarization density or <code>sphere(U)*coulomb(U)*permittivity(U)</code>.</p><pre><code class="language-Julia">julia&gt; rationalization(Metric)
 𝟏 = 1.0 [𝟙] Metric
 
 julia&gt; rationalization(Gauss)
 τ*2 = 12.566370614359172 [𝟙] Gauss</code></pre></div></section></article><div>\[\mu_0 = \frac{1}{\varepsilon_0 (c\alpha_L)^2} = \frac{4\pi k_e}{\lambda (c\alpha_L)^2} = \frac{2h\alpha}{\lambda c(e\alpha_L)^2} = \frac{2R_K\alpha}{\lambda c\alpha_L^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.vacuumpermeability" href="#MeasureSystems.vacuumpermeability"><code>MeasureSystems.vacuumpermeability</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">vacuumpermeability(U::UnitSystem) = 1/vacuumpermittivity(U)/(lightspeed(U)*lorentz(U))^2</code></pre><p>Magnetic permeability in a classical vacuum defined as <code>μ₀</code> in SI units (H⋅m⁻¹, kg⋅m²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; vacuumpermeability(Metric) # H⋅m⁻¹
-τ*2⁻⁶5⁻⁷ = 1.2566370614359173e-6 [MLQ⁻²] Metric
+τ*2⁻⁶5⁻⁷ = 1.2566370614359173e-6 [kg*m*C⁻²] Metric
 
 julia&gt; vacuumpermeability(Conventional) # H⋅m⁻¹
-𝘤⁻¹α*RK90*2 = 1.25663703976e-6 ± 1.9e-16 [MLQ⁻²] Conventional
+𝘤⁻¹α*RK90*2 = 1.25663703976e-6 ± 1.9e-16 [kg*m*C⁻²] Conventional
 
 julia&gt; vacuumpermeability(CODATA) # H⋅m⁻¹
-𝘤⁻¹α*RK*2 = 1.25663706194e-6 ± 3.5e-16 [MLQ⁻²] CODATA
+𝘤⁻¹α*RK*2 = 1.25663706194e-6 ± 3.5e-16 [kg*m*C⁻²] CODATA
 
 julia&gt; vacuumpermeability(SI2019) # H⋅m⁻¹
-𝘩*𝘤⁻¹𝘦⁻²α*2 = 1.25663706212e-6 ± 1.9e-16 [MLQ⁻²] SI2019
+𝘩*𝘤⁻¹𝘦⁻²α*2 = 1.25663706212e-6 ± 1.9e-16 [kg*m*C⁻²] SI2019
 
 julia&gt; vacuumpermeability(EMU) # abH⋅cm⁻¹
-𝟏 = 1.0 [T²] EMU
+𝟏 = 1.0 [s²] EMU
 
 julia&gt; vacuumpermeability(ESU) # statH⋅cm⁻¹
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [L⁻²T⁴] ESU</code></pre></div></section></article><div>\[\varepsilon_0 = \frac{1}{\mu_0(c\alpha_L)^2} = \frac{\lambda}{4\pi k_e} = \frac{\lambda e^2}{2\alpha hc} = \frac{\lambda}{2R_K\alpha c}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.vacuumpermittivity" href="#MeasureSystems.vacuumpermittivity"><code>MeasureSystems.vacuumpermittivity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">vacuumpermittivity(U::UnitSystem) = 1/vacuumpermeability(U)/(lightspeed(U)*lorentz(U))^2</code></pre><p>Dielectric permittivity constant <code>ε₀</code> of a classical vacuum (C²⋅N⁻¹⋅m⁻²).</p><pre><code class="language-Julia">julia&gt; vacuumpermittivity(Metric) # F⋅m⁻¹
-𝘤⁻²τ⁻¹2⁶5⁷ = 8.85418781762039e-12 [M⁻¹L⁻³T²Q²] Metric
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻²s⁴] ESU</code></pre></div></section></article><div>\[\varepsilon_0 = \frac{1}{\mu_0(c\alpha_L)^2} = \frac{\lambda}{4\pi k_e} = \frac{\lambda e^2}{2\alpha hc} = \frac{\lambda}{2R_K\alpha c}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.vacuumpermittivity" href="#MeasureSystems.vacuumpermittivity"><code>MeasureSystems.vacuumpermittivity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">vacuumpermittivity(U::UnitSystem) = 1/vacuumpermeability(U)/(lightspeed(U)*lorentz(U))^2</code></pre><p>Dielectric permittivity constant <code>ε₀</code> of a classical vacuum (C²⋅N⁻¹⋅m⁻²).</p><pre><code class="language-Julia">julia&gt; vacuumpermittivity(Metric) # F⋅m⁻¹
+𝘤⁻²τ⁻¹2⁶5⁷ = 8.85418781762039e-12 [kg⁻¹m⁻³s²C²] Metric
 
 julia&gt; vacuumpermittivity(Conventional) # F⋅m⁻¹
-𝘤⁻¹α⁻¹RK90⁻¹2⁻¹ = 8.8541879703e-12 ± 1.4e-21 [M⁻¹L⁻³T²Q²] Conventional
+𝘤⁻¹α⁻¹RK90⁻¹2⁻¹ = 8.8541879703e-12 ± 1.4e-21 [kg⁻¹m⁻³s²C²] Conventional
 
 julia&gt; vacuumpermittivity(CODATA) # F⋅m⁻¹
-𝘤⁻¹α⁻¹RK⁻¹2⁻¹ = 8.8541878141e-12 ± 2.4e-21 [M⁻¹L⁻³T²Q²] CODATA
+𝘤⁻¹α⁻¹RK⁻¹2⁻¹ = 8.8541878141e-12 ± 2.4e-21 [kg⁻¹m⁻³s²C²] CODATA
 
 julia&gt; vacuumpermittivity(SI2019) # F⋅m⁻¹
-𝘩⁻¹𝘤⁻¹𝘦²α⁻¹2⁻¹ = 8.8541878128e-12 ± 1.4e-21 [M⁻¹L⁻³T²Q²] SI2019
+𝘩⁻¹𝘤⁻¹𝘦²α⁻¹2⁻¹ = 8.8541878128e-12 ± 1.4e-21 [kg⁻¹m⁻³s²C²] SI2019
 
 julia&gt; vacuumpermittivity(EMU) # abF⋅cm⁻¹
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [L⁻²] EMU
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻²] EMU
 
 julia&gt; vacuumpermittivity(ESU) # statF⋅cm⁻¹
-𝟏 = 1.0 [T⁻²] ESU
+𝟏 = 1.0 [s⁻²] ESU
 
 julia&gt; vacuumpermittivity(SI2019)/elementarycharge(SI2019) # 𝘦²⋅eV⁻¹⋅m⁻¹
-𝘩⁻¹𝘤⁻¹𝘦*α⁻¹2⁻¹ = 5.52634935805e7 ± 0.0085 [M⁻¹L⁻³T²Q] SI2019</code></pre></div></section></article><div>\[k_e = \frac{\lambda}{4\pi\varepsilon_0} = \frac{\mu_0\lambda (c\alpha_L)^2}{4\pi} = \frac{\alpha \hbar c}{e^2} = \frac{R_K\alpha c}{2\pi} = \frac{\alpha_B}{\alpha_L\mu_0\varepsilon_0} = k_mc^2\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.coulomb" href="#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">coulomb(U::UnitSystem) = rationalization(U)/sphere(U)/vacuumpermittivity(U)</code></pre><p>Electrostatic proportionality constant <code>kₑ</code> for the Coulomb&#39;s law force (N⋅m²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; coulomb(Metric) # N⋅m²⋅C⁻²
-𝘤²2⁻⁷5⁻⁷ = 8.987551787368176e9 [ML³T⁻²Q⁻²] Metric
+𝘩⁻¹𝘤⁻¹𝘦*α⁻¹2⁻¹ = 5.52634935805e7 ± 0.0085 [kg⁻¹m⁻³s²C] SI2019</code></pre></div></section></article><div>\[k_e = \frac{\lambda}{4\pi\varepsilon_0} = \frac{\mu_0\lambda (c\alpha_L)^2}{4\pi} = \frac{\alpha \hbar c}{e^2} = \frac{R_K\alpha c}{2\pi} = \frac{\alpha_B}{\alpha_L\mu_0\varepsilon_0} = k_mc^2\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.coulomb" href="#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">coulomb(U::UnitSystem) = rationalization(U)/sphere(U)/vacuumpermittivity(U)</code></pre><p>Electrostatic proportionality constant <code>kₑ</code> for the Coulomb&#39;s law force (N⋅m²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; coulomb(Metric) # N⋅m²⋅C⁻²
+𝘤²2⁻⁷5⁻⁷ = 8.987551787368176e9 [kg*m³s⁻²C⁻²] Metric
 
 julia&gt; coulomb(CODATA) # N·m²⋅C⁻²
-𝘤*α*RK*τ⁻¹ = 8.9875517909e9 ± 2.5 [ML³T⁻²Q⁻²] CODATA
+𝘤*α*RK*τ⁻¹ = 8.9875517909e9 ± 2.5 [kg*m³s⁻²C⁻²] CODATA
 
 julia&gt; coulomb(SI2019) # N·m²⋅C⁻²
-𝘩*𝘤*𝘦⁻²α*τ⁻¹ = 8.9875517923e9 ± 1.4 [ML³T⁻²Q⁻²] SI2019
+𝘩*𝘤*𝘦⁻²α*τ⁻¹ = 8.9875517923e9 ± 1.4 [kg*m³s⁻²C⁻²] SI2019
 
 julia&gt; coulomb(Conventional) # N·m²⋅C⁻²
-𝘤*α*RK90*τ⁻¹ = 8.9875516323e9 ± 1.4 [ML³T⁻²Q⁻²] Conventional
+𝘤*α*RK90*τ⁻¹ = 8.9875516323e9 ± 1.4 [kg*m³s⁻²C⁻²] Conventional
 
 julia&gt; coulomb(EMU) # dyn⋅cm²⋅abC⁻²
-𝘤²2⁴5⁴ = 8.987551787368175e20 [L²] EMU
+𝘤²2⁴5⁴ = 8.987551787368175e20 [cm²] EMU
 
 julia&gt; coulomb(ESU) # dyn⋅cm²⋅statC⁻²
-𝟏 = 1.0 [T²] ESU
+𝟏 = 1.0 [s²] ESU
 
 julia&gt; coulomb(HLU) # dyn⋅cm²⋅hlC⁻²
 τ⁻¹2⁻¹ = 0.07957747154594767 [T²] LorentzHeaviside</code></pre></div></section></article><div>\[k_m = \alpha_L\alpha_B = \mu_0\alpha_L^2\frac{\lambda}{4\pi} = \frac{k_e}{c^2} = \frac{\alpha \hbar}{ce^2} = \frac{R_K\alpha}{2\pi c}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.ampere" href="#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">ampere(U::UnitSystem) = lorentz(U)*biotsavart(U) # coulomb(U)/lightspeed(U)^2</code></pre><p>Magnetic proportionality constant <code>kₘ</code> for the Ampere&#39;s law force (N·s²⋅C⁻²).</p><pre><code class="language-Julia">julia&gt; ampere(Metric) # H⋅m⁻¹
-2⁻⁷5⁻⁷ = 1.0e-7 [MLQ⁻²] Metric
+2⁻⁷5⁻⁷ = 1.0e-7 [kg*m*C⁻²] Metric
 
 julia&gt; ampere(CODATA) # H⋅m⁻¹
-𝘤⁻¹α*RK*τ⁻¹ = 1.0000000004e-7 ± 2.8e-17 [MLQ⁻²] CODATA
+𝘤⁻¹α*RK*τ⁻¹ = 1.0000000004e-7 ± 2.8e-17 [kg*m*C⁻²] CODATA
 
 julia&gt; ampere(SI2019) # H⋅m⁻¹
-𝘩*𝘤⁻¹𝘦⁻²α*τ⁻¹ = 1.00000000055e-7 ± 1.5e-17 [MLQ⁻²] SI2019
+𝘩*𝘤⁻¹𝘦⁻²α*τ⁻¹ = 1.00000000055e-7 ± 1.5e-17 [kg*m*C⁻²] SI2019
 
 julia&gt; ampere(Conventional) # H⋅m⁻¹
-𝘤⁻¹α*RK90*τ⁻¹ = 9.9999998275e-8 ± 1.5e-17 [MLQ⁻²] Conventional
+𝘤⁻¹α*RK90*τ⁻¹ = 9.9999998275e-8 ± 1.5e-17 [kg*m*C⁻²] Conventional
 
 julia&gt; ampere(EMU) # abH⋅m⁻¹
-𝟏 = 1.0 [T²] EMU
+𝟏 = 1.0 [s²] EMU
 
 julia&gt; ampere(ESU) # statH⋅m⁻¹
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [L⁻²T⁴] ESU
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻²s⁴] ESU
 
 julia&gt; ampere(HLU) # hlH⋅m⁻¹
 𝘤⁻²τ⁻¹2⁻⁵5⁻⁴ = 8.854187817620392e-23 [L⁻²T⁴] LorentzHeaviside</code></pre></div></section></article><div>\[\alpha_L = \frac{1}{c\sqrt{\mu_0\varepsilon_0}} = \frac{\alpha_B}{\mu_0\varepsilon_0k_e} = \frac{4\pi \alpha_B}{\lambda\mu_0} = \frac{k_m}{\alpha_B}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lorentz" href="#MeasureSystems.lorentz"><code>MeasureSystems.lorentz</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lorentz(U::UnitSystem) = sphere(U)*biotsavart(U)/vacuumpermeability(U)/rationalization(U)</code></pre><p>Electromagnetic proportionality constant <code>αL</code> for the Lorentz&#39;s law force (dimensionless).</p><pre><code class="language-Julia">julia&gt; lorentz(Metric)
@@ -382,163 +382,163 @@ julia&gt; lorentz(Thomson)
 2⁻¹ = 0.5 [𝟙] Thomson
 
 julia&gt; lorentz(Gauss)
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [L⁻¹T] Gauss</code></pre></div></section></article><div>\[\alpha_B = \mu_0\alpha_L\frac{\lambda}{4\pi} = \alpha_L\mu_0\varepsilon_0k_e = \frac{k_m}{\alpha_L} = \frac{k_e}{c}\sqrt{\mu_0\varepsilon_0}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.biotsavart" href="#MeasureSystems.biotsavart"><code>MeasureSystems.biotsavart</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">biotsavart(U::UnitSystem) = vacuumpermeability(U)*lorentz(U)*rationalization(U)/sphere(U)</code></pre><p>Magnetostatic proportionality constant <code>αB</code> for the Biot-Savart&#39;s law (H/m).</p><pre><code class="language-Julia">julia&gt; biotsavart(Metric) # H⋅m⁻¹
-2⁻⁷5⁻⁷ = 1.0e-7 [MLQ⁻²] Metric
+𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [cm⁻¹s] Gauss</code></pre></div></section></article><div>\[\alpha_B = \mu_0\alpha_L\frac{\lambda}{4\pi} = \alpha_L\mu_0\varepsilon_0k_e = \frac{k_m}{\alpha_L} = \frac{k_e}{c}\sqrt{\mu_0\varepsilon_0}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.biotsavart" href="#MeasureSystems.biotsavart"><code>MeasureSystems.biotsavart</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">biotsavart(U::UnitSystem) = vacuumpermeability(U)*lorentz(U)*rationalization(U)/sphere(U)</code></pre><p>Magnetostatic proportionality constant <code>αB</code> for the Biot-Savart&#39;s law (H/m).</p><pre><code class="language-Julia">julia&gt; biotsavart(Metric) # H⋅m⁻¹
+2⁻⁷5⁻⁷ = 1.0e-7 [kg*m*C⁻²] Metric
 
 julia&gt; biotsavart(CODATA) # H⋅m⁻¹
-𝘤⁻¹α*RK*τ⁻¹ = 1.0000000004e-7 ± 2.8e-17 [MLQ⁻²] CODATA
+𝘤⁻¹α*RK*τ⁻¹ = 1.0000000004e-7 ± 2.8e-17 [kg*m*C⁻²] CODATA
 
 julia&gt; biotsavart(SI2019) # H⋅m⁻¹
-𝘩*𝘤⁻¹𝘦⁻²α*τ⁻¹ = 1.00000000055e-7 ± 1.5e-17 [MLQ⁻²] SI2019
+𝘩*𝘤⁻¹𝘦⁻²α*τ⁻¹ = 1.00000000055e-7 ± 1.5e-17 [kg*m*C⁻²] SI2019
 
 julia&gt; biotsavart(Conventional) # H⋅m⁻¹
-𝘤⁻¹α*RK90*τ⁻¹ = 9.9999998275e-8 ± 1.5e-17 [MLQ⁻²] Conventional
+𝘤⁻¹α*RK90*τ⁻¹ = 9.9999998275e-8 ± 1.5e-17 [kg*m*C⁻²] Conventional
 
 julia&gt; biotsavart(EMU) # abH⋅cm⁻¹
-𝟏 = 1.0 [T²] EMU
+𝟏 = 1.0 [s²] EMU
 
 julia&gt; biotsavart(ESU) # statH⋅cm⁻¹
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [L⁻²T⁴] ESU
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻²s⁴] ESU
 
 julia&gt; biotsavart(Gauss) # abH⋅cm⁻¹
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [L⁻¹T³] Gauss
+𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [cm⁻¹s³] Gauss
 
 julia&gt; biotsavart(HLU) # hlH⋅cm⁻¹
 𝘤⁻¹τ⁻¹2⁻³5⁻² = 2.6544187294380724e-12 [L⁻¹T³] LorentzHeaviside</code></pre></div></section></article><div>\[e = \sqrt{\frac{2h\alpha}{Z_0}} = \frac{2\alpha_L}{K_JR_K} = \sqrt{\frac{h}{R_K}} = \frac{hK_J}{2\alpha_L} = \frac{F}{N_A}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.elementarycharge" href="#MeasureSystems.elementarycharge"><code>MeasureSystems.elementarycharge</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">elementarycharge(U::UnitSystem) = √(2planck(U)*finestructure(U)/vacuumimpedance(U))</code></pre><p>Quantized elementary charge <code>𝘦</code> of a proton or electron <code>2/(klitzing(U)*josephson(U))</code> (C).</p><pre><code class="language-Julia">julia&gt; elementarycharge(SI2019) # C
-𝘦 = 1.602176634e-19 [Q] SI2019
+𝘦 = 1.602176634e-19 [C] SI2019
 
 julia&gt; elementarycharge(Metric) # C
-𝘩¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁷ᐟ²5⁷ᐟ² = 1.60217663444e-19 ± 1.2e-29 [Q] Metric
+𝘩¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁷ᐟ²5⁷ᐟ² = 1.60217663444e-19 ± 1.2e-29 [C] Metric
 
 julia&gt; elementarycharge(CODATA) # C
-RK⁻¹KJ⁻¹2 = 1.6021766206999998e-19 ± 9.9e-28 [Q] CODATA
+RK⁻¹KJ⁻¹2 = 1.6021766206999998e-19 ± 9.9e-28 [C] CODATA
 
 julia&gt; elementarycharge(Conventional) # C
-RK90⁻¹KJ90⁻¹2 = 1.602176491612271e-19 [Q] Conventional
+RK90⁻¹KJ90⁻¹2 = 1.602176491612271e-19 [C] Conventional
 
 julia&gt; elementarycharge(EMU) # abC
-𝘩¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁵ᐟ²5⁵ᐟ² = 1.60217663444e-20 ± 1.2000000000000001e-30 [M¹ᐟ²L¹ᐟ²] EMU
+𝘩¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁵ᐟ²5⁵ᐟ² = 1.60217663444e-20 ± 1.2000000000000001e-30 [g¹ᐟ²cm¹ᐟ²] EMU
 
 julia&gt; elementarycharge(ESU) # statC
-𝘩¹ᐟ²𝘤¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁹ᐟ²5⁹ᐟ² = 4.80320471388e-10 ± 3.7e-20 [M¹ᐟ²L¹⋅⁵T⁻¹] ESU
+𝘩¹ᐟ²𝘤¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁹ᐟ²5⁹ᐟ² = 4.80320471388e-10 ± 3.7e-20 [g¹ᐟ²cm¹⋅⁵s⁻¹] ESU
 
 julia&gt; elementarycharge(Planck) # sqrt(4π/αinv)
 α¹ᐟ²τ¹ᐟ²2¹ᐟ² = 0.302822120872 ± 2.3e-11 [M] Planck</code></pre></div></section></article><div>\[F = eN_A = N_A\sqrt{\frac{2h\alpha}{Z_0}} = \frac{2N_A\alpha_L}{K_JR_K} = N_A\sqrt{\frac{h}{R_K}} = \frac{hK_JN_A}{2\alpha_L}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.faraday" href="#MeasureSystems.faraday"><code>MeasureSystems.faraday</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">faraday(U::UnitSystem) = elementarycharge(U)*avogadro(U)</code></pre><p>Electric charge per mole of electrons <code>𝔉</code> based on elementary charge (C⋅mol⁻¹).</p><pre><code class="language-Julia">julia&gt; faraday(SI2019) # C⋅mol⁻¹
-𝘦*NA = 96485.33212331001 [QN⁻¹] SI2019
+𝘦*NA = 96485.33212331001 [C*mol⁻¹] SI2019
 
 julia&gt; faraday(Metric) # C⋅mol⁻¹
-𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2⁻¹ᐟ²5¹ᐟ² = 96485.332183 ± 3.7e-5 [QN⁻¹] Metric
+𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2⁻¹ᐟ²5¹ᐟ² = 96485.332183 ± 3.7e-5 [C*mol⁻¹] Metric
 
 julia&gt; faraday(CODATA) # C⋅mol⁻¹
-𝘤*R∞⁻¹α²μₑᵤ*KJ*2⁻⁵5⁻³ = 96485.33297 ± 0.0006 [QN⁻¹] CODATA
+𝘤*R∞⁻¹α²μₑᵤ*KJ*2⁻⁵5⁻³ = 96485.33297 ± 0.0006 [C*mol⁻¹] CODATA
 
 julia&gt; faraday(Conventional) # C⋅mol⁻¹
-𝘤*R∞⁻¹α²μₑᵤ*KJ90*2⁻⁵5⁻³ = 96485.342448 ± 3.0e-5 [QN⁻¹] Conventional
+𝘤*R∞⁻¹α²μₑᵤ*KJ90*2⁻⁵5⁻³ = 96485.342448 ± 3.0e-5 [C*mol⁻¹] Conventional
 
 julia&gt; faraday(EMU) # abC⋅mol⁻¹
-𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2⁻³ᐟ²5⁻¹ᐟ² = 9648.5332183 ± 3.7e-6 [M¹ᐟ²L¹ᐟ²T⁻¹] EMU
+𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2⁻³ᐟ²5⁻¹ᐟ² = 9648.5332183 ± 3.7e-6 [g¹ᐟ²cm¹ᐟ²s⁻¹] EMU
 
 julia&gt; faraday(ESU) # statC⋅mol⁻¹
-𝘩⁻¹ᐟ²𝘤³ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2¹ᐟ²5³ᐟ² = 2.8925574896e14 ± 110000.0 [M¹ᐟ²L³ᐟ²T⁻²] ESU
+𝘩⁻¹ᐟ²𝘤³ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2¹ᐟ²5³ᐟ² = 2.8925574896e14 ± 110000.0 [g¹ᐟ²cm³ᐟ²s⁻²] ESU
 
 julia&gt; faraday(Metric)/kilocalorie(Metric) # kcal⋅(V-g-e)⁻¹
-𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*Ωᵢₜ*Vᵢₜ⁻²τ⁻¹ᐟ²2⁻¹¹ᐟ²3⁻²5⁻⁷ᐟ²43 = 23.0454706695 ± 8.9e-9 [M⁻¹L⁻²T²QN⁻¹] Metric
+𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*Ωᵢₜ*Vᵢₜ⁻²τ⁻¹ᐟ²2⁻¹¹ᐟ²3⁻²5⁻⁷ᐟ²43 = 23.0454706695 ± 8.9e-9 [kg⁻¹m⁻²s²C*mol⁻¹] Metric
 
 julia&gt; faraday(Metric)/3600 # A⋅h⋅mol⁻¹
-𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2⁻⁹ᐟ²3⁻²5⁻³ᐟ² = 26.801481162 ± 1.0e-8 [QN⁻¹] Metric</code></pre></div></section></article><div>\[Z_0 = \mu_0\lambda c\alpha_L^2 = \frac{\lambda}{\varepsilon_0 c} = \lambda\alpha_L\sqrt{\frac{\mu_0}{\varepsilon_0}} = \frac{2h\alpha}{e^2} = 2R_K\alpha\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.vacuumimpedance" href="#MeasureSystems.vacuumimpedance"><code>MeasureSystems.vacuumimpedance</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">vacuumimpedance(U::UnitSystem) = vacuumpermeability(U)*lightspeed(U)*rationalization(U)*lorentz(U)^2</code></pre><p>Vacuum impedance of free space <code>Z₀</code> is magnitude ratio of electric to magnetic field (Ω).</p><pre><code class="language-Julia">julia&gt; vacuumimpedance(Metric) # Ω
-𝘤*τ*2⁻⁶5⁻⁷ = 376.7303134617706 [ML²T⁻¹Q⁻²] Metric
+𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²μₑᵤ*τ⁻¹ᐟ²2⁻⁹ᐟ²3⁻²5⁻³ᐟ² = 26.801481162 ± 1.0e-8 [C*mol⁻¹] Metric</code></pre></div></section></article><div>\[Z_0 = \mu_0\lambda c\alpha_L^2 = \frac{\lambda}{\varepsilon_0 c} = \lambda\alpha_L\sqrt{\frac{\mu_0}{\varepsilon_0}} = \frac{2h\alpha}{e^2} = 2R_K\alpha\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.vacuumimpedance" href="#MeasureSystems.vacuumimpedance"><code>MeasureSystems.vacuumimpedance</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">vacuumimpedance(U::UnitSystem) = vacuumpermeability(U)*lightspeed(U)*rationalization(U)*lorentz(U)^2</code></pre><p>Vacuum impedance of free space <code>Z₀</code> is magnitude ratio of electric to magnetic field (Ω).</p><pre><code class="language-Julia">julia&gt; vacuumimpedance(Metric) # Ω
+𝘤*τ*2⁻⁶5⁻⁷ = 376.7303134617706 [kg*m²s⁻¹C⁻²] Metric
 
 julia&gt; vacuumimpedance(Conventional) # Ω
-α*RK90*2 = 376.730306964 ± 5.8e-8 [ML²T⁻¹Q⁻²] Conventional
+α*RK90*2 = 376.730306964 ± 5.8e-8 [kg*m²s⁻¹C⁻²] Conventional
 
 julia&gt; vacuumimpedance(CODATA) # Ω
-α*RK*2 = 376.73031361 ± 1.0e-7 [ML²T⁻¹Q⁻²] CODATA
+α*RK*2 = 376.73031361 ± 1.0e-7 [kg*m²s⁻¹C⁻²] CODATA
 
 julia&gt; vacuumimpedance(SI2019) # Ω
-𝘩*𝘦⁻²α*2 = 376.730313667 ± 5.8e-8 [ML²T⁻¹Q⁻²] SI2019
+𝘩*𝘦⁻²α*2 = 376.730313667 ± 5.8e-8 [kg*m²s⁻¹C⁻²] SI2019
 
 julia&gt; 120π # 3e8*μ₀ # Ω
 376.99111843077515
 
 julia&gt; vacuumimpedance(EMU) # abΩ
-𝘤*τ*2³5² = 3.767303134617706e11 [LT] EMU
+𝘤*τ*2³5² = 3.767303134617706e11 [cm*s] EMU
 
 julia&gt; vacuumimpedance(ESU) # statΩ
-𝘤⁻¹τ*2⁻¹5⁻² = 4.191690043903363e-10 [L⁻¹T³] ESU
+𝘤⁻¹τ*2⁻¹5⁻² = 4.191690043903363e-10 [cm⁻¹s³] ESU
 
 julia&gt; vacuumimpedance(HLU) # hlΩ
 𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [L⁻¹T³] LorentzHeaviside</code></pre></div></section></article><div>\[G_0 = \frac{2e^2}{h} = \frac{4\alpha}{Z_0} = \frac{2}{R_K} = \frac{hK_J^2}{2\alpha_L^2} = \frac{2F^2}{hN_A^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.conductancequantum" href="#MeasureSystems.conductancequantum"><code>MeasureSystems.conductancequantum</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">conductancequantum(U::UnitSystem) = 2elementarycharge(U)^2/planck(U) # 2/klitzing(U)</code></pre><p>Conductance quantum <code>G₀</code> is a quantized unit of electrical conductance (S).</p><pre><code class="language-Julia">julia&gt; conductancequantum(SI2019) # S
-𝘩⁻¹𝘦²2 = 7.748091729863649e-5 [M⁻¹L⁻²TQ²] SI2019
+𝘩⁻¹𝘦²2 = 7.748091729863649e-5 [kg⁻¹m⁻²s*C²] SI2019
 
 julia&gt; conductancequantum(Metric) # S
-𝘤⁻¹α*τ⁻¹2⁸5⁷ = 7.7480917341e-5 ± 1.2e-14 [M⁻¹L⁻²TQ²] Metric
+𝘤⁻¹α*τ⁻¹2⁸5⁷ = 7.7480917341e-5 ± 1.2e-14 [kg⁻¹m⁻²s*C²] Metric
 
 julia&gt; conductancequantum(Conventional) # S
-RK90⁻¹2 = 7.74809186773062e-5 [M⁻¹L⁻²TQ²] Conventional
+RK90⁻¹2 = 7.74809186773062e-5 [kg⁻¹m⁻²s*C²] Conventional
 
 julia&gt; conductancequantum(CODATA) # S
-RK⁻¹2 = 7.748091731e-5 ± 1.8e-14 [M⁻¹L⁻²TQ²] CODATA
+RK⁻¹2 = 7.748091731e-5 ± 1.8e-14 [kg⁻¹m⁻²s*C²] CODATA
 
 julia&gt; conductancequantum(EMU) # abS
-𝘤⁻¹α*τ⁻¹2⁻¹5⁻² = 7.7480917341e-14 ± 1.2e-23 [L⁻¹T⁻¹] EMU
+𝘤⁻¹α*τ⁻¹2⁻¹5⁻² = 7.7480917341e-14 ± 1.2e-23 [cm⁻¹s⁻¹] EMU
 
 julia&gt; conductancequantum(ESU) # statS
-𝘤*α*τ⁻¹2³5² = 6.9636375713e7 ± 0.011 [LT⁻³] ESU</code></pre></div></section></article><div>\[R_K = \frac{h}{e^2} = \frac{Z_0}{2\alpha} = \frac{2}{G_0} = \frac{4\alpha_L^2}{hK_J^2} = h\frac{N_A^2}{F^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.klitzing" href="#MeasureSystems.klitzing"><code>MeasureSystems.klitzing</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">klitzing(U::UnitSystem) = planck(U)/elementarycharge(U)^2</code></pre><p>Quantized Hall resistance <code>RK</code> (Ω).</p><pre><code class="language-Julia">julia&gt; klitzing(SI2019) # Ω
-𝘩*𝘦⁻² = 25812.80745930451 [ML²T⁻¹Q⁻²] SI2019
+𝘤*α*τ⁻¹2³5² = 6.9636375713e7 ± 0.011 [cm*s⁻³] ESU</code></pre></div></section></article><div>\[R_K = \frac{h}{e^2} = \frac{Z_0}{2\alpha} = \frac{2}{G_0} = \frac{4\alpha_L^2}{hK_J^2} = h\frac{N_A^2}{F^2}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.klitzing" href="#MeasureSystems.klitzing"><code>MeasureSystems.klitzing</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">klitzing(U::UnitSystem) = planck(U)/elementarycharge(U)^2</code></pre><p>Quantized Hall resistance <code>RK</code> (Ω).</p><pre><code class="language-Julia">julia&gt; klitzing(SI2019) # Ω
+𝘩*𝘦⁻² = 25812.80745930451 [kg*m²s⁻¹C⁻²] SI2019
 
 julia&gt; klitzing(Metric) # Ω
-𝘤*α⁻¹τ*2⁻⁷5⁻⁷ = 25812.8074452 ± 4.0e-6 [ML²T⁻¹Q⁻²] Metric
+𝘤*α⁻¹τ*2⁻⁷5⁻⁷ = 25812.8074452 ± 4.0e-6 [kg*m²s⁻¹C⁻²] Metric
 
 julia&gt; klitzing(Conventional) # Ω
-RK90 = 25812.807 [ML²T⁻¹Q⁻²] Conventional
+RK90 = 25812.807 [kg*m²s⁻¹C⁻²] Conventional
 
 julia&gt; klitzing(CODATA) # Ω
-RK = 25812.8074555 ± 5.9e-6 [ML²T⁻¹Q⁻²] CODATA
+RK = 25812.8074555 ± 5.9e-6 [kg*m²s⁻¹C⁻²] CODATA
 
 julia&gt; klitzing(EMU) # abΩ
-𝘤*α⁻¹τ*2²5² = 2.58128074452e13 ± 4000.0 [LT] EMU
+𝘤*α⁻¹τ*2²5² = 2.58128074452e13 ± 4000.0 [cm*s] EMU
 
 julia&gt; klitzing(ESU) # statΩ
-𝘤⁻¹α⁻¹τ*2⁻²5⁻² = 2.87206216508e-8 ± 4.4e-18 [L⁻¹T³] ESU</code></pre></div></section></article><div>\[K_J = \frac{2e\alpha_L}{h} = \alpha_L\sqrt{\frac{8\alpha}{hZ_0}} = \alpha_L\sqrt{\frac{4}{hR_K}} = \frac{1}{\Phi_0} = \frac{2F\alpha_L}{hN_A}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.josephson" href="#MeasureSystems.josephson"><code>MeasureSystems.josephson</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">josephson(U::UnitSystem) = 2elementarycharge(U)*lorentz(U)/planck(U) # 1/magneticflux(U)</code></pre><p>Josephson constant <code>KJ</code> relating potential difference to irradiation frequency (Hz⋅V⁻¹).</p><pre><code class="language-Julia">julia&gt; josephson(SI2019) # Hz⋅V⁻¹
-𝘩⁻¹𝘦*2 = 4.8359784841698356e14 [M⁻¹L⁻²TQ] SI2019
+𝘤⁻¹α⁻¹τ*2⁻²5⁻² = 2.87206216508e-8 ± 4.4e-18 [cm⁻¹s³] ESU</code></pre></div></section></article><div>\[K_J = \frac{2e\alpha_L}{h} = \alpha_L\sqrt{\frac{8\alpha}{hZ_0}} = \alpha_L\sqrt{\frac{4}{hR_K}} = \frac{1}{\Phi_0} = \frac{2F\alpha_L}{hN_A}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.josephson" href="#MeasureSystems.josephson"><code>MeasureSystems.josephson</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">josephson(U::UnitSystem) = 2elementarycharge(U)*lorentz(U)/planck(U) # 1/magneticflux(U)</code></pre><p>Josephson constant <code>KJ</code> relating potential difference to irradiation frequency (Hz⋅V⁻¹).</p><pre><code class="language-Julia">julia&gt; josephson(SI2019) # Hz⋅V⁻¹
+𝘩⁻¹𝘦*2 = 4.8359784841698356e14 [kg⁻¹m⁻²s*C] SI2019
 
 julia&gt; josephson(Metric) # Hz⋅V⁻¹
-𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁹ᐟ²5⁷ᐟ² = 4.83597848549e14 ± 37000.0 [M⁻¹L⁻²TQ] Metric
+𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁹ᐟ²5⁷ᐟ² = 4.83597848549e14 ± 37000.0 [kg⁻¹m⁻²s*C] Metric
 
 julia&gt; josephson(Conventional) # Hz⋅V⁻¹
-KJ90 = 4.835979e14 [M⁻¹L⁻²TQ] Conventional
+KJ90 = 4.835979e14 [kg⁻¹m⁻²s*C] Conventional
 
 julia&gt; josephson(CODATA) # Hz⋅V⁻¹
-KJ = 4.835978525e14 ± 3.0e6 [M⁻¹L⁻²TQ] CODATA
+KJ = 4.835978525e14 ± 3.0e6 [kg⁻¹m⁻²s*C] CODATA
 
 julia&gt; josephson(EMU) # Hz⋅abV⁻¹
-𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁻⁷ᐟ²5⁻⁹ᐟ² = 4.83597848549e6 ± 0.00037 [M⁻¹ᐟ²L⁻³ᐟ²] EMU
+𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁻⁷ᐟ²5⁻⁹ᐟ² = 4.83597848549e6 ± 0.00037 [g⁻¹ᐟ²cm⁻³ᐟ²] EMU
 
 julia&gt; josephson(ESU) # Hz⋅statV⁻¹
-𝘩⁻¹ᐟ²𝘤¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁻³ᐟ²5⁻⁵ᐟ² = 1.449789877e17 ± 1.1e7 [M⁻¹ᐟ²L⁻¹ᐟ²T⁻¹] ESU</code></pre></div></section></article><div>\[\Phi_0 = \frac{h}{2e\alpha_L} = \frac{1}{\alpha_L}\sqrt{\frac{hZ_0}{8\alpha}} = \frac{1}{\alpha_L}\sqrt{\frac{hR_K}{4}} = \frac{1}{K_J} = \frac{hN_A}{2F\alpha_L}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticfluxquantum" href="#MeasureSystems.magneticfluxquantum"><code>MeasureSystems.magneticfluxquantum</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">magneticfluxquantum(U::UnitSystem) = planck(U)/2elementarycharge(U)/lorentz(U)</code></pre><p>Magnetic flux quantum <code>Φ₀</code> is <code>1/josephson(U)</code> (Wb).</p><pre><code class="language-Julia">julia&gt; magneticfluxquantum(SI2019) # Wb
-𝘩*𝘦⁻¹2⁻¹ = 2.0678338484619295e-15 [ML²T⁻¹Q⁻¹] SI2019
+𝘩⁻¹ᐟ²𝘤¹ᐟ²α¹ᐟ²τ⁻¹ᐟ²2⁻³ᐟ²5⁻⁵ᐟ² = 1.449789877e17 ± 1.1e7 [g⁻¹ᐟ²cm⁻¹ᐟ²s⁻¹] ESU</code></pre></div></section></article><div>\[\Phi_0 = \frac{h}{2e\alpha_L} = \frac{1}{\alpha_L}\sqrt{\frac{hZ_0}{8\alpha}} = \frac{1}{\alpha_L}\sqrt{\frac{hR_K}{4}} = \frac{1}{K_J} = \frac{hN_A}{2F\alpha_L}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneticfluxquantum" href="#MeasureSystems.magneticfluxquantum"><code>MeasureSystems.magneticfluxquantum</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">magneticfluxquantum(U::UnitSystem) = planck(U)/2elementarycharge(U)/lorentz(U)</code></pre><p>Magnetic flux quantum <code>Φ₀</code> is <code>1/josephson(U)</code> (Wb).</p><pre><code class="language-Julia">julia&gt; magneticfluxquantum(SI2019) # Wb
+𝘩*𝘦⁻¹2⁻¹ = 2.0678338484619295e-15 [kg*m²s⁻¹C⁻¹] SI2019
 
 julia&gt; magneticfluxquantum(Metric) # Wb
-𝘩¹ᐟ²𝘤¹ᐟ²α⁻¹ᐟ²τ¹ᐟ²2⁻⁹ᐟ²5⁻⁷ᐟ² = 2.0678338479e-15 ± 1.5999999999999998e-25 [ML²T⁻¹Q⁻¹] Metric
+𝘩¹ᐟ²𝘤¹ᐟ²α⁻¹ᐟ²τ¹ᐟ²2⁻⁹ᐟ²5⁻⁷ᐟ² = 2.0678338479e-15 ± 1.5999999999999998e-25 [kg*m²s⁻¹C⁻¹] Metric
 
 julia&gt; magneticfluxquantum(Conventional) # Wb
-KJ90⁻¹ = 2.0678336278962334e-15 [ML²T⁻¹Q⁻¹] Conventional
+KJ90⁻¹ = 2.0678336278962334e-15 [kg*m²s⁻¹C⁻¹] Conventional
 
 julia&gt; magneticfluxquantum(EMU) # Mx
-𝘩¹ᐟ²𝘤¹ᐟ²α⁻¹ᐟ²τ¹ᐟ²2⁷ᐟ²5⁹ᐟ² = 2.0678338479e-7 ± 1.6e-17 [M¹ᐟ²L³ᐟ²] EMU
+𝘩¹ᐟ²𝘤¹ᐟ²α⁻¹ᐟ²τ¹ᐟ²2⁷ᐟ²5⁹ᐟ² = 2.0678338479e-7 ± 1.6e-17 [g¹ᐟ²cm³ᐟ²] EMU
 
 julia&gt; magneticfluxquantum(ESU) # statWb
-𝘩¹ᐟ²𝘤⁻¹ᐟ²α⁻¹ᐟ²τ¹ᐟ²2³ᐟ²5⁵ᐟ² = 6.897551264939999e-18 ± 5.3e-28 [M¹ᐟ²L¹ᐟ²T] ESU</code></pre></div></section></article><div>\[\mu_B = \frac{e\hbar\alpha_L}{2m_e} = \frac{\hbar\alpha_L^2}{m_eK_JR_K} = \frac{h^2K_J}{8\pi m_e} = \frac{\alpha_L\hbar F}{2m_e N_A} = \frac{ec\alpha^2\alpha_L}{8\pi R_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneton" href="#MeasureSystems.magneton"><code>MeasureSystems.magneton</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">magneton(U::UnitSystem) = elementarycharge(U)*planckreduced(U)*lorentz(U)/2electronmass(U)</code></pre><p>Bohr magneton <code>μB</code> natural unit for expressing magnetic moment of electron (J⋅T⁻¹).</p><pre><code class="language-Julia">julia&gt; magneton(SI2019) # J⋅T⁻¹
-𝘤*𝘦*R∞⁻¹α²τ⁻¹2⁻² = 9.274010078299999e-24 ± 2.8e-33 [L²T⁻¹Q] SI2019
+𝘩¹ᐟ²𝘤⁻¹ᐟ²α⁻¹ᐟ²τ¹ᐟ²2³ᐟ²5⁵ᐟ² = 6.897551264939999e-18 ± 5.3e-28 [g¹ᐟ²cm¹ᐟ²s] ESU</code></pre></div></section></article><div>\[\mu_B = \frac{e\hbar\alpha_L}{2m_e} = \frac{\hbar\alpha_L^2}{m_eK_JR_K} = \frac{h^2K_J}{8\pi m_e} = \frac{\alpha_L\hbar F}{2m_e N_A} = \frac{ec\alpha^2\alpha_L}{8\pi R_\infty}\]</div><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.magneton" href="#MeasureSystems.magneton"><code>MeasureSystems.magneton</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">magneton(U::UnitSystem) = elementarycharge(U)*planckreduced(U)*lorentz(U)/2electronmass(U)</code></pre><p>Bohr magneton <code>μB</code> natural unit for expressing magnetic moment of electron (J⋅T⁻¹).</p><pre><code class="language-Julia">julia&gt; magneton(SI2019) # J⋅T⁻¹
+𝘤*𝘦*R∞⁻¹α²τ⁻¹2⁻² = 9.274010078299999e-24 ± 2.8e-33 [m²s⁻¹C] SI2019
 
 julia&gt; magneton(Metric) # J⋅T⁻¹
-𝘩¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²τ⁻³ᐟ²2³ᐟ²5⁷ᐟ² = 9.274010080799999e-24 ± 3.5999999999999997e-33 [L²T⁻¹Q] Metric
+𝘩¹ᐟ²𝘤¹ᐟ²R∞⁻¹α⁵ᐟ²τ⁻³ᐟ²2³ᐟ²5⁷ᐟ² = 9.274010080799999e-24 ± 3.5999999999999997e-33 [m²s⁻¹C] Metric
 
 julia&gt; magneton(CODATA) # J⋅T⁻¹
-𝘤*R∞⁻¹α²RK⁻¹KJ⁻¹τ⁻¹2⁻¹ = 9.274010001e-24 ± 5.8e-32 [L²T⁻¹Q] CODATA
+𝘤*R∞⁻¹α²RK⁻¹KJ⁻¹τ⁻¹2⁻¹ = 9.274010001e-24 ± 5.8e-32 [m²s⁻¹C] CODATA
 
 julia&gt; magneton(Conventional) # J⋅T⁻¹
-𝘤*R∞⁻¹α²RK90⁻¹KJ90⁻¹τ⁻¹2⁻¹ = 9.2740092541e-24 ± 2.8e-33 [L²T⁻¹Q] Conventional
+𝘤*R∞⁻¹α²RK90⁻¹KJ90⁻¹τ⁻¹2⁻¹ = 9.2740092541e-24 ± 2.8e-33 [m²s⁻¹C] Conventional
 
 julia&gt; magneton(EMU2019) # erg⋅G⁻¹
 𝘤*𝘦*R∞⁻¹α²τ⁻¹2*5³ = 9.2740100783e-21 ± 2.8000000000000002e-30 [L²T⁻¹Q] EMU2019
@@ -547,234 +547,234 @@ julia&gt; magneton(ESU2019) # statA⋅cm²
 𝘤²𝘦*R∞⁻¹α²τ⁻¹2³5⁵ = 2.78027827689e-10 ± 8.5e-20 [L²T⁻¹Q] ESU2019
 
 julia&gt; magneton(SI2019)/elementarycharge(SI2019) # eV⋅T⁻¹
-𝘤*R∞⁻¹α²τ⁻¹2⁻² = 5.788381806e-5 ± 1.8e-14 [L²T⁻¹] SI2019
+𝘤*R∞⁻¹α²τ⁻¹2⁻² = 5.788381806e-5 ± 1.8e-14 [m²s⁻¹] SI2019
 
 julia&gt; magneton(Hartree) # 𝘤⋅ħ⋅mₑ⁻¹
 2⁻¹ = 0.5 [Q] Hartree</code></pre></div></section></article><h2 id="Derived-Quantities-1"><a class="docs-heading-anchor" href="#Derived-Quantities-1">Derived Quantities</a><a class="docs-heading-anchor-permalink" href="#Derived-Quantities-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.second" href="#MeasureSystems.second"><code>MeasureSystems.second</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">second(U::UnitSystem) = time(𝟏,U,Metric)</code></pre><p>Unit of <code>time</code> defined by <code>hyperfine</code> transition frequency of Cs-133 atom.</p><pre><code class="language-Julia">julia&gt; second(Metric)
-𝟏 = 1.0 [T] Metric
+𝟏 = 1.0 [s] Metric
 
 julia&gt; second(IAU)
-2⁻⁷3⁻³5⁻² = 1.1574074074074073e-5 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.minute" href="#MeasureSystems.minute"><code>MeasureSystems.minute</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">minute(U::UnitSystem) = 𝟐^2*𝟑*𝟓*second(U)</code></pre><p>Unit of <code>time</code> defined by 60 <code>second</code> intervals.</p><pre><code class="language-Julia">julia&gt; minute(Metric)
-2²3*5 = 60.0 [T] Metric
+2⁻⁷3⁻³5⁻² = 1.1574074074074073e-5 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.minute" href="#MeasureSystems.minute"><code>MeasureSystems.minute</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">minute(U::UnitSystem) = 𝟐^2*𝟑*𝟓*second(U)</code></pre><p>Unit of <code>time</code> defined by 60 <code>second</code> intervals.</p><pre><code class="language-Julia">julia&gt; minute(Metric)
+2²3*5 = 60.0 [s] Metric
 
 julia&gt; minute(IAU)
-2⁻⁵3⁻²5⁻¹ = 0.0006944444444444445 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hour" href="#MeasureSystems.hour"><code>MeasureSystems.hour</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hour(U::UnitSystem) = 𝟐^2*𝟑*𝟓*minute(U)</code></pre><p>Unit of <code>time</code> defined by 60 <code>minute</code> intervals.</p><pre><code class="language-Julia">julia&gt; hour(Metric)
-2⁴3²5² = 3600.0 [T] Metric
+2⁻⁵3⁻²5⁻¹ = 0.0006944444444444445 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hour" href="#MeasureSystems.hour"><code>MeasureSystems.hour</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hour(U::UnitSystem) = 𝟐^2*𝟑*𝟓*minute(U)</code></pre><p>Unit of <code>time</code> defined by 60 <code>minute</code> intervals.</p><pre><code class="language-Julia">julia&gt; hour(Metric)
+2⁴3²5² = 3600.0 [s] Metric
 
 julia&gt; hour(IAU)
-2⁻³3⁻¹ = 0.041666666666666664 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.day" href="#MeasureSystems.day"><code>MeasureSystems.day</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">day(U::UnitSystem) = 𝟐^3*𝟑*hour(U)</code></pre><p>Unit of <code>time</code> defined by 24 <code>hour</code> intervals.</p><pre><code class="language-Julia">julia&gt; day(Metric)
-2⁷3³5² = 86400.0 [T] Metric
+2⁻³3⁻¹ = 0.041666666666666664 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.day" href="#MeasureSystems.day"><code>MeasureSystems.day</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">day(U::UnitSystem) = 𝟐^3*𝟑*hour(U)</code></pre><p>Unit of <code>time</code> defined by 24 <code>hour</code> intervals.</p><pre><code class="language-Julia">julia&gt; day(Metric)
+2⁷3³5² = 86400.0 [s] Metric
 
 julia&gt; day(IAU)
-𝟏 = 1.0 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.year" href="#MeasureSystems.year"><code>MeasureSystems.year</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">year(U::UnitSystem) = aⱼ*day(U)</code></pre><p>Unit of <code>time</code> defined by Julian calendar year interval.</p><pre><code class="language-Julia">julia&gt; year(Metric)
-aⱼ*2⁷3³5² = 3.15576e7 [T] Metric
+𝟏 = 1.0 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.year" href="#MeasureSystems.year"><code>MeasureSystems.year</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">year(U::UnitSystem) = aⱼ*day(U)</code></pre><p>Unit of <code>time</code> defined by Julian calendar year interval.</p><pre><code class="language-Julia">julia&gt; year(Metric)
+aⱼ*2⁷3³5² = 3.15576e7 [s] Metric
 
 julia&gt; year(IAU)
-aⱼ = 365.25 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gaussianyear" href="#MeasureSystems.gaussianyear"><code>MeasureSystems.gaussianyear</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">gaussianyear(U::UnitSystem) = (τ/k)*day(U)</code></pre><p>Unit of <code>time</code> defined by Gaussian gravitational constant.</p><pre><code class="language-Julia">julia&gt; gaussianyear(Metric)
-k⁻¹τ*2⁷3³5² = 3.155819601539475e7 [T] Metric
+aⱼ = 365.25 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gaussianyear" href="#MeasureSystems.gaussianyear"><code>MeasureSystems.gaussianyear</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">gaussianyear(U::UnitSystem) = (τ/k)*day(U)</code></pre><p>Unit of <code>time</code> defined by Gaussian gravitational constant.</p><pre><code class="language-Julia">julia&gt; gaussianyear(Metric)
+k⁻¹τ*2⁷3³5² = 3.155819601539475e7 [s] Metric
 
 julia&gt; gaussianyear(IAU)
-k⁻¹τ = 365.25689832632816 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.siderealyear" href="#MeasureSystems.siderealyear"><code>MeasureSystems.siderealyear</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">siderealyear(U::UnitSystem) = τ/k/√(𝟏+earthmass(IAU)+lunarmass(IAU))*day(U)</code></pre><p>Unit of <code>time</code> defined by Gaussian gravitational constant and the Earth system mass.</p><pre><code class="language-Julia">julia&gt; siderealyear(Metric)
-3.1558148040218636e7 ± 9.8e-8 [T] Metric
+k⁻¹τ = 365.25689832632816 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.siderealyear" href="#MeasureSystems.siderealyear"><code>MeasureSystems.siderealyear</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">siderealyear(U::UnitSystem) = τ/k/√(𝟏+earthmass(IAU)+lunarmass(IAU))*day(U)</code></pre><p>Unit of <code>time</code> defined by Gaussian gravitational constant and the Earth system mass.</p><pre><code class="language-Julia">julia&gt; siderealyear(Metric)
+3.1558148040218636e7 ± 9.8e-8 [s] Metric
 
 julia&gt; siderealyear(IAU)
-365.2563430580861 ± 1.1e-12 [T] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hyperfine" href="#MeasureSystems.hyperfine"><code>MeasureSystems.hyperfine</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hyperfine(U::UnitSystem) = frequency(ΔνCs = 9.19263177e9,U)</code></pre><p>Unperturbed groundstate hyperfine transition frequency <code>ΔνCs</code> of caesium-133 atom (Hz).</p><pre><code class="language-Julia">julia&gt; hyperfine(Metric) # Hz
-ΔνCs = 9.19263177e9 [T⁻¹] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hubble" href="#MeasureSystems.hubble"><code>MeasureSystems.hubble</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hubble(U::UnitSystem) = time(U,Hubble)</code></pre><p>Hubble parameter.</p><pre><code class="language-Julia">julia&gt; hubble(SI2019)
-H0*au⁻¹τ*2⁻¹⁰3⁻⁴5⁻⁶ = 2.193e-18 ± 1.4e-20 [T⁻¹] SI2019
+365.2563430580861 ± 1.1e-12 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hyperfine" href="#MeasureSystems.hyperfine"><code>MeasureSystems.hyperfine</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hyperfine(U::UnitSystem) = frequency(ΔνCs = 9.19263177e9,U)</code></pre><p>Unperturbed groundstate hyperfine transition frequency <code>ΔνCs</code> of caesium-133 atom (Hz).</p><pre><code class="language-Julia">julia&gt; hyperfine(Metric) # Hz
+ΔνCs = 9.19263177e9 [s⁻¹] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hubble" href="#MeasureSystems.hubble"><code>MeasureSystems.hubble</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">hubble(U::UnitSystem) = time(U,Hubble)</code></pre><p>Hubble parameter.</p><pre><code class="language-Julia">julia&gt; hubble(SI2019)
+H0*au⁻¹τ*2⁻¹⁰3⁻⁴5⁻⁶ = 2.193e-18 ± 1.4e-20 [s⁻¹] SI2019
 
 julia&gt; hubble(Hubble)
 𝟏 = 1.0 [L⁻¹] Hubble</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.cosmological" href="#MeasureSystems.cosmological"><code>MeasureSystems.cosmological</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">cosmological(U::UnitSystem) = 3darkenergydensity(U)*(hubble(U)/lightspeed(U))^2</code></pre><p>Cosmological constant.</p><pre><code class="language-Julia">julia&gt; cosmological(SI2019)
-𝘤⁻²ΩΛ*H0²au⁻²τ²2⁻²⁰3⁻⁷5⁻¹² = 1.1059999999999999e-52 ± 1.6e-54 [L⁻²] SI2019</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.solarmass" href="#MeasureSystems.solarmass"><code>MeasureSystems.solarmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">solarmass(U::UnitSystem) = mass(𝘩⁻¹𝘤⁻¹mP²au³k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 1.988409e30 ± 4.4e25,U)</code></pre><p>Solar <code>mass</code> estimated from gravitational constant estimates (kg or slug).</p><pre><code class="language-Julia">julia&gt; solarmass(Metric) # kg
-𝘩⁻¹𝘤⁻¹mP²au³k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 1.988409e30 ± 4.4e25 [M] Metric
+𝘤⁻²ΩΛ*H0²au⁻²τ²2⁻²⁰3⁻⁷5⁻¹² = 1.1059999999999999e-52 ± 1.6e-54 [m⁻²] SI2019</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.solarmass" href="#MeasureSystems.solarmass"><code>MeasureSystems.solarmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">solarmass(U::UnitSystem) = mass(𝘩⁻¹𝘤⁻¹mP²au³k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 1.988409e30 ± 4.4e25,U)</code></pre><p>Solar <code>mass</code> estimated from gravitational constant estimates (kg or slug).</p><pre><code class="language-Julia">julia&gt; solarmass(Metric) # kg
+𝘩⁻¹𝘤⁻¹mP²au³k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 1.988409e30 ± 4.4e25 [kg] Metric
 
 julia&gt; solarmass(British) # slug
-𝘩⁻¹𝘤⁻¹mP²g₀⁻¹au³ft*lb⁻¹k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 1.362493e29 ± 3.0e24 [FL⁻¹T²] British
+𝘩⁻¹𝘤⁻¹mP²g₀⁻¹au³ft*lb⁻¹k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 1.362493e29 ± 3.0e24 [lb*ft⁻¹s²] British
 
 julia&gt; solarmass(English) # lb
-𝘩⁻¹𝘤⁻¹mP²au³lb⁻¹k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 4.383692e30 ± 9.699999999999999e25 [M] English
+𝘩⁻¹𝘤⁻¹mP²au³lb⁻¹k²τ*2⁻¹⁴3⁻⁶5⁻⁴ = 4.383692e30 ± 9.699999999999999e25 [lbm] English
 
 julia&gt; solarmass(IAUE) # ME
-au³k²GME⁻¹2⁻¹⁴3⁻⁶5⁻⁴ = 332946.04352 ± 0.00067 [M] IAUE
+au³k²GME⁻¹2⁻¹⁴3⁻⁶5⁻⁴ = 332946.04352 ± 0.00067 [ME] IAUE
 
 julia&gt; solarmass(IAUJ) # MJ
-au³k²GMJ⁻¹2⁻¹⁴3⁻⁶5⁻⁴ = 1047.565482 ± 7.4e-5 [M] IAUJ</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.earthmass" href="#MeasureSystems.earthmass"><code>MeasureSystems.earthmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">earthmass(U::UnitSystem) = mass(𝘩⁻¹𝘤⁻¹mP²GME*τ = 5.97217e24 ± 1.3e20,U)</code></pre><p>Earth <code>mass</code> estimated from gravitational constant estimates (kg or slug).</p><pre><code class="language-Julia">julia&gt; earthmass(Metric) # kg
-𝘩⁻¹𝘤⁻¹mP²GME*τ = 5.97217e24 ± 1.3e20 [M] Metric
+au³k²GMJ⁻¹2⁻¹⁴3⁻⁶5⁻⁴ = 1047.565482 ± 7.4e-5 [MJ] IAUJ</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.earthmass" href="#MeasureSystems.earthmass"><code>MeasureSystems.earthmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">earthmass(U::UnitSystem) = mass(𝘩⁻¹𝘤⁻¹mP²GME*τ = 5.97217e24 ± 1.3e20,U)</code></pre><p>Earth <code>mass</code> estimated from gravitational constant estimates (kg or slug).</p><pre><code class="language-Julia">julia&gt; earthmass(Metric) # kg
+𝘩⁻¹𝘤⁻¹mP²GME*τ = 5.97217e24 ± 1.3e20 [kg] Metric
 
 julia&gt; earthmass(British) # slug
-𝘩⁻¹𝘤⁻¹mP²g₀⁻¹ft*lb⁻¹GME*τ = 4.092234e23 ± 9.0e18 [FL⁻¹T²] British
+𝘩⁻¹𝘤⁻¹mP²g₀⁻¹ft*lb⁻¹GME*τ = 4.092234e23 ± 9.0e18 [lb*ft⁻¹s²] British
 
 julia&gt; earthmass(English) # lb
-𝘩⁻¹𝘤⁻¹mP²lb⁻¹GME*τ = 1.316637e25 ± 2.9e20 [M] English
+𝘩⁻¹𝘤⁻¹mP²lb⁻¹GME*τ = 1.316637e25 ± 2.9e20 [lbm] English
 
 julia&gt; earthmass(IAU) # M☉
-au⁻³k⁻²GME*2¹⁴3⁶5⁴ = 3.0034896629e-6 ± 6.0e-15 [M] IAU☉
+au⁻³k⁻²GME*2¹⁴3⁶5⁴ = 3.0034896629e-6 ± 6.0e-15 [M☉] IAU☉
 
 julia&gt; earthmass(IAUJ) # MJ
-GME*GMJ⁻¹ = 0.0031463521 ± 2.2e-10 [M] IAUJ</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.jupitermass" href="#MeasureSystems.jupitermass"><code>MeasureSystems.jupitermass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">jupitermass(U::UnitSystem) = mass(𝘩⁻¹𝘤⁻¹mP²GMJ*τ = 1.898124e27 ± 4.2e22,U)</code></pre><p>Jupiter <code>mass</code> estimated from gravitational constant estimates (kg or slug).</p><pre><code class="language-Julia">julia&gt; jupitermass(Metric) # kg
-𝘩⁻¹𝘤⁻¹mP²GMJ*τ = 1.898124e27 ± 4.2e22 [M] Metric
+GME*GMJ⁻¹ = 0.0031463521 ± 2.2e-10 [MJ] IAUJ</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.jupitermass" href="#MeasureSystems.jupitermass"><code>MeasureSystems.jupitermass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">jupitermass(U::UnitSystem) = mass(𝘩⁻¹𝘤⁻¹mP²GMJ*τ = 1.898124e27 ± 4.2e22,U)</code></pre><p>Jupiter <code>mass</code> estimated from gravitational constant estimates (kg or slug).</p><pre><code class="language-Julia">julia&gt; jupitermass(Metric) # kg
+𝘩⁻¹𝘤⁻¹mP²GMJ*τ = 1.898124e27 ± 4.2e22 [kg] Metric
 
 julia&gt; jupitermass(British) # slug
-𝘩⁻¹𝘤⁻¹mP²g₀⁻¹ft*lb⁻¹GMJ*τ = 1.300628e26 ± 2.9e21 [FL⁻¹T²] British
+𝘩⁻¹𝘤⁻¹mP²g₀⁻¹ft*lb⁻¹GMJ*τ = 1.300628e26 ± 2.9e21 [lb*ft⁻¹s²] British
 
 julia&gt; jupitermass(English) # lb
-𝘩⁻¹𝘤⁻¹mP²lb⁻¹GMJ*τ = 4.184647e27 ± 9.2e22 [M] English
+𝘩⁻¹𝘤⁻¹mP²lb⁻¹GMJ*τ = 4.184647e27 ± 9.2e22 [lbm] English
 
 julia&gt; jupitermass(IAU) # M☉
-au⁻³k⁻²GMJ*2¹⁴3⁶5⁴ = 0.000954594264 ± 6.8e-11 [M] IAU☉
+au⁻³k⁻²GMJ*2¹⁴3⁶5⁴ = 0.000954594264 ± 6.8e-11 [M☉] IAU☉
 
 julia&gt; jupitermass(IAUE) # ME
-GME⁻¹GMJ = 317.828383 ± 2.3e-5 [M] IAUE</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lunarmass" href="#MeasureSystems.lunarmass"><code>MeasureSystems.lunarmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lunarmass(U::UnitSystem) = earthmass(U)/μE☾</code></pre><p>Lunar <code>mass</code> estimated from <code>μE☾</code> Earth-Moon mass ratio (kg or slug).</p><pre><code class="language-Julia">julia&gt; lunarmass(Metric) # kg
-7.34579e22 ± 1.6e18 [M] Metric
+GME⁻¹GMJ = 317.828383 ± 2.3e-5 [ME] IAUE</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lunarmass" href="#MeasureSystems.lunarmass"><code>MeasureSystems.lunarmass</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lunarmass(U::UnitSystem) = earthmass(U)/μE☾</code></pre><p>Lunar <code>mass</code> estimated from <code>μE☾</code> Earth-Moon mass ratio (kg or slug).</p><pre><code class="language-Julia">julia&gt; lunarmass(Metric) # kg
+7.34579e22 ± 1.6e18 [kg] Metric
 
 julia&gt; jupitermass(British) # slug
-5.03346e21 ± 1.1e17 [FL⁻¹T²] British
+5.03346e21 ± 1.1e17 [lb*ft⁻¹s²] British
 
 julia&gt; lunarmass(English) # lb
-1.619469e23 ± 3.6e18 [M] English
+1.619469e23 ± 3.6e18 [lbm] English
 
 julia&gt; lunarmass(IAU) # M☉
-3.69430342e-8 ± 1.4e-15 [M] IAU☉
+3.69430342e-8 ± 1.4e-15 [M☉] IAU☉
 
 julia&gt; lunarmass(IAUE) # ME
-0.01230003707 ± 4.6e-10 [M] IAUE
+0.01230003707 ± 4.6e-10 [ME] IAUE
 
 julia&gt; lunarmass(IAUJ) # MJ
-3.87002474e-5 ± 3.1e-12 [M] IAUJ</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.astronomicalunit" href="#MeasureSystems.astronomicalunit"><code>MeasureSystems.astronomicalunit</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">astronomicalunit(U::UnitSystem) = length(au = 1.495978707e11 ± 3.0,U)</code></pre><p>Standard astronomical unit from the International Astronomical Union (m or ft).</p><pre><code class="language-Julia">julia&gt; astronomicalunit(Metric) # m
-au = 1.495978707e11 ± 3.0 [L] Metric
+3.87002474e-5 ± 3.1e-12 [MJ] IAUJ</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.astronomicalunit" href="#MeasureSystems.astronomicalunit"><code>MeasureSystems.astronomicalunit</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">astronomicalunit(U::UnitSystem) = length(au = 1.495978707e11 ± 3.0,U)</code></pre><p>Standard astronomical unit from the International Astronomical Union (m or ft).</p><pre><code class="language-Julia">julia&gt; astronomicalunit(Metric) # m
+au = 1.495978707e11 ± 3.0 [m] Metric
 
 julia&gt; astronomicalunit(English) # ft
-au*ft⁻¹ = 4.908066624016e11 ± 9.8 [L] English
+au*ft⁻¹ = 4.908066624016e11 ± 9.8 [ft] English
 
 julia&gt; astronomicalunit(Survey) # ftUS
-au*ftUS⁻¹ = 4.908056807883e11 ± 9.8 [L] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lunardistance" href="#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lunardistance(U::UnitSystem) = length(384402000 = 3.84402e8,U)</code></pre><p>Standard distance between the Earth and the Moon (m or ft).</p><pre><code class="language-Julia">julia&gt; lunardistance(Metric) # m
-384402000 = 3.84402e8 [L] Metric
+au*ftUS⁻¹ = 4.908056807883e11 ± 9.8 [ft] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lunardistance" href="#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lunardistance(U::UnitSystem) = length(384402000 = 3.84402e8,U)</code></pre><p>Standard distance between the Earth and the Moon (m or ft).</p><pre><code class="language-Julia">julia&gt; lunardistance(Metric) # m
+384402000 = 3.84402e8 [m] Metric
 
 julia&gt; lunardistance(English) # ft
-ft⁻¹*384402000 = 1.2611614173228345e9 [L] English
+ft⁻¹*384402000 = 1.2611614173228345e9 [ft] English
 
 julia&gt; lunardistance(Survey) # ftUS
-ftUS⁻¹*384402000 = 1.2611588950000002e9 [L] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.mile" href="#MeasureSystems.mile"><code>MeasureSystems.mile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">mile(U::UnitSystem) = length(ft*2⁵3*5*11 = 1609.344,U)</code></pre><p>Statute mile (m or ft).</p><pre><code class="language-Julia">julia&gt; mile(Metric) # m
-ft*2⁵3*5*11 = 1609.344 [L] Metric
+ftUS⁻¹*384402000 = 1.2611588950000002e9 [ft] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.mile" href="#MeasureSystems.mile"><code>MeasureSystems.mile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">mile(U::UnitSystem) = length(ft*2⁵3*5*11 = 1609.344,U)</code></pre><p>Statute mile (m or ft).</p><pre><code class="language-Julia">julia&gt; mile(Metric) # m
+ft*2⁵3*5*11 = 1609.344 [m] Metric
 
 julia&gt; mile(English) # ft
-2⁵3*5*11 = 5280.0 [L] English
+2⁵3*5*11 = 5280.0 [ft] English
 
 julia&gt; mile(Survey) # ftUS
-ft*ftUS⁻¹2⁵3*5*11 = 5279.989440000001 [L] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.clarkemile" href="#MeasureSystems.clarkemile"><code>MeasureSystems.clarkemile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">clarkemile(U::UnitSystem) = length(2⁴3⁻³5⁵ = 1851.8518518518517,U)</code></pre><p>Historic nautical mile as defined by the Clarke (m or ft).</p><pre><code class="language-Julia">julia&gt; clarkemile(Metric) # m
-ft*2⁶5*19 = 1853.1840000000002 [L] Metric
+ft*ftUS⁻¹2⁵3*5*11 = 5279.989440000001 [ft] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.clarkemile" href="#MeasureSystems.clarkemile"><code>MeasureSystems.clarkemile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">clarkemile(U::UnitSystem) = length(2⁴3⁻³5⁵ = 1851.8518518518517,U)</code></pre><p>Historic nautical mile as defined by the Clarke (m or ft).</p><pre><code class="language-Julia">julia&gt; clarkemile(Metric) # m
+ft*2⁶5*19 = 1853.1840000000002 [m] Metric
 
 julia&gt; clarkemile(English) # ft
-2⁶5*19 = 6080.0 [L] English
+2⁶5*19 = 6080.0 [ft] English
 
 julia&gt; clarkemile(Survey) # ftUS
-ft*ftUS⁻¹2⁶5*19 = 6079.987840000001 [L] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.nauticalmile" href="#MeasureSystems.nauticalmile"><code>MeasureSystems.nauticalmile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">nauticalmile(U::UnitSystem) = length(2⁴3⁻³5⁵ = 1851.8518518518517,U)</code></pre><p>Historic nautical mile as defined by the French (m or ft).</p><pre><code class="language-Julia">julia&gt; nauticalmile(Metric) # m
-2⁴3⁻³5⁵ = 1851.8518518518517 [L] Metric
+ft*ftUS⁻¹2⁶5*19 = 6079.987840000001 [ft] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.nauticalmile" href="#MeasureSystems.nauticalmile"><code>MeasureSystems.nauticalmile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">nauticalmile(U::UnitSystem) = length(2⁴3⁻³5⁵ = 1851.8518518518517,U)</code></pre><p>Historic nautical mile as defined by the French (m or ft).</p><pre><code class="language-Julia">julia&gt; nauticalmile(Metric) # m
+2⁴3⁻³5⁵ = 1851.8518518518517 [m] Metric
 
 julia&gt; nauticalmile(English) # ft
-ft⁻¹2⁴3⁻³5⁵ = 6075.6294352094865 [L] English
+ft⁻¹2⁴3⁻³5⁵ = 6075.6294352094865 [ft] English
 
 julia&gt; nauticalmile(Survey) # ftUS
-ftUS⁻¹2⁴3⁻³5⁵ = 6075.617283950618 [L] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.parsec" href="#MeasureSystems.parsec"><code>MeasureSystems.parsec</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">parsec(U::UnitSystem) = astronomicalunit(U)*𝟐^2*𝟑^4*𝟓^3/τ</code></pre><p>Unit of <code>length</code> defined at which 1 <code>astronomicalunit</code> subtends an angle of 1 arcsecond.</p><pre><code class="language-Julia">julia&gt; parsec(Metric)
-au*τ⁻¹2⁷3⁴5³ = 3.085677581491e16 ± 620000.0 [L] Metric
+ftUS⁻¹2⁴3⁻³5⁵ = 6075.617283950618 [ft] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.parsec" href="#MeasureSystems.parsec"><code>MeasureSystems.parsec</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">parsec(U::UnitSystem) = astronomicalunit(U)*𝟐^2*𝟑^4*𝟓^3/τ</code></pre><p>Unit of <code>length</code> defined at which 1 <code>astronomicalunit</code> subtends an angle of 1 arcsecond.</p><pre><code class="language-Julia">julia&gt; parsec(Metric)
+au*τ⁻¹2⁷3⁴5³ = 3.085677581491e16 ± 620000.0 [m] Metric
 
 julia&gt; parsec(IAU)
-τ⁻¹2⁷3⁴5³ = 206264.80624709636 [L] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lightyear" href="#MeasureSystems.lightyear"><code>MeasureSystems.lightyear</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lightyear(U::UnitSystem) = year(U)*lightspeed(U)</code></pre><p>Unit of <code>length</code> defined by distance traveled by light in 1 <code>year</code> unit.</p><pre><code class="language-Julia">julia&gt; lightyear(Metric)
-𝘤*aⱼ*2⁷3³5² = 9.4607304725808e15 [L] Metric
+τ⁻¹2⁷3⁴5³ = 206264.80624709636 [au] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lightyear" href="#MeasureSystems.lightyear"><code>MeasureSystems.lightyear</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">lightyear(U::UnitSystem) = year(U)*lightspeed(U)</code></pre><p>Unit of <code>length</code> defined by distance traveled by light in 1 <code>year</code> unit.</p><pre><code class="language-Julia">julia&gt; lightyear(Metric)
+𝘤*aⱼ*2⁷3³5² = 9.4607304725808e15 [m] Metric
 
 julia&gt; lightyear(IAU)
-𝘤*aⱼ*au⁻¹2⁷3³5² = 63241.0770843 ± 1.3e-6 [L] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gallon" href="#MeasureSystems.gallon"><code>MeasureSystems.gallon</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">gallon(U::UnitSystem) = volume(𝟕*𝟏𝟏/𝟐^2,U,English)</code></pre><p>Unit of <code>volume</code> derived from the US liquid <code>gallon</code> in cubic inches.</p><pre><code class="language-Julia">julia&gt; gallon(English)
-2⁻⁶3⁻²7*11 = 0.13368055555555552 [L³] English
+𝘤*aⱼ*au⁻¹2⁷3³5² = 63241.0770843 ± 1.3e-6 [au] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gallon" href="#MeasureSystems.gallon"><code>MeasureSystems.gallon</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">gallon(U::UnitSystem) = volume(𝟕*𝟏𝟏/𝟐^2,U,English)</code></pre><p>Unit of <code>volume</code> derived from the US liquid <code>gallon</code> in cubic inches.</p><pre><code class="language-Julia">julia&gt; gallon(English)
+2⁻⁶3⁻²7*11 = 0.13368055555555552 [ft³] English
 
 julia&gt; gallon(Metric)
-ft³2⁻⁶3⁻²7*11 = 0.0037854117839999997 [L³] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.litre" href="#MeasureSystems.litre"><code>MeasureSystems.litre</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">litre(U::UnitSystem) = volume(𝟏𝟎^-3,U,Metric)</code></pre><p>Unit of <code>volume</code> derived from 1 cubic decimetre.</p><pre><code class="language-Julia">julia&gt; litre(Metric)
-ft³2⁻⁶3⁻²7*11 = 0.0037854117839999997 [L³] Metric
+ft³2⁻⁶3⁻²7*11 = 0.0037854117839999997 [m³] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.litre" href="#MeasureSystems.litre"><code>MeasureSystems.litre</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">litre(U::UnitSystem) = volume(𝟏𝟎^-3,U,Metric)</code></pre><p>Unit of <code>volume</code> derived from 1 cubic decimetre.</p><pre><code class="language-Julia">julia&gt; litre(Metric)
+ft³2⁻⁶3⁻²7*11 = 0.0037854117839999997 [m³] Metric
 
 julia&gt; gallon(English)
-2⁻⁶3⁻²7*11 = 0.13368055555555552 [L³] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.standardgravity" href="#MeasureSystems.standardgravity"><code>MeasureSystems.standardgravity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">standardgravity(U::UnitSystem) = acceleration(g₀ = 9.80665,U)</code></pre><p>Standard gravity <code>acceleration</code> <code>g₀</code> at geodetic reference latitude (m⋅s⁻² or ft⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; standardgravity(Metric) # m⋅s⁻²
-g₀ = 9.80665 [LT⁻²] Metric
+2⁻⁶3⁻²7*11 = 0.13368055555555552 [ft³] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.standardgravity" href="#MeasureSystems.standardgravity"><code>MeasureSystems.standardgravity</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">standardgravity(U::UnitSystem) = acceleration(g₀ = 9.80665,U)</code></pre><p>Standard gravity <code>acceleration</code> <code>g₀</code> at geodetic reference latitude (m⋅s⁻² or ft⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; standardgravity(Metric) # m⋅s⁻²
+g₀ = 9.80665 [m*s⁻²] Metric
 
 julia&gt; standardgravity(English) # ft⋅s⁻²
-g₀*ft⁻¹ = 32.17404855643044 [LT⁻²] English
+g₀*ft⁻¹ = 32.17404855643044 [ft*s⁻²] English
 
 julia&gt; standardgravity(Survey) # ftUS⋅s⁻²
-g₀*ftUS⁻¹ = 32.17398420833334 [LT⁻²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.standardtemperature" href="#MeasureSystems.standardtemperature"><code>MeasureSystems.standardtemperature</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">temperature(U::UnitSystem) = temperature(atm = 101325.0,U)</code></pre><p>Standard <code>temperature</code> reference level at sea level (K or °R).</p><pre><code class="language-Julia">julia&gt; standardtemperature(Metric) # K
-Tₛ = 288.16 [Θ] Metric
+g₀*ftUS⁻¹ = 32.17398420833334 [ft*s⁻²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.standardtemperature" href="#MeasureSystems.standardtemperature"><code>MeasureSystems.standardtemperature</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">temperature(U::UnitSystem) = temperature(atm = 101325.0,U)</code></pre><p>Standard <code>temperature</code> reference level at sea level (K or °R).</p><pre><code class="language-Julia">julia&gt; standardtemperature(Metric) # K
+Tₛ = 288.16 [K] Metric
 
 julia&gt; standardtemperature(SI2019) # K
-𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹Tₛ*2⁴5³ = 288.159999901 ± 8.9e-8 [Θ] SI2019
+𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹Tₛ*2⁴5³ = 288.159999901 ± 8.9e-8 [K] SI2019
 
 julia&gt; standardtemperature(English) # °R
-Tₛ*3²5⁻¹ = 518.6880000000001 [Θ] English
+Tₛ*3²5⁻¹ = 518.6880000000001 [°R] English
 
 julia&gt; standardtemperature(English2019) # °R
-𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹Tₛ*2⁴3²5² = 518.68799982 ± 1.6e-7 [Θ] English2019</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.standardpressure" href="#MeasureSystems.standardpressure"><code>MeasureSystems.standardpressure</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">pressure(U::UnitSystem) = pressure(atm = 101325.0,U)</code></pre><p>Standard <code>pressure</code> reference level of one atmosphere <code>atm</code> (Pa or lb⋅ft⁻²).</p><pre><code class="language-Julia">julia&gt; standardpressure(Metric) # Pa
-atm = 101325.0 [ML⁻¹T⁻²] Metric
+𝘩*𝘤⁻¹NA*R∞*α⁻²μₑᵤ⁻¹Tₛ*2⁴3²5² = 518.68799982 ± 1.6e-7 [°R] English2019</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.standardpressure" href="#MeasureSystems.standardpressure"><code>MeasureSystems.standardpressure</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">pressure(U::UnitSystem) = pressure(atm = 101325.0,U)</code></pre><p>Standard <code>pressure</code> reference level of one atmosphere <code>atm</code> (Pa or lb⋅ft⁻²).</p><pre><code class="language-Julia">julia&gt; standardpressure(Metric) # Pa
+atm = 101325.0 [kg*m⁻¹s⁻²] Metric
 
 julia&gt; standardpressure(English) # lbm⋅ft⁻¹⋅s⁻²
-g₀⁻¹ft²lb⁻¹atm = 2116.2166236739367 [FL⁻²] English
+g₀⁻¹ft²lb⁻¹atm = 2116.2166236739367 [lbf*ft⁻²] English
 
 julia&gt; standardpressure(Survey) # lbm⋅ftUS⁻¹⋅s⁻²
-g₀⁻¹ftUS²lb⁻¹atm = 2116.225088565826 [FL⁻²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.inchmercury" href="#MeasureSystems.inchmercury"><code>MeasureSystems.inchmercury</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">inchmercury(U::UnitSystem) = pressure(inHg,U,Metric)</code></pre><p>Unit of <code>pressure</code> exerted by 1 inch of mercury at standard atmospheric conditions.</p><pre><code class="language-Julia">juila&gt; inchmercury(Metric)
-inHg⁻¹ = 3386.3890000000006 [ML⁻¹T⁻²] Metric
+g₀⁻¹ftUS²lb⁻¹atm = 2116.225088565826 [lbf*ft⁻²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.inchmercury" href="#MeasureSystems.inchmercury"><code>MeasureSystems.inchmercury</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">inchmercury(U::UnitSystem) = pressure(inHg,U,Metric)</code></pre><p>Unit of <code>pressure</code> exerted by 1 inch of mercury at standard atmospheric conditions.</p><pre><code class="language-Julia">juila&gt; inchmercury(Metric)
+inHg⁻¹ = 3386.3890000000006 [kg*m⁻¹s⁻²] Metric
 
 julia&gt; inchmercury(English)
-g₀⁻¹ft²lb⁻¹inHg⁻¹ = 70.72620474736304 [FL⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.torr" href="#MeasureSystems.torr"><code>MeasureSystems.torr</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">torr(U::UnitSystem) = pressure(atm/𝟐^3/𝟓/𝟏𝟗,U,Metric)</code></pre><p>Unit of <code>pressure</code> exerted by 1 mm of mercury at standard atmospheric conditions.</p><pre><code class="language-Julia">juila&gt; torr(Metric)
-atm*2⁻³5⁻¹19⁻¹ = 133.32236842105263 [ML⁻¹T⁻²] Metric
+g₀⁻¹ft²lb⁻¹inHg⁻¹ = 70.72620474736304 [lbf*ft⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.torr" href="#MeasureSystems.torr"><code>MeasureSystems.torr</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">torr(U::UnitSystem) = pressure(atm/𝟐^3/𝟓/𝟏𝟗,U,Metric)</code></pre><p>Unit of <code>pressure</code> exerted by 1 mm of mercury at standard atmospheric conditions.</p><pre><code class="language-Julia">juila&gt; torr(Metric)
+atm*2⁻³5⁻¹19⁻¹ = 133.32236842105263 [kg*m⁻¹s⁻²] Metric
 
 julia&gt; torr(English)
-g₀⁻¹ft²lb⁻¹atm*2⁻³5⁻¹19⁻¹ = 2.784495557465706 [FL⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kilocalorie" href="#MeasureSystems.kilocalorie"><code>MeasureSystems.kilocalorie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">kilocalorie(U::UnitSystem) = energy(𝟐^5*𝟓^4*𝟑^2/𝟒𝟑,U,International)</code></pre><p>Heat energy required to raise 1 kg of water by 1 Kelvin (<code>kcal</code>).</p><pre><code class="language-Julia">julia&gt; kilocalorie(International)
+g₀⁻¹ft²lb⁻¹atm*2⁻³5⁻¹19⁻¹ = 2.784495557465706 [lbf*ft⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kilocalorie" href="#MeasureSystems.kilocalorie"><code>MeasureSystems.kilocalorie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">kilocalorie(U::UnitSystem) = energy(𝟐^5*𝟓^4*𝟑^2/𝟒𝟑,U,International)</code></pre><p>Heat energy required to raise 1 kg of water by 1 Kelvin (<code>kcal</code>).</p><pre><code class="language-Julia">julia&gt; kilocalorie(International)
 2⁵3²5⁴43⁻¹ = 4186.0465116279065 [ML²T⁻²] International
 
 julia&gt; kilocalorie(Metric)
-Ωᵢₜ⁻¹Vᵢₜ²2⁵3²5⁴43⁻¹ = 4186.737323211056 [ML²T⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.calorie" href="#MeasureSystems.calorie"><code>MeasureSystems.calorie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">calorie(U::UnitSystem) = kilocalorie(U)/𝟐^3/𝟓^3</code></pre><p>Heat energy required to raise 1 g of water by 1 Kelvin (<code>kcal</code>) in <code>International</code> scale.</p><pre><code class="language-Julia">julia&gt; calorie(International)
+Ωᵢₜ⁻¹Vᵢₜ²2⁵3²5⁴43⁻¹ = 4186.737323211056 [kg*m²s⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.calorie" href="#MeasureSystems.calorie"><code>MeasureSystems.calorie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">calorie(U::UnitSystem) = kilocalorie(U)/𝟐^3/𝟓^3</code></pre><p>Heat energy required to raise 1 g of water by 1 Kelvin (<code>kcal</code>) in <code>International</code> scale.</p><pre><code class="language-Julia">julia&gt; calorie(International)
 2²3²5*43⁻¹ = 4.186046511627907 [ML²T⁻²] International
 
 julia&gt; calorie(Metric)
-Ωᵢₜ⁻¹Vᵢₜ²2²3²5*43⁻¹ = 4.186737323211057 [ML²T⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.meancalorie" href="#MeasureSystems.meancalorie"><code>MeasureSystems.meancalorie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">meancalorie(U::UnitSystem) = energy(𝟐^2*𝟓*𝟑^2/𝟒𝟑,U,InternationalMean)</code></pre><p>Heat energy required to raise 1 g of water by 1 Kelvin (<code>kcal</code>) in <code>InternationalMean</code>.</p><pre><code class="language-Julia">julia&gt; meancalorie(InternationalMean)
+Ωᵢₜ⁻¹Vᵢₜ²2²3²5*43⁻¹ = 4.186737323211057 [kg*m²s⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.meancalorie" href="#MeasureSystems.meancalorie"><code>MeasureSystems.meancalorie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">meancalorie(U::UnitSystem) = energy(𝟐^2*𝟓*𝟑^2/𝟒𝟑,U,InternationalMean)</code></pre><p>Heat energy required to raise 1 g of water by 1 Kelvin (<code>kcal</code>) in <code>InternationalMean</code>.</p><pre><code class="language-Julia">julia&gt; meancalorie(InternationalMean)
 2²3²5*43⁻¹ = 4.186046511627907 [ML²T⁻²] InternationalMean
 
 julia&gt; meancalorie(Metric)
-2²3²5*43⁻¹*1.0001900224889804 = 4.186841954605034 [ML²T⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.thermalunit" href="#MeasureSystems.thermalunit"><code>MeasureSystems.thermalunit</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">thermalunit(U::UnitSystem) = kilocalorie(U)*𝟑^2/𝟓/lb</code></pre><p>Heat energy required to raise 1 lb of water by 1 Rankine (<code>BTU</code>) in <code>International</code> scale.</p><pre><code class="language-Julia">julia&gt; thermalunit(British)
-g₀⁻¹ft⁻¹Ωᵢₜ⁻¹Vᵢₜ²2⁵5⁵43⁻¹ = 778.1576129990752 [FL] British
+2²3²5*43⁻¹*1.0001900224889804 = 4.186841954605034 [kg*m²s⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.thermalunit" href="#MeasureSystems.thermalunit"><code>MeasureSystems.thermalunit</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">thermalunit(U::UnitSystem) = kilocalorie(U)*𝟑^2/𝟓/lb</code></pre><p>Heat energy required to raise 1 lb of water by 1 Rankine (<code>BTU</code>) in <code>International</code> scale.</p><pre><code class="language-Julia">julia&gt; thermalunit(British)
+g₀⁻¹ft⁻¹Ωᵢₜ⁻¹Vᵢₜ²2⁵5⁵43⁻¹ = 778.1576129990752 [lb*ft] British
 
 julia&gt; thermalunit(International)
 lb*2⁵5⁵43⁻¹ = 1054.8659767441861 [ML²T⁻²] International
 
 julia&gt; thermalunit(Metric)
-lb*Ωᵢₜ⁻¹Vᵢₜ²2⁵5⁵43⁻¹ = 1055.0400583348662 [ML²T⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.tonsrefrigeration" href="#MeasureSystems.tonsrefrigeration"><code>MeasureSystems.tonsrefrigeration</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">tonsrefrigeration(U::UnitSystem) = frequency(𝟐*𝟓/𝟑,U,Metric)*thermalunit(U)</code></pre><p>Unit of <code>power</code> derived from melting of 1 short ton of ice in 24 hours.</p><pre><code class="language-Julia">julia&gt; tonsrefrigeration(British)
-g₀⁻¹ft⁻¹Ωᵢₜ⁻¹Vᵢₜ²2⁶3⁻¹5⁶43⁻¹ = 2593.8587099969172 [FLT⁻¹] British
+lb*Ωᵢₜ⁻¹Vᵢₜ²2⁵5⁵43⁻¹ = 1055.0400583348662 [kg*m²s⁻²] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.tonsrefrigeration" href="#MeasureSystems.tonsrefrigeration"><code>MeasureSystems.tonsrefrigeration</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">tonsrefrigeration(U::UnitSystem) = frequency(𝟐*𝟓/𝟑,U,Metric)*thermalunit(U)</code></pre><p>Unit of <code>power</code> derived from melting of 1 short ton of ice in 24 hours.</p><pre><code class="language-Julia">julia&gt; tonsrefrigeration(British)
+g₀⁻¹ft⁻¹Ωᵢₜ⁻¹Vᵢₜ²2⁶3⁻¹5⁶43⁻¹ = 2593.8587099969172 [lb*ft*s⁻¹] British
 
 julia&gt; tonsrefrigeration(Metric)
-lb*Ωᵢₜ⁻¹Vᵢₜ²2⁶3⁻¹5⁶43⁻¹ = 3516.8001944495536 [ML²T⁻³] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.horsepower" href="#MeasureSystems.horsepower"><code>MeasureSystems.horsepower</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">horsepower(U::UnitSystem) = power(𝟐*𝟓^2*𝟏𝟏,U,British)</code></pre><p>Unit of <code>power</code> derived from raising 550 lb by 1 ft in 1  in 1 s.</p><pre><code class="language-Julia">julia&gt; horsepower(British)
-2*5²11 = 550.0 [FLT⁻¹] British
+lb*Ωᵢₜ⁻¹Vᵢₜ²2⁶3⁻¹5⁶43⁻¹ = 3516.8001944495536 [kg*m²s⁻³] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.horsepower" href="#MeasureSystems.horsepower"><code>MeasureSystems.horsepower</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">horsepower(U::UnitSystem) = power(𝟐*𝟓^2*𝟏𝟏,U,British)</code></pre><p>Unit of <code>power</code> derived from raising 550 lb by 1 ft in 1  in 1 s.</p><pre><code class="language-Julia">julia&gt; horsepower(British)
+2*5²11 = 550.0 [lb*ft*s⁻¹] British
 
 julia&gt; horsepower(Metric)
-g₀*ft*lb*2*5²11 = 745.6998715822701 [ML²T⁻³] Metric
+g₀*ft*lb*2*5²11 = 745.6998715822701 [kg*m²s⁻³] Metric
 
 julia&gt; horsepower(MetricEngineering)
-g₀⁻²ft*lb*2*5²11 = 0.7906823448981257 [FLT⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.horsepowerwatt" href="#MeasureSystems.horsepowerwatt"><code>MeasureSystems.horsepowerwatt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">horsepowerwatt(U::UnitSystem) = power(𝟐^4*𝟑^3/𝟓*τ,U,British)</code></pre><p>Unit of <code>power</code> derived from Watt&#39;s exact original horse power estimate.</p><pre><code class="language-Julia">julia&gt; horsepowerwatt(British)
-τ*2⁴3³5⁻¹ = 542.8672105403163 [FLT⁻¹] British
+g₀⁻²ft*lb*2*5²11 = 0.7906823448981257 [kgf*m*s⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.horsepowerwatt" href="#MeasureSystems.horsepowerwatt"><code>MeasureSystems.horsepowerwatt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">horsepowerwatt(U::UnitSystem) = power(𝟐^4*𝟑^3/𝟓*τ,U,British)</code></pre><p>Unit of <code>power</code> derived from Watt&#39;s exact original horse power estimate.</p><pre><code class="language-Julia">julia&gt; horsepowerwatt(British)
+τ*2⁴3³5⁻¹ = 542.8672105403163 [lb*ft*s⁻¹] British
 
 julia&gt; horsepowerwatt(Metric)
-g₀*ft*lb*τ*2⁴3³5⁻¹ = 736.0291076111621 [ML²T⁻³] Metric
+g₀*ft*lb*τ*2⁴3³5⁻¹ = 736.0291076111621 [kg*m²s⁻³] Metric
 
 julia&gt; horsepowerwatt(MetricEngineering)
-g₀⁻²ft*lb*τ*2⁴3³5⁻¹ = 0.7804282163605851 [FLT⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.horsepowermetric" href="#MeasureSystems.horsepowermetric"><code>MeasureSystems.horsepowermetric</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">horsepowermetric(U::UnitSystem) = power(𝟑*𝟓^2,U,GravitationalMetric)</code></pre><p>Unit of <code>power</code> derived from raising 75 kp by 1 m in 1  in 1 s.</p><pre><code class="language-Julia">julia&gt; horsepowermetric(British)
-ft⁻¹lb⁻¹3*5² = 542.476038840742 [FLT⁻¹] British
+g₀⁻²ft*lb*τ*2⁴3³5⁻¹ = 0.7804282163605851 [kgf*m*s⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.horsepowermetric" href="#MeasureSystems.horsepowermetric"><code>MeasureSystems.horsepowermetric</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">horsepowermetric(U::UnitSystem) = power(𝟑*𝟓^2,U,GravitationalMetric)</code></pre><p>Unit of <code>power</code> derived from raising 75 kp by 1 m in 1  in 1 s.</p><pre><code class="language-Julia">julia&gt; horsepowermetric(British)
+ft⁻¹lb⁻¹3*5² = 542.476038840742 [lb*ft*s⁻¹] British
 
 julia&gt; horsepowermetric(Metric)
-g₀*3*5² = 735.49875 [ML²T⁻³] Metric
+g₀*3*5² = 735.49875 [kg*m²s⁻³] Metric
 
 julia&gt; horsepowermetric(MetricEngineering)
-g₀⁻²3*5² = 0.7798658662575357 [FLT⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricalhorsepower" href="#MeasureSystems.electricalhorsepower"><code>MeasureSystems.electricalhorsepower</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">electricalhorsepower(U::UnitSystem) = power(746,U,Metric)</code></pre><p>Unit of <code>power</code> for electrical motors in the United States.</p><pre><code class="language-Julia">julia&gt; electricalhorsepower(British)
-g₀⁻¹ft⁻¹lb⁻¹2*373 = 550.2213633608399 [FLT⁻¹] British
+g₀⁻²3*5² = 0.7798658662575357 [kgf*m*s⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.electricalhorsepower" href="#MeasureSystems.electricalhorsepower"><code>MeasureSystems.electricalhorsepower</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">electricalhorsepower(U::UnitSystem) = power(746,U,Metric)</code></pre><p>Unit of <code>power</code> for electrical motors in the United States.</p><pre><code class="language-Julia">julia&gt; electricalhorsepower(British)
+g₀⁻¹ft⁻¹lb⁻¹2*373 = 550.2213633608399 [lb*ft*s⁻¹] British
 
 julia&gt; electricalhorsepower(Metric)
-2*373 = 746.0 [ML²T⁻³] Metric
+2*373 = 746.0 [kg*m²s⁻³] Metric
 
 julia&gt; electricalhorsepower(MetricEngineering)
-g₀⁻³2*373 = 0.7910005778094411 [FLT⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.boilerhorsepower" href="#MeasureSystems.boilerhorsepower"><code>MeasureSystems.boilerhorsepower</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">boilerhorsepower(U::UnitSystem) = frequency(1339/𝟐^4/𝟑^2,U,Metric)*thermalunit(U)</code></pre><p>Unit of <code>power</code> derived from evaporating 34.5 lb of boiling water in 1 hour.</p><pre><code class="language-Julia">julia&gt; boilerhorsepower(British)
-g₀⁻¹ft⁻¹Ωᵢₜ⁻¹Vᵢₜ²2*3⁻²5⁵43⁻¹*1339 = 7235.785026428902 [FLT⁻¹] British
+g₀⁻³2*373 = 0.7910005778094411 [kgf*m*s⁻¹] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.boilerhorsepower" href="#MeasureSystems.boilerhorsepower"><code>MeasureSystems.boilerhorsepower</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">boilerhorsepower(U::UnitSystem) = frequency(1339/𝟐^4/𝟑^2,U,Metric)*thermalunit(U)</code></pre><p>Unit of <code>power</code> derived from evaporating 34.5 lb of boiling water in 1 hour.</p><pre><code class="language-Julia">julia&gt; boilerhorsepower(British)
+g₀⁻¹ft⁻¹Ωᵢₜ⁻¹Vᵢₜ²2*3⁻²5⁵43⁻¹*1339 = 7235.785026428902 [lb*ft*s⁻¹] British
 
 julia&gt; boilerhorsepower(Metric)
-lb*Ωᵢₜ⁻¹Vᵢₜ²2*3⁻²5⁵43⁻¹*1339 = 9810.407209099902 [ML²T⁻³] Metric</code></pre></div></section></article><h2 id="Constants-Index-1"><a class="docs-heading-anchor" href="#Constants-Index-1">Constants Index</a><a class="docs-heading-anchor-permalink" href="#Constants-Index-1" title="Permalink"></a></h2><ul><li><a href="constants.html#MeasureSystems.Universe"><code>MeasureSystems.Universe</code></a></li><li><a href="constants.html#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a></li><li><a href="constants.html#MeasureSystems.astronomicalunit"><code>MeasureSystems.astronomicalunit</code></a></li><li><a href="constants.html#MeasureSystems.atomicmass"><code>MeasureSystems.atomicmass</code></a></li><li><a href="constants.html#MeasureSystems.avogadro"><code>MeasureSystems.avogadro</code></a></li><li><a href="constants.html#MeasureSystems.biotsavart"><code>MeasureSystems.biotsavart</code></a></li><li><a href="constants.html#MeasureSystems.bohr"><code>MeasureSystems.bohr</code></a></li><li><a href="constants.html#MeasureSystems.bohrreduced"><code>MeasureSystems.bohrreduced</code></a></li><li><a href="constants.html#MeasureSystems.boilerhorsepower"><code>MeasureSystems.boilerhorsepower</code></a></li><li><a href="constants.html#MeasureSystems.boltzmann"><code>MeasureSystems.boltzmann</code></a></li><li><a href="constants.html#MeasureSystems.calorie"><code>MeasureSystems.calorie</code></a></li><li><a href="constants.html#MeasureSystems.clarkemile"><code>MeasureSystems.clarkemile</code></a></li><li><a href="constants.html#MeasureSystems.conductancequantum"><code>MeasureSystems.conductancequantum</code></a></li><li><a href="constants.html#MeasureSystems.cosmological"><code>MeasureSystems.cosmological</code></a></li><li><a href="constants.html#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a></li><li><a href="constants.html#MeasureSystems.day"><code>MeasureSystems.day</code></a></li><li><a href="constants.html#MeasureSystems.earthmass"><code>MeasureSystems.earthmass</code></a></li><li><a href="constants.html#MeasureSystems.einstein"><code>MeasureSystems.einstein</code></a></li><li><a href="constants.html#MeasureSystems.einstein2"><code>MeasureSystems.einstein2</code></a></li><li><a href="constants.html#MeasureSystems.electricalhorsepower"><code>MeasureSystems.electricalhorsepower</code></a></li><li><a href="constants.html#MeasureSystems.electronmass"><code>MeasureSystems.electronmass</code></a></li><li><a href="constants.html#MeasureSystems.electronradius"><code>MeasureSystems.electronradius</code></a></li><li><a href="constants.html#MeasureSystems.elementarycharge"><code>MeasureSystems.elementarycharge</code></a></li><li><a href="constants.html#MeasureSystems.faraday"><code>MeasureSystems.faraday</code></a></li><li><a href="constants.html#MeasureSystems.gallon"><code>MeasureSystems.gallon</code></a></li><li><a href="constants.html#MeasureSystems.gaussianyear"><code>MeasureSystems.gaussianyear</code></a></li><li><a href="constants.html#MeasureSystems.gravity"><code>MeasureSystems.gravity</code></a></li><li><a href="constants.html#MeasureSystems.hartree"><code>MeasureSystems.hartree</code></a></li><li><a href="constants.html#MeasureSystems.horsepower"><code>MeasureSystems.horsepower</code></a></li><li><a href="constants.html#MeasureSystems.horsepowermetric"><code>MeasureSystems.horsepowermetric</code></a></li><li><a href="constants.html#MeasureSystems.horsepowerwatt"><code>MeasureSystems.horsepowerwatt</code></a></li><li><a href="constants.html#MeasureSystems.hour"><code>MeasureSystems.hour</code></a></li><li><a href="constants.html#MeasureSystems.hubble"><code>MeasureSystems.hubble</code></a></li><li><a href="constants.html#MeasureSystems.hyperfine"><code>MeasureSystems.hyperfine</code></a></li><li><a href="constants.html#MeasureSystems.inchmercury"><code>MeasureSystems.inchmercury</code></a></li><li><a href="constants.html#MeasureSystems.josephson"><code>MeasureSystems.josephson</code></a></li><li><a href="constants.html#MeasureSystems.jupitermass"><code>MeasureSystems.jupitermass</code></a></li><li><a href="constants.html#MeasureSystems.kilocalorie"><code>MeasureSystems.kilocalorie</code></a></li><li><a href="constants.html#MeasureSystems.klitzing"><code>MeasureSystems.klitzing</code></a></li><li><a href="constants.html#MeasureSystems.lightspeed"><code>MeasureSystems.lightspeed</code></a></li><li><a href="constants.html#MeasureSystems.lightyear"><code>MeasureSystems.lightyear</code></a></li><li><a href="constants.html#MeasureSystems.litre"><code>MeasureSystems.litre</code></a></li><li><a href="constants.html#MeasureSystems.lorentz"><code>MeasureSystems.lorentz</code></a></li><li><a href="constants.html#MeasureSystems.luminousefficacy"><code>MeasureSystems.luminousefficacy</code></a></li><li><a href="constants.html#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a></li><li><a href="constants.html#MeasureSystems.lunarmass"><code>MeasureSystems.lunarmass</code></a></li><li><a href="constants.html#MeasureSystems.magneticfluxquantum"><code>MeasureSystems.magneticfluxquantum</code></a></li><li><a href="constants.html#MeasureSystems.magneton"><code>MeasureSystems.magneton</code></a></li><li><a href="constants.html#MeasureSystems.meancalorie"><code>MeasureSystems.meancalorie</code></a></li><li><a href="constants.html#MeasureSystems.mile"><code>MeasureSystems.mile</code></a></li><li><a href="constants.html#MeasureSystems.minute"><code>MeasureSystems.minute</code></a></li><li><a href="constants.html#MeasureSystems.molarmass"><code>MeasureSystems.molarmass</code></a></li><li><a href="constants.html#MeasureSystems.nauticalmile"><code>MeasureSystems.nauticalmile</code></a></li><li><a href="constants.html#MeasureSystems.newton"><code>MeasureSystems.newton</code></a></li><li><a href="constants.html#MeasureSystems.parsec"><code>MeasureSystems.parsec</code></a></li><li><a href="constants.html#MeasureSystems.planck"><code>MeasureSystems.planck</code></a></li><li><a href="constants.html#MeasureSystems.planckmass"><code>MeasureSystems.planckmass</code></a></li><li><a href="constants.html#MeasureSystems.planckreduced"><code>MeasureSystems.planckreduced</code></a></li><li><a href="constants.html#MeasureSystems.protonmass"><code>MeasureSystems.protonmass</code></a></li><li><a href="constants.html#MeasureSystems.radiationdensity"><code>MeasureSystems.radiationdensity</code></a></li><li><a href="constants.html#MeasureSystems.rationalization"><code>MeasureSystems.rationalization</code></a></li><li><a href="constants.html#MeasureSystems.rydberg"><code>MeasureSystems.rydberg</code></a></li><li><a href="constants.html#MeasureSystems.second"><code>MeasureSystems.second</code></a></li><li><a href="constants.html#MeasureSystems.siderealyear"><code>MeasureSystems.siderealyear</code></a></li><li><a href="constants.html#MeasureSystems.solarmass"><code>MeasureSystems.solarmass</code></a></li><li><a href="constants.html#MeasureSystems.sphere"><code>MeasureSystems.sphere</code></a></li><li><a href="constants.html#MeasureSystems.standardgravity"><code>MeasureSystems.standardgravity</code></a></li><li><a href="constants.html#MeasureSystems.standardpressure"><code>MeasureSystems.standardpressure</code></a></li><li><a href="constants.html#MeasureSystems.standardtemperature"><code>MeasureSystems.standardtemperature</code></a></li><li><a href="constants.html#MeasureSystems.stefan"><code>MeasureSystems.stefan</code></a></li><li><a href="constants.html#MeasureSystems.thermalunit"><code>MeasureSystems.thermalunit</code></a></li><li><a href="constants.html#MeasureSystems.tonsrefrigeration"><code>MeasureSystems.tonsrefrigeration</code></a></li><li><a href="constants.html#MeasureSystems.torr"><code>MeasureSystems.torr</code></a></li><li><a href="constants.html#MeasureSystems.turn"><code>MeasureSystems.turn</code></a></li><li><a href="constants.html#MeasureSystems.universalgas"><code>MeasureSystems.universalgas</code></a></li><li><a href="constants.html#MeasureSystems.vacuumimpedance"><code>MeasureSystems.vacuumimpedance</code></a></li><li><a href="constants.html#MeasureSystems.vacuumpermeability"><code>MeasureSystems.vacuumpermeability</code></a></li><li><a href="constants.html#MeasureSystems.vacuumpermittivity"><code>MeasureSystems.vacuumpermittivity</code></a></li><li><a href="constants.html#MeasureSystems.year"><code>MeasureSystems.year</code></a></li><li><a href="units.html#MeasureSystems.Astronomical"><code>MeasureSystems.Astronomical</code></a></li><li><a href="units.html#MeasureSystems.British"><code>MeasureSystems.British</code></a></li><li><a href="units.html#MeasureSystems.British2019"><code>MeasureSystems.British2019</code></a></li><li><a href="units.html#MeasureSystems.CODATA"><code>MeasureSystems.CODATA</code></a></li><li><a href="units.html#MeasureSystems.Conventional"><code>MeasureSystems.Conventional</code></a></li><li><a href="units.html#MeasureSystems.Cosmological"><code>MeasureSystems.Cosmological</code></a></li><li><a href="units.html#MeasureSystems.CosmologicalQuantum"><code>MeasureSystems.CosmologicalQuantum</code></a></li><li><a href="units.html#MeasureSystems.EMU"><code>MeasureSystems.EMU</code></a></li><li><a href="units.html#MeasureSystems.EMU2019"><code>MeasureSystems.EMU2019</code></a></li><li><a href="units.html#MeasureSystems.ESU"><code>MeasureSystems.ESU</code></a></li><li><a href="units.html#MeasureSystems.ESU2019"><code>MeasureSystems.ESU2019</code></a></li><li><a href="units.html#MeasureSystems.Electronic"><code>MeasureSystems.Electronic</code></a></li><li><a href="units.html#MeasureSystems.English"><code>MeasureSystems.English</code></a></li><li><a href="units.html#MeasureSystems.English2019"><code>MeasureSystems.English2019</code></a></li><li><a href="units.html#MeasureSystems.FFF"><code>MeasureSystems.FFF</code></a></li><li><a href="units.html#MeasureSystems.FPS"><code>MeasureSystems.FPS</code></a></li><li><a href="units.html#MeasureSystems.FPS2019"><code>MeasureSystems.FPS2019</code></a></li><li><a href="units.html#MeasureSystems.Gauss"><code>MeasureSystems.Gauss</code></a></li><li><a href="units.html#MeasureSystems.GravitationalMetric"><code>MeasureSystems.GravitationalMetric</code></a></li><li><a href="units.html#MeasureSystems.GravitationalSI2019"><code>MeasureSystems.GravitationalSI2019</code></a></li><li><a href="units.html#MeasureSystems.Hartree"><code>MeasureSystems.Hartree</code></a></li><li><a href="units.html#MeasureSystems.Hubble"><code>MeasureSystems.Hubble</code></a></li><li><a href="units.html#MeasureSystems.IAU"><code>MeasureSystems.IAU</code></a></li><li><a href="units.html#MeasureSystems.IAUE"><code>MeasureSystems.IAUE</code></a></li><li><a href="units.html#MeasureSystems.IAUJ"><code>MeasureSystems.IAUJ</code></a></li><li><a href="units.html#MeasureSystems.International"><code>MeasureSystems.International</code></a></li><li><a href="units.html#MeasureSystems.InternationalMean"><code>MeasureSystems.InternationalMean</code></a></li><li><a href="units.html#MeasureSystems.KKH"><code>MeasureSystems.KKH</code></a></li><li><a href="units.html#MeasureSystems.Kennelly"><code>MeasureSystems.Kennelly</code></a></li><li><a href="units.html#MeasureSystems.LorentzHeaviside"><code>MeasureSystems.LorentzHeaviside</code></a></li><li><a href="units.html#MeasureSystems.MPH"><code>MeasureSystems.MPH</code></a></li><li><a href="units.html#MeasureSystems.MTS"><code>MeasureSystems.MTS</code></a></li><li><a href="units.html#MeasureSystems.Metric"><code>MeasureSystems.Metric</code></a></li><li><a href="units.html#MeasureSystems.MetricEngineering"><code>MeasureSystems.MetricEngineering</code></a></li><li><a href="units.html#MeasureSystems.Natural"><code>MeasureSystems.Natural</code></a></li><li><a href="units.html#MeasureSystems.NaturalGauss"><code>MeasureSystems.NaturalGauss</code></a></li><li><a href="units.html#MeasureSystems.Nautical"><code>MeasureSystems.Nautical</code></a></li><li><a href="units.html#MeasureSystems.Planck"><code>MeasureSystems.Planck</code></a></li><li><a href="units.html#MeasureSystems.PlanckGauss"><code>MeasureSystems.PlanckGauss</code></a></li><li><a href="units.html#MeasureSystems.QCD"><code>MeasureSystems.QCD</code></a></li><li><a href="units.html#MeasureSystems.QCDGauss"><code>MeasureSystems.QCDGauss</code></a></li><li><a href="units.html#MeasureSystems.QCDoriginal"><code>MeasureSystems.QCDoriginal</code></a></li><li><a href="units.html#MeasureSystems.Rydberg"><code>MeasureSystems.Rydberg</code></a></li><li><a href="units.html#MeasureSystems.SI1976"><code>MeasureSystems.SI1976</code></a></li><li><a href="units.html#MeasureSystems.SI2019"><code>MeasureSystems.SI2019</code></a></li><li><a href="units.html#MeasureSystems.SI2019Engineering"><code>MeasureSystems.SI2019Engineering</code></a></li><li><a href="units.html#MeasureSystems.Schrodinger"><code>MeasureSystems.Schrodinger</code></a></li><li><a href="units.html#MeasureSystems.Stoney"><code>MeasureSystems.Stoney</code></a></li><li><a href="units.html#MeasureSystems.Survey"><code>MeasureSystems.Survey</code></a></li><li><a href="units.html#MeasureSystems.Survey2019"><code>MeasureSystems.Survey2019</code></a></li><li><a href="units.html#MeasureSystems.Thomson"><code>MeasureSystems.Thomson</code></a></li><li><a href="units.html#UnitSystems.UnitSystem"><code>UnitSystems.UnitSystem</code></a></li><li><a href="units.html#MeasureSystems.ConventionalSystem"><code>MeasureSystems.ConventionalSystem</code></a></li><li><a href="units.html#MeasureSystems.MetricSystem"><code>MeasureSystems.MetricSystem</code></a></li><li><a href="units.html#MeasureSystems.RankineSystem"><code>MeasureSystems.RankineSystem</code></a></li><li><a href="units.html#UnitSystems.ElectricSystem"><code>UnitSystems.ElectricSystem</code></a></li><li><a href="units.html#UnitSystems.EntropySystem"><code>UnitSystems.EntropySystem</code></a></li><li><a href="units.html#UnitSystems.GaussSystem"><code>UnitSystems.GaussSystem</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="units.html">« The UnitSystem</a><a class="docs-footer-nextpage" href="convert.html">Unit Conversions »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Sunday 27 March 2022 10:37">Sunday 27 March 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+lb*Ωᵢₜ⁻¹Vᵢₜ²2*3⁻²5⁵43⁻¹*1339 = 9810.407209099902 [kg*m²s⁻³] Metric</code></pre></div></section></article><h2 id="Constants-Index-1"><a class="docs-heading-anchor" href="#Constants-Index-1">Constants Index</a><a class="docs-heading-anchor-permalink" href="#Constants-Index-1" title="Permalink"></a></h2><ul><li><a href="constants.html#MeasureSystems.Universe"><code>MeasureSystems.Universe</code></a></li><li><a href="constants.html#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a></li><li><a href="constants.html#MeasureSystems.astronomicalunit"><code>MeasureSystems.astronomicalunit</code></a></li><li><a href="constants.html#MeasureSystems.atomicmass"><code>MeasureSystems.atomicmass</code></a></li><li><a href="constants.html#MeasureSystems.avogadro"><code>MeasureSystems.avogadro</code></a></li><li><a href="constants.html#MeasureSystems.biotsavart"><code>MeasureSystems.biotsavart</code></a></li><li><a href="constants.html#MeasureSystems.bohr"><code>MeasureSystems.bohr</code></a></li><li><a href="constants.html#MeasureSystems.bohrreduced"><code>MeasureSystems.bohrreduced</code></a></li><li><a href="constants.html#MeasureSystems.boilerhorsepower"><code>MeasureSystems.boilerhorsepower</code></a></li><li><a href="constants.html#MeasureSystems.boltzmann"><code>MeasureSystems.boltzmann</code></a></li><li><a href="constants.html#MeasureSystems.calorie"><code>MeasureSystems.calorie</code></a></li><li><a href="constants.html#MeasureSystems.clarkemile"><code>MeasureSystems.clarkemile</code></a></li><li><a href="constants.html#MeasureSystems.conductancequantum"><code>MeasureSystems.conductancequantum</code></a></li><li><a href="constants.html#MeasureSystems.cosmological"><code>MeasureSystems.cosmological</code></a></li><li><a href="constants.html#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a></li><li><a href="constants.html#MeasureSystems.day"><code>MeasureSystems.day</code></a></li><li><a href="constants.html#MeasureSystems.earthmass"><code>MeasureSystems.earthmass</code></a></li><li><a href="constants.html#MeasureSystems.einstein"><code>MeasureSystems.einstein</code></a></li><li><a href="constants.html#MeasureSystems.einstein2"><code>MeasureSystems.einstein2</code></a></li><li><a href="constants.html#MeasureSystems.electricalhorsepower"><code>MeasureSystems.electricalhorsepower</code></a></li><li><a href="constants.html#MeasureSystems.electronmass"><code>MeasureSystems.electronmass</code></a></li><li><a href="constants.html#MeasureSystems.electronradius"><code>MeasureSystems.electronradius</code></a></li><li><a href="constants.html#MeasureSystems.elementarycharge"><code>MeasureSystems.elementarycharge</code></a></li><li><a href="constants.html#MeasureSystems.faraday"><code>MeasureSystems.faraday</code></a></li><li><a href="constants.html#MeasureSystems.gallon"><code>MeasureSystems.gallon</code></a></li><li><a href="constants.html#MeasureSystems.gaussianyear"><code>MeasureSystems.gaussianyear</code></a></li><li><a href="constants.html#MeasureSystems.gravity"><code>MeasureSystems.gravity</code></a></li><li><a href="constants.html#MeasureSystems.hartree"><code>MeasureSystems.hartree</code></a></li><li><a href="constants.html#MeasureSystems.horsepower"><code>MeasureSystems.horsepower</code></a></li><li><a href="constants.html#MeasureSystems.horsepowermetric"><code>MeasureSystems.horsepowermetric</code></a></li><li><a href="constants.html#MeasureSystems.horsepowerwatt"><code>MeasureSystems.horsepowerwatt</code></a></li><li><a href="constants.html#MeasureSystems.hour"><code>MeasureSystems.hour</code></a></li><li><a href="constants.html#MeasureSystems.hubble"><code>MeasureSystems.hubble</code></a></li><li><a href="constants.html#MeasureSystems.hyperfine"><code>MeasureSystems.hyperfine</code></a></li><li><a href="constants.html#MeasureSystems.inchmercury"><code>MeasureSystems.inchmercury</code></a></li><li><a href="constants.html#MeasureSystems.josephson"><code>MeasureSystems.josephson</code></a></li><li><a href="constants.html#MeasureSystems.jupitermass"><code>MeasureSystems.jupitermass</code></a></li><li><a href="constants.html#MeasureSystems.kilocalorie"><code>MeasureSystems.kilocalorie</code></a></li><li><a href="constants.html#MeasureSystems.klitzing"><code>MeasureSystems.klitzing</code></a></li><li><a href="constants.html#MeasureSystems.lightspeed"><code>MeasureSystems.lightspeed</code></a></li><li><a href="constants.html#MeasureSystems.lightyear"><code>MeasureSystems.lightyear</code></a></li><li><a href="constants.html#MeasureSystems.litre"><code>MeasureSystems.litre</code></a></li><li><a href="constants.html#MeasureSystems.lorentz"><code>MeasureSystems.lorentz</code></a></li><li><a href="constants.html#MeasureSystems.luminousefficacy"><code>MeasureSystems.luminousefficacy</code></a></li><li><a href="constants.html#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a></li><li><a href="constants.html#MeasureSystems.lunarmass"><code>MeasureSystems.lunarmass</code></a></li><li><a href="constants.html#MeasureSystems.magneticfluxquantum"><code>MeasureSystems.magneticfluxquantum</code></a></li><li><a href="constants.html#MeasureSystems.magneton"><code>MeasureSystems.magneton</code></a></li><li><a href="constants.html#MeasureSystems.meancalorie"><code>MeasureSystems.meancalorie</code></a></li><li><a href="constants.html#MeasureSystems.mile"><code>MeasureSystems.mile</code></a></li><li><a href="constants.html#MeasureSystems.minute"><code>MeasureSystems.minute</code></a></li><li><a href="constants.html#MeasureSystems.molarmass"><code>MeasureSystems.molarmass</code></a></li><li><a href="constants.html#MeasureSystems.nauticalmile"><code>MeasureSystems.nauticalmile</code></a></li><li><a href="constants.html#MeasureSystems.newton"><code>MeasureSystems.newton</code></a></li><li><a href="constants.html#MeasureSystems.parsec"><code>MeasureSystems.parsec</code></a></li><li><a href="constants.html#MeasureSystems.planck"><code>MeasureSystems.planck</code></a></li><li><a href="constants.html#MeasureSystems.planckmass"><code>MeasureSystems.planckmass</code></a></li><li><a href="constants.html#MeasureSystems.planckreduced"><code>MeasureSystems.planckreduced</code></a></li><li><a href="constants.html#MeasureSystems.protonmass"><code>MeasureSystems.protonmass</code></a></li><li><a href="constants.html#MeasureSystems.radiationdensity"><code>MeasureSystems.radiationdensity</code></a></li><li><a href="constants.html#MeasureSystems.rationalization"><code>MeasureSystems.rationalization</code></a></li><li><a href="constants.html#MeasureSystems.rydberg"><code>MeasureSystems.rydberg</code></a></li><li><a href="constants.html#MeasureSystems.second"><code>MeasureSystems.second</code></a></li><li><a href="constants.html#MeasureSystems.siderealyear"><code>MeasureSystems.siderealyear</code></a></li><li><a href="constants.html#MeasureSystems.solarmass"><code>MeasureSystems.solarmass</code></a></li><li><a href="constants.html#MeasureSystems.sphere"><code>MeasureSystems.sphere</code></a></li><li><a href="constants.html#MeasureSystems.standardgravity"><code>MeasureSystems.standardgravity</code></a></li><li><a href="constants.html#MeasureSystems.standardpressure"><code>MeasureSystems.standardpressure</code></a></li><li><a href="constants.html#MeasureSystems.standardtemperature"><code>MeasureSystems.standardtemperature</code></a></li><li><a href="constants.html#MeasureSystems.stefan"><code>MeasureSystems.stefan</code></a></li><li><a href="constants.html#MeasureSystems.thermalunit"><code>MeasureSystems.thermalunit</code></a></li><li><a href="constants.html#MeasureSystems.tonsrefrigeration"><code>MeasureSystems.tonsrefrigeration</code></a></li><li><a href="constants.html#MeasureSystems.torr"><code>MeasureSystems.torr</code></a></li><li><a href="constants.html#MeasureSystems.turn"><code>MeasureSystems.turn</code></a></li><li><a href="constants.html#MeasureSystems.universalgas"><code>MeasureSystems.universalgas</code></a></li><li><a href="constants.html#MeasureSystems.vacuumimpedance"><code>MeasureSystems.vacuumimpedance</code></a></li><li><a href="constants.html#MeasureSystems.vacuumpermeability"><code>MeasureSystems.vacuumpermeability</code></a></li><li><a href="constants.html#MeasureSystems.vacuumpermittivity"><code>MeasureSystems.vacuumpermittivity</code></a></li><li><a href="constants.html#MeasureSystems.year"><code>MeasureSystems.year</code></a></li><li><a href="units.html#MeasureSystems.Astronomical"><code>MeasureSystems.Astronomical</code></a></li><li><a href="units.html#MeasureSystems.British"><code>MeasureSystems.British</code></a></li><li><a href="units.html#MeasureSystems.British2019"><code>MeasureSystems.British2019</code></a></li><li><a href="units.html#MeasureSystems.CODATA"><code>MeasureSystems.CODATA</code></a></li><li><a href="units.html#MeasureSystems.Conventional"><code>MeasureSystems.Conventional</code></a></li><li><a href="units.html#MeasureSystems.Cosmological"><code>MeasureSystems.Cosmological</code></a></li><li><a href="units.html#MeasureSystems.CosmologicalQuantum"><code>MeasureSystems.CosmologicalQuantum</code></a></li><li><a href="units.html#MeasureSystems.EMU"><code>MeasureSystems.EMU</code></a></li><li><a href="units.html#MeasureSystems.EMU2019"><code>MeasureSystems.EMU2019</code></a></li><li><a href="units.html#MeasureSystems.ESU"><code>MeasureSystems.ESU</code></a></li><li><a href="units.html#MeasureSystems.ESU2019"><code>MeasureSystems.ESU2019</code></a></li><li><a href="units.html#MeasureSystems.Electronic"><code>MeasureSystems.Electronic</code></a></li><li><a href="units.html#MeasureSystems.English"><code>MeasureSystems.English</code></a></li><li><a href="units.html#MeasureSystems.English2019"><code>MeasureSystems.English2019</code></a></li><li><a href="units.html#MeasureSystems.FFF"><code>MeasureSystems.FFF</code></a></li><li><a href="units.html#MeasureSystems.FPS"><code>MeasureSystems.FPS</code></a></li><li><a href="units.html#MeasureSystems.FPS2019"><code>MeasureSystems.FPS2019</code></a></li><li><a href="units.html#MeasureSystems.Gauss"><code>MeasureSystems.Gauss</code></a></li><li><a href="units.html#MeasureSystems.GravitationalMetric"><code>MeasureSystems.GravitationalMetric</code></a></li><li><a href="units.html#MeasureSystems.GravitationalSI2019"><code>MeasureSystems.GravitationalSI2019</code></a></li><li><a href="units.html#MeasureSystems.Hartree"><code>MeasureSystems.Hartree</code></a></li><li><a href="units.html#MeasureSystems.Hubble"><code>MeasureSystems.Hubble</code></a></li><li><a href="units.html#MeasureSystems.IAU"><code>MeasureSystems.IAU</code></a></li><li><a href="units.html#MeasureSystems.IAUE"><code>MeasureSystems.IAUE</code></a></li><li><a href="units.html#MeasureSystems.IAUJ"><code>MeasureSystems.IAUJ</code></a></li><li><a href="units.html#MeasureSystems.International"><code>MeasureSystems.International</code></a></li><li><a href="units.html#MeasureSystems.InternationalMean"><code>MeasureSystems.InternationalMean</code></a></li><li><a href="units.html#MeasureSystems.KKH"><code>MeasureSystems.KKH</code></a></li><li><a href="units.html#MeasureSystems.Kennelly"><code>MeasureSystems.Kennelly</code></a></li><li><a href="units.html#MeasureSystems.LorentzHeaviside"><code>MeasureSystems.LorentzHeaviside</code></a></li><li><a href="units.html#MeasureSystems.MPH"><code>MeasureSystems.MPH</code></a></li><li><a href="units.html#MeasureSystems.MTS"><code>MeasureSystems.MTS</code></a></li><li><a href="units.html#MeasureSystems.Metric"><code>MeasureSystems.Metric</code></a></li><li><a href="units.html#MeasureSystems.MetricEngineering"><code>MeasureSystems.MetricEngineering</code></a></li><li><a href="units.html#MeasureSystems.Natural"><code>MeasureSystems.Natural</code></a></li><li><a href="units.html#MeasureSystems.NaturalGauss"><code>MeasureSystems.NaturalGauss</code></a></li><li><a href="units.html#MeasureSystems.Nautical"><code>MeasureSystems.Nautical</code></a></li><li><a href="units.html#MeasureSystems.Planck"><code>MeasureSystems.Planck</code></a></li><li><a href="units.html#MeasureSystems.PlanckGauss"><code>MeasureSystems.PlanckGauss</code></a></li><li><a href="units.html#MeasureSystems.QCD"><code>MeasureSystems.QCD</code></a></li><li><a href="units.html#MeasureSystems.QCDGauss"><code>MeasureSystems.QCDGauss</code></a></li><li><a href="units.html#MeasureSystems.QCDoriginal"><code>MeasureSystems.QCDoriginal</code></a></li><li><a href="units.html#MeasureSystems.Rydberg"><code>MeasureSystems.Rydberg</code></a></li><li><a href="units.html#MeasureSystems.SI1976"><code>MeasureSystems.SI1976</code></a></li><li><a href="units.html#MeasureSystems.SI2019"><code>MeasureSystems.SI2019</code></a></li><li><a href="units.html#MeasureSystems.SI2019Engineering"><code>MeasureSystems.SI2019Engineering</code></a></li><li><a href="units.html#MeasureSystems.Schrodinger"><code>MeasureSystems.Schrodinger</code></a></li><li><a href="units.html#MeasureSystems.Stoney"><code>MeasureSystems.Stoney</code></a></li><li><a href="units.html#MeasureSystems.Survey"><code>MeasureSystems.Survey</code></a></li><li><a href="units.html#MeasureSystems.Survey2019"><code>MeasureSystems.Survey2019</code></a></li><li><a href="units.html#MeasureSystems.Thomson"><code>MeasureSystems.Thomson</code></a></li><li><a href="units.html#UnitSystems.UnitSystem"><code>UnitSystems.UnitSystem</code></a></li><li><a href="units.html#MeasureSystems.ConventionalSystem"><code>MeasureSystems.ConventionalSystem</code></a></li><li><a href="units.html#MeasureSystems.MetricSystem"><code>MeasureSystems.MetricSystem</code></a></li><li><a href="units.html#MeasureSystems.RankineSystem"><code>MeasureSystems.RankineSystem</code></a></li><li><a href="units.html#UnitSystems.ElectricSystem"><code>UnitSystems.ElectricSystem</code></a></li><li><a href="units.html#UnitSystems.EntropySystem"><code>UnitSystems.EntropySystem</code></a></li><li><a href="units.html#UnitSystems.GaussSystem"><code>UnitSystems.GaussSystem</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="units.html">« The UnitSystem</a><a class="docs-footer-nextpage" href="convert.html">Unit Conversions »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Sunday 27 March 2022 10:51">Sunday 27 March 2022</span>. Using Julia version 1.7.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
