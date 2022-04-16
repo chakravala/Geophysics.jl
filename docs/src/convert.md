@@ -1,10 +1,18 @@
 # Unit Conversions
 
 ```@contents
-Pages = ["units.md","constants.md","convert.md"]
+Pages = ["unitsystems.md","constants.md"]
+Depth = 1
+```
+```@contents
+Pages = ["convert.md"]
+```
+```@contents
+Pages = ["units.md"]
+Depth = 1
 ```
 
-Common conversion factors for physics units between `UnitSystem` specifications.
+Standardized conversion factors for physics units between `UnitSystem` specifications:  [![DOI](https://zenodo.org/badge/317419353.svg)](https://zenodo.org/badge/latestdoi/317419353)
 
 ## Kinematic Units
 
@@ -42,8 +50,8 @@ MeasureSystems.density
 MeasureSystems.specificweight
 MeasureSystems.specificvolume
 force
-gforce
-stiffness
+specificforce
+gravityforce
 MeasureSystems.pressure
 compressibility
 MeasureSystems.viscosity
@@ -71,7 +79,7 @@ inertance
 
 ## Electromagnetic Units
 
-**Warning**: the following unit conversions have not yet been verified for CGS `UnitSystem` variants due to lack of [reference](https://www.qsl.net/g4cnn/units/units.htm) [information](https://phys.libretexts.org/Bookshelves/Electricity_and_Magnetism/Book%3A_Electricity_and_Magnetism_(Tatum)/17%3A_Magnetic_Dipole_Moment/17.05%3A_Possible_Alternative_Definitions_of_Magnetic_Moment): `rigidity`, `mobility`, `magneticmoment`.
+The following unit conversions have been verified for CGS `UnitSystem` variants: [reference](https://www.qsl.net/g4cnn/units/units.htm) [information](https://phys.libretexts.org/Bookshelves/Electricity_and_Magnetism/Book%3A_Electricity_and_Magnetism_(Tatum)/17%3A_Magnetic_Dipole_Moment/17.05%3A_Possible_Alternative_Definitions_of_Magnetic_Moment).
 
 ```@docs
 charge(::UnitSystem,::UnitSystem)
@@ -108,10 +116,7 @@ magneticdipolemoment
 electricpolarizability
 magneticpolarizability
 magneticmoment
-magnetizability
-magnetization
 specificmagnetization
-rigidity
 polestrength
 ```
 
@@ -124,6 +129,7 @@ specificentropy
 volumeheatcapacity
 MeasureSystems.thermalconductivity
 thermalconductance
+thermalresistivity
 thermalresistance
 thermalexpansion
 lapserate
@@ -134,7 +140,7 @@ lapserate
 ```@docs
 MeasureSystems.molarmass(::UnitSystem,::UnitSystem)
 molality
-mole
+molaramount
 molarity
 molarvolume
 molarentropy
@@ -149,7 +155,9 @@ specificity
 
 ```@docs
 luminousflux
+luminousintensity
 luminance
+illuminance
 luminousenergy
 luminousexposure
 MeasureSystems.luminousefficacy(::UnitSystem,::UnitSystem)
@@ -158,5 +166,5 @@ MeasureSystems.luminousefficacy(::UnitSystem,::UnitSystem)
 ## Conversion Index
 
 ```@index
-Pages = ["convert.md","units.md"]
+Pages = ["convert.md","unitsystems.md"]
 ```

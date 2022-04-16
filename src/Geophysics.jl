@@ -28,7 +28,7 @@ export FluidState, Atmosphere, Weather, Planet
 
 export fluid, radius, gravity, layer
 
-decibel(I₁,I₂=intensity()) = 10log10(I₁/I₂)
+#decibel(I₁,I₂=intensity()) = 10log10(I₁/I₂)
 gage(P::Real,P0::Real=pressure()) = P-P0
 
 export Metric, English, British
@@ -112,7 +112,7 @@ $(period(Earth))
 @pure period(::Planet{f,a,t}=Earth,U::US=Metric) where {f,a,t} = t*time(Metric,U)
 
 """
-    gravitation(P::Planet,U::UnitSystem) = mass(P)*newton(U)
+    gravitation(P::Planet,U::UnitSystem) = mass(P)*gravitation(U)
 
 Standard `gravitation` parameter for a celestial `Planet` body (m³⋅s⁻²).
 
@@ -134,7 +134,7 @@ julia> mass(Earth) # kg
 $(mass(Earth))
 ```
 """
-@pure mass(P::Planet,U::US=Metric) = gravitation(P,U)/newton(U)
+@pure mass(P::Planet,U::US=Metric) = gravitation(P,U)/gravitation(U)
 
 """
     frequency(P::Planet) = 1/period(P)
@@ -775,7 +775,7 @@ Kinematic viscosity ratio `ν` at altitude `h` of `Weather` location (m²⋅s⁻
 Specific heat per mass at altitude `h` of `Weather` location (J⋅m⁻³⋅K⁻¹ or lb⋅ft⁻²⋅°R⁻¹).
 """
 @pure function heatcapacity(hG::Real,i,W::Weather=Standard,U::US=units(W))
-    T = temperature(hG,i,W,U)
+    T = normal(temperature(hG,i,W,U))
     heatpressure(T,fluid(W),U)*density(hG,T,i,W,U)
 end
 
@@ -786,7 +786,7 @@ Thermal diffusivity `α` at altitude `h` of `Weather` location (m²⋅s⁻¹ or 
 """
 @pure function thermaldiffusivity(hG::Real,i,W::Weather=Standard,U::US=units(W))
     F = fluid(W)
-    T = temperature(hG,i,W,U)
+    T = normal(temperature(hG,i,W,U))
     thermalconductivity(T,F,U)/heatpressure(T,F,U)/density(hG,T,i,W,U)
 end
 
@@ -796,7 +796,7 @@ end
 Bulk modulus of elasticity `B` at altitude `h` of `Weather` location (Pa or slug⋅ft⁻¹⋅s⁻²).
 """
 @pure function elasticity(hG,i,W::Weather=Standard,U::US=units(W))
-    T = temperature(hG,i,W,U)
+    T = normal(temperature(hG,i,W,U))
     heatratio(T,fluid(W),U)*pressure(hG,T,i,W,U)
 end
 
@@ -806,7 +806,7 @@ end
 Specific acoustic resistance at altitude `h` of `Weather` (kg⋅m⁻³⋅s⁻¹ or slug⋅ft⁻³⋅s⁻¹).
 """
 @pure function specificimpedance(hG::Real,i,W::Weather=Standard,U::US=units(W))
-    T = temperature(hG,i,W,U)
+    T = normal(temperature(hG,i,W,U))
     density(hG,T,i,W,U)*sonicspeed(T,fluid(W),U)
 end
 

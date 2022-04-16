@@ -12,9 +12,10 @@ makedocs(
     pages = Any[
         "Home" => "index.md",
         "UnitSystems.jl" => Any[
-            "units.md",
+            "unitsystems.md",
             "constants.md",
-            "convert.md"
+            "convert.md",
+            "units.md"
            ],
         "References" => "references.md"
         ]

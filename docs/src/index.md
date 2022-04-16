@@ -38,7 +38,8 @@ In the future, more varieties of atmospheric models will be added for various pl
 Weather data from internet sources may be imported in the future.
 
 ```@contents
-Pages = ["units.md","references.md"]
+Pages = ["unitsystems.md","references.md"]
+Depth = 3
 ```
 
 This package is not limited to atmospheric data: other geophysical data features are intended to be added for oceans, temperature and pressure inside the planets, as well as electrical and magnetic properties of planets.
