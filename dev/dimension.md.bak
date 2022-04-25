@@ -16,6 +16,15 @@ Pages = ["convert.md","units.md"]
 Depth = 1
 ```
 
+```@docs
+Constant
+Dimension
+Quantity
+Similitude.ConvertUnit
+@unitgroup
+@unitdim
+```
+
 In aggregate, the `UnitSystem` data generated here presents a new universal standardization for dimensional analysis, which generalizes upon previous historical systems up to the 2019 redefinition and unifies them in a common `Universe`.
 This enables a more precise and generalized standardization than the 2019 redefinition, which was comparatively limited in scope.
 Specified default `UnitSystem` values are to be taken as a newly defined mutually-compatible recommended standard, verified to be consistent and coherent.
