@@ -3,7 +3,7 @@
 2⁻¹5⁻¹ = 0.1
 
 julia&gt; centi # 𝟏𝟎^-2
-2⁻²5⁻² = 0.01
+2⁻²5⁻² = 0.010000000000000002
 
 julia&gt; milli # 𝟏𝟎^-3
 2⁻³5⁻³ = 0.001
@@ -15,19 +15,19 @@ julia&gt; nano # 𝟏𝟎^-9
 2⁻⁹5⁻⁹ = 1.0e-9
 
 julia&gt; pico # 𝟏𝟎^-12
-2⁻¹²5⁻¹² = 1.0e-12
+2⁻¹²5⁻¹² = 1.0000000000000002e-12
 
 julia&gt; femto # 𝟏𝟎^-15
 2⁻¹⁵5⁻¹⁵ = 1.0e-15
 
 julia&gt; atto # 𝟏𝟎^-18
-2⁻¹⁸5⁻¹⁸ = 1.0e-18
+2⁻¹⁸5⁻¹⁸ = 9.999999999999999e-19
 
 julia&gt; zepto # 𝟏𝟎^-21
 2⁻²¹5⁻²¹ = 1.0000000000000001e-21
 
 julia&gt; yocto # 𝟏𝟎^-24
-2⁻²⁴5⁻²⁴ = 1.0000000000000001e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kilo" href="#MeasureSystems.kilo"><code>MeasureSystems.kilo</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">julia&gt; deka # 𝟏𝟎
+2⁻²⁴5⁻²⁴ = 1.0e-24</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kilo" href="#MeasureSystems.kilo"><code>MeasureSystems.kilo</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">julia&gt; deka # 𝟏𝟎
 2⋅5 = 10.0
 
 julia&gt; hecto # 𝟏𝟎^2
@@ -172,8 +172,8 @@ julia&gt; degree(MetricArcsecond) # asec
 julia&gt; degree(MetricGradian) # gon
 2⋅3⁻²5 = 1.1111111111111112 [gon] MetricGradian</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.arcminute" href="#MeasureSystems.arcminute"><code>MeasureSystems.arcminute</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">arcminute(U::UnitSystem) = angle(𝟏,U,MetricArcminute)
 angle : [A], [𝟙], [𝟙], [𝟙], [𝟙]
-A⋅(τ⋅2⁻⁵3⁻³5⁻² = 0.0002908882086657216) [ϕ] Unified</code></pre><p>Unit of <code>angle</code> which divides a <code>degree</code> into <code>60</code> parts (rad).</p><pre><code class="language-Julia">julia&gt; arcminute(MetricEngineering) # rad
-τ⋅2⁻⁵3⁻³5⁻² = 0.0002908882086657216 [rad] MetricEngineering
+A⋅(τ⋅2⁻⁵3⁻³5⁻² = 0.0002908882086657217) [ϕ] Unified</code></pre><p>Unit of <code>angle</code> which divides a <code>degree</code> into <code>60</code> parts (rad).</p><pre><code class="language-Julia">julia&gt; arcminute(MetricEngineering) # rad
+τ⋅2⁻⁵3⁻³5⁻² = 0.0002908882086657217 [rad] MetricEngineering
 
 julia&gt; arcminute(MetricDegree) # deg
 2⁻²3⁻¹5⁻¹ = 0.016666666666666666 [deg] MetricDegree
@@ -185,13 +185,13 @@ julia&gt; arcminute(MetricArcsecond) # asec
 2²3⋅5 = 60.0 [asec] MetricArcsecond
 
 julia&gt; arcminute(MetricGradian) # gon
-2⁻¹3⁻³ = 0.018518518518518517 [gon] MetricGradian</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.arcsecond" href="#MeasureSystems.arcsecond"><code>MeasureSystems.arcsecond</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">arcsecond(U::UnitSystem) = angle(𝟏,U,MetricArcsecond)
+2⁻¹3⁻³ = 0.01851851851851852 [gon] MetricGradian</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.arcsecond" href="#MeasureSystems.arcsecond"><code>MeasureSystems.arcsecond</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">arcsecond(U::UnitSystem) = angle(𝟏,U,MetricArcsecond)
 angle : [A], [𝟙], [𝟙], [𝟙], [𝟙]
 A⋅(τ⋅2⁻⁷3⁻⁴5⁻³ = 4.84813681109536e-6) [ϕ] Unified</code></pre><p>Unit of <code>angle</code> which divides a <code>arcminute</code> into <code>60</code> parts (rad).</p><pre><code class="language-Julia">julia&gt; arcsecond(MetricEngineering) # rad
 τ⋅2⁻⁷3⁻⁴5⁻³ = 4.84813681109536e-6 [rad] MetricEngineering
 
 julia&gt; arcsecond(MetricDegree) # deg
-2⁻⁴3⁻²5⁻² = 0.0002777777777777778 [deg] MetricDegree
+2⁻⁴3⁻²5⁻² = 0.00027777777777777783 [deg] MetricDegree
 
 julia&gt; arcsecond(MetricArcminute) # amin
 2⁻²3⁻¹5⁻¹ = 0.016666666666666666 [amin] MetricArcminute
@@ -221,19 +221,19 @@ A² [ϕ²] Unified</code></pre><p>Unit of <code>solidangle</code> which is dimen
 𝟏 = 1.0 [rad²] MetricEngineering
 
 julia&gt; steradian(MetricDegree) # deg²
-τ⁻²2⁶3⁴5² = 3282.806350011744 [deg²] MetricDegree
+τ⁻²2⁶3⁴5² = 3282.8063500117446 [deg²] MetricDegree
 
 julia&gt; steradian(MetricArcminute) # amin²
-τ⁻²2¹⁰3⁶5⁴ = 1.1818102860042278e7 [amin²] MetricArcminute
+τ⁻²2¹⁰3⁶5⁴ = 1.181810286004228e7 [amin²] MetricArcminute
 
 julia&gt; steradian(MetricArcsecond) # asec²
-τ⁻²2¹⁴3⁸5⁶ = 4.25451702961522e10 [asec²] MetricArcsecond
+τ⁻²2¹⁴3⁸5⁶ = 4.254517029615221e10 [asec²] MetricArcsecond
 
 julia&gt; steradian(MetricGradian) # gon²
-τ⁻²2⁸5⁴ = 4052.847345693511 [gon²] MetricGradian</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.squaredegree" href="#MeasureSystems.squaredegree"><code>MeasureSystems.squaredegree</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">squaredegree(U::UnitSystem) = solidangle(𝟏,U,MetricDegree)
+τ⁻²2⁸5⁴ = 4052.8473456935117 [gon²] MetricGradian</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.squaredegree" href="#MeasureSystems.squaredegree"><code>MeasureSystems.squaredegree</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">squaredegree(U::UnitSystem) = solidangle(𝟏,U,MetricDegree)
 solidangle : [A²], [𝟙], [𝟙], [𝟙], [𝟙]
-A²⋅(τ²2⁻⁶3⁻⁴5⁻² = 0.00030461741978670857) [ϕ²] Unified</code></pre><p>Unit of <code>solidangle</code> which is a <code>degree</code> squared (rad²).</p><pre><code class="language-Julia">julia&gt; squaredegree(MetricEngineering) # rad²
-τ²2⁻⁶3⁻⁴5⁻² = 0.00030461741978670857 [rad²] MetricEngineering
+A²⋅(τ²2⁻⁶3⁻⁴5⁻² = 0.0003046174197867087) [ϕ²] Unified</code></pre><p>Unit of <code>solidangle</code> which is a <code>degree</code> squared (rad²).</p><pre><code class="language-Julia">julia&gt; squaredegree(MetricEngineering) # rad²
+τ²2⁻⁶3⁻⁴5⁻² = 0.0003046174197867087 [rad²] MetricEngineering
 
 julia&gt; squaredegree(MetricDegree) # deg²
 𝟏 = 1.0 [deg²] MetricDegree
@@ -251,10 +251,10 @@ T⋅(𝘤⋅R∞⋅α⁻²τ⋅2 = 7.7634407063e20 ± 2.4e11) [ħ⋅𝘤⁻²m�
 𝟏 = 1.0 [s] Metric
 
 julia&gt; second(MPH) # h
-2⁻⁴3⁻²5⁻² = 0.0002777777777777778 [h] MPH
+2⁻⁴3⁻²5⁻² = 0.00027777777777777783 [h] MPH
 
 julia&gt; second(IAU) # D
-2⁻⁷3⁻³5⁻² = 1.1574074074074073e-5 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.minute" href="#MeasureSystems.minute"><code>MeasureSystems.minute</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">minute(U::UnitSystem) = 𝟐^2*𝟑*𝟓*second(U)
+2⁻⁷3⁻³5⁻² = 1.1574074074074079e-5 [D] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.minute" href="#MeasureSystems.minute"><code>MeasureSystems.minute</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">minute(U::UnitSystem) = 𝟐^2*𝟑*𝟓*second(U)
 time : [T], [T], [T], [T], [T]
 T⋅(𝘤⋅R∞⋅α⁻²τ⋅2³3⋅5 = 4.6580644238e22 ± 1.4e13) [ħ⋅𝘤⁻²mₑ⁻¹ϕ⋅g₀] Unified</code></pre><p>Unit of <code>time</code> defined by 60 <code>second</code> intervals (s).</p><pre><code class="language-Julia">julia&gt; minute(Metric) # s
 2²3⋅5 = 60.0 [s] Metric
@@ -374,10 +374,10 @@ julia&gt; statutemile(Survey) # ftUS
 2⁵3⋅5⋅11 = 5280.0 [ft] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.meridianmile" href="#MeasureSystems.meridianmile"><code>MeasureSystems.meridianmile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">meridianmile(U::UnitSystem) = length(𝟐^4*𝟓^5/𝟑^3,U,Metric)
 length : [L], [L], [L], [L], [L]
 L⋅(R∞⋅α⁻²τ⋅2⁵3⁻³5⁵ = 4.7955649534e15 ± 1.5e6) [ħ⋅𝘤⁻¹mₑ⁻¹ϕ⋅g₀] Unified</code></pre><p>Historic nautical mile as defined by naive meridian assumption (m or ft).</p><pre><code class="language-Julia">julia&gt; meridianmile(Metric) # m
-2⁴3⁻³5⁵ = 1851.8518518518517 [m] Metric
+2⁴3⁻³5⁵ = 1851.8518518518522 [m] Metric
 
 julia&gt; meridianmile(English) # ft
-ft⁻¹2⁴3⁻³5⁵ = 6075.6294352094865 [ft] English
+ft⁻¹2⁴3⁻³5⁵ = 6075.629435209488 [ft] English
 
 julia&gt; meridianmile(Nautical) # nm
 g₀¹ᐟ²GME⁻¹ᐟ²τ⁻¹2⁹5⁷ = 0.9985540395 ± 1.0e-9 [nm] Nautical</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.admiraltymile" href="#MeasureSystems.admiraltymile"><code>MeasureSystems.admiraltymile</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">admiraltymile(U::UnitSystem) = length(𝟐^6*𝟓*𝟏𝟗,U,English)
@@ -395,7 +395,7 @@ L⋅(R∞⋅α⁻²g₀⁻¹ᐟ²GME¹ᐟ²τ²2⁻⁴3⁻³5⁻² = 4.802509191
 g₀⁻¹ᐟ²GME¹ᐟ²τ⋅2⁻⁵3⁻³5⁻² = 1854.5334339 ± 1.9e-6 [m] Metric
 
 julia&gt; nauticalmile(Meridian) # em
-2⁴3⁻³5⁵ = 1851.8518518518517 [em] Meridian
+2⁴3⁻³5⁵ = 1851.8518518518522 [em] Meridian
 
 julia&gt; nauticalmile(English) # ft
 g₀⁻¹ᐟ²ft⁻¹GME¹ᐟ²τ⋅2⁻⁵3⁻³5⁻² = 6084.4272766 ± 6.1e-6 [ft] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lunardistance" href="#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">lunardistance(U::UnitSystem) = length(𝟏,U,IAUE)
@@ -445,11 +445,11 @@ au⋅ft⁻¹τ⁻¹2⁷3⁴5³ = 1.01236141125e17 ± 2.0e6 [ft] English
 julia&gt; parsec(IAU) # au
 τ⁻¹2⁷3⁴5³ = 206264.80624709636 [au] IAU☉</code></pre></div></section></article><h3 id="Speed-Units-1"><a class="docs-heading-anchor" href="#Speed-Units-1">Speed Units</a><a class="docs-heading-anchor-permalink" href="#Speed-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bubnoff" href="#MeasureSystems.bubnoff"><code>MeasureSystems.bubnoff</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">bubnoff(U::UnitSystem) = meter(U)/year(U)
 speed : [LT⁻¹], [LT⁻¹], [LT⁻¹], [LT⁻¹], [LT⁻¹]
-LT⁻¹⋅(𝘤⁻¹aⱼ⁻¹2⁻⁷3⁻³5⁻² = 1.0570008340246153e-16) [𝘤] Unified</code></pre><p>Reference unit of erosion <code>speed</code> (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; bubnoff(CGS) # cm⋅s⁻¹
-aⱼ⁻¹2⁻⁵3⁻³ = 3.1688087814028946e-6 [cm⋅s⁻¹] Gauss
+LT⁻¹⋅(𝘤⁻¹aⱼ⁻¹2⁻⁷3⁻³5⁻² = 1.0570008340246158e-16) [𝘤] Unified</code></pre><p>Reference unit of erosion <code>speed</code> (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; bubnoff(CGS) # cm⋅s⁻¹
+aⱼ⁻¹2⁻⁵3⁻³ = 3.1688087814028955e-6 [cm⋅s⁻¹] Gauss
 
 julia&gt; bubnoff(English) # ft⋅s⁻¹
-aⱼ⁻¹ft⁻¹2⁻⁷3⁻³5⁻² = 1.0396354269694535e-7 [ft⋅s⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.fpm" href="#MeasureSystems.fpm"><code>MeasureSystems.fpm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">fpm(U::UnitSystem) = feet(U)/minute(U)
+aⱼ⁻¹ft⁻¹2⁻⁷3⁻³5⁻² = 1.0396354269694539e-7 [ft⋅s⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.fpm" href="#MeasureSystems.fpm"><code>MeasureSystems.fpm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">fpm(U::UnitSystem) = feet(U)/minute(U)
 speed : [LT⁻¹], [LT⁻¹], [LT⁻¹], [LT⁻¹], [LT⁻¹]
 LT⁻¹⋅(𝘤⁻¹ft⋅2⁻²3⁻¹5⁻¹ = 1.6945056036066124e-11) [𝘤] Unified</code></pre><p>Feet per minute unit of <code>speed</code> (m⋅s⁻¹ or ft⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; fpm(CGS) # cm⋅s⁻¹
 ft⋅3⁻¹5 = 0.508 [cm⋅s⁻¹] Gauss
@@ -488,7 +488,7 @@ LT⁻¹⋅(𝘤⁻¹ft⋅2⋅3⁻¹5⁻¹11 = 1.4911649311738188e-9) [𝘤] Unif
 ft⋅2⋅3⁻¹5⁻¹11 = 0.44704 [m⋅s⁻¹] Metric
 
 julia&gt; mph(KKH) # km⋅h⁻¹
-ft⋅2²3⋅5⁻²11 = 1.6093439999999999 [km⋅h⁻¹] KKH
+ft⋅2²3⋅5⁻²11 = 1.6093440000000003 [km⋅h⁻¹] KKH
 
 julia&gt; mph(Nautical) # nm⋅h⁻¹
 g₀¹ᐟ²ft⋅GME⁻¹ᐟ²τ⁻¹2¹⁰3⁴5³11 = 0.86778915418 ± 8.7e-10 [nm⋅h⁻¹] Nautical</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.knot" href="#MeasureSystems.knot"><code>MeasureSystems.knot</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">knot(U::UnitSystem) = nauticalmile(U)/hour(U)
@@ -524,7 +524,7 @@ L²⋅(R∞²α⁻⁴τ²2⁻²⁶5⁻²⁸ = 0.00067060544436 ± 4.1e-13) [ħ²
 2⁻²⁸5⁻²⁸ = 1.0e-28 [m²] Metric
 
 julia&gt; barn(CGS) # cm²
-2⁻²⁴5⁻²⁴ = 1.0000000000000001e-24 [cm²] Gauss
+2⁻²⁴5⁻²⁴ = 1.0e-24 [cm²] Gauss
 
 julia&gt; barn(English) # ft²
 ft⁻²2⁻²⁸5⁻²⁸ = 1.076391041670972e-27 [ft²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hectare" href="#MeasureSystems.hectare"><code>MeasureSystems.hectare</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">hectare(U::UnitSystem) = area(hecto^2,U,Metric)
@@ -536,7 +536,7 @@ julia&gt; hectare(English) # ft²
 ft⁻²2⁴5⁴ = 107639.1041670972 [ft²] English
 
 julia&gt; hectare(Survey) # ftUS²
-ftUS⁻²2⁴5⁴ = 107638.67361111112 [ft²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.acre" href="#MeasureSystems.acre"><code>MeasureSystems.acre</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">acre(U::UnitSystem) = area(𝟐^4*𝟓^4,U,Metric)
+ftUS⁻²2⁴5⁴ = 107638.67361111114 [ft²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.acre" href="#MeasureSystems.acre"><code>MeasureSystems.acre</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">acre(U::UnitSystem) = area(𝟐^4*𝟓^4,U,Metric)
 area : [L²], [L²], [L²], [L²], [L²]
 L²⋅(R∞²α⁻⁴ft²τ²2⁵3²5⋅11² = 2.7138439494e28 ± 1.7e19) [ħ²𝘤⁻²mₑ⁻²ϕ²g₀²] Unified</code></pre><p>English unit of land <code>area</code> (m² or ft²).</p><pre><code class="language-Julia">julia&gt; acre(Metric) # m²
 ft²2³3²5⋅11² = 4046.8564224 [m²] Metric
@@ -545,7 +545,7 @@ julia&gt; acre(English) # ft²
 2³3²5⋅11² = 43560.0 [ft²] English
 
 julia&gt; acre(Survey) # ftUS²
-ft²ftUS⁻²2³3²5⋅11² = 43559.825760174244 [ft²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.surveyacre" href="#MeasureSystems.surveyacre"><code>MeasureSystems.surveyacre</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">surveyacre(U::UnitSystem) = area(𝟐^3*𝟑^2*𝟓*𝟏𝟏^2,U,Survey)
+ft²ftUS⁻²2³3²5⋅11² = 43559.82576017426 [ft²] Survey</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.surveyacre" href="#MeasureSystems.surveyacre"><code>MeasureSystems.surveyacre</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">surveyacre(U::UnitSystem) = area(𝟐^3*𝟑^2*𝟓*𝟏𝟏^2,U,Survey)
 area : [L²], [L²], [L²], [L²], [L²]
 L²⋅(R∞²α⁻⁴ftUS²τ²2⁵3²5⋅11² = 2.7138548048e28 ± 1.7e19) [ħ²𝘤⁻²mₑ⁻²ϕ²g₀²] Unified</code></pre><p>Survey unit of land <code>area</code> (m² or ft²).</p><pre><code class="language-Julia">julia&gt; surveyacre(Metric) # m²
 ftUS²2³3²5⋅11² = 4046.8726098742513 [m²] Metric
@@ -611,22 +611,22 @@ julia&gt; fluidounce(IPS) # in³
 2⁻⁷3⋅7⋅11 = 1.8046875 [in³] IPS</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.teaspoon" href="#MeasureSystems.teaspoon"><code>MeasureSystems.teaspoon</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">teaspoon(U::UnitSystem) = 𝟓*milli*liter(U)
 volume : [L³], [L³], [L³], [L³], [L³]
 L³⋅(R∞³α⁻⁶τ³2⁻³5⁻⁵ = 8.6830163097e31 ± 8.0e22) [ħ³𝘤⁻³mₑ⁻³ϕ³g₀³] Unified</code></pre><p>Measuring <code>teaspoon</code> unit of <code>volume</code> (m³ or ft³).</p><pre><code class="language-Julia">julia&gt; teaspoon(Metric) # m³
-2⁻⁶5⁻⁵ = 4.9999999999999996e-6 [m³] Metric
+2⁻⁶5⁻⁵ = 5.0e-6 [m³] Metric
 
 julia&gt; teaspoon(CGS) # cm³
 5 = 5.0 [mL] Gauss
 
 julia&gt; teaspoon(IPS) # in³
-ft⁻³3³5⁻⁵ = 0.30511872047366134 [in³] IPS</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.tablespoon" href="#MeasureSystems.tablespoon"><code>MeasureSystems.tablespoon</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">tablespoon(U::UnitSystem) = 𝟑*teaspoon(U)
+ft⁻³3³5⁻⁵ = 0.3051187204736614 [in³] IPS</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.tablespoon" href="#MeasureSystems.tablespoon"><code>MeasureSystems.tablespoon</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">tablespoon(U::UnitSystem) = 𝟑*teaspoon(U)
 volume : [L³], [L³], [L³], [L³], [L³]
 L³⋅(R∞³α⁻⁶τ³2⁻³3⋅5⁻⁵ = 2.6049048929e32 ± 2.4e23) [ħ³𝘤⁻³mₑ⁻³ϕ³g₀³] Unified</code></pre><p>Measuring <code>tablespoon</code> unit of <code>volume</code> (m³ or ft³).</p><pre><code class="language-Julia">julia&gt; tablespoon(Metric) # m³
-2⁻⁶3⋅5⁻⁵ = 1.4999999999999999e-5 [m³] Metric
+2⁻⁶3⋅5⁻⁵ = 1.5000000000000002e-5 [m³] Metric
 
 julia&gt; tablespoon(CGS) # cm³
 3⋅5 = 15.0 [mL] Gauss
 
 julia&gt; tablespoon(IPS) # in³
-ft⁻³3⁴5⁻⁵ = 0.9153561614209841 [in³] IPS</code></pre></div></section></article><h3 id="Mass-Units-1"><a class="docs-heading-anchor" href="#Mass-Units-1">Mass Units</a><a class="docs-heading-anchor-permalink" href="#Mass-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gram" href="#MeasureSystems.gram"><code>MeasureSystems.gram</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">gram(U::UnitSystem) = mass(𝟏,U,Gauss)
+ft⁻³3⁴5⁻⁵ = 0.9153561614209842 [in³] IPS</code></pre></div></section></article><h3 id="Mass-Units-1"><a class="docs-heading-anchor" href="#Mass-Units-1">Mass Units</a><a class="docs-heading-anchor-permalink" href="#Mass-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gram" href="#MeasureSystems.gram"><code>MeasureSystems.gram</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">gram(U::UnitSystem) = mass(𝟏,U,Gauss)
 mass : [M], [FL⁻¹T²], [M], [M], [M]
 M⋅(𝘩⁻¹𝘤⋅R∞⁻¹α²2⁻⁴5⁻³ = 1.09776910575e27 ± 3.4e17) [mₑ] Unified</code></pre><p>Metric <code>gram</code> unit of <code>mass</code> (kg or lb).</p><pre><code class="language-Julia">julia&gt; gram(Metric) # kg
 2⁻³5⁻³ = 0.001 [kg] Metric
@@ -791,19 +791,19 @@ julia&gt; hyl(GravitationalMetric) # hyl
 𝟏 = 1.0 [hyl] GravitationalMetric</code></pre></div></section></article><h3 id="Force-Units-1"><a class="docs-heading-anchor" href="#Force-Units-1">Force Units</a><a class="docs-heading-anchor-permalink" href="#Force-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.dyne" href="#MeasureSystems.dyne"><code>MeasureSystems.dyne</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">dyne(U::UnitSystem) = force(𝟏,U,Gauss)
 force : [F], [F], [MLT⁻²], [MLT⁻²], [MLT⁻²]
 F⋅(𝘩⁻¹𝘤⁻¹R∞⁻²α⁴τ⁻¹2⁻⁷5⁻⁵ = 4.7166761794e-5 ± 2.9e-14) [ħ⁻¹𝘤³mₑ²ϕ⁻¹g₀⁻²] Unified</code></pre><p>Historical <code>dyne</code> unit of <code>force</code> (N or lb).</p><pre><code class="language-Julia">julia&gt; dyne(Metric) # N
-2⁻⁵5⁻⁵ = 9.999999999999999e-6 [N] Metric
+2⁻⁵5⁻⁵ = 1.0e-5 [N] Metric
 
 julia&gt; dyne(CGS) # dyn
 𝟏 = 1.0 [dyn] Gauss
 
 julia&gt; dyne(English) # lb
-g₀⁻¹lb⁻¹2⁻⁵5⁻⁵ = 2.2480894309971044e-6 [lbf] English
+g₀⁻¹lb⁻¹2⁻⁵5⁻⁵ = 2.248089430997105e-6 [lbf] English
 
 julia&gt; dyne(FPS) # pdl
 ft⁻¹lb⁻¹2⁻⁵5⁻⁵ = 7.233013851209893e-5 [pdl] FPS
 
 julia&gt; dyne(MetricEngineering) # kp
-g₀⁻¹2⁻⁵5⁻⁵ = 1.0197162129779282e-6 [kgf] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.newton" href="#MeasureSystems.newton"><code>MeasureSystems.newton</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">newton(U::UnitSystem) = force(𝟏,U,Metric)
+g₀⁻¹2⁻⁵5⁻⁵ = 1.0197162129779284e-6 [kgf] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.newton" href="#MeasureSystems.newton"><code>MeasureSystems.newton</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">newton(U::UnitSystem) = force(𝟏,U,Metric)
 force : [F], [F], [MLT⁻²], [MLT⁻²], [MLT⁻²]
 F⋅(𝘩⁻¹𝘤⁻¹R∞⁻²α⁴τ⁻¹2⁻² = 4.7166761794 ± 2.9e-9) [ħ⁻¹𝘤³mₑ²ϕ⁻¹g₀⁻²] Unified</code></pre><p>Metric <code>newton</code> unit of <code>force</code> (N or lb).</p><pre><code class="language-Julia">julia&gt; newton(Metric) # N
 𝟏 = 1.0 [N] Metric
@@ -848,7 +848,9 @@ julia&gt; poundforce(FPS) # pdl
 g₀⋅ft⁻¹ = 32.17404855643044 [pdl] FPS
 
 julia&gt; poundforce(MetricEngineering) # kp
-lb = 0.45359237 [kgf] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kilopond" href="#MeasureSystems.kilopond"><code>MeasureSystems.kilopond</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-julia">kilopond(U::UnitSystem) = force(𝟏,U,MetricEngineering)</code></pre><p>Gravitational <code>kilopond</code> unit of <code>force</code> used in engineering systems (N or lb).</p><pre><code class="language-Julia">julia&gt; kilopond(Metric) # N
+lb = 0.45359237 [kgf] MetricEngineering</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kilopond" href="#MeasureSystems.kilopond"><code>MeasureSystems.kilopond</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">kilopond(U::UnitSystem) = force(𝟏,U,MetricEngineering)
+force : [F], [F], [MLT⁻²], [MLT⁻²], [MLT⁻²]
+F⋅(𝘩⁻¹𝘤⁻¹R∞⁻²α⁴g₀⋅τ⁻¹2⁻² = 46.254792454 ± 2.8e-8) [ħ⁻¹𝘤³mₑ²ϕ⁻¹g₀⁻²] Unified</code></pre><p>Gravitational <code>kilopond</code> unit of <code>force</code> used in engineering systems (N or lb).</p><pre><code class="language-Julia">julia&gt; kilopond(Metric) # N
 g₀ = 9.80665 [N] Metric
 
 julia&gt; kilopond(CGS) # dyn
@@ -936,13 +938,13 @@ julia&gt; torr(IPS) # lb⋅in⁻²
 g₀⁻¹ft²lb⁻¹atm⋅2⁻⁷3⁻²5⁻¹19⁻¹ = 0.01933677470462296 [lb⋅in⁻²] IPS</code></pre></div></section></article><h3 id="Energy-Units-1"><a class="docs-heading-anchor" href="#Energy-Units-1">Energy Units</a><a class="docs-heading-anchor-permalink" href="#Energy-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.erg" href="#MeasureSystems.erg"><code>MeasureSystems.erg</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">erg(U::UnitSystem) = energy(𝟏,U,Gauss)
 energy : [FL], [FL], [ML²T⁻²], [ML²T⁻²], [ML²T⁻²]
 FL⋅(𝘩⁻¹𝘤⁻¹R∞⁻¹α²2⁻⁸5⁻⁷ = 1.22143285705e6 ± 0.00037) [𝘤²mₑ⋅g₀⁻¹] Unified</code></pre><p>Historical unit of <code>energy</code> (J or lb⋅ft).</p><pre><code class="language-Julia">julia&gt; erg(Metric) # J
-2⁻⁷5⁻⁷ = 1.0e-7 [J] Metric
+2⁻⁷5⁻⁷ = 1.0000000000000001e-7 [J] Metric
 
 julia&gt; erg(CGS) # erg
 𝟏 = 1.0 [erg] Gauss
 
 julia&gt; erg(British) # lb⋅ft
-g₀⁻¹ft⁻¹lb⁻¹2⁻⁷5⁻⁷ = 7.375621492772652e-8 [lb⋅ft] British</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.joule" href="#MeasureSystems.joule"><code>MeasureSystems.joule</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">joule(U::UnitSystem) = energy(𝟏,U,Metric)
+g₀⁻¹ft⁻¹lb⁻¹2⁻⁷5⁻⁷ = 7.375621492772653e-8 [lb⋅ft] British</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.joule" href="#MeasureSystems.joule"><code>MeasureSystems.joule</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">joule(U::UnitSystem) = energy(𝟏,U,Metric)
 energy : [FL], [FL], [ML²T⁻²], [ML²T⁻²], [ML²T⁻²]
 FL⋅(𝘩⁻¹𝘤⁻¹R∞⁻¹α²2⁻¹ = 1.22143285705e13 ± 3700.0) [𝘤²mₑ⋅g₀⁻¹] Unified</code></pre><p>Metric unit of <code>energy</code> (J or lb⋅ft).</p><pre><code class="language-Julia">julia&gt; joule(Metric) # J
 𝟏 = 1.0 [J] Metric
@@ -1102,7 +1104,7 @@ lb⋅Ωᵢₜ⁻¹Vᵢₜ²2⋅3⁻²5⁵43⁻¹⋅1339 = 9810.407209099902 [W] 
 
 julia&gt; boilerhorsepower(MetricEngineering) # kgf⋅m⋅s⁻¹
 g₀⁻¹lb⋅Ωᵢₜ⁻¹Vᵢₜ²2⋅3⁻²5⁵43⁻¹⋅1339 = 1000.3831287034718 [kgf⋅m⋅s⁻¹] MetricEngineering</code></pre></div></section></article><h2 id="Electromagnetic-Units-1"><a class="docs-heading-anchor" href="#Electromagnetic-Units-1">Electromagnetic Units</a><a class="docs-heading-anchor-permalink" href="#Electromagnetic-Units-1" title="Permalink"></a></h2><h3 id="Charge-Units-1"><a class="docs-heading-anchor" href="#Charge-Units-1">Charge Units</a><a class="docs-heading-anchor-permalink" href="#Charge-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.coulomb" href="#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">coulomb(U::UnitSystem) = charge(𝟏,U,Metric)
-charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L³ᐟ²T⁻¹]
+charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L¹⋅⁵T⁻¹]
 Q⋅(𝘩⁻¹ᐟ²𝘤¹ᐟ²τ⋅2⁻³5⁻⁷ᐟ² = 1.890067014853257e18) [ħ¹ᐟ²𝘤⁻¹ᐟ²μ₀⁻¹ᐟ²ϕ¹ᐟ²λ⁻¹ᐟ²αL⁻¹] Unified</code></pre><p>Metric unit of <code>charge</code> (C).</p><pre><code class="language-Julia">julia&gt; coulomb(Metric) # C
 𝟏 = 1.0 [C] Metric
 
@@ -1110,8 +1112,8 @@ julia&gt; coulomb(EMU) # abC
 2⁻¹5⁻¹ = 0.1 [g¹ᐟ²cm¹ᐟ²] EMU
 
 julia&gt; coulomb(ESU) # statC
-𝘤⋅2⋅5 = 2.99792458e9 [g¹ᐟ²cm³ᐟ²s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.earthcoulomb" href="#MeasureSystems.earthcoulomb"><code>MeasureSystems.earthcoulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">earthcoulomb(U::UnitSystem) = charge(𝟏,U,Meridian)
-charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L³ᐟ²T⁻¹]
+𝘤⋅2⋅5 = 2.99792458e9 [g¹ᐟ²cm¹⋅⁵s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.earthcoulomb" href="#MeasureSystems.earthcoulomb"><code>MeasureSystems.earthcoulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">earthcoulomb(U::UnitSystem) = charge(𝟏,U,Meridian)
+charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L¹⋅⁵T⁻¹]
 Q⋅(𝘩⁻¹ᐟ²𝘤¹ᐟ²g₀⁻¹GME⋅τ³2⁻²¹5⁻³⁵ᐟ² = 1.8955448174e18 ± 3.8e9) [ħ¹ᐟ²𝘤⁻¹ᐟ²μ₀⁻¹ᐟ²ϕ¹ᐟ²λ⁻¹ᐟ²αL⁻¹] Unified</code></pre><p>Meridian unit of <code>charge</code> (C).</p><pre><code class="language-Julia">julia&gt; earthcoulomb(Metric) # C
 g₀⁻¹GME⋅τ²2⁻¹⁸5⁻¹⁴ = 1.0028982055 ± 2.0e-9 [C] Metric
 
@@ -1119,8 +1121,8 @@ julia&gt; earthcoulomb(EMU) # abC
 g₀⁻¹GME⋅τ²2⁻¹⁹5⁻¹⁵ = 0.10028982055 ± 2.0e-10 [g¹ᐟ²cm¹ᐟ²] EMU
 
 julia&gt; earthcoulomb(ESU) # statC
-𝘤⋅g₀⁻¹GME⋅τ²2⁻¹⁷5⁻¹³ = 3.0066131814e9 ± 6.0 [g¹ᐟ²cm³ᐟ²s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abcoulomb" href="#MeasureSystems.abcoulomb"><code>MeasureSystems.abcoulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abcoulomb(U::UnitSystem) = charge(𝟏,U,EMU)
-charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L³ᐟ²T⁻¹]
+𝘤⋅g₀⁻¹GME⋅τ²2⁻¹⁷5⁻¹³ = 3.0066131814e9 ± 6.0 [g¹ᐟ²cm¹⋅⁵s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abcoulomb" href="#MeasureSystems.abcoulomb"><code>MeasureSystems.abcoulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abcoulomb(U::UnitSystem) = charge(𝟏,U,EMU)
+charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L¹⋅⁵T⁻¹]
 Q⋅(𝘩⁻¹ᐟ²𝘤¹ᐟ²τ⋅2⁻²5⁻⁵ᐟ² = 1.8900670148532572e19) [ħ¹ᐟ²𝘤⁻¹ᐟ²μ₀⁻¹ᐟ²ϕ¹ᐟ²λ⁻¹ᐟ²αL⁻¹] Unified</code></pre><p>Electromagnetic unit of <code>charge</code> (C).</p><pre><code class="language-Julia">julia&gt; abcoulomb(Metric) # C
 2⋅5 = 10.0 [C] Metric
 
@@ -1128,17 +1130,17 @@ julia&gt; abcoulomb(EMU) # abC
 𝟏 = 1.0 [g¹ᐟ²cm¹ᐟ²] EMU
 
 julia&gt; abcoulomb(ESU) # statC
-𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm³ᐟ²s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statcoulomb" href="#MeasureSystems.statcoulomb"><code>MeasureSystems.statcoulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statcoulomb(U::UnitSystem) = charge(𝟏,U,ESU)
-charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L³ᐟ²T⁻¹]
+𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm¹⋅⁵s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statcoulomb" href="#MeasureSystems.statcoulomb"><code>MeasureSystems.statcoulomb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statcoulomb(U::UnitSystem) = charge(𝟏,U,ESU)
+charge : [Q], [Q], [Q], [M¹ᐟ²L¹ᐟ²], [M¹ᐟ²L¹⋅⁵T⁻¹]
 Q⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²τ⋅2⁻⁴5⁻⁹ᐟ² = 6.304584936733987e8) [ħ¹ᐟ²𝘤⁻¹ᐟ²μ₀⁻¹ᐟ²ϕ¹ᐟ²λ⁻¹ᐟ²αL⁻¹] Unified</code></pre><p>Electrostatic unit of <code>charge</code> (C).</p><pre><code class="language-Julia">julia&gt; statcoulomb(Metric) # C
 𝘤⁻¹2⁻¹5⁻¹ = 3.3356409519815207e-10 [C] Metric
 
 julia&gt; statcoulomb(EMU) # abC
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [g¹ᐟ²cm¹ᐟ²] EMU
+𝘤⁻¹2⁻²5⁻² = 3.335640951981521e-11 [g¹ᐟ²cm¹ᐟ²] EMU
 
 julia&gt; statcoulomb(ESU) # statC
-𝟏 = 1.0 [g¹ᐟ²cm³ᐟ²s⁻¹] ESU</code></pre></div></section></article><h3 id="Current-Units-1"><a class="docs-heading-anchor" href="#Current-Units-1">Current Units</a><a class="docs-heading-anchor-permalink" href="#Current-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.ampere" href="#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">ampere(U::UnitSystem) = current(𝟏,U,Metric)
-current : [T⁻¹Q], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L³ᐟ²T⁻²]
+𝟏 = 1.0 [g¹ᐟ²cm¹⋅⁵s⁻¹] ESU</code></pre></div></section></article><h3 id="Current-Units-1"><a class="docs-heading-anchor" href="#Current-Units-1">Current Units</a><a class="docs-heading-anchor-permalink" href="#Current-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.ampere" href="#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">ampere(U::UnitSystem) = current(𝟏,U,Metric)
+current : [T⁻¹Q], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²]
 T⁻¹Q⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻¹α²2⁻⁴5⁻⁷ᐟ² = 0.00243457390395 ± 7.5e-13) [ħ⁻¹ᐟ²𝘤³ᐟ²μ₀⁻¹ᐟ²mₑ⋅ϕ⁻¹ᐟ²λ⁻¹ᐟ²αL⁻¹g₀⁻¹] Unified</code></pre><p>Metric unit of <code>current</code> (C⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; ampere(Metric) # C⋅s⁻¹
 𝟏 = 1.0 [s⁻¹C] Metric
 
@@ -1146,8 +1148,8 @@ julia&gt; ampere(EMU) # abC⋅s⁻¹
 2⁻¹5⁻¹ = 0.1 [Mx⋅cm⁻¹] EMU
 
 julia&gt; ampere(ESU) # statC⋅s⁻¹
-𝘤⋅2⋅5 = 2.99792458e9 [g¹ᐟ²cm³ᐟ²s⁻²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abampere" href="#MeasureSystems.abampere"><code>MeasureSystems.abampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abampere(U::UnitSystem) = current(𝟏,U,EMU)
-current : [T⁻¹Q], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L³ᐟ²T⁻²]
+𝘤⋅2⋅5 = 2.99792458e9 [g¹ᐟ²cm¹⋅⁵s⁻²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abampere" href="#MeasureSystems.abampere"><code>MeasureSystems.abampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abampere(U::UnitSystem) = current(𝟏,U,EMU)
+current : [T⁻¹Q], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²]
 T⁻¹Q⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻¹α²2⁻³5⁻⁵ᐟ² = 0.0243457390395 ± 7.5e-12) [ħ⁻¹ᐟ²𝘤³ᐟ²μ₀⁻¹ᐟ²mₑ⋅ϕ⁻¹ᐟ²λ⁻¹ᐟ²αL⁻¹g₀⁻¹] Unified</code></pre><p>Electromagnetic unit of <code>current</code> (C⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; abampere(Metric) # C⋅s⁻¹
 2⋅5 = 10.0 [s⁻¹C] Metric
 
@@ -1155,40 +1157,40 @@ julia&gt; abampere(EMU) # abC⋅s⁻¹
 𝟏 = 1.0 [Mx⋅cm⁻¹] EMU
 
 julia&gt; abampere(ESU) # statC⋅s⁻¹
-𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm³ᐟ²s⁻²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statampere" href="#MeasureSystems.statampere"><code>MeasureSystems.statampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statampere(U::UnitSystem) = current(𝟏,U,ESU)
-current : [T⁻¹Q], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L³ᐟ²T⁻²]
+𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm¹⋅⁵s⁻²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statampere" href="#MeasureSystems.statampere"><code>MeasureSystems.statampere</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statampere(U::UnitSystem) = current(𝟏,U,ESU)
+current : [T⁻¹Q], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²]
 T⁻¹Q⋅(𝘩⁻¹ᐟ²𝘤⁻³ᐟ²R∞⁻¹α²2⁻⁵5⁻⁹ᐟ² = 8.1208644146e-13 ± 2.5000000000000002e-22) [ħ⁻¹ᐟ²𝘤³ᐟ²μ₀⁻¹ᐟ²mₑ⋅ϕ⁻¹ᐟ²λ⁻¹ᐟ²αL⁻¹g₀⁻¹] Unified</code></pre><p>Electrostatic unit of <code>current</code> (C⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; statampere(Metric) # C⋅s⁻¹
 𝘤⁻¹2⁻¹5⁻¹ = 3.3356409519815207e-10 [s⁻¹C] Metric
 
 julia&gt; statampere(EMU) # abC⋅s⁻¹
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [Mx⋅cm⁻¹] EMU
+𝘤⁻¹2⁻²5⁻² = 3.335640951981521e-11 [Mx⋅cm⁻¹] EMU
 
 julia&gt; statampere(ESU) # statC⋅s⁻¹
-𝟏 = 1.0 [g¹ᐟ²cm³ᐟ²s⁻²] ESU</code></pre></div></section></article><h3 id="Electromotive-Units-1"><a class="docs-heading-anchor" href="#Electromotive-Units-1">Electromotive Units</a><a class="docs-heading-anchor-permalink" href="#Electromotive-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.volt" href="#MeasureSystems.volt"><code>MeasureSystems.volt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">volt(U::UnitSystem) = electricpotential(𝟏,U,Metric)
-electricpotential : [FLQ⁻¹], [FLQ⁻¹], [ML²T⁻²Q⁻¹], [M¹ᐟ²L³ᐟ²T⁻²], [M¹ᐟ²L¹ᐟ²T⁻¹]
+𝟏 = 1.0 [g¹ᐟ²cm¹⋅⁵s⁻²] ESU</code></pre></div></section></article><h3 id="Electromotive-Units-1"><a class="docs-heading-anchor" href="#Electromotive-Units-1">Electromotive Units</a><a class="docs-heading-anchor-permalink" href="#Electromotive-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.volt" href="#MeasureSystems.volt"><code>MeasureSystems.volt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">volt(U::UnitSystem) = electricpotential(𝟏,U,Metric)
+electricpotential : [FLQ⁻¹], [FLQ⁻¹], [ML²T⁻²Q⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²], [M¹ᐟ²L¹ᐟ²T⁻¹]
 FLQ⁻¹⋅(𝘩⁻¹ᐟ²𝘤⁻³ᐟ²R∞⁻¹α²τ⁻¹2²5⁷ᐟ² = 6.4623785688e-6 ± 2.0e-15) [ħ⁻¹ᐟ²𝘤⁵ᐟ²μ₀¹ᐟ²mₑ⋅ϕ⁻¹ᐟ²λ¹ᐟ²αL⋅g₀⁻¹] Unified</code></pre><p>Metric unit of <code>electricpotential</code> (V).</p><pre><code class="language-Julia">julia&gt; volt(Metric) # V
 𝟏 = 1.0 [V] Metric
 
 julia&gt; volt(EMU) # abV
-2⁸5⁸ = 1.0e8 [g¹ᐟ²cm³ᐟ²s⁻²] EMU
+2⁸5⁸ = 1.0e8 [g¹ᐟ²cm¹⋅⁵s⁻²] EMU
 
 julia&gt; volt(ESU) # statV
 𝘤⁻¹2⁶5⁶ = 0.0033356409519815205 [g¹ᐟ²cm¹ᐟ²s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abvolt" href="#MeasureSystems.abvolt"><code>MeasureSystems.abvolt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abvolt(U::UnitSystem) = electricpotential(𝟏,U,EMU)
-electricpotential : [FLQ⁻¹], [FLQ⁻¹], [ML²T⁻²Q⁻¹], [M¹ᐟ²L³ᐟ²T⁻²], [M¹ᐟ²L¹ᐟ²T⁻¹]
+electricpotential : [FLQ⁻¹], [FLQ⁻¹], [ML²T⁻²Q⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²], [M¹ᐟ²L¹ᐟ²T⁻¹]
 FLQ⁻¹⋅(𝘩⁻¹ᐟ²𝘤⁻³ᐟ²R∞⁻¹α²τ⁻¹2⁻⁶5⁻⁹ᐟ² = 6.4623785688e-14 ± 2.0e-23) [ħ⁻¹ᐟ²𝘤⁵ᐟ²μ₀¹ᐟ²mₑ⋅ϕ⁻¹ᐟ²λ¹ᐟ²αL⋅g₀⁻¹] Unified</code></pre><p>Electromagnetic unit of <code>electricpotential</code> (V).</p><pre><code class="language-Julia">julia&gt; abvolt(Metric) # V
 2⁻⁸5⁻⁸ = 1.0e-8 [V] Metric
 
 julia&gt; abvolt(EMU) # abV
-𝟏 = 1.0 [g¹ᐟ²cm³ᐟ²s⁻²] EMU
+𝟏 = 1.0 [g¹ᐟ²cm¹⋅⁵s⁻²] EMU
 
 julia&gt; abvolt(ESU) # statV
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [g¹ᐟ²cm¹ᐟ²s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statvolt" href="#MeasureSystems.statvolt"><code>MeasureSystems.statvolt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statvolt(U::UnitSystem) = electricpotential(𝟏,U,ESU)
-electricpotential : [FLQ⁻¹], [FLQ⁻¹], [ML²T⁻²Q⁻¹], [M¹ᐟ²L³ᐟ²T⁻²], [M¹ᐟ²L¹ᐟ²T⁻¹]
+𝘤⁻¹2⁻²5⁻² = 3.335640951981521e-11 [g¹ᐟ²cm¹ᐟ²s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statvolt" href="#MeasureSystems.statvolt"><code>MeasureSystems.statvolt</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statvolt(U::UnitSystem) = electricpotential(𝟏,U,ESU)
+electricpotential : [FLQ⁻¹], [FLQ⁻¹], [ML²T⁻²Q⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²], [M¹ᐟ²L¹ᐟ²T⁻¹]
 FLQ⁻¹⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻¹α²τ⁻¹2⁻⁴5⁻⁵ᐟ² = 0.00193737235568 ± 5.9e-13) [ħ⁻¹ᐟ²𝘤⁵ᐟ²μ₀¹ᐟ²mₑ⋅ϕ⁻¹ᐟ²λ¹ᐟ²αL⋅g₀⁻¹] Unified</code></pre><p>Electrostatic unit of <code>electricpotential</code> (V).</p><pre><code class="language-Julia">julia&gt; statvolt(Metric) # V
 𝘤⋅2⁻⁶5⁻⁶ = 299.792458 [V] Metric
 
 julia&gt; statvolt(EMU) # abV
-𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm³ᐟ²s⁻²] EMU
+𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm¹⋅⁵s⁻²] EMU
 
 julia&gt; statvolt(ESU) # statV
 𝟏 = 1.0 [g¹ᐟ²cm¹ᐟ²s⁻¹] ESU</code></pre></div></section></article><h3 id="Inductance-Units-1"><a class="docs-heading-anchor" href="#Inductance-Units-1">Inductance Units</a><a class="docs-heading-anchor-permalink" href="#Inductance-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.henry" href="#MeasureSystems.henry"><code>MeasureSystems.henry</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">henry(U::UnitSystem) = inductance(𝟏,U,Metric)
@@ -1200,7 +1202,7 @@ julia&gt; henry(EMU) # abH
 2⁹5⁹ = 1.0e9 [cm] EMU
 
 julia&gt; henry(ESU) # statH
-𝘤⁻²2⁵5⁵ = 1.1126500560536185e-12 [cm⁻¹s²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abhenry" href="#MeasureSystems.abhenry"><code>MeasureSystems.abhenry</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abhenry(U::UnitSystem) = inductance(𝟏,U,EMU)
+𝘤⁻²2⁵5⁵ = 1.1126500560536183e-12 [cm⁻¹s²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abhenry" href="#MeasureSystems.abhenry"><code>MeasureSystems.abhenry</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abhenry(U::UnitSystem) = inductance(𝟏,U,EMU)
 inductance : [FLT²Q⁻²], [FLT²Q⁻²], [ML²Q⁻²], [L], [L⁻¹T²]
 FLT²Q⁻²⋅(R∞⋅α⁻²2⁻²5⁻² = 2.06074224158e9 ± 0.63) [ħ⋅𝘤⁻¹μ₀⋅mₑ⁻¹ϕ⋅λ⋅αL²g₀] Unified</code></pre><p>Electromagnetic unit of <code>inductance</code> (H).</p><pre><code class="language-Julia">julia&gt; abhenry(Metric) # H
 2⁻⁹5⁻⁹ = 1.0e-9 [H] Metric
@@ -1209,10 +1211,10 @@ julia&gt; abhenry(EMU) # abH
 𝟏 = 1.0 [cm] EMU
 
 julia&gt; abhenry(ESU) # statH
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻¹s²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stathenry" href="#MeasureSystems.stathenry"><code>MeasureSystems.stathenry</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">stathenry(U::UnitSystem) = inductance(𝟏,U,ESU)
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536184e-21 [cm⁻¹s²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stathenry" href="#MeasureSystems.stathenry"><code>MeasureSystems.stathenry</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">stathenry(U::UnitSystem) = inductance(𝟏,U,ESU)
 inductance : [FLT²Q⁻²], [FLT²Q⁻²], [ML²Q⁻²], [L], [L⁻¹T²]
 FLT²Q⁻²⋅(𝘤²R∞⋅α⁻²2²5² = 1.85210276166e30 ± 5.7e20) [ħ⋅𝘤⁻¹μ₀⋅mₑ⁻¹ϕ⋅λ⋅αL²g₀] Unified</code></pre><p>Electrostatic unit of <code>inductance</code> (H).</p><pre><code class="language-Julia">julia&gt; stathenry(Metric) # H
-𝘤²2⁻⁵5⁻⁵ = 8.987551787368175e11 [H] Metric
+𝘤²2⁻⁵5⁻⁵ = 8.987551787368176e11 [H] Metric
 
 julia&gt; stathenry(EMU) # abH
 𝘤²2⁴5⁴ = 8.987551787368175e20 [cm] EMU
@@ -1227,19 +1229,19 @@ julia&gt; ohm(EMU) # abΩ
 2⁹5⁹ = 1.0e9 [cm⋅s⁻¹] EMU
 
 julia&gt; ohm(ESU) # statΩ
-𝘤⁻²2⁵5⁵ = 1.1126500560536185e-12 [cm⁻¹s] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abohm" href="#MeasureSystems.abohm"><code>MeasureSystems.abohm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abohm(U::UnitSystem) = resistance(𝟏,U,EMU)
+𝘤⁻²2⁵5⁵ = 1.1126500560536183e-12 [cm⁻¹s] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abohm" href="#MeasureSystems.abohm"><code>MeasureSystems.abohm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abohm(U::UnitSystem) = resistance(𝟏,U,EMU)
 resistance : [FLTQ⁻²], [FLTQ⁻²], [ML²T⁻¹Q⁻²], [LT⁻¹], [L⁻¹T]
-FLTQ⁻²⋅(𝘤⁻¹τ⁻¹2⁻³5⁻² = 2.6544187294380724e-12) [𝘤⋅μ₀⋅λ⋅αL²] Unified</code></pre><p>Electromagnetic unit of <code>resistance</code> (Ω).</p><pre><code class="language-Julia">julia&gt; abohm(Metric) # Ω
+FLTQ⁻²⋅(𝘤⁻¹τ⁻¹2⁻³5⁻² = 2.654418729438073e-12) [𝘤⋅μ₀⋅λ⋅αL²] Unified</code></pre><p>Electromagnetic unit of <code>resistance</code> (Ω).</p><pre><code class="language-Julia">julia&gt; abohm(Metric) # Ω
 2⁻⁹5⁻⁹ = 1.0e-9 [Ω] Metric
 
 julia&gt; abohm(EMU) # abΩ
 𝟏 = 1.0 [cm⋅s⁻¹] EMU
 
 julia&gt; abohm(ESU) # statΩ
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻¹s] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statohm" href="#MeasureSystems.statohm"><code>MeasureSystems.statohm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statohm(U::UnitSystem) = resistance(𝟏,U,ESU)
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536184e-21 [cm⁻¹s] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statohm" href="#MeasureSystems.statohm"><code>MeasureSystems.statohm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statohm(U::UnitSystem) = resistance(𝟏,U,ESU)
 resistance : [FLTQ⁻²], [FLTQ⁻²], [ML²T⁻¹Q⁻²], [LT⁻¹], [L⁻¹T]
 FLTQ⁻²⋅(𝘤⋅τ⁻¹2⋅5² = 2.385672579618471e9) [𝘤⋅μ₀⋅λ⋅αL²] Unified</code></pre><p>Electrostatic unit of <code>resistance</code> (Ω).</p><pre><code class="language-Julia">julia&gt; statohm(Metric) # Ω
-𝘤²2⁻⁵5⁻⁵ = 8.987551787368175e11 [Ω] Metric
+𝘤²2⁻⁵5⁻⁵ = 8.987551787368176e11 [Ω] Metric
 
 julia&gt; statohm(EMU) # abΩ
 𝘤²2⁴5⁴ = 8.987551787368175e20 [cm⋅s⁻¹] EMU
@@ -1247,14 +1249,14 @@ julia&gt; statohm(EMU) # abΩ
 julia&gt; statohm(ESU) # statΩ
 𝟏 = 1.0 [cm⁻¹s] ESU</code></pre></div></section></article><h3 id="Conductance-Units-1"><a class="docs-heading-anchor" href="#Conductance-Units-1">Conductance Units</a><a class="docs-heading-anchor-permalink" href="#Conductance-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.siemens" href="#MeasureSystems.siemens"><code>MeasureSystems.siemens</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">siemens(U::UnitSystem) = conductance(𝟏,U,Metric)
 conductance : [F⁻¹L⁻¹T⁻¹Q²], [F⁻¹L⁻¹T⁻¹Q²], [M⁻¹L⁻²TQ²], [L⁻¹T], [LT⁻¹]
-F⁻¹L⁻¹T⁻¹Q²⋅(𝘤⋅τ⋅2⁻⁶5⁻⁷ = 376.7303134617706) [𝘤⁻¹μ₀⁻¹λ⁻¹αL⁻²] Unified</code></pre><p>Metric unit of <code>conductance</code> (S).</p><pre><code class="language-Julia">julia&gt; siemens(Metric) # S
+F⁻¹L⁻¹T⁻¹Q²⋅(𝘤⋅τ⋅2⁻⁶5⁻⁷ = 376.73031346177066) [𝘤⁻¹μ₀⁻¹λ⁻¹αL⁻²] Unified</code></pre><p>Metric unit of <code>conductance</code> (S).</p><pre><code class="language-Julia">julia&gt; siemens(Metric) # S
 𝟏 = 1.0 [S] Metric
 
 julia&gt; siemens(EMU) # abS
 2⁻⁹5⁻⁹ = 1.0e-9 [cm⁻¹s] EMU
 
 julia&gt; siemens(ESU) # statS
-𝘤²2⁻⁵5⁻⁵ = 8.987551787368175e11 [cm⋅s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abmho" href="#MeasureSystems.abmho"><code>MeasureSystems.abmho</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abmho(U::UnitSystem) = conductance(𝟏,U,EMU)
+𝘤²2⁻⁵5⁻⁵ = 8.987551787368176e11 [cm⋅s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abmho" href="#MeasureSystems.abmho"><code>MeasureSystems.abmho</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abmho(U::UnitSystem) = conductance(𝟏,U,EMU)
 conductance : [F⁻¹L⁻¹T⁻¹Q²], [F⁻¹L⁻¹T⁻¹Q²], [M⁻¹L⁻²TQ²], [L⁻¹T], [LT⁻¹]
 F⁻¹L⁻¹T⁻¹Q²⋅(𝘤⋅τ⋅2³5² = 3.767303134617706e11) [𝘤⁻¹μ₀⁻¹λ⁻¹αL⁻²] Unified</code></pre><p>Electromagnetic unit of <code>conductance</code> (S).</p><pre><code class="language-Julia">julia&gt; abmho(Metric) # S
 2⁹5⁹ = 1.0e9 [S] Metric
@@ -1265,11 +1267,11 @@ julia&gt; abmho(EMU) # abS
 julia&gt; abmho(ESU) # statS
 𝘤²2⁴5⁴ = 8.987551787368175e20 [cm⋅s⁻¹] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statmho" href="#MeasureSystems.statmho"><code>MeasureSystems.statmho</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statmho(U::UnitSystem) = conductance(𝟏,U,ESU)
 conductance : [F⁻¹L⁻¹T⁻¹Q²], [F⁻¹L⁻¹T⁻¹Q²], [M⁻¹L⁻²TQ²], [L⁻¹T], [LT⁻¹]
-F⁻¹L⁻¹T⁻¹Q²⋅(𝘤⁻¹τ⋅2⁻¹5⁻² = 4.191690043903363e-10) [𝘤⁻¹μ₀⁻¹λ⁻¹αL⁻²] Unified</code></pre><p>Electrostatic unit of <code>conductance</code> (S).</p><pre><code class="language-Julia">julia&gt; statmho(Metric) # S
-𝘤⁻²2⁵5⁵ = 1.1126500560536185e-12 [S] Metric
+F⁻¹L⁻¹T⁻¹Q²⋅(𝘤⁻¹τ⋅2⁻¹5⁻² = 4.1916900439033643e-10) [𝘤⁻¹μ₀⁻¹λ⁻¹αL⁻²] Unified</code></pre><p>Electrostatic unit of <code>conductance</code> (S).</p><pre><code class="language-Julia">julia&gt; statmho(Metric) # S
+𝘤⁻²2⁵5⁵ = 1.1126500560536183e-12 [S] Metric
 
 julia&gt; statmho(EMU) # abS
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻¹s] EMU
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536184e-21 [cm⁻¹s] EMU
 
 julia&gt; statmho(ESU) # statS
 𝟏 = 1.0 [cm⋅s⁻¹] ESU</code></pre></div></section></article><h3 id="Capacitance-Units-1"><a class="docs-heading-anchor" href="#Capacitance-Units-1">Capacitance Units</a><a class="docs-heading-anchor-permalink" href="#Capacitance-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.farad" href="#MeasureSystems.farad"><code>MeasureSystems.farad</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">farad(U::UnitSystem) = capacitance(𝟏,U,Metric)
@@ -1281,7 +1283,7 @@ julia&gt; farad(EMU) # abF
 2⁻⁹5⁻⁹ = 1.0e-9 [cm⁻¹s²] EMU
 
 julia&gt; farad(ESU) # statF
-𝘤²2⁻⁵5⁻⁵ = 8.987551787368175e11 [cm] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abfarad" href="#MeasureSystems.abfarad"><code>MeasureSystems.abfarad</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abfarad(U::UnitSystem) = capacitance(𝟏,U,EMU)
+𝘤²2⁻⁵5⁻⁵ = 8.987551787368176e11 [cm] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.abfarad" href="#MeasureSystems.abfarad"><code>MeasureSystems.abfarad</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">abfarad(U::UnitSystem) = capacitance(𝟏,U,EMU)
 capacitance : [F⁻¹L⁻¹Q²], [F⁻¹L⁻¹Q²], [M⁻¹L⁻²T²Q²], [L⁻¹T²], [L]
 F⁻¹L⁻¹Q²⋅(𝘤²R∞⋅α⁻²τ²2⁴5² = 2.92472345084e32 ± 9.0e22) [ħ⋅𝘤⁻³μ₀⁻¹mₑ⁻¹ϕ⋅λ⁻¹αL⁻²g₀] Unified</code></pre><p>Electromagnetic unit of <code>capacitance</code> (F).</p><pre><code class="language-Julia">julia&gt; abfarad(Metric) # F
 2⁹5⁹ = 1.0e9 [F] Metric
@@ -1293,14 +1295,14 @@ julia&gt; abfarad(ESU) # statF
 𝘤²2⁴5⁴ = 8.987551787368175e20 [cm] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statfarad" href="#MeasureSystems.statfarad"><code>MeasureSystems.statfarad</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statfarad(U::UnitSystem) = capacitance(𝟏,U,ESU)
 capacitance : [F⁻¹L⁻¹Q²], [F⁻¹L⁻¹Q²], [M⁻¹L⁻²T²Q²], [L⁻¹T²], [L]
 F⁻¹L⁻¹Q²⋅(R∞⋅α⁻²τ²5⁻² = 3.25419371152e11 ± 100.0) [ħ⋅𝘤⁻³μ₀⁻¹mₑ⁻¹ϕ⋅λ⁻¹αL⁻²g₀] Unified</code></pre><p>Electrostatic unit of <code>capacitance</code> (F).</p><pre><code class="language-Julia">julia&gt; statfarad(Metric) # F
-𝘤⁻²2⁵5⁵ = 1.1126500560536185e-12 [F] Metric
+𝘤⁻²2⁵5⁵ = 1.1126500560536183e-12 [F] Metric
 
 julia&gt; statfarad(EMU) # abF
-𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536186e-21 [cm⁻¹s²] EMU
+𝘤⁻²2⁻⁴5⁻⁴ = 1.1126500560536184e-21 [cm⁻¹s²] EMU
 
 julia&gt; statfarad(ESU) # statF
 𝟏 = 1.0 [cm] ESU</code></pre></div></section></article><h3 id="Magnetic-Flux-Units-1"><a class="docs-heading-anchor" href="#Magnetic-Flux-Units-1">Magnetic Flux Units</a><a class="docs-heading-anchor-permalink" href="#Magnetic-Flux-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.weber" href="#MeasureSystems.weber"><code>MeasureSystems.weber</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">weber(U::UnitSystem) = magneticflux(𝟏,U,Metric)
-magneticflux : [FLTQ⁻¹C], [FLTQ⁻¹], [ML²T⁻¹Q⁻¹], [M¹ᐟ²L³ᐟ²T⁻¹], [M¹ᐟ²L¹ᐟ²]
+magneticflux : [FLTQ⁻¹C], [FLTQ⁻¹], [ML²T⁻¹Q⁻¹], [M¹ᐟ²L¹⋅⁵T⁻¹], [M¹ᐟ²L¹ᐟ²]
 FLTQ⁻¹C⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²2³5⁷ᐟ² = 5.017029284119592e15) [ħ¹ᐟ²𝘤¹ᐟ²μ₀¹ᐟ²ϕ¹ᐟ²λ¹ᐟ²] Unified</code></pre><p>Metric unit of <code>magneticflux</code> (Wb).</p><pre><code class="language-Julia">julia&gt; weber(Metric) # Wb
 𝟏 = 1.0 [Wb] Metric
 
@@ -1309,7 +1311,7 @@ julia&gt; weber(EMU) # Mx
 
 julia&gt; weber(ESU) # statWb
 𝘤⁻¹2⁶5⁶ = 0.0033356409519815205 [g¹ᐟ²cm¹ᐟ²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.maxwell" href="#MeasureSystems.maxwell"><code>MeasureSystems.maxwell</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">maxwell(U::UnitSystem) = magneticflux(𝟏,U,EMU)
-magneticflux : [FLTQ⁻¹C], [FLTQ⁻¹], [ML²T⁻¹Q⁻¹], [M¹ᐟ²L³ᐟ²T⁻¹], [M¹ᐟ²L¹ᐟ²]
+magneticflux : [FLTQ⁻¹C], [FLTQ⁻¹], [ML²T⁻¹Q⁻¹], [M¹ᐟ²L¹⋅⁵T⁻¹], [M¹ᐟ²L¹ᐟ²]
 FLTQ⁻¹C⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²2⁻⁵5⁻⁹ᐟ² = 5.017029284119592e7) [ħ¹ᐟ²𝘤¹ᐟ²μ₀¹ᐟ²ϕ¹ᐟ²λ¹ᐟ²] Unified</code></pre><p>Electromagnetic unit of <code>magneticflux</code> (Wb).</p><pre><code class="language-Julia">julia&gt; maxwell(Metric) # Wb
 2⁻⁸5⁻⁸ = 1.0e-8 [Wb] Metric
 
@@ -1317,8 +1319,8 @@ julia&gt; maxwell(EMU) # Mx
 𝟏 = 1.0 [Mx] EMU
 
 julia&gt; maxwell(ESU) # statWb
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [g¹ᐟ²cm¹ᐟ²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statweber" href="#MeasureSystems.statweber"><code>MeasureSystems.statweber</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statweber(U::UnitSystem) = magneticflux(𝟏,U,ESU)
-magneticflux : [FLTQ⁻¹C], [FLTQ⁻¹], [ML²T⁻¹Q⁻¹], [M¹ᐟ²L³ᐟ²T⁻¹], [M¹ᐟ²L¹ᐟ²]
+𝘤⁻¹2⁻²5⁻² = 3.335640951981521e-11 [g¹ᐟ²cm¹ᐟ²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.statweber" href="#MeasureSystems.statweber"><code>MeasureSystems.statweber</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">statweber(U::UnitSystem) = magneticflux(𝟏,U,ESU)
+magneticflux : [FLTQ⁻¹C], [FLTQ⁻¹], [ML²T⁻¹Q⁻¹], [M¹ᐟ²L¹⋅⁵T⁻¹], [M¹ᐟ²L¹ᐟ²]
 FLTQ⁻¹C⋅(𝘩⁻¹ᐟ²𝘤¹ᐟ²2⁻³5⁻⁵ᐟ² = 1.5040675409441933e18) [ħ¹ᐟ²𝘤¹ᐟ²μ₀¹ᐟ²ϕ¹ᐟ²λ¹ᐟ²] Unified</code></pre><p>Electrostatic unit of <code>magneticflux</code> (Wb).</p><pre><code class="language-Julia">julia&gt; statweber(Metric) # Wb
 𝘤⋅2⁻⁶5⁻⁶ = 299.792458 [Wb] Metric
 
@@ -1327,7 +1329,7 @@ julia&gt; statweber(EMU) # Mx
 
 julia&gt; statweber(ESU) # statWb
 𝟏 = 1.0 [g¹ᐟ²cm¹ᐟ²] ESU</code></pre></div></section></article><h3 id="Magnetic-Flux-Density-Units-1"><a class="docs-heading-anchor" href="#Magnetic-Flux-Density-Units-1">Magnetic Flux Density Units</a><a class="docs-heading-anchor-permalink" href="#Magnetic-Flux-Density-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.tesla" href="#MeasureSystems.tesla"><code>MeasureSystems.tesla</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">tesla(U::UnitSystem) = magneticfluxdensity(𝟏,U,Metric)
-magneticfluxdensity : [FL⁻¹TQ⁻¹C], [FL⁻¹TQ⁻¹], [MT⁻¹Q⁻¹], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L⁻³ᐟ²]
+magneticfluxdensity : [FL⁻¹TQ⁻¹C], [FL⁻¹TQ⁻¹], [MT⁻¹Q⁻¹], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L⁻¹⋅⁵]
 FL⁻¹TQ⁻¹C⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻²α⁴τ⁻²2⋅5⁷ᐟ² = 7.4813429063e-10 ± 4.6e-19) [ħ⁻³ᐟ²𝘤⁵ᐟ²μ₀¹ᐟ²mₑ²ϕ⁻³ᐟ²λ¹ᐟ²g₀⁻²] Unified</code></pre><p>Metric unit of <code>magneticfluxdensity</code> (T).</p><pre><code class="language-Julia">julia&gt; tesla(Metric) # T
 𝟏 = 1.0 [T] Metric
 
@@ -1335,8 +1337,8 @@ julia&gt; tesla(EMU) # G
 2⁴5⁴ = 10000.0 [G] EMU
 
 julia&gt; tesla(ESU) # statT
-𝘤⁻¹2²5² = 3.3356409519815204e-7 [g¹ᐟ²cm⁻³ᐟ²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gauss" href="#MeasureSystems.gauss"><code>MeasureSystems.gauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">gauss(U::UnitSystem) = magneticfluxdensity(𝟏,U,EMU)
-magneticfluxdensity : [FL⁻¹TQ⁻¹C], [FL⁻¹TQ⁻¹], [MT⁻¹Q⁻¹], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L⁻³ᐟ²]
+𝘤⁻¹2²5² = 3.3356409519815204e-7 [g¹ᐟ²cm⁻¹⋅⁵] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gauss" href="#MeasureSystems.gauss"><code>MeasureSystems.gauss</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">gauss(U::UnitSystem) = magneticfluxdensity(𝟏,U,EMU)
+magneticfluxdensity : [FL⁻¹TQ⁻¹C], [FL⁻¹TQ⁻¹], [MT⁻¹Q⁻¹], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L⁻¹⋅⁵]
 FL⁻¹TQ⁻¹C⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻²α⁴τ⁻²2⁻³5⁻¹ᐟ² = 7.4813429063e-14 ± 4.6e-23) [ħ⁻³ᐟ²𝘤⁵ᐟ²μ₀¹ᐟ²mₑ²ϕ⁻³ᐟ²λ¹ᐟ²g₀⁻²] Unified</code></pre><p>Electromagnetic unit of <code>magneticfluxdensity</code> (T).</p><pre><code class="language-Julia">julia&gt; gauss(Metric) # T
 2⁻⁴5⁻⁴ = 0.0001 [T] Metric
 
@@ -1344,26 +1346,26 @@ julia&gt; gauss(EMU) # G
 𝟏 = 1.0 [G] EMU
 
 julia&gt; gauss(ESU) # statT
-𝘤⁻¹2⁻²5⁻² = 3.33564095198152e-11 [g¹ᐟ²cm⁻³ᐟ²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stattesla" href="#MeasureSystems.stattesla"><code>MeasureSystems.stattesla</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">stattesla(U::UnitSystem) = magneticfluxdensity(𝟏,U,ESU)
-magneticfluxdensity : [FL⁻¹TQ⁻¹C], [FL⁻¹TQ⁻¹], [MT⁻¹Q⁻¹], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L⁻³ᐟ²]
+𝘤⁻¹2⁻²5⁻² = 3.335640951981521e-11 [g¹ᐟ²cm⁻¹⋅⁵] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stattesla" href="#MeasureSystems.stattesla"><code>MeasureSystems.stattesla</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">stattesla(U::UnitSystem) = magneticfluxdensity(𝟏,U,ESU)
+magneticfluxdensity : [FL⁻¹TQ⁻¹C], [FL⁻¹TQ⁻¹], [MT⁻¹Q⁻¹], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L⁻¹⋅⁵]
 FL⁻¹TQ⁻¹C⋅(𝘩⁻¹ᐟ²𝘤¹ᐟ²R∞⁻²α⁴τ⁻²2⁻¹5³ᐟ² = 0.002242850179 ± 1.4e-12) [ħ⁻³ᐟ²𝘤⁵ᐟ²μ₀¹ᐟ²mₑ²ϕ⁻³ᐟ²λ¹ᐟ²g₀⁻²] Unified</code></pre><p>Electrostatic unit of <code>magneticfluxdensity</code> (T).</p><pre><code class="language-Julia">julia&gt; stattesla(Metric) # T
-𝘤⋅2⁻²5⁻² = 2.99792458e6 [T] Metric
+𝘤⋅2⁻²5⁻² = 2.9979245800000005e6 [T] Metric
 
 julia&gt; stattesla(EMU) # G
 𝘤⋅2²5² = 2.99792458e10 [G] EMU
 
 julia&gt; stattesla(ESU) # statT
-𝟏 = 1.0 [g¹ᐟ²cm⁻³ᐟ²] ESU</code></pre></div></section></article><h3 id="Magnetic-Specialized-Units-1"><a class="docs-heading-anchor" href="#Magnetic-Specialized-Units-1">Magnetic Specialized Units</a><a class="docs-heading-anchor-permalink" href="#Magnetic-Specialized-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.oersted" href="#MeasureSystems.oersted"><code>MeasureSystems.oersted</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">oersted(U::UnitSystem) = magneticfield(𝟏,U,EMU)
-magneticfield : [L⁻¹T⁻¹QRC⁻¹], [L⁻¹T⁻¹Q], [L⁻¹T⁻¹Q], [M¹ᐟ²L⁻¹ᐟ²T⁻¹], [M¹ᐟ²L¹ᐟ²T⁻²]
+𝟏 = 1.0 [g¹ᐟ²cm⁻¹⋅⁵] ESU</code></pre></div></section></article><h3 id="Magnetic-Specialized-Units-1"><a class="docs-heading-anchor" href="#Magnetic-Specialized-Units-1">Magnetic Specialized Units</a><a class="docs-heading-anchor-permalink" href="#Magnetic-Specialized-Units-1" title="Permalink"></a></h3><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.oersted" href="#MeasureSystems.oersted"><code>MeasureSystems.oersted</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">oersted(U::UnitSystem) = magneticfield(𝟏,U,EMU)
+magneticfield : [L⁻¹T⁻¹QRC⁻¹], [L⁻¹T⁻¹Q], [L⁻¹T⁻¹Q], [M¹ᐟ²L⁻¹ᐟ²T⁻¹R], [M¹ᐟ²L¹ᐟ²T⁻²]
 L⁻¹T⁻¹QRC⁻¹⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻²α⁴τ⁻²2⁻³5⁻¹ᐟ² = 7.4813429063e-14 ± 4.6e-23) [ħ⁻³ᐟ²𝘤⁵ᐟ²μ₀⁻¹ᐟ²mₑ²ϕ⁻³ᐟ²λ¹ᐟ²g₀⁻²] Unified</code></pre><p>Electromagnetic unit of <code>magneticfield</code> (Oe).</p><pre><code class="language-Julia">julia&gt; oersted(Metric) # A⋅m⁻¹
 τ⁻¹2²5³ = 79.57747154594767 [m⁻¹s⁻¹C] Metric
 
 julia&gt; oersted(EMU) # Oe
-𝟏 = 1.0 [G] EMU
+𝟏 = 1.0 [g¹ᐟ²cm⁻¹ᐟ²s⁻¹] EMU
 
 julia&gt; oersted(ESU) # statA⋅cm⁻¹
 𝘤⋅2²5² = 2.99792458e10 [g¹ᐟ²cm¹ᐟ²s⁻²] ESU</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gilbert" href="#MeasureSystems.gilbert"><code>MeasureSystems.gilbert</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">gilbert(U::UnitSystem) = abampere(U)/𝟐/turn(U)
-nonstandard : [T⁻¹QA⁻¹], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L³ᐟ²T⁻²]
+nonstandard : [T⁻¹QA⁻¹], [T⁻¹Q], [T⁻¹Q], [M¹ᐟ²L¹ᐟ²T⁻¹], [M¹ᐟ²L¹⋅⁵T⁻²]
 T⁻¹QA⁻¹⋅(𝘩⁻¹ᐟ²𝘤⁻¹ᐟ²R∞⁻¹α²τ⁻¹2⁻⁴5⁻⁵ᐟ² = 0.00193737235568 ± 5.9e-13) [ħ⁻¹ᐟ²𝘤³ᐟ²μ₀⁻¹ᐟ²mₑ⋅ϕ⁻³ᐟ²λ⁻¹ᐟ²αL⁻¹g₀⁻¹] Unified</code></pre><p>Electromagnetic unit of magnetization (Gb).</p><pre><code class="language-Julia">julia&gt; gilbert(Metric) # A⋅rad⁻¹
 τ⁻¹5 = 0.7957747154594768 [s⁻¹C] Metric
 
@@ -1371,7 +1373,7 @@ julia&gt; gilbert(EMU) # Gb
 τ⁻¹2⁻¹ = 0.07957747154594767 [Mx⋅cm⁻¹] EMU
 
 julia&gt; gilbert(ESU) # statA⋅rad⁻¹
-𝘤⋅τ⁻¹2⋅5² = 2.385672579618471e9 [g¹ᐟ²cm³ᐟ²s⁻²] ESU</code></pre></div></section></article><h2 id="Thermodynamic-Units-1"><a class="docs-heading-anchor" href="#Thermodynamic-Units-1">Thermodynamic Units</a><a class="docs-heading-anchor-permalink" href="#Thermodynamic-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kelvin" href="#MeasureSystems.kelvin"><code>MeasureSystems.kelvin</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">kelvin(U::UnitSystem) = temperature(𝟏,U,Metric)
+𝘤⋅τ⁻¹2⋅5² = 2.385672579618471e9 [g¹ᐟ²cm¹⋅⁵s⁻²] ESU</code></pre></div></section></article><h2 id="Thermodynamic-Units-1"><a class="docs-heading-anchor" href="#Thermodynamic-Units-1">Thermodynamic Units</a><a class="docs-heading-anchor-permalink" href="#Thermodynamic-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.kelvin" href="#MeasureSystems.kelvin"><code>MeasureSystems.kelvin</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">kelvin(U::UnitSystem) = temperature(𝟏,U,Metric)
 temperature : [Θ], [Θ], [Θ], [Θ], [Θ]
 Θ⋅(kB⋅NA⋅𝘤⁻²μₑᵤ⁻¹2³5³ = 1.68637005207e-10 ± 4.9e-21) [kB⁻¹𝘤²mₑ⋅g₀⁻¹] Unified</code></pre><p>Metric unit of <code>temperature</code> (K or °R).</p><pre><code class="language-Julia">julia&gt; kelvin(Metric) # K
 𝟏 = 1.0 [K] Metric
@@ -1503,7 +1505,7 @@ JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻²α⁴τ⁻¹2⁻² = 2.3034677403e
 𝟏 = 1.0 [lm⋅rad⁻²] MetricEngineering
 
 julia&gt; candela(MetricDegree) # lm⋅deg⁻²
-τ²2⁻⁶3⁻⁴5⁻² = 0.00030461741978670857 [lm⋅deg⁻²] MetricDegree
+τ²2⁻⁶3⁻⁴5⁻² = 0.0003046174197867087 [lm⋅deg⁻²] MetricDegree
 
 julia&gt; candela(MetricGradian) # lm⋅gon⁻²
 τ²2⁻⁸5⁻⁴ = 0.00024674011002723397 [lm⋅gon⁻²] MetricGradian
@@ -1523,7 +1525,7 @@ julia&gt; lux(CGS) # ph
 julia&gt; lux(English) # fc
 ft² = 0.09290304 [fc] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.phot" href="#MeasureSystems.phot"><code>MeasureSystems.phot</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">phot(U::UnitSystem) = illuminance(𝟏,U,Gauss)
 illuminance : [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J]
-L⁻²J⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻³5⁴ = 3.4349076043000006e-32 ± 4.2e-41) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻³g₀⁻⁴] Unified</code></pre><p>Historic unit of <code>illuminance</code> (lx).</p><pre><code class="language-Julia">julia&gt; phot(Metric) # lx
+L⁻²J⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻³5⁴ = 3.4349076043e-32 ± 4.1999999999999997e-41) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻³g₀⁻⁴] Unified</code></pre><p>Historic unit of <code>illuminance</code> (lx).</p><pre><code class="language-Julia">julia&gt; phot(Metric) # lx
 2⁴5⁴ = 10000.0 [lx] Metric
 
 julia&gt; phot(CGS) # ph
@@ -1532,7 +1534,7 @@ julia&gt; phot(CGS) # ph
 julia&gt; phot(English) # fc
 ft²2⁴5⁴ = 929.0304000000001 [fc] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.footcandle" href="#MeasureSystems.footcandle"><code>MeasureSystems.footcandle</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">footcandle(U::UnitSystem) = illuminance(𝟏,U,English)
 illuminance : [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J]
-L⁻²J⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸ft⁻²τ⁻³2⁻⁴ = 3.6973037742e-35 ± 4.5e-44) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻³g₀⁻⁴] Unified</code></pre><p>English unit of <code>illuminance</code> (lx).</p><pre><code class="language-Julia">julia&gt; footcandle(Metric) # lx
+L⁻²J⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸ft⁻²τ⁻³2⁻⁴ = 3.6973037741999997e-35 ± 4.5e-44) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻³g₀⁻⁴] Unified</code></pre><p>English unit of <code>illuminance</code> (lx).</p><pre><code class="language-Julia">julia&gt; footcandle(Metric) # lx
 ft⁻² = 10.76391041670972 [lx] Metric
 
 julia&gt; footcandle(CGS) # ph
@@ -1545,7 +1547,7 @@ L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻³2⁻⁴ = 3.434
 𝟏 = 1.0 [nt] MetricEngineering
 
 julia&gt; nit(MetricDegree) # lm⋅m⁻²deg⁻²
-τ²2⁻⁶3⁻⁴5⁻² = 0.00030461741978670857 [m⁻²lm⋅deg⁻²] MetricDegree
+τ²2⁻⁶3⁻⁴5⁻² = 0.0003046174197867087 [m⁻²lm⋅deg⁻²] MetricDegree
 
 julia&gt; nit(MetricGradian) # lm⋅m⁻²gon⁻²
 τ²2⁻⁸5⁻⁴ = 0.00024674011002723397 [m⁻²lm⋅gon⁻²] MetricGradian
@@ -1560,7 +1562,7 @@ L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻⁴2⁻³ = 1.093
 τ⁻¹2 = 0.3183098861837907 [nt] MetricEngineering
 
 julia&gt; apostilb(MetricDegree) # lm⋅m⁻²deg⁻²
-τ⋅2⁻⁵3⁻⁴5⁻² = 9.69627362219072e-5 [m⁻²lm⋅deg⁻²] MetricDegree
+τ⋅2⁻⁵3⁻⁴5⁻² = 9.696273622190722e-5 [m⁻²lm⋅deg⁻²] MetricDegree
 
 julia&gt; apostilb(MetricGradian) # lm⋅m⁻²gon⁻²
 τ⋅2⁻⁷5⁻⁴ = 7.853981633974483e-5 [m⁻²lm⋅gon⁻²] MetricGradian
@@ -1571,7 +1573,7 @@ julia&gt; apostilb(CGS) # sb
 julia&gt; apostilb(English) # fc
 ft²τ⁻¹2 = 0.029571956088528157 [ft⁻²lm⋅rad⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.stilb" href="#MeasureSystems.stilb"><code>MeasureSystems.stilb</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">stilb(U::UnitSystem) = luminance(𝟏,U,Gauss)
 luminance : [L⁻²JA⁻²], [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J]
-L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻³5⁴ = 3.4349076043000006e-32 ± 4.2e-41) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>Historic unit of <code>luminance</code> (lx⋅rad⁻²).</p><pre><code class="language-Julia">julia&gt; stilb(MetricEngineering) # nt
+L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻³5⁴ = 3.4349076043e-32 ± 4.1999999999999997e-41) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>Historic unit of <code>luminance</code> (lx⋅rad⁻²).</p><pre><code class="language-Julia">julia&gt; stilb(MetricEngineering) # nt
 2⁴5⁴ = 10000.0 [nt] MetricEngineering
 
 julia&gt; stilb(MetricDegree) # lm⋅m⁻²deg⁻²
@@ -1586,7 +1588,7 @@ julia&gt; stilb(CGS) # sb
 julia&gt; stilb(English) # fc
 ft²2⁴5⁴ = 929.0304000000001 [ft⁻²lm⋅rad⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lambert" href="#MeasureSystems.lambert"><code>MeasureSystems.lambert</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">lambert(U::UnitSystem) = luminance(𝟐/turn(U),U,Gauss)
 luminance : [L⁻²JA⁻²], [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J]
-L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻⁴2⋅5⁴ = 1.0933650486000001e-32 ± 1.3000000000000002e-41) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>Historic unit of <code>luminance</code> (nt).</p><pre><code class="language-Julia">julia&gt; lambert(MetricEngineering) # nt
+L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻⁴2⋅5⁴ = 1.0933650486e-32 ± 1.3e-41) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>Historic unit of <code>luminance</code> (nt).</p><pre><code class="language-Julia">julia&gt; lambert(MetricEngineering) # nt
 τ⁻¹2⁵5⁴ = 3183.098861837907 [nt] MetricEngineering
 
 julia&gt; lambert(MetricDegree) # lm⋅m⁻²deg⁻²
@@ -1601,11 +1603,11 @@ julia&gt; lambert(CGS) # sb
 julia&gt; lambert(English) # fc
 ft²τ⁻¹2⁵5⁴ = 295.71956088528157 [ft⁻²lm⋅rad⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.footlambert" href="#MeasureSystems.footlambert"><code>MeasureSystems.footlambert</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">footlambert(U::UnitSystem) = luminance(𝟐/turn(U),U,English)
 luminance : [L⁻²JA⁻²], [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J]
-L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸ft⁻²τ⁻⁴2⁻³ = 1.1768883436e-35 ± 1.4e-44) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>English unit of <code>luminance</code> (nt).</p><pre><code class="language-Julia">julia&gt; footlambert(MetricEngineering) # nt
+L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸ft⁻²τ⁻⁴2⁻³ = 1.1768883435999999e-35 ± 1.3999999999999998e-44) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>English unit of <code>luminance</code> (nt).</p><pre><code class="language-Julia">julia&gt; footlambert(MetricEngineering) # nt
 ft⁻²τ⁻¹2 = 3.42625909963539 [nt] MetricEngineering
 
 julia&gt; footlambert(MetricDegree) # lm⋅m⁻²deg⁻²
-ft⁻²τ⋅2⁻⁵3⁻⁴5⁻² = 0.0010436982064516637 [m⁻²lm⋅deg⁻²] MetricDegree
+ft⁻²τ⋅2⁻⁵3⁻⁴5⁻² = 0.001043698206451664 [m⁻²lm⋅deg⁻²] MetricDegree
 
 julia&gt; footlambert(MetricGradian) # lm⋅m⁻²gon⁻²
 ft⁻²τ⋅2⁻⁷5⁻⁴ = 0.0008453955472258477 [m⁻²lm⋅gon⁻²] MetricGradian
@@ -1617,37 +1619,37 @@ julia&gt; footlambert(English) # fc
 τ⁻¹2 = 0.3183098861837907 [ft⁻²lm⋅rad⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bril" href="#MeasureSystems.bril"><code>MeasureSystems.bril</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">bril(U::UnitSystem) = centi*nano*lambert(U)
 luminance : [L⁻²JA⁻²], [L⁻²J], [L⁻²J], [L⁻²J], [L⁻²J]
 L⁻²JA⁻²⋅(𝘩⁻¹𝘤⁻²Kcd⁻¹R∞⁻⁴α⁸τ⁻⁴2⁻¹⁰5⁻⁷ = 1.0933650486e-43 ± 1.3e-52) [ħ⁻³𝘤⁶mₑ⁴Kcd⋅ϕ⁻⁵g₀⁻⁴] Unified</code></pre><p>Reference unit of <code>luminance</code> (nt).</p><pre><code class="language-Julia">julia&gt; bril(MetricEngineering) # nt
-τ⁻¹2⁻⁶5⁻⁷ = 3.183098861837907e-8 [nt] MetricEngineering
+τ⁻¹2⁻⁶5⁻⁷ = 3.1830988618379075e-8 [nt] MetricEngineering
 
 julia&gt; bril(MetricDegree) # lm⋅m⁻²deg⁻²
 τ⋅2⁻¹²3⁻⁴5⁻⁹ = 9.69627362219072e-12 [m⁻²lm⋅deg⁻²] MetricDegree
 
 julia&gt; bril(MetricGradian) # lm⋅m⁻²gon⁻²
-τ⋅2⁻¹⁴5⁻¹¹ = 7.853981633974484e-12 [m⁻²lm⋅gon⁻²] MetricGradian
+τ⋅2⁻¹⁴5⁻¹¹ = 7.853981633974482e-12 [m⁻²lm⋅gon⁻²] MetricGradian
 
 julia&gt; bril(CGS) # sb
-τ⁻¹2⁻¹⁰5⁻¹¹ = 3.183098861837907e-12 [ph] Gauss
+τ⁻¹2⁻¹⁰5⁻¹¹ = 3.1830988618379067e-12 [ph] Gauss
 
 julia&gt; bril(English) # fc
-ft²τ⁻¹2⁻⁶5⁻⁷ = 2.9571956088528156e-9 [ft⁻²lm⋅rad⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.talbot" href="#MeasureSystems.talbot"><code>MeasureSystems.talbot</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">talbot(U::UnitSystem) = luminousenergy(𝟏,U,Metric)
+ft²τ⁻¹2⁻⁶5⁻⁷ = 2.957195608852816e-9 [ft⁻²lm⋅rad⁻²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.talbot" href="#MeasureSystems.talbot"><code>MeasureSystems.talbot</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">talbot(U::UnitSystem) = luminousenergy(𝟏,U,Metric)
 luminousenergy : [TJ], [TJ], [TJ], [TJ], [TJ]
 TJ⋅(𝘩⁻¹𝘤⁻¹Kcd⁻¹R∞⁻¹α²2⁻¹ = 1.78828352208e10 ± 5.5) [𝘤²mₑ⋅Kcd⋅g₀⁻¹] Unified</code></pre><p>Common unit of <code>luminousenergy</code> (lm⋅s).</p><pre><code class="language-Julia">julia&gt; talbot(Metric) # lm⋅s
 𝟏 = 1.0 [s⋅lm] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.lumerg" href="#MeasureSystems.lumerg"><code>MeasureSystems.lumerg</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">lumerg(U::UnitSystem) = luminousenergy(𝟏𝟎^-7,U,Metric)
 luminousenergy : [TJ], [TJ], [TJ], [TJ], [TJ]
 TJ⋅(𝘩⁻¹𝘤⁻¹Kcd⁻¹R∞⁻¹α²2⁻⁸5⁻⁷ = 1788.28352208 ± 5.5e-7) [𝘤²mₑ⋅Kcd⋅g₀⁻¹] Unified</code></pre><p>Reference unit of <code>luminousenergy</code> (lm⋅s).</p><pre><code class="language-Julia">julia&gt; lumerg(CGS) # lm⋅s
-2⁻⁷5⁻⁷ = 1.0e-7 [s⋅lm] Gauss</code></pre></div></section></article><h2 id="Specialized-Units-1"><a class="docs-heading-anchor" href="#Specialized-Units-1">Specialized Units</a><a class="docs-heading-anchor-permalink" href="#Specialized-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.neper" href="#MeasureSystems.neper"><code>MeasureSystems.neper</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">neper(U::UnitSystem) = U(𝟏,log(𝟙))</code></pre><p>Logarithmic unit expressing the ratio of a dimensional quanty.</p><pre><code class="language-Julia">julia&gt; neper(Metric)
+2⁻⁷5⁻⁷ = 1.0000000000000001e-7 [s⋅lm] Gauss</code></pre></div></section></article><h2 id="Specialized-Units-1"><a class="docs-heading-anchor" href="#Specialized-Units-1">Specialized Units</a><a class="docs-heading-anchor-permalink" href="#Specialized-Units-1" title="Permalink"></a></h2><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.neper" href="#MeasureSystems.neper"><code>MeasureSystems.neper</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">neper(U::UnitSystem) = U(𝟏,log(𝟙))</code></pre><p>Logarithmic unit expressing the ratio of a dimensional quanty.</p><pre><code class="language-Julia">julia&gt; neper(Metric)
 𝟏 = 1.0 [log(𝟙)] Metric
 
 julia&gt; exp(neper(Metric))
-exp(𝟏) = 2.718281828459045 [𝟙] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bel" href="#MeasureSystems.bel"><code>MeasureSystems.bel</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">bel(U::UnitSystem) = U(𝟏,log10(𝟙))</code></pre><p>Logarithmic unit expressing the ratio of a dimensional quanty.</p><pre><code class="language-Julia">julia&gt; bel(Metric)
+exp(𝟏 = 1.0) [𝟙] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.bel" href="#MeasureSystems.bel"><code>MeasureSystems.bel</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">bel(U::UnitSystem) = U(𝟏,log10(𝟙))</code></pre><p>Logarithmic unit expressing the ratio of a dimensional quanty.</p><pre><code class="language-Julia">julia&gt; bel(Metric)
 𝟏 = 1.0 [log10(𝟙)] Metric
 
 julia&gt; exp10(bel(Metric))
-exp10(𝟏) = 10.0 [𝟙] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.decibel" href="#MeasureSystems.decibel"><code>MeasureSystems.decibel</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">decibel(U::UnitSystem) = U(𝟏,logdb(𝟙))</code></pre><p>Logarithmic unit expressing the ratio of a dimensional quanty.</p><pre><code class="language-Julia">julia&gt; decibel(Metric)
+exp10(𝟏 = 1.0) [𝟙] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.decibel" href="#MeasureSystems.decibel"><code>MeasureSystems.decibel</code></a> — <span class="docstring-category">Function</span></header><section><div><pre><code class="language-julia">decibel(U::UnitSystem) = U(𝟏,logdb(𝟙))</code></pre><p>Logarithmic unit expressing the ratio of a dimensional quanty.</p><pre><code class="language-Julia">julia&gt; decibel(Metric)
 𝟏 = 1.0 [dB(𝟙)] Metric
 
 julia&gt; expdb(decibel(Metric))
-1.2589254117941673^(𝟏) = 1.2589254117941673 [𝟙] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hertz" href="#MeasureSystems.hertz"><code>MeasureSystems.hertz</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">hertz(U::UnitSystem) = 𝟏/second(U)
+1.2589254117941673^(𝟏 = 1.0) [𝟙] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.hertz" href="#MeasureSystems.hertz"><code>MeasureSystems.hertz</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">hertz(U::UnitSystem) = 𝟏/second(U)
 frequency : [T⁻¹], [T⁻¹], [T⁻¹], [T⁻¹], [T⁻¹]
 T⁻¹⋅(𝘤⁻¹R∞⁻¹α²τ⁻¹2⁻¹ = 1.28808866819e-21 ± 3.8999999999999997e-31) [ħ⁻¹𝘤²mₑ⋅ϕ⁻¹g₀⁻¹] Unified</code></pre><p>Metric unit of <code>frequency</code> (s⁻¹).</p><pre><code class="language-Julia">julia&gt; hertz(MetricEngineering) # rad⋅s⁻¹
 𝟏 = 1.0 [Hz] MetricEngineering
@@ -1664,7 +1666,7 @@ julia&gt; apm(MPH) # h⁻¹
 julia&gt; apm(IAU) # D⁻¹
 2⁵3²5 = 1440.0 [D⁻¹] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rpm" href="#MeasureSystems.rpm"><code>MeasureSystems.rpm</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">rpm(U::UnitSystem) = turn(U)/minute(U)
 angularfrequency : [T⁻¹A], [T⁻¹], [T⁻¹], [T⁻¹], [T⁻¹]
-T⁻¹A⋅(𝘤⁻¹R∞⁻¹α²2⁻³3⁻¹5⁻¹ = 1.34888329905e-22 ± 4.1000000000000003e-32) [ħ⁻¹𝘤²mₑ⋅g₀⁻¹] Unified</code></pre><p>Revolutions per minute <code>rpm</code> unit of <code>angularfrequency</code> (rad⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; rpm(MetricEngineering) # rad⋅s⁻¹
+T⁻¹A⋅(𝘤⁻¹R∞⁻¹α²2⁻³3⁻¹5⁻¹ = 1.3488832990499998e-22 ± 4.1e-32) [ħ⁻¹𝘤²mₑ⋅g₀⁻¹] Unified</code></pre><p>Revolutions per minute <code>rpm</code> unit of <code>angularfrequency</code> (rad⋅s⁻¹).</p><pre><code class="language-Julia">julia&gt; rpm(MetricEngineering) # rad⋅s⁻¹
 τ⋅2⁻²3⁻¹5⁻¹ = 0.10471975511965977 [s⁻¹rad] MetricEngineering
 
 julia&gt; rpm(MetricGradian) # gon⋅s⁻¹
@@ -1698,7 +1700,7 @@ L⁻¹A⋅(R∞⁻¹α²τ⁻¹2⁻¹ = 3.8615926796000003e-13 ± 1.2e-22) [ħ�
 𝟏 = 1.0 [m⁻¹] Metric
 
 julia&gt; diopter(CGS) # cm⁻¹
-2⁻²5⁻² = 0.01 [cm⁻¹] Gauss
+2⁻²5⁻² = 0.010000000000000002 [cm⁻¹] Gauss
 
 julia&gt; diopter(English) # ft⁻¹
 ft = 0.3048 [ft⁻¹rad] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.rayleigh" href="#MeasureSystems.rayleigh"><code>MeasureSystems.rayleigh</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">rayleigh(U::UnitSystem) = photonirradiance(𝟏𝟎^10,U,Metric)
@@ -1712,7 +1714,7 @@ julia&gt; rayleigh(CGS) # Hz⋅cm⁻²
 julia&gt; rayleigh(English) # Hz⋅ft⁻²
 ft²2¹⁰5¹⁰ = 9.290304000000001e8 [ft⁻²s] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.flick" href="#MeasureSystems.flick"><code>MeasureSystems.flick</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">flick(U::UnitSystem) = radiance(𝟏𝟎^10,U,Metric)/length(𝟏,U,Metric)
 nonstandard : [FL⁻²T⁻¹A⁻²], [FL⁻²T⁻¹], [ML⁻¹T⁻³], [ML⁻¹T⁻³], [ML⁻¹T⁻³]
-FL⁻²T⁻¹A⁻²⋅(𝘩⁻¹𝘤⁻²R∞⁻⁵α¹⁰τ⁻⁴2⁵5¹⁰ = 9.059719376000001e-36 ± 1.4e-44) [ħ⁻⁴𝘤⁷mₑ⁵ϕ⁻⁶g₀⁻⁵] Unified</code></pre><p>Lockheed Martin unit of <code>radiance</code> per <code>length</code> (W⋅m⁻³⋅rad⁻²).</p><pre><code class="language-Julia">julia&gt; flick(Metric) # W⋅m⁻³
+FL⁻²T⁻¹A⁻²⋅(𝘩⁻¹𝘤⁻²R∞⁻⁵α¹⁰τ⁻⁴2⁵5¹⁰ = 9.059719376e-36 ± 1.3999999999999998e-44) [ħ⁻⁴𝘤⁷mₑ⁵ϕ⁻⁶g₀⁻⁵] Unified</code></pre><p>Lockheed Martin unit of <code>radiance</code> per <code>length</code> (W⋅m⁻³⋅rad⁻²).</p><pre><code class="language-Julia">julia&gt; flick(Metric) # W⋅m⁻³
 2¹⁰5¹⁰ = 1.0e10 [W⋅m⁻³] Metric
 
 julia&gt; flick(CGS) # erg⋅s⁻¹⋅mL⁻¹
@@ -1730,8 +1732,8 @@ g₀⋅ft⁻¹ = 32.17404855643044 [ft⋅s⁻²] British
 julia&gt; gforce(English) # lbf⋅lbm⁻¹
 𝟏 = 1.0 [g₀] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.galileo" href="#MeasureSystems.galileo"><code>MeasureSystems.galileo</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">galileo(U::UnitSystem) = specificforce(𝟏,U,Gauss)
 specificforce : [FM⁻¹], [LT⁻²], [LT⁻²], [LT⁻²], [LT⁻²]
-FM⁻¹⋅(𝘤⁻²R∞⁻¹α²τ⁻¹2⁻³5⁻² = 4.2966013114000006e-32 ± 1.3000000000000002e-41) [ħ⁻¹𝘤³mₑ⋅ϕ⁻¹g₀⁻²] Unified</code></pre><p>Metric unit of <code>specificforce</code> used in gravimetry (m⋅s⁻² or ft⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; galileo(Metric) # m⋅s⁻²
-2⁻²5⁻² = 0.01 [m⋅s⁻²] Metric
+FM⁻¹⋅(𝘤⁻²R∞⁻¹α²τ⁻¹2⁻³5⁻² = 4.2966013113999995e-32 ± 1.3e-41) [ħ⁻¹𝘤³mₑ⋅ϕ⁻¹g₀⁻²] Unified</code></pre><p>Metric unit of <code>specificforce</code> used in gravimetry (m⋅s⁻² or ft⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; galileo(Metric) # m⋅s⁻²
+2⁻²5⁻² = 0.010000000000000002 [m⋅s⁻²] Metric
 
 julia&gt; galileo(CGS) # gal
 𝟏 = 1.0 [gal] Gauss
@@ -1739,7 +1741,7 @@ julia&gt; galileo(CGS) # gal
 julia&gt; galileo(English) # lbf⋅lbm⁻¹
 g₀⁻¹2⁻²5⁻² = 0.0010197162129779284 [g₀] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.eotvos" href="#MeasureSystems.eotvos"><code>MeasureSystems.eotvos</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">eotvos(U::UnitSystem) = specificforce(nano,U,Gauss)/length(𝟏,U,Gauss)
 nonstandard : [FM⁻¹L⁻¹], [T⁻²], [T⁻²], [T⁻²], [T⁻²]
-FM⁻¹L⁻¹⋅(𝘤⁻²R∞⁻²α⁴τ⁻²2⁻¹¹5⁻⁹ = 1.6591724171e-51 ± 1.0e-60) [ħ⁻²𝘤⁴mₑ²ϕ⁻²g₀⁻³] Unified</code></pre><p>Metric unit of <code>specificforce</code> per <code>length</code> used in gravimetry (s⁻² or gal⋅cm⁻¹).</p><pre><code class="language-Julia">julia&gt; eotvos(Metric) # s⁻²
+FM⁻¹L⁻¹⋅(𝘤⁻²R∞⁻²α⁴τ⁻²2⁻¹¹5⁻⁹ = 1.6591724171e-51 ± 1.0000000000000001e-60) [ħ⁻²𝘤⁴mₑ²ϕ⁻²g₀⁻³] Unified</code></pre><p>Metric unit of <code>specificforce</code> per <code>length</code> used in gravimetry (s⁻² or gal⋅cm⁻¹).</p><pre><code class="language-Julia">julia&gt; eotvos(Metric) # s⁻²
 2⁻⁹5⁻⁹ = 1.0e-9 [Hz⋅s⁻¹] Metric
 
 julia&gt; eotvos(CGS) # gal⋅cm⁻¹
@@ -1749,13 +1751,13 @@ julia&gt; eotvos(English) # lbf⋅lbm⁻¹ft⁻¹
 g₀⁻¹ft⋅2⁻⁹5⁻⁹ = 3.108095017156726e-11 [lbf⋅lbm⁻¹ft⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.darcy" href="#MeasureSystems.darcy"><code>MeasureSystems.darcy</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">darcy(U::UnitSystem) = area(milli/atm,U,Gauss)
 area : [L²], [L²], [L²], [L²], [L²]
 L²⋅(R∞²α⁻⁴atm⁻¹τ²2⁻⁵5⁻⁷ = 6.6183611583e12 ± 4100.0) [ħ²𝘤⁻²mₑ⁻²ϕ²g₀²] Unified</code></pre><p>Metric unit of permeability (m² or ft²).</p><pre><code class="language-Julia">julia&gt; darcy(Metric) # m²
-atm⁻¹2⁻⁷5⁻⁷ = 9.869232667160128e-13 [m²] Metric
+atm⁻¹2⁻⁷5⁻⁷ = 9.86923266716013e-13 [m²] Metric
 
 julia&gt; darcy(CGS) # cm²
 atm⁻¹2⁻³5⁻³ = 9.86923266716013e-9 [cm²] Gauss
 
 julia&gt; darcy(English) # ft²
-ft⁻²atm⁻¹2⁻⁷5⁻⁷ = 1.0623153631097675e-11 [ft²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.poise" href="#MeasureSystems.poise"><code>MeasureSystems.poise</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">poise(U::UnitSystem) = viscosity(𝟏,U,Gauss)
+ft⁻²atm⁻¹2⁻⁷5⁻⁷ = 1.0623153631097677e-11 [ft²] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.poise" href="#MeasureSystems.poise"><code>MeasureSystems.poise</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">poise(U::UnitSystem) = viscosity(𝟏,U,Gauss)
 viscosity : [FL⁻²T], [FL⁻²T], [ML⁻¹T⁻¹], [ML⁻¹T⁻¹], [ML⁻¹T⁻¹]
 FL⁻²T⋅(𝘩⁻¹R∞⁻³α⁶τ⁻²2⁻⁴5⁻¹ = 5.4603845163e-5 ± 5.0e-14) [ħ⁻²𝘤³mₑ³ϕ⁻²g₀⁻³] Unified</code></pre><p>Metric unit of <code>viscosity</code> (kg⋅m⁻¹⋅s⁻¹ or lb⋅s⋅ft⁻²).</p><pre><code class="language-Julia">julia&gt; poise(Metric) # kg⋅m⁻¹⋅s⁻¹
 2⁻¹5⁻¹ = 0.1 [Pa⋅s] Metric
@@ -1797,7 +1799,7 @@ F⁻¹⋅(𝘩⋅𝘤⋅R∞²α⁻⁴ft⋅lb⁻¹Ωᵢₜ⋅Vᵢₜ⁻²τ⋅2�
 ft⋅lb⁻¹Ωᵢₜ⋅Vᵢₜ⁻²2⁻⁴5⁻⁷11⋅19⁻¹43 = 1.3380584481180184e-5 [N⁻¹] Metric
 
 julia&gt; mpge(CGS) # dyn⁻¹
-ft⋅lb⁻¹Ωᵢₜ⋅Vᵢₜ⁻²2⁻⁹5⁻¹²11⋅19⁻¹43 = 1.3380584481180183e-10 [dyn⁻¹] Gauss
+ft⋅lb⁻¹Ωᵢₜ⋅Vᵢₜ⁻²2⁻⁹5⁻¹²11⋅19⁻¹43 = 1.3380584481180186e-10 [dyn⁻¹] Gauss
 
 julia&gt; mpge(English) # lb⁻¹
 g₀⋅ft⋅Ωᵢₜ⋅Vᵢₜ⁻²2⁻⁴5⁻⁷11⋅19⁻¹43 = 5.95198051140049e-5 [lbf⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.langley" href="#MeasureSystems.langley"><code>MeasureSystems.langley</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">langley(U::UnitSystem) = calorie(U)/(centi*meter(U))^2
@@ -1821,25 +1823,25 @@ julia&gt; jansky(English) # lb⋅ft⁻¹
 g₀⁻¹ft⋅lb⁻¹2⁻²⁶5⁻²⁶ = 6.852176585679177e-28 [lbf⋅ft⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.solarflux" href="#MeasureSystems.solarflux"><code>MeasureSystems.solarflux</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">solarflux(U::UnitSystem) = hecto^2*jansky(U)
 fluence : [FL⁻¹], [FL⁻¹], [MT⁻²], [MT⁻²], [MT⁻²]
 FL⁻¹⋅(𝘩⁻¹𝘤⁻¹R∞⁻³α⁶τ⁻²2⁻²⁵5⁻²² = 1.8213882206e-34 ± 1.6999999999999998e-43) [ħ⁻²𝘤⁴mₑ³ϕ⁻²g₀⁻³] Unified</code></pre><p>Reference unit of spectral irradiance (kg⋅s⁻² or lb⋅ft⁻¹).</p><pre><code class="language-Julia">julia&gt; solarflux(Metric) # kg⋅s⁻²
-2⁻²²5⁻²² = 1.0e-22 [N⋅m⁻¹] Metric
+2⁻²²5⁻²² = 9.999999999999999e-23 [N⋅m⁻¹] Metric
 
 julia&gt; solarflux(CGS) # g⋅s⁻²
 2⁻¹⁹5⁻¹⁹ = 1.0e-19 [dyn⋅cm⁻¹] Gauss
 
 julia&gt; solarflux(English) # lb⋅ft⁻¹
-g₀⁻¹ft⋅lb⁻¹2⁻²²5⁻²² = 6.852176585679177e-24 [lbf⋅ft⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.curie" href="#MeasureSystems.curie"><code>MeasureSystems.curie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">curie(U::UnitSystem) = frequency(𝟏,U,Metric)
+g₀⁻¹ft⋅lb⁻¹2⁻²²5⁻²² = 6.852176585679175e-24 [lbf⋅ft⁻¹] English</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.curie" href="#MeasureSystems.curie"><code>MeasureSystems.curie</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">curie(U::UnitSystem) = frequency(𝟏,U,Metric)
 frequency : [T⁻¹], [T⁻¹], [T⁻¹], [T⁻¹], [T⁻¹]
 T⁻¹⋅(𝘤⁻¹R∞⁻¹α²τ⁻¹2⁸5⁹⋅37 = 4.7659280723e-11 ± 1.5e-20) [ħ⁻¹𝘤²mₑ⋅ϕ⁻¹g₀⁻¹] Unified</code></pre><p>Reference unit of radioactivity (Bq or s⁻¹).</p><pre><code class="language-Julia">julia&gt; curie(Metric) # Bq
 2⁹5⁹⋅37 = 3.7e10 [Hz] Metric
 
 julia&gt; curie(IAU) # D⁻¹
-2¹⁶3³5¹¹⋅37 = 3.1968e15 [D⁻¹] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.sievert" href="#MeasureSystems.sievert"><code>MeasureSystems.sievert</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">sievert(U::UnitSystem) = energy(𝟏,U,Metric)/mass(𝟏,U,Metric)
+2¹⁶3³5¹¹⋅37 = 3.1968e15 [D⁻¹] IAU☉</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.gray" href="#MeasureSystems.gray"><code>MeasureSystems.gray</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">gray(U::UnitSystem) = energy(𝟏,U,Metric)/mass(𝟏,U,Metric)
 specificenergy : [FM⁻¹L], [L²T⁻²], [L²T⁻²], [L²T⁻²], [L²T⁻²]
-FM⁻¹L⋅(𝘤⁻² = 1.1126500560536185e-17) [𝘤²g₀⁻¹] Unified</code></pre><p>Metric unit of radioactivity (Sv or m²⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; sievert(Metric) # Sv
+FM⁻¹L⋅(𝘤⁻² = 1.1126500560536183e-17) [𝘤²g₀⁻¹] Unified</code></pre><p>Metric unit of radioactivity (Gy or m²⋅s⁻²).</p><pre><code class="language-Julia">julia&gt; gray(Metric) # Gy
 𝟏 = 1.0 [J⋅kg⁻¹] Metric</code></pre></div></section></article><article class="docstring"><header><a class="docstring-binding" id="MeasureSystems.roentgen" href="#MeasureSystems.roentgen"><code>MeasureSystems.roentgen</code></a> — <span class="docstring-category">Constant</span></header><section><div><pre><code class="language-Julia">roentgen(U::UnitSystem) = chargedensity(𝟏,U,ESU)/density(Constant(1.293),U,Metric)
-exposure : [M⁻¹Q], [F⁻¹LT⁻²Q], [M⁻¹Q], [M⁻¹ᐟ²L¹ᐟ²], [M⁻¹ᐟ²L³ᐟ²T⁻¹]
+exposure : [M⁻¹Q], [F⁻¹LT⁻²Q], [M⁻¹Q], [M⁻¹ᐟ²L¹ᐟ²], [M⁻¹ᐟ²L¹⋅⁵T⁻¹]
 M⁻¹Q⋅(𝘩¹ᐟ²𝘤⁻³ᐟ²R∞⋅α⁻²τ⋅2³5³ᐟ²/1.293 = 4.4416769735e-16 ± 1.4e-25) [ħ¹ᐟ²𝘤⁻¹ᐟ²μ₀⁻¹ᐟ²mₑ⁻¹ϕ¹ᐟ²λ⁻¹ᐟ²αL⁻¹] Unified</code></pre><p>Legacy unit of ionisation <code>exposure</code> (C⋅kg⁻¹ or C⋅lb⁻¹).</p><pre><code class="language-Julia">julia&gt; roentgen(Metric) # C⋅kg⁻¹
 𝘤⁻¹2⁵5⁵/1.293 = 0.0002579768717696458 [kg⁻¹C] Metric
 
 julia&gt; roentgen(English) # C⋅lb⁻¹
-𝘤⁻¹lb⋅2⁵5⁵/1.293 = 0.00011701634067117975 [lbm⁻¹C] English</code></pre></div></section></article><h2 id="Units-Index-1"><a class="docs-heading-anchor" href="#Units-Index-1">Units Index</a><a class="docs-heading-anchor-permalink" href="#Units-Index-1" title="Permalink"></a></h2><ul><li><a href="units.html#MeasureSystems.abampere"><code>MeasureSystems.abampere</code></a></li><li><a href="units.html#MeasureSystems.abcoulomb"><code>MeasureSystems.abcoulomb</code></a></li><li><a href="units.html#MeasureSystems.abfarad"><code>MeasureSystems.abfarad</code></a></li><li><a href="units.html#MeasureSystems.abhenry"><code>MeasureSystems.abhenry</code></a></li><li><a href="units.html#MeasureSystems.abmho"><code>MeasureSystems.abmho</code></a></li><li><a href="units.html#MeasureSystems.abohm"><code>MeasureSystems.abohm</code></a></li><li><a href="units.html#MeasureSystems.abvolt"><code>MeasureSystems.abvolt</code></a></li><li><a href="units.html#MeasureSystems.acre"><code>MeasureSystems.acre</code></a></li><li><a href="units.html#MeasureSystems.admiraltymile"><code>MeasureSystems.admiraltymile</code></a></li><li><a href="units.html#MeasureSystems.amagat"><code>MeasureSystems.amagat</code></a></li><li><a href="units.html#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a></li><li><a href="units.html#MeasureSystems.angstrom"><code>MeasureSystems.angstrom</code></a></li><li><a href="units.html#MeasureSystems.apm"><code>MeasureSystems.apm</code></a></li><li><a href="units.html#MeasureSystems.apostilb"><code>MeasureSystems.apostilb</code></a></li><li><a href="units.html#MeasureSystems.arcminute"><code>MeasureSystems.arcminute</code></a></li><li><a href="units.html#MeasureSystems.arcsecond"><code>MeasureSystems.arcsecond</code></a></li><li><a href="units.html#MeasureSystems.astronomicalunit"><code>MeasureSystems.astronomicalunit</code></a></li><li><a href="units.html#MeasureSystems.atmosphere"><code>MeasureSystems.atmosphere</code></a></li><li><a href="units.html#MeasureSystems.bar"><code>MeasureSystems.bar</code></a></li><li><a href="units.html#MeasureSystems.barn"><code>MeasureSystems.barn</code></a></li><li><a href="units.html#MeasureSystems.barye"><code>MeasureSystems.barye</code></a></li><li><a href="units.html#MeasureSystems.boilerhorsepower"><code>MeasureSystems.boilerhorsepower</code></a></li><li><a href="units.html#MeasureSystems.boiling"><code>MeasureSystems.boiling</code></a></li><li><a href="units.html#MeasureSystems.bradian"><code>MeasureSystems.bradian</code></a></li><li><a href="units.html#MeasureSystems.bril"><code>MeasureSystems.bril</code></a></li><li><a href="units.html#MeasureSystems.bubnoff"><code>MeasureSystems.bubnoff</code></a></li><li><a href="units.html#MeasureSystems.byte"><code>MeasureSystems.byte</code></a></li><li><a href="units.html#MeasureSystems.calorie"><code>MeasureSystems.calorie</code></a></li><li><a href="units.html#MeasureSystems.candela"><code>MeasureSystems.candela</code></a></li><li><a href="units.html#MeasureSystems.celsius"><code>MeasureSystems.celsius</code></a></li><li><a href="units.html#MeasureSystems.centi"><code>MeasureSystems.centi</code></a></li><li><a href="units.html#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a></li><li><a href="units.html#MeasureSystems.cup"><code>MeasureSystems.cup</code></a></li><li><a href="units.html#MeasureSystems.curie"><code>MeasureSystems.curie</code></a></li><li><a href="units.html#MeasureSystems.darcy"><code>MeasureSystems.darcy</code></a></li><li><a href="units.html#MeasureSystems.day"><code>MeasureSystems.day</code></a></li><li><a href="units.html#MeasureSystems.degree"><code>MeasureSystems.degree</code></a></li><li><a href="units.html#MeasureSystems.diopter"><code>MeasureSystems.diopter</code></a></li><li><a href="units.html#MeasureSystems.dyne"><code>MeasureSystems.dyne</code></a></li><li><a href="units.html#MeasureSystems.earthcalorie"><code>MeasureSystems.earthcalorie</code></a></li><li><a href="units.html#MeasureSystems.earthcoulomb"><code>MeasureSystems.earthcoulomb</code></a></li><li><a href="units.html#MeasureSystems.earthgram"><code>MeasureSystems.earthgram</code></a></li><li><a href="units.html#MeasureSystems.earthmeter"><code>MeasureSystems.earthmeter</code></a></li><li><a href="units.html#MeasureSystems.earthmole"><code>MeasureSystems.earthmole</code></a></li><li><a href="units.html#MeasureSystems.electricalhorsepower"><code>MeasureSystems.electricalhorsepower</code></a></li><li><a href="units.html#MeasureSystems.electronvolt"><code>MeasureSystems.electronvolt</code></a></li><li><a href="units.html#MeasureSystems.eotvos"><code>MeasureSystems.eotvos</code></a></li><li><a href="units.html#MeasureSystems.erg"><code>MeasureSystems.erg</code></a></li><li><a href="units.html#MeasureSystems.fahrenheit"><code>MeasureSystems.fahrenheit</code></a></li><li><a href="units.html#MeasureSystems.farad"><code>MeasureSystems.farad</code></a></li><li><a href="units.html#MeasureSystems.flick"><code>MeasureSystems.flick</code></a></li><li><a href="units.html#MeasureSystems.fluidounce"><code>MeasureSystems.fluidounce</code></a></li><li><a href="units.html#MeasureSystems.foot"><code>MeasureSystems.foot</code></a></li><li><a href="units.html#MeasureSystems.footcandle"><code>MeasureSystems.footcandle</code></a></li><li><a href="units.html#MeasureSystems.footlambert"><code>MeasureSystems.footlambert</code></a></li><li><a href="units.html#MeasureSystems.footpound"><code>MeasureSystems.footpound</code></a></li><li><a href="units.html#MeasureSystems.fpm"><code>MeasureSystems.fpm</code></a></li><li><a href="units.html#MeasureSystems.fps"><code>MeasureSystems.fps</code></a></li><li><a href="units.html#MeasureSystems.galileo"><code>MeasureSystems.galileo</code></a></li><li><a href="units.html#MeasureSystems.gallon"><code>MeasureSystems.gallon</code></a></li><li><a href="units.html#MeasureSystems.gasgallon"><code>MeasureSystems.gasgallon</code></a></li><li><a href="units.html#MeasureSystems.gauss"><code>MeasureSystems.gauss</code></a></li><li><a href="units.html#MeasureSystems.gforce"><code>MeasureSystems.gforce</code></a></li><li><a href="units.html#MeasureSystems.gilbert"><code>MeasureSystems.gilbert</code></a></li><li><a href="units.html#MeasureSystems.gradian"><code>MeasureSystems.gradian</code></a></li><li><a href="units.html#MeasureSystems.grain"><code>MeasureSystems.grain</code></a></li><li><a href="units.html#MeasureSystems.gram"><code>MeasureSystems.gram</code></a></li><li><a href="units.html#MeasureSystems.hectare"><code>MeasureSystems.hectare</code></a></li><li><a href="units.html#MeasureSystems.henry"><code>MeasureSystems.henry</code></a></li><li><a href="units.html#MeasureSystems.hertz"><code>MeasureSystems.hertz</code></a></li><li><a href="units.html#MeasureSystems.horsepower"><code>MeasureSystems.horsepower</code></a></li><li><a href="units.html#MeasureSystems.horsepowermetric"><code>MeasureSystems.horsepowermetric</code></a></li><li><a href="units.html#MeasureSystems.horsepowerwatt"><code>MeasureSystems.horsepowerwatt</code></a></li><li><a href="units.html#MeasureSystems.hour"><code>MeasureSystems.hour</code></a></li><li><a href="units.html#MeasureSystems.hyl"><code>MeasureSystems.hyl</code></a></li><li><a href="units.html#MeasureSystems.inch"><code>MeasureSystems.inch</code></a></li><li><a href="units.html#MeasureSystems.inchmercury"><code>MeasureSystems.inchmercury</code></a></li><li><a href="units.html#MeasureSystems.ips"><code>MeasureSystems.ips</code></a></li><li><a href="units.html#MeasureSystems.jansky"><code>MeasureSystems.jansky</code></a></li><li><a href="units.html#MeasureSystems.joule"><code>MeasureSystems.joule</code></a></li><li><a href="units.html#MeasureSystems.jupiterdistance"><code>MeasureSystems.jupiterdistance</code></a></li><li><a href="units.html#MeasureSystems.katal"><code>MeasureSystems.katal</code></a></li><li><a href="units.html#MeasureSystems.kayser"><code>MeasureSystems.kayser</code></a></li><li><a href="units.html#MeasureSystems.kelvin"><code>MeasureSystems.kelvin</code></a></li><li><a href="units.html#MeasureSystems.kilo"><code>MeasureSystems.kilo</code></a></li><li><a href="units.html#MeasureSystems.kilocalorie"><code>MeasureSystems.kilocalorie</code></a></li><li><a href="units.html#MeasureSystems.kilogram"><code>MeasureSystems.kilogram</code></a></li><li><a href="units.html#MeasureSystems.kilopond"><code>MeasureSystems.kilopond</code></a></li><li><a href="units.html#MeasureSystems.kmh"><code>MeasureSystems.kmh</code></a></li><li><a href="units.html#MeasureSystems.knot"><code>MeasureSystems.knot</code></a></li><li><a href="units.html#MeasureSystems.lambert"><code>MeasureSystems.lambert</code></a></li><li><a href="units.html#MeasureSystems.langley"><code>MeasureSystems.langley</code></a></li><li><a href="units.html#MeasureSystems.lightyear"><code>MeasureSystems.lightyear</code></a></li><li><a href="units.html#MeasureSystems.liter"><code>MeasureSystems.liter</code></a></li><li><a href="units.html#MeasureSystems.lumen"><code>MeasureSystems.lumen</code></a></li><li><a href="units.html#MeasureSystems.lumerg"><code>MeasureSystems.lumerg</code></a></li><li><a href="units.html#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a></li><li><a href="units.html#MeasureSystems.lux"><code>MeasureSystems.lux</code></a></li><li><a href="units.html#MeasureSystems.maxwell"><code>MeasureSystems.maxwell</code></a></li><li><a href="units.html#MeasureSystems.meancalorie"><code>MeasureSystems.meancalorie</code></a></li><li><a href="units.html#MeasureSystems.meridianmile"><code>MeasureSystems.meridianmile</code></a></li><li><a href="units.html#MeasureSystems.meter"><code>MeasureSystems.meter</code></a></li><li><a href="units.html#MeasureSystems.mile"><code>MeasureSystems.mile</code></a></li><li><a href="units.html#MeasureSystems.minute"><code>MeasureSystems.minute</code></a></li><li><a href="units.html#MeasureSystems.mole"><code>MeasureSystems.mole</code></a></li><li><a href="units.html#MeasureSystems.mpge"><code>MeasureSystems.mpge</code></a></li><li><a href="units.html#MeasureSystems.mph"><code>MeasureSystems.mph</code></a></li><li><a href="units.html#MeasureSystems.mps"><code>MeasureSystems.mps</code></a></li><li><a href="units.html#MeasureSystems.ms"><code>MeasureSystems.ms</code></a></li><li><a href="units.html#MeasureSystems.nauticalmile"><code>MeasureSystems.nauticalmile</code></a></li><li><a href="units.html#MeasureSystems.newton"><code>MeasureSystems.newton</code></a></li><li><a href="units.html#MeasureSystems.nit"><code>MeasureSystems.nit</code></a></li><li><a href="units.html#MeasureSystems.oersted"><code>MeasureSystems.oersted</code></a></li><li><a href="units.html#MeasureSystems.ohm"><code>MeasureSystems.ohm</code></a></li><li><a href="units.html#MeasureSystems.ounce"><code>MeasureSystems.ounce</code></a></li><li><a href="units.html#MeasureSystems.parsec"><code>MeasureSystems.parsec</code></a></li><li><a href="units.html#MeasureSystems.pascal"><code>MeasureSystems.pascal</code></a></li><li><a href="units.html#MeasureSystems.phot"><code>MeasureSystems.phot</code></a></li><li><a href="units.html#MeasureSystems.pint"><code>MeasureSystems.pint</code></a></li><li><a href="units.html#MeasureSystems.poise"><code>MeasureSystems.poise</code></a></li><li><a href="units.html#MeasureSystems.pound"><code>MeasureSystems.pound</code></a></li><li><a href="units.html#MeasureSystems.poundal"><code>MeasureSystems.poundal</code></a></li><li><a href="units.html#MeasureSystems.poundforce"><code>MeasureSystems.poundforce</code></a></li><li><a href="units.html#MeasureSystems.poundmole"><code>MeasureSystems.poundmole</code></a></li><li><a href="units.html#MeasureSystems.psi"><code>MeasureSystems.psi</code></a></li><li><a href="units.html#MeasureSystems.quart"><code>MeasureSystems.quart</code></a></li><li><a href="units.html#MeasureSystems.radian"><code>MeasureSystems.radian</code></a></li><li><a href="units.html#MeasureSystems.rankine"><code>MeasureSystems.rankine</code></a></li><li><a href="units.html#MeasureSystems.rayl"><code>MeasureSystems.rayl</code></a></li><li><a href="units.html#MeasureSystems.rayleigh"><code>MeasureSystems.rayleigh</code></a></li><li><a href="units.html#MeasureSystems.reyn"><code>MeasureSystems.reyn</code></a></li><li><a href="units.html#MeasureSystems.roentgen"><code>MeasureSystems.roentgen</code></a></li><li><a href="units.html#MeasureSystems.rpm"><code>MeasureSystems.rpm</code></a></li><li><a href="units.html#MeasureSystems.sealevel"><code>MeasureSystems.sealevel</code></a></li><li><a href="units.html#MeasureSystems.second"><code>MeasureSystems.second</code></a></li><li><a href="units.html#MeasureSystems.siemens"><code>MeasureSystems.siemens</code></a></li><li><a href="units.html#MeasureSystems.sievert"><code>MeasureSystems.sievert</code></a></li><li><a href="units.html#MeasureSystems.slinch"><code>MeasureSystems.slinch</code></a></li><li><a href="units.html#MeasureSystems.slinchmole"><code>MeasureSystems.slinchmole</code></a></li><li><a href="units.html#MeasureSystems.slug"><code>MeasureSystems.slug</code></a></li><li><a href="units.html#MeasureSystems.slugmole"><code>MeasureSystems.slugmole</code></a></li><li><a href="units.html#MeasureSystems.solarflux"><code>MeasureSystems.solarflux</code></a></li><li><a href="units.html#MeasureSystems.spat"><code>MeasureSystems.spat</code></a></li><li><a href="units.html#MeasureSystems.spatian"><code>MeasureSystems.spatian</code></a></li><li><a href="units.html#MeasureSystems.squaredegree"><code>MeasureSystems.squaredegree</code></a></li><li><a href="units.html#MeasureSystems.statampere"><code>MeasureSystems.statampere</code></a></li><li><a href="units.html#MeasureSystems.statcoulomb"><code>MeasureSystems.statcoulomb</code></a></li><li><a href="units.html#MeasureSystems.statfarad"><code>MeasureSystems.statfarad</code></a></li><li><a href="units.html#MeasureSystems.stathenry"><code>MeasureSystems.stathenry</code></a></li><li><a href="units.html#MeasureSystems.statmho"><code>MeasureSystems.statmho</code></a></li><li><a href="units.html#MeasureSystems.statohm"><code>MeasureSystems.statohm</code></a></li><li><a href="units.html#MeasureSystems.stattesla"><code>MeasureSystems.stattesla</code></a></li><li><a href="units.html#MeasureSystems.statutemile"><code>MeasureSystems.statutemile</code></a></li><li><a href="units.html#MeasureSystems.statvolt"><code>MeasureSystems.statvolt</code></a></li><li><a href="units.html#MeasureSystems.statweber"><code>MeasureSystems.statweber</code></a></li><li><a href="units.html#MeasureSystems.steradian"><code>MeasureSystems.steradian</code></a></li><li><a href="units.html#MeasureSystems.stilb"><code>MeasureSystems.stilb</code></a></li><li><a href="units.html#MeasureSystems.stokes"><code>MeasureSystems.stokes</code></a></li><li><a href="units.html#MeasureSystems.surveyacre"><code>MeasureSystems.surveyacre</code></a></li><li><a href="units.html#MeasureSystems.surveyfoot"><code>MeasureSystems.surveyfoot</code></a></li><li><a href="units.html#MeasureSystems.tablespoon"><code>MeasureSystems.tablespoon</code></a></li><li><a href="units.html#MeasureSystems.talbot"><code>MeasureSystems.talbot</code></a></li><li><a href="units.html#MeasureSystems.teaspoon"><code>MeasureSystems.teaspoon</code></a></li><li><a href="units.html#MeasureSystems.technicalatmosphere"><code>MeasureSystems.technicalatmosphere</code></a></li><li><a href="units.html#MeasureSystems.tesla"><code>MeasureSystems.tesla</code></a></li><li><a href="units.html#MeasureSystems.thermalunit"><code>MeasureSystems.thermalunit</code></a></li><li><a href="units.html#MeasureSystems.ton"><code>MeasureSystems.ton</code></a></li><li><a href="units.html#MeasureSystems.tonne"><code>MeasureSystems.tonne</code></a></li><li><a href="units.html#MeasureSystems.tonsrefrigeration"><code>MeasureSystems.tonsrefrigeration</code></a></li><li><a href="units.html#MeasureSystems.tontnt"><code>MeasureSystems.tontnt</code></a></li><li><a href="units.html#MeasureSystems.torr"><code>MeasureSystems.torr</code></a></li><li><a href="units.html#MeasureSystems.turn"><code>MeasureSystems.turn</code></a></li><li><a href="units.html#MeasureSystems.volt"><code>MeasureSystems.volt</code></a></li><li><a href="units.html#MeasureSystems.watt"><code>MeasureSystems.watt</code></a></li><li><a href="units.html#MeasureSystems.weber"><code>MeasureSystems.weber</code></a></li><li><a href="units.html#MeasureSystems.yard"><code>MeasureSystems.yard</code></a></li><li><a href="units.html#MeasureSystems.year"><code>MeasureSystems.year</code></a></li><li><a href="units.html#MeasureSystems.bel"><code>MeasureSystems.bel</code></a></li><li><a href="units.html#MeasureSystems.decibel"><code>MeasureSystems.decibel</code></a></li><li><a href="units.html#MeasureSystems.neper"><code>MeasureSystems.neper</code></a></li><li><a href="unitsystems.html#MeasureSystems.British"><code>MeasureSystems.British</code></a></li><li><a href="unitsystems.html#MeasureSystems.CODATA"><code>MeasureSystems.CODATA</code></a></li><li><a href="unitsystems.html#MeasureSystems.Conventional"><code>MeasureSystems.Conventional</code></a></li><li><a href="unitsystems.html#MeasureSystems.Cosmological"><code>MeasureSystems.Cosmological</code></a></li><li><a href="unitsystems.html#MeasureSystems.CosmologicalQuantum"><code>MeasureSystems.CosmologicalQuantum</code></a></li><li><a href="unitsystems.html#MeasureSystems.EMU"><code>MeasureSystems.EMU</code></a></li><li><a href="unitsystems.html#MeasureSystems.ESU"><code>MeasureSystems.ESU</code></a></li><li><a href="unitsystems.html#MeasureSystems.Electronic"><code>MeasureSystems.Electronic</code></a></li><li><a href="unitsystems.html#MeasureSystems.English"><code>MeasureSystems.English</code></a></li><li><a href="unitsystems.html#MeasureSystems.FFF"><code>MeasureSystems.FFF</code></a></li><li><a href="unitsystems.html#MeasureSystems.FPS"><code>MeasureSystems.FPS</code></a></li><li><a href="unitsystems.html#MeasureSystems.Gauss"><code>MeasureSystems.Gauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.GravitationalMetric"><code>MeasureSystems.GravitationalMetric</code></a></li><li><a href="unitsystems.html#MeasureSystems.Hartree"><code>MeasureSystems.Hartree</code></a></li><li><a href="unitsystems.html#MeasureSystems.Hubble"><code>MeasureSystems.Hubble</code></a></li><li><a href="unitsystems.html#MeasureSystems.IAU"><code>MeasureSystems.IAU</code></a></li><li><a href="unitsystems.html#MeasureSystems.IAUE"><code>MeasureSystems.IAUE</code></a></li><li><a href="unitsystems.html#MeasureSystems.IAUJ"><code>MeasureSystems.IAUJ</code></a></li><li><a href="unitsystems.html#MeasureSystems.IPS"><code>MeasureSystems.IPS</code></a></li><li><a href="unitsystems.html#MeasureSystems.International"><code>MeasureSystems.International</code></a></li><li><a href="unitsystems.html#MeasureSystems.InternationalMean"><code>MeasureSystems.InternationalMean</code></a></li><li><a href="unitsystems.html#MeasureSystems.KKH"><code>MeasureSystems.KKH</code></a></li><li><a href="unitsystems.html#MeasureSystems.LorentzHeaviside"><code>MeasureSystems.LorentzHeaviside</code></a></li><li><a href="unitsystems.html#MeasureSystems.MPH"><code>MeasureSystems.MPH</code></a></li><li><a href="unitsystems.html#MeasureSystems.MTS"><code>MeasureSystems.MTS</code></a></li><li><a href="unitsystems.html#MeasureSystems.Meridian"><code>MeasureSystems.Meridian</code></a></li><li><a href="unitsystems.html#MeasureSystems.Metric"><code>MeasureSystems.Metric</code></a></li><li><a href="unitsystems.html#MeasureSystems.MetricEngineering"><code>MeasureSystems.MetricEngineering</code></a></li><li><a href="unitsystems.html#MeasureSystems.Natural"><code>MeasureSystems.Natural</code></a></li><li><a href="unitsystems.html#MeasureSystems.NaturalGauss"><code>MeasureSystems.NaturalGauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.Nautical"><code>MeasureSystems.Nautical</code></a></li><li><a href="unitsystems.html#MeasureSystems.Planck"><code>MeasureSystems.Planck</code></a></li><li><a href="unitsystems.html#MeasureSystems.PlanckGauss"><code>MeasureSystems.PlanckGauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.QCD"><code>MeasureSystems.QCD</code></a></li><li><a href="unitsystems.html#MeasureSystems.QCDGauss"><code>MeasureSystems.QCDGauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.QCDoriginal"><code>MeasureSystems.QCDoriginal</code></a></li><li><a href="unitsystems.html#MeasureSystems.Rydberg"><code>MeasureSystems.Rydberg</code></a></li><li><a href="unitsystems.html#MeasureSystems.SI1976"><code>MeasureSystems.SI1976</code></a></li><li><a href="unitsystems.html#MeasureSystems.SI2019"><code>MeasureSystems.SI2019</code></a></li><li><a href="unitsystems.html#MeasureSystems.Schrodinger"><code>MeasureSystems.Schrodinger</code></a></li><li><a href="unitsystems.html#MeasureSystems.Stoney"><code>MeasureSystems.Stoney</code></a></li><li><a href="unitsystems.html#MeasureSystems.Survey"><code>MeasureSystems.Survey</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="convert.html">« Unit Conversions</a><a class="docs-footer-nextpage" href="references.html">References »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Friday 27 May 2022 15:23">Friday 27 May 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+𝘤⁻¹lb⋅2⁵5⁵/1.293 = 0.00011701634067117975 [lbm⁻¹C] English</code></pre></div></section></article><h2 id="Units-Index-1"><a class="docs-heading-anchor" href="#Units-Index-1">Units Index</a><a class="docs-heading-anchor-permalink" href="#Units-Index-1" title="Permalink"></a></h2><ul><li><a href="units.html#MeasureSystems.abampere"><code>MeasureSystems.abampere</code></a></li><li><a href="units.html#MeasureSystems.abcoulomb"><code>MeasureSystems.abcoulomb</code></a></li><li><a href="units.html#MeasureSystems.abfarad"><code>MeasureSystems.abfarad</code></a></li><li><a href="units.html#MeasureSystems.abhenry"><code>MeasureSystems.abhenry</code></a></li><li><a href="units.html#MeasureSystems.abmho"><code>MeasureSystems.abmho</code></a></li><li><a href="units.html#MeasureSystems.abohm"><code>MeasureSystems.abohm</code></a></li><li><a href="units.html#MeasureSystems.abvolt"><code>MeasureSystems.abvolt</code></a></li><li><a href="units.html#MeasureSystems.acre"><code>MeasureSystems.acre</code></a></li><li><a href="units.html#MeasureSystems.admiraltymile"><code>MeasureSystems.admiraltymile</code></a></li><li><a href="units.html#MeasureSystems.amagat"><code>MeasureSystems.amagat</code></a></li><li><a href="units.html#MeasureSystems.ampere"><code>MeasureSystems.ampere</code></a></li><li><a href="units.html#MeasureSystems.angstrom"><code>MeasureSystems.angstrom</code></a></li><li><a href="units.html#MeasureSystems.apm"><code>MeasureSystems.apm</code></a></li><li><a href="units.html#MeasureSystems.apostilb"><code>MeasureSystems.apostilb</code></a></li><li><a href="units.html#MeasureSystems.arcminute"><code>MeasureSystems.arcminute</code></a></li><li><a href="units.html#MeasureSystems.arcsecond"><code>MeasureSystems.arcsecond</code></a></li><li><a href="units.html#MeasureSystems.astronomicalunit"><code>MeasureSystems.astronomicalunit</code></a></li><li><a href="units.html#MeasureSystems.atmosphere"><code>MeasureSystems.atmosphere</code></a></li><li><a href="units.html#MeasureSystems.bar"><code>MeasureSystems.bar</code></a></li><li><a href="units.html#MeasureSystems.barn"><code>MeasureSystems.barn</code></a></li><li><a href="units.html#MeasureSystems.barye"><code>MeasureSystems.barye</code></a></li><li><a href="units.html#MeasureSystems.boilerhorsepower"><code>MeasureSystems.boilerhorsepower</code></a></li><li><a href="units.html#MeasureSystems.boiling"><code>MeasureSystems.boiling</code></a></li><li><a href="units.html#MeasureSystems.bradian"><code>MeasureSystems.bradian</code></a></li><li><a href="units.html#MeasureSystems.bril"><code>MeasureSystems.bril</code></a></li><li><a href="units.html#MeasureSystems.bubnoff"><code>MeasureSystems.bubnoff</code></a></li><li><a href="units.html#MeasureSystems.byte"><code>MeasureSystems.byte</code></a></li><li><a href="units.html#MeasureSystems.calorie"><code>MeasureSystems.calorie</code></a></li><li><a href="units.html#MeasureSystems.candela"><code>MeasureSystems.candela</code></a></li><li><a href="units.html#MeasureSystems.celsius"><code>MeasureSystems.celsius</code></a></li><li><a href="units.html#MeasureSystems.centi"><code>MeasureSystems.centi</code></a></li><li><a href="units.html#MeasureSystems.coulomb"><code>MeasureSystems.coulomb</code></a></li><li><a href="units.html#MeasureSystems.cup"><code>MeasureSystems.cup</code></a></li><li><a href="units.html#MeasureSystems.curie"><code>MeasureSystems.curie</code></a></li><li><a href="units.html#MeasureSystems.darcy"><code>MeasureSystems.darcy</code></a></li><li><a href="units.html#MeasureSystems.day"><code>MeasureSystems.day</code></a></li><li><a href="units.html#MeasureSystems.degree"><code>MeasureSystems.degree</code></a></li><li><a href="units.html#MeasureSystems.diopter"><code>MeasureSystems.diopter</code></a></li><li><a href="units.html#MeasureSystems.dyne"><code>MeasureSystems.dyne</code></a></li><li><a href="units.html#MeasureSystems.earthcalorie"><code>MeasureSystems.earthcalorie</code></a></li><li><a href="units.html#MeasureSystems.earthcoulomb"><code>MeasureSystems.earthcoulomb</code></a></li><li><a href="units.html#MeasureSystems.earthgram"><code>MeasureSystems.earthgram</code></a></li><li><a href="units.html#MeasureSystems.earthmeter"><code>MeasureSystems.earthmeter</code></a></li><li><a href="units.html#MeasureSystems.earthmole"><code>MeasureSystems.earthmole</code></a></li><li><a href="units.html#MeasureSystems.electricalhorsepower"><code>MeasureSystems.electricalhorsepower</code></a></li><li><a href="units.html#MeasureSystems.electronvolt"><code>MeasureSystems.electronvolt</code></a></li><li><a href="units.html#MeasureSystems.eotvos"><code>MeasureSystems.eotvos</code></a></li><li><a href="units.html#MeasureSystems.erg"><code>MeasureSystems.erg</code></a></li><li><a href="units.html#MeasureSystems.fahrenheit"><code>MeasureSystems.fahrenheit</code></a></li><li><a href="units.html#MeasureSystems.farad"><code>MeasureSystems.farad</code></a></li><li><a href="units.html#MeasureSystems.flick"><code>MeasureSystems.flick</code></a></li><li><a href="units.html#MeasureSystems.fluidounce"><code>MeasureSystems.fluidounce</code></a></li><li><a href="units.html#MeasureSystems.foot"><code>MeasureSystems.foot</code></a></li><li><a href="units.html#MeasureSystems.footcandle"><code>MeasureSystems.footcandle</code></a></li><li><a href="units.html#MeasureSystems.footlambert"><code>MeasureSystems.footlambert</code></a></li><li><a href="units.html#MeasureSystems.footpound"><code>MeasureSystems.footpound</code></a></li><li><a href="units.html#MeasureSystems.fpm"><code>MeasureSystems.fpm</code></a></li><li><a href="units.html#MeasureSystems.fps"><code>MeasureSystems.fps</code></a></li><li><a href="units.html#MeasureSystems.galileo"><code>MeasureSystems.galileo</code></a></li><li><a href="units.html#MeasureSystems.gallon"><code>MeasureSystems.gallon</code></a></li><li><a href="units.html#MeasureSystems.gasgallon"><code>MeasureSystems.gasgallon</code></a></li><li><a href="units.html#MeasureSystems.gauss"><code>MeasureSystems.gauss</code></a></li><li><a href="units.html#MeasureSystems.gforce"><code>MeasureSystems.gforce</code></a></li><li><a href="units.html#MeasureSystems.gilbert"><code>MeasureSystems.gilbert</code></a></li><li><a href="units.html#MeasureSystems.gradian"><code>MeasureSystems.gradian</code></a></li><li><a href="units.html#MeasureSystems.grain"><code>MeasureSystems.grain</code></a></li><li><a href="units.html#MeasureSystems.gram"><code>MeasureSystems.gram</code></a></li><li><a href="units.html#MeasureSystems.gray"><code>MeasureSystems.gray</code></a></li><li><a href="units.html#MeasureSystems.hectare"><code>MeasureSystems.hectare</code></a></li><li><a href="units.html#MeasureSystems.henry"><code>MeasureSystems.henry</code></a></li><li><a href="units.html#MeasureSystems.hertz"><code>MeasureSystems.hertz</code></a></li><li><a href="units.html#MeasureSystems.horsepower"><code>MeasureSystems.horsepower</code></a></li><li><a href="units.html#MeasureSystems.horsepowermetric"><code>MeasureSystems.horsepowermetric</code></a></li><li><a href="units.html#MeasureSystems.horsepowerwatt"><code>MeasureSystems.horsepowerwatt</code></a></li><li><a href="units.html#MeasureSystems.hour"><code>MeasureSystems.hour</code></a></li><li><a href="units.html#MeasureSystems.hyl"><code>MeasureSystems.hyl</code></a></li><li><a href="units.html#MeasureSystems.inch"><code>MeasureSystems.inch</code></a></li><li><a href="units.html#MeasureSystems.inchmercury"><code>MeasureSystems.inchmercury</code></a></li><li><a href="units.html#MeasureSystems.ips"><code>MeasureSystems.ips</code></a></li><li><a href="units.html#MeasureSystems.jansky"><code>MeasureSystems.jansky</code></a></li><li><a href="units.html#MeasureSystems.joule"><code>MeasureSystems.joule</code></a></li><li><a href="units.html#MeasureSystems.jupiterdistance"><code>MeasureSystems.jupiterdistance</code></a></li><li><a href="units.html#MeasureSystems.katal"><code>MeasureSystems.katal</code></a></li><li><a href="units.html#MeasureSystems.kayser"><code>MeasureSystems.kayser</code></a></li><li><a href="units.html#MeasureSystems.kelvin"><code>MeasureSystems.kelvin</code></a></li><li><a href="units.html#MeasureSystems.kilo"><code>MeasureSystems.kilo</code></a></li><li><a href="units.html#MeasureSystems.kilocalorie"><code>MeasureSystems.kilocalorie</code></a></li><li><a href="units.html#MeasureSystems.kilogram"><code>MeasureSystems.kilogram</code></a></li><li><a href="units.html#MeasureSystems.kilopond"><code>MeasureSystems.kilopond</code></a></li><li><a href="units.html#MeasureSystems.kmh"><code>MeasureSystems.kmh</code></a></li><li><a href="units.html#MeasureSystems.knot"><code>MeasureSystems.knot</code></a></li><li><a href="units.html#MeasureSystems.lambert"><code>MeasureSystems.lambert</code></a></li><li><a href="units.html#MeasureSystems.langley"><code>MeasureSystems.langley</code></a></li><li><a href="units.html#MeasureSystems.lightyear"><code>MeasureSystems.lightyear</code></a></li><li><a href="units.html#MeasureSystems.liter"><code>MeasureSystems.liter</code></a></li><li><a href="units.html#MeasureSystems.lumen"><code>MeasureSystems.lumen</code></a></li><li><a href="units.html#MeasureSystems.lumerg"><code>MeasureSystems.lumerg</code></a></li><li><a href="units.html#MeasureSystems.lunardistance"><code>MeasureSystems.lunardistance</code></a></li><li><a href="units.html#MeasureSystems.lux"><code>MeasureSystems.lux</code></a></li><li><a href="units.html#MeasureSystems.maxwell"><code>MeasureSystems.maxwell</code></a></li><li><a href="units.html#MeasureSystems.meancalorie"><code>MeasureSystems.meancalorie</code></a></li><li><a href="units.html#MeasureSystems.meridianmile"><code>MeasureSystems.meridianmile</code></a></li><li><a href="units.html#MeasureSystems.meter"><code>MeasureSystems.meter</code></a></li><li><a href="units.html#MeasureSystems.mile"><code>MeasureSystems.mile</code></a></li><li><a href="units.html#MeasureSystems.minute"><code>MeasureSystems.minute</code></a></li><li><a href="units.html#MeasureSystems.mole"><code>MeasureSystems.mole</code></a></li><li><a href="units.html#MeasureSystems.mpge"><code>MeasureSystems.mpge</code></a></li><li><a href="units.html#MeasureSystems.mph"><code>MeasureSystems.mph</code></a></li><li><a href="units.html#MeasureSystems.mps"><code>MeasureSystems.mps</code></a></li><li><a href="units.html#MeasureSystems.ms"><code>MeasureSystems.ms</code></a></li><li><a href="units.html#MeasureSystems.nauticalmile"><code>MeasureSystems.nauticalmile</code></a></li><li><a href="units.html#MeasureSystems.newton"><code>MeasureSystems.newton</code></a></li><li><a href="units.html#MeasureSystems.nit"><code>MeasureSystems.nit</code></a></li><li><a href="units.html#MeasureSystems.oersted"><code>MeasureSystems.oersted</code></a></li><li><a href="units.html#MeasureSystems.ohm"><code>MeasureSystems.ohm</code></a></li><li><a href="units.html#MeasureSystems.ounce"><code>MeasureSystems.ounce</code></a></li><li><a href="units.html#MeasureSystems.parsec"><code>MeasureSystems.parsec</code></a></li><li><a href="units.html#MeasureSystems.pascal"><code>MeasureSystems.pascal</code></a></li><li><a href="units.html#MeasureSystems.phot"><code>MeasureSystems.phot</code></a></li><li><a href="units.html#MeasureSystems.pint"><code>MeasureSystems.pint</code></a></li><li><a href="units.html#MeasureSystems.poise"><code>MeasureSystems.poise</code></a></li><li><a href="units.html#MeasureSystems.pound"><code>MeasureSystems.pound</code></a></li><li><a href="units.html#MeasureSystems.poundal"><code>MeasureSystems.poundal</code></a></li><li><a href="units.html#MeasureSystems.poundforce"><code>MeasureSystems.poundforce</code></a></li><li><a href="units.html#MeasureSystems.poundmole"><code>MeasureSystems.poundmole</code></a></li><li><a href="units.html#MeasureSystems.psi"><code>MeasureSystems.psi</code></a></li><li><a href="units.html#MeasureSystems.quart"><code>MeasureSystems.quart</code></a></li><li><a href="units.html#MeasureSystems.radian"><code>MeasureSystems.radian</code></a></li><li><a href="units.html#MeasureSystems.rankine"><code>MeasureSystems.rankine</code></a></li><li><a href="units.html#MeasureSystems.rayl"><code>MeasureSystems.rayl</code></a></li><li><a href="units.html#MeasureSystems.rayleigh"><code>MeasureSystems.rayleigh</code></a></li><li><a href="units.html#MeasureSystems.reyn"><code>MeasureSystems.reyn</code></a></li><li><a href="units.html#MeasureSystems.roentgen"><code>MeasureSystems.roentgen</code></a></li><li><a href="units.html#MeasureSystems.rpm"><code>MeasureSystems.rpm</code></a></li><li><a href="units.html#MeasureSystems.sealevel"><code>MeasureSystems.sealevel</code></a></li><li><a href="units.html#MeasureSystems.second"><code>MeasureSystems.second</code></a></li><li><a href="units.html#MeasureSystems.siemens"><code>MeasureSystems.siemens</code></a></li><li><a href="units.html#MeasureSystems.slinch"><code>MeasureSystems.slinch</code></a></li><li><a href="units.html#MeasureSystems.slinchmole"><code>MeasureSystems.slinchmole</code></a></li><li><a href="units.html#MeasureSystems.slug"><code>MeasureSystems.slug</code></a></li><li><a href="units.html#MeasureSystems.slugmole"><code>MeasureSystems.slugmole</code></a></li><li><a href="units.html#MeasureSystems.solarflux"><code>MeasureSystems.solarflux</code></a></li><li><a href="units.html#MeasureSystems.spat"><code>MeasureSystems.spat</code></a></li><li><a href="units.html#MeasureSystems.spatian"><code>MeasureSystems.spatian</code></a></li><li><a href="units.html#MeasureSystems.squaredegree"><code>MeasureSystems.squaredegree</code></a></li><li><a href="units.html#MeasureSystems.statampere"><code>MeasureSystems.statampere</code></a></li><li><a href="units.html#MeasureSystems.statcoulomb"><code>MeasureSystems.statcoulomb</code></a></li><li><a href="units.html#MeasureSystems.statfarad"><code>MeasureSystems.statfarad</code></a></li><li><a href="units.html#MeasureSystems.stathenry"><code>MeasureSystems.stathenry</code></a></li><li><a href="units.html#MeasureSystems.statmho"><code>MeasureSystems.statmho</code></a></li><li><a href="units.html#MeasureSystems.statohm"><code>MeasureSystems.statohm</code></a></li><li><a href="units.html#MeasureSystems.stattesla"><code>MeasureSystems.stattesla</code></a></li><li><a href="units.html#MeasureSystems.statutemile"><code>MeasureSystems.statutemile</code></a></li><li><a href="units.html#MeasureSystems.statvolt"><code>MeasureSystems.statvolt</code></a></li><li><a href="units.html#MeasureSystems.statweber"><code>MeasureSystems.statweber</code></a></li><li><a href="units.html#MeasureSystems.steradian"><code>MeasureSystems.steradian</code></a></li><li><a href="units.html#MeasureSystems.stilb"><code>MeasureSystems.stilb</code></a></li><li><a href="units.html#MeasureSystems.stokes"><code>MeasureSystems.stokes</code></a></li><li><a href="units.html#MeasureSystems.surveyacre"><code>MeasureSystems.surveyacre</code></a></li><li><a href="units.html#MeasureSystems.surveyfoot"><code>MeasureSystems.surveyfoot</code></a></li><li><a href="units.html#MeasureSystems.tablespoon"><code>MeasureSystems.tablespoon</code></a></li><li><a href="units.html#MeasureSystems.talbot"><code>MeasureSystems.talbot</code></a></li><li><a href="units.html#MeasureSystems.teaspoon"><code>MeasureSystems.teaspoon</code></a></li><li><a href="units.html#MeasureSystems.technicalatmosphere"><code>MeasureSystems.technicalatmosphere</code></a></li><li><a href="units.html#MeasureSystems.tesla"><code>MeasureSystems.tesla</code></a></li><li><a href="units.html#MeasureSystems.thermalunit"><code>MeasureSystems.thermalunit</code></a></li><li><a href="units.html#MeasureSystems.ton"><code>MeasureSystems.ton</code></a></li><li><a href="units.html#MeasureSystems.tonne"><code>MeasureSystems.tonne</code></a></li><li><a href="units.html#MeasureSystems.tonsrefrigeration"><code>MeasureSystems.tonsrefrigeration</code></a></li><li><a href="units.html#MeasureSystems.tontnt"><code>MeasureSystems.tontnt</code></a></li><li><a href="units.html#MeasureSystems.torr"><code>MeasureSystems.torr</code></a></li><li><a href="units.html#MeasureSystems.turn"><code>MeasureSystems.turn</code></a></li><li><a href="units.html#MeasureSystems.volt"><code>MeasureSystems.volt</code></a></li><li><a href="units.html#MeasureSystems.watt"><code>MeasureSystems.watt</code></a></li><li><a href="units.html#MeasureSystems.weber"><code>MeasureSystems.weber</code></a></li><li><a href="units.html#MeasureSystems.yard"><code>MeasureSystems.yard</code></a></li><li><a href="units.html#MeasureSystems.year"><code>MeasureSystems.year</code></a></li><li><a href="units.html#MeasureSystems.bel"><code>MeasureSystems.bel</code></a></li><li><a href="units.html#MeasureSystems.decibel"><code>MeasureSystems.decibel</code></a></li><li><a href="units.html#MeasureSystems.neper"><code>MeasureSystems.neper</code></a></li><li><a href="unitsystems.html#MeasureSystems.British"><code>MeasureSystems.British</code></a></li><li><a href="unitsystems.html#MeasureSystems.CODATA"><code>MeasureSystems.CODATA</code></a></li><li><a href="unitsystems.html#MeasureSystems.Conventional"><code>MeasureSystems.Conventional</code></a></li><li><a href="unitsystems.html#MeasureSystems.Cosmological"><code>MeasureSystems.Cosmological</code></a></li><li><a href="unitsystems.html#MeasureSystems.CosmologicalQuantum"><code>MeasureSystems.CosmologicalQuantum</code></a></li><li><a href="unitsystems.html#MeasureSystems.EMU"><code>MeasureSystems.EMU</code></a></li><li><a href="unitsystems.html#MeasureSystems.ESU"><code>MeasureSystems.ESU</code></a></li><li><a href="unitsystems.html#MeasureSystems.Electronic"><code>MeasureSystems.Electronic</code></a></li><li><a href="unitsystems.html#MeasureSystems.English"><code>MeasureSystems.English</code></a></li><li><a href="unitsystems.html#MeasureSystems.FFF"><code>MeasureSystems.FFF</code></a></li><li><a href="unitsystems.html#MeasureSystems.FPS"><code>MeasureSystems.FPS</code></a></li><li><a href="unitsystems.html#MeasureSystems.Gauss"><code>MeasureSystems.Gauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.GravitationalMetric"><code>MeasureSystems.GravitationalMetric</code></a></li><li><a href="unitsystems.html#MeasureSystems.Hartree"><code>MeasureSystems.Hartree</code></a></li><li><a href="unitsystems.html#MeasureSystems.Hubble"><code>MeasureSystems.Hubble</code></a></li><li><a href="unitsystems.html#MeasureSystems.IAU"><code>MeasureSystems.IAU</code></a></li><li><a href="unitsystems.html#MeasureSystems.IAUE"><code>MeasureSystems.IAUE</code></a></li><li><a href="unitsystems.html#MeasureSystems.IAUJ"><code>MeasureSystems.IAUJ</code></a></li><li><a href="unitsystems.html#MeasureSystems.IPS"><code>MeasureSystems.IPS</code></a></li><li><a href="unitsystems.html#MeasureSystems.International"><code>MeasureSystems.International</code></a></li><li><a href="unitsystems.html#MeasureSystems.InternationalMean"><code>MeasureSystems.InternationalMean</code></a></li><li><a href="unitsystems.html#MeasureSystems.KKH"><code>MeasureSystems.KKH</code></a></li><li><a href="unitsystems.html#MeasureSystems.LorentzHeaviside"><code>MeasureSystems.LorentzHeaviside</code></a></li><li><a href="unitsystems.html#MeasureSystems.MPH"><code>MeasureSystems.MPH</code></a></li><li><a href="unitsystems.html#MeasureSystems.MTS"><code>MeasureSystems.MTS</code></a></li><li><a href="unitsystems.html#MeasureSystems.Meridian"><code>MeasureSystems.Meridian</code></a></li><li><a href="unitsystems.html#MeasureSystems.Metric"><code>MeasureSystems.Metric</code></a></li><li><a href="unitsystems.html#MeasureSystems.MetricEngineering"><code>MeasureSystems.MetricEngineering</code></a></li><li><a href="unitsystems.html#MeasureSystems.Natural"><code>MeasureSystems.Natural</code></a></li><li><a href="unitsystems.html#MeasureSystems.NaturalGauss"><code>MeasureSystems.NaturalGauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.Nautical"><code>MeasureSystems.Nautical</code></a></li><li><a href="unitsystems.html#MeasureSystems.Planck"><code>MeasureSystems.Planck</code></a></li><li><a href="unitsystems.html#MeasureSystems.PlanckGauss"><code>MeasureSystems.PlanckGauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.QCD"><code>MeasureSystems.QCD</code></a></li><li><a href="unitsystems.html#MeasureSystems.QCDGauss"><code>MeasureSystems.QCDGauss</code></a></li><li><a href="unitsystems.html#MeasureSystems.QCDoriginal"><code>MeasureSystems.QCDoriginal</code></a></li><li><a href="unitsystems.html#MeasureSystems.Rydberg"><code>MeasureSystems.Rydberg</code></a></li><li><a href="unitsystems.html#MeasureSystems.SI1976"><code>MeasureSystems.SI1976</code></a></li><li><a href="unitsystems.html#MeasureSystems.SI2019"><code>MeasureSystems.SI2019</code></a></li><li><a href="unitsystems.html#MeasureSystems.Schrodinger"><code>MeasureSystems.Schrodinger</code></a></li><li><a href="unitsystems.html#MeasureSystems.Stoney"><code>MeasureSystems.Stoney</code></a></li><li><a href="unitsystems.html#MeasureSystems.Survey"><code>MeasureSystems.Survey</code></a></li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="convert.html">« Unit Conversions</a><a class="docs-footer-nextpage" href="references.html">References »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Tuesday 4 October 2022 21:31">Tuesday 4 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
