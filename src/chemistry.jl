@@ -254,7 +254,7 @@ struct Mixture{M,N,C} <: AbstractMole{M}
 end
 
 Mixture{N,C}(f) where {N,C} = Mixture{f⋅relativemass.(C),N,C}(f)
-Mixture{C}(f) where {C,U} = Mixture{length(C),C}(f)
+Mixture{C}(f) where C = Mixture{length(C),C}(f)
 
 @pure chemical(::Mixture{M,N,C}) where {M,N,C} = C
 @pure molecules(::Mixture{M,N,C}) where {M,N,C} = Values(C)

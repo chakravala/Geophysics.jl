@@ -34,7 +34,7 @@ gage(P::Real,P0::Real=pressure()) = P-P0
 export Metric, English, British
 import UnitSystems
 import UnitSystems: units
-const usingSimilitude = UnitSystems.similitude()
+const usingSimilitude = false#UnitSystems.similitude()
 
 if usingSimilitude
 import UnitSystems
