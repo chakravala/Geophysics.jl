@@ -1,17 +1,17 @@
 name = "Geophysics"
 uuid = "74efdf00-b554-44e1-bd21-abb9281d951c"
 authors = ["Michael Reed"]
-version = "0.3.7"
+version = "0.3.8"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
-AbstractTensors = "a8e43f4a-99b7-5565-8bf1-0165161caaea"
+StaticVectors = "20fadf95-9e3d-483c-97cd-cab2760e7998"
 UnitSystems = "3a241a3c-2137-41aa-af5e-1388e404ca09"
 
 [compat]
 julia = "1"
-AbstractTensors = "0.7"
 UnitSystems = "0.3.3"
+StaticVectors = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

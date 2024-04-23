@@ -21,7 +21,7 @@ module Geophysics
 #   \___|\___|\___/ | .__/ |_||_| \_, |/__/|_|\__| /__/
 #                   |_|             |_|
 
-using AbstractTensors, LinearAlgebra
+using StaticVectors, LinearAlgebra
 import Base: @pure, show, display
 
 export FluidState, Atmosphere, Weather, Planet
